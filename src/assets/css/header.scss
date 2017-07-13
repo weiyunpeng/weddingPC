@@ -6,8 +6,8 @@
     position: absolute;
     top: 0;
     z-index: 3;
-    background: url('./../../../static/images/bg.jpg') top center no-repeat;
-    background-size: 100%;
+    background: url('/static/images/bg.jpg') top center no-repeat;
+    background-size: 100% 100%;
     @include boxShadow(0 0 10px #ccc);
     .logo {
         float: left;
