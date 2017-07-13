@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@import './main';
+
+.header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    background: url('./../../../static/images/bg.jpg') top center no-repeat;
+    background-size: 100%;
+    @include boxShadow(0 0 10px #ccc);
+    .logo {
+        float: left;
+        margin-top: 5px;
+    }
+}
