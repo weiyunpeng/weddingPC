@@ -1,7 +1,7 @@
 {
-  "name": "aka-vue",
+  "name": "vue-wedding",
   "version": "1.0.0",
-  "description": "also konw as Vue",
+  "description": "Vue for DYWEDDING",
   "author": "weiyunpeng <153967808@qq.com>",
   "private": false,
   "scripts": {

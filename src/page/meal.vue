@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    aaa
+    bbb
     <com-tag></com-tag>
 </div>
 </template>
