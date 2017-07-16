@@ -1,12 +1,11 @@
 <template>
 <div class="container">
-    aaa
     <com-tag></com-tag>
 </div>
 </template>
 
 <script>
-import tag from "./../components/meal/mealTag"
+import tag from "./../components/business/busTag"
     export default {
         components: {
             comTag: tag

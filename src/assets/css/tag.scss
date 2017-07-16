@@ -1,0 +1,44 @@
+@charset "UTF-8";
+@import './main';
+
+.tag{
+    margin: 15px 0;
+    width: 100%;
+    height: auto;
+    li{
+        float: left;
+        width: 1200px;
+        margin: 5px 0;
+        strong{
+            width: 100px;
+            float: left;
+            line-height: 30px;
+        }
+        ul{
+            width: 1100px;
+            float: left;
+            overflow: hidden;
+            margin-left: 0;
+            li{
+                width: 87px;
+                float: left;
+                a{
+                    text-align:e center;
+                    font-size: 14px;
+                    border-radius: 10px;
+                    padding: 2px 5px;
+                }
+                a:hover{
+                    background: #ff4e6b;
+                    color: #ffffff;
+                    -webkit-transition: all .6s ease;
+                    transition: all .6s ease;
+                }
+                .tag_active{
+                    background: #ff4e6b;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
