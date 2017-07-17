@@ -34,7 +34,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
-            keyword:''
+            keyword:'皮皮虾，我们走'
         }
     },
     computed: {

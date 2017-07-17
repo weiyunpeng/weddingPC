@@ -1,34 +1,44 @@
 <template>
-        <div class="container">
-            <ul class="list">
-                <li class="list_con" v-for="item in list" :key="item.business.bus_id">
-                    <div class="shop">
-                        <img class="shop_logo" v-lazy="item.business.logo">
-                        <ul class="shop_details">
-                            <li><span class="meal_name">{{item.business.name}}</span><i v-show="item.business.isYes" class="icon icon-yes"></i><i v-show="item.business.isVIP" class="icon icon-vip"></i></li>
-                            <li class="price"><span>起拍价</span><label>¥{{item.business.price}}</label></li>
-                            <li style="height:55px;">
-                                <ul class="meal_tag">
-                                    <li v-for="tag in item.business.tag" :key="tag">{{tag}}</li>
-                                </ul>
-                            </li>
-                            <li><i class="icon logo_position"></i><span class="position">{{item.business.position}}</span></li>
-                        </ul>
-                    </div>
-                    <div class="photo">
-                        <ul>
-                            <li v-for="meal in item.meal" :key="meal.meal_id">
-                                <img class="picture" v-lazy="meal.first_img">
-                                <div class="pho_details">
-                                    <span>{{meal.name}}</span>
-                                    <label>¥{{meal.price}}</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
+    <div class="container">
+        <ul class="list">
+            <li class="list_con" v-for="item in list" :key="item.business.bus_id">
+                <div class="shop">
+                    <img class="shop_logo" v-lazy="item.business.logo">
+                    <ul class="shop_details">
+                        <li>
+                            <span class="meal_name">{{item.business.name}}</span>
+                            <i v-show="item.business.isYes" class="icon icon-yes"></i>
+                            <i v-show="item.business.isVIP" class="icon icon-vip"></i>
+                        </li>
+                        <li class="price">
+                            <span>起拍价</span>
+                            <label>¥{{item.business.price}}</label>
+                        </li>
+                        <li style="height:55px;">
+                            <ul class="meal_tag">
+                                <li v-for="tag in item.business.tag" :key="tag">{{tag}}</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <i class="icon logo_position"></i>
+                            <span class="position">{{item.business.position}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="photo">
+                    <ul>
+                        <li v-for="meal in item.meal" :key="meal.meal_id">
+                            <img class="picture" v-lazy="meal.first_img">
+                            <div class="pho_details">
+                                <span>{{meal.name}}</span>
+                                <label>¥{{meal.price}}</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -53,26 +63,26 @@ export default {
                             "韩式"
                         ]
                     },
-                    "meal":  [
-                            {
-                                "meal_id": 123,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/2.png",
-                                "price": 5699
-                            },
-                            {
-                                "meal_id": 1223,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/3.png",
-                                "price": 4699
-                            },
-                            {
-                                "meal_id": 1213,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/4.png",
-                                "price": 7699
-                            }
-                        ]
+                    "meal": [
+                        {
+                            "meal_id": 123,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/2.png",
+                            "price": 5699
+                        },
+                        {
+                            "meal_id": 1223,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/3.png",
+                            "price": 4699
+                        },
+                        {
+                            "meal_id": 1213,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/4.png",
+                            "price": 7699
+                        }
+                    ]
                 },
                 {
                     "business": {
@@ -89,26 +99,26 @@ export default {
                             "韩式"
                         ]
                     },
-                    "meal":  [
-                            {
-                                "meal_id": 123,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/2.png",
-                                "price": 5699
-                            },
-                            {
-                                "meal_id": 1223,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/3.png",
-                                "price": 4699
-                            },
-                            {
-                                "meal_id": 1213,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/4.png",
-                                "price": 7699
-                            }
-                        ]
+                    "meal": [
+                        {
+                            "meal_id": 123,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/2.png",
+                            "price": 5699
+                        },
+                        {
+                            "meal_id": 1223,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/3.png",
+                            "price": 4699
+                        },
+                        {
+                            "meal_id": 1213,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/4.png",
+                            "price": 7699
+                        }
+                    ]
                 },
                 {
                     "business": {
@@ -125,26 +135,26 @@ export default {
                             "韩式"
                         ]
                     },
-                    "meal":  [
-                            {
-                                "meal_id": 123,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/2.png",
-                                "price": 5699
-                            },
-                            {
-                                "meal_id": 1223,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/3.png",
-                                "price": 4699
-                            },
-                            {
-                                "meal_id": 1213,
-                                "name": "唯美韩式套餐",
-                                "first_img": "/static/images/4.png",
-                                "price": 7699
-                            }
-                        ]
+                    "meal": [
+                        {
+                            "meal_id": 123,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/2.png",
+                            "price": 5699
+                        },
+                        {
+                            "meal_id": 1223,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/3.png",
+                            "price": 4699
+                        },
+                        {
+                            "meal_id": 1213,
+                            "name": "唯美韩式套餐",
+                            "first_img": "/static/images/4.png",
+                            "price": 7699
+                        }
+                    ]
                 }
             ]
         }
@@ -155,7 +165,7 @@ export default {
         ...mapActions({
         })
     },
-    mounted(){
+    mounted() {
         let self = this;
     },
     methods: {
