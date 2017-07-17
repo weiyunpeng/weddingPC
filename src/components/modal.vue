@@ -59,10 +59,12 @@
         display: table;
         height: 100%;
         width: 100%;
-        background-color: rgba(0, 0, 0, .5);
+        background: rgba(0, 0, 0, .5);
         -webkit-overflow-scrolling: touch;
         outline: 0;
         transition: opacity .3s ease;
+        background: #000\9;/*IE*/
+        filter: alpha(opacity=70);/*IE*/
     }
     .modal_wrapper{
         display: table-cell;
@@ -71,14 +73,19 @@
     .modal-dialog{
         width: 300px;
         margin: 0 auto;
+        background: #fff;
+        padding: 10px;
+        border-radius: 10px;
         transition: all .3s ease;
     }
     .modal-enter {
         opacity: 0;
+        filter: alpha(opacity=0);/*IE*/
     }
 
     .modal-leave-active {
         opacity: 0;
+        filter: alpha(opacity=0);/*IE*/
     }
 
     .modal-enter .modal-dialog,

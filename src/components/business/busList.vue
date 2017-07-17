@@ -80,7 +80,7 @@ export default {
                         "logo": "/static/images/1.png",
                         "name": "郑州凹凸视觉摄影",
                         "isYes": true,
-                        "isVIP": true,
+                        "isVIP": false,
                         "price": 4999,
                         "position": "二七路大上海4楼",
                         "tag": [
@@ -115,8 +115,8 @@ export default {
                         "bus_id": 111,
                         "logo": "/static/images/1.png",
                         "name": "郑州凹凸视觉摄影",
-                        "isYes": true,
-                        "isVIP": true,
+                        "isYes": false,
+                        "isVIP": false,
                         "price": 4999,
                         "position": "二七路大上海4楼",
                         "tag": [
