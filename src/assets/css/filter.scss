@@ -1,0 +1,76 @@
+@charset "UTF-8";
+@import './main';
+
+.filter{
+    width: 1200px;
+    height: 40px;
+    background-color: #f2f2f2;
+    margin-top: 30px;
+    a{
+        display: inline-block;
+        float: left;
+        line-height: 40px;
+        padding-left: 20px;
+    }
+    a:hover{
+        color: #333333;
+        font-size: 14px;
+        font-weight: bold;
+        -webkit-transition: all .6s ease;
+        transition: all .6s ease;
+    }
+    .tag_active{
+        color: #333333;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .price_icon{
+            display: inline-block;
+            background: url("/static/images/icon_arrow.png");
+            width: 10px;
+            height: 12px;
+            background-position: 0px 0px;
+            margin-left: 2px;
+    }
+    .price_position{
+        background-position: 0px -15px;
+    }
+    .fil_input{
+        position: relative;
+        display: inline-block;
+        float: left;
+        line-height: 40px;
+        padding-left: 20px;
+        .input_price{
+            width: 80px;
+            height: 28px;
+            color: #a6a6a6;
+            text-align: center;
+            border:1px solid #d9d9d9;
+            border-radius: 5px;
+        }
+        .input_price:focus{
+            border-color: #d9d9d9;
+            outline: 0;
+        }
+        span{
+            position: relative;
+            left: 20px;
+            color: #a6a6a6;
+            font-size: 14px;
+            line-height: 40px;
+        }
+        .queryPrice{
+            height: 28px;
+            line-height: 28px;
+            float: right;
+            margin-left: 20px;
+            background: #d9d9d9;
+            color: #666666;
+            font-size: 14px;
+            border-radius: 10px;
+            padding: 0 8px;
+            margin-top: 6px;
+        }
+    }
+}

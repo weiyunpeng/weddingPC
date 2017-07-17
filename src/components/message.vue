@@ -39,7 +39,7 @@
 
 <style>
     .message {
-        position: fixed;
+        position: absolute;
         width: 350px;;
         z-index: 100;
     }
@@ -79,7 +79,7 @@
     }
     .message-enter,
     .message-leave-active {
-        transform: translateX(350px);
+        /* transform: translateX(350px); */
         opacity: 0;
     }
     .message-leave-active {
@@ -90,8 +90,8 @@
     }
 
     .message-position {
-        top: 70px;
-        right: 10px;
+        top: 50%;
+        right: 45%;
     }
 
     .message-type-info {
