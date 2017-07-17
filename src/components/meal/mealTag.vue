@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+<div class="container">
         <ul class="tag">
             <li v-for="(tag,number) in getTags" :key="tag.title">
                 <strong>{{tag.title}} :</strong>
