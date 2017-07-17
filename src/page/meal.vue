@@ -1,11 +1,11 @@
 <template>
 <div class="container">
-    <img v-lazy="img">
-    <img v-lazy="img">
-    <img v-lazy="img">
-    <img v-lazy="img">
-    <img v-lazy="img">
     <com-tag></com-tag>
+    <img v-lazy="img">
+    <img v-lazy="img">
+    <img v-lazy="img">
+    <img v-lazy="img">
+    <img v-lazy="img">
 </div>
 </template>
 
@@ -17,7 +17,7 @@ import tag from "./../components/meal/mealTag"
         },
         data(){
             return {
-                img:'http://localhost:3000/public/uploads/thumbnail/upload_6823e4d35d4d56cd7aeb4ade9133c128.png'
+                img:'/static/images/bg.jpg'
             }
         },
         mounted(){

@@ -9,10 +9,9 @@ import store from '../store/index'
 //页面控制
 import index from '../page/index'
 import meal from '../page/meal.vue'
-import business from '../page/business.vue'
 
 //组件控制
-import mealDeatils from '../components/meal/mealDeatils.vue'
+import mealList from '../components/meal/mealList.vue'
 
 const routes = [{
     path: '/',
@@ -22,13 +21,9 @@ const routes = [{
     component : meal,
     children : [{
         path: '',
-        name: 'mealDeatils',
-        component : mealDeatils,
+        name: 'mealList',
+        component : mealList,
     }]
-},{
-    path : '/business',
-    component : business,
-    children : []
 }];
 
 const router = new VueRouter({

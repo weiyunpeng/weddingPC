@@ -1,0 +1,69 @@
+@charset "UTF-8";
+@import './main';
+.list {
+    .list_con{
+        width: 1200px;
+        height: 240px;
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .shop {
+        padding-top: 40px;
+        width: 432px;
+        overflow: hidden;
+        .shop_logo {
+            float: left;
+            width: 170px;
+            height: 170px;
+        }
+        .shop_details{
+            float: left;
+            width: 230px;
+            height: 170px;
+            margin-left: 20px;
+            overflow: hidden;
+            li{
+                display: block;
+                width: 100%;
+                height: 40px;
+                line-height: 40px;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            .meal_name{
+                float: left;
+                display: inline-block;
+                color: #333333;
+                font-size: 20px;
+                i{
+                    float: left;
+                }
+            }
+            .price{
+                font-size: 14px;
+                span{
+                    color: #808080;
+                }
+                label{
+                    margin-left: 20px;
+                    color: #ff4e6b;
+                }
+            }
+        }
+    }
+}
+.icon{
+    float: left;
+    margin-left: 5px;
+}
+.icon-yes{
+    background: url('/static/images/icon.png');
+    width: 30px;
+    height: 30px;
+    background-position: -15px -15px;
+}
+.icon-vip{
+    background: url('/static/images/icon.png');
+    width: 30px;
+    height: 30px;
+    background-position: -66px -13px;
+}
