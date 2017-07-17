@@ -2,11 +2,14 @@
 @import './main';
 .list {
     .list_con{
+        position: relative;
         width: 1200px;
         height: 240px;
         border-bottom: 1px solid #e6e6e6;
     }
     .shop {
+        display: inline-block;
+        float: left;
         padding-top: 40px;
         width: 432px;
         overflow: hidden;
@@ -48,6 +51,58 @@
                     color: #ff4e6b;
                 }
             }
+            .meal_tag{
+                display: block;
+                width: 100%;
+                li{
+                    display: inline-block;
+                    float: left;
+                    width: auto;
+                    height: 25px;
+                    line-height: 25px;
+                    font-size: 14px;
+                    color: #fff;
+                    margin:0 5px 2px 0;
+                    padding: 0px 10px;
+                    background:#ff4e6b;
+                    border-radius: 10px;
+                }
+            }
+            .position{
+                font-size: 14px;
+                color: #808080;
+                margin-left: 5px;
+            }
+        }
+    }
+    .photo{
+        display: inline-block;
+        float: left;
+        padding-top: 40px;
+        width: auto;
+        overflow: hidden;
+        li{
+            display: inline-block;
+            float: left;
+            margin-left: 35px;
+            .picture{
+                width: 220px;
+                height: 145px;
+            }
+            .pho_details{
+                font-size: 16px;
+                height: 40px;
+                line-height: 40px;
+                span{
+                    float: left;
+                    color: #333333;
+                }
+                label{
+                    color: #ff4e6b;
+                    font-weight: bold;
+                    float: right;
+                }
+            }
         }
     }
 }
@@ -66,4 +121,10 @@
     width: 30px;
     height: 30px;
     background-position: -66px -13px;
+}
+.logo_position{
+    background: url('/static/images/icon.png');
+    width: 30px;
+    height: 30px;
+    background-position: -15px 40px;
 }
