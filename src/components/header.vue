@@ -48,7 +48,8 @@ export default {
          * 搜商家按钮事件
          */
         searchBtn(){}
-    }
+    },
+    // props:["isShow"]
 }
 </script>
 <style rel="stylesheet/scss" lang="scss">
