@@ -3,7 +3,7 @@
         <div class="bus_introduction clearfix">
             <div class="left_zoom">
                 <div class="big_img">
-                    <img v-lazy="bus_introduction[0].img_list[1].src" width="600" height="400">
+                    <img v-lazy="bus_introduction[0].img_list[1].src">
                 </div>
                 <div class="small_img">
                     <ul>

@@ -11,6 +11,7 @@ import store from '../store/index';
 import index from '../page/index';
 import meal from '../page/meal.vue';
 import busDeatils from '../page/busDetails.vue';
+import mealDeatils from '../page/mealDetails.vue';
 
 //组件控制
 import mealList from '../components/meal/mealList.vue';
@@ -24,6 +25,9 @@ const routes = [{
 },{
     path : '/busDeatils',
     component : busDeatils
+},{
+    path : '/mealDeatils',
+    component : mealDeatils
 }];
 
 const router = new VueRouter({
