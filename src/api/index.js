@@ -4,8 +4,8 @@ const qs = require('querystring');
 axios.defaults.timeout = 50000;
 
 const ROOT = (process.env.NODE_ENV === 'production')
-    ? 'http://localhost:3000'
-    :'http://localhost:3000';
+    ? 'http://localhost:1300'
+    :'http://localhost:1300';
 
 function config() {
     const base = {
@@ -15,7 +15,7 @@ function config() {
 }
 
 export default {
-    businessList:function () {
-        return axios.get('', config())
+    qryBusList:function (data) {
+        return axios.post('/index/qryBusList', data, config())
     },
 }

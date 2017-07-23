@@ -20,5 +20,22 @@ export const hideModal = ({ commit }, data) => {
     commit(types.HIDE_MODAL, data);
 };
 
-export const businessList = ({ commit },data) => {
+export const qryBusList = ({ commit },data) => {
+    commit(types.BUS_STATUS, {status: 1});
+    api.qryBusList(data).then(function (response) {
+        const status = response.data.list.length == 10?0:2;
+        commit(types.BUS_LIST, {
+            busList: response.data.list,
+            status: status
+        })
+    })
+        .catch(function (error) {
+            commit(types.BUS_LIST);
+            if (error.response) {
+                showMsg({ commit },{
+                    content: error.response.data.errorMsg || '网络故障',
+                    type: 'danger'
+                })
+            }
+        });
 };

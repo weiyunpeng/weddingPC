@@ -5,11 +5,11 @@ function run(Request, Response)
     if(Request.params && Request.params.name){
         var funs = {
             //商家首页
-            'index' : index,
+            'qryBusList' : qryBusList,
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
-        index(Params, Request, Response);
+       Response.end('this is 桩接口')
     }
 }
 /**
@@ -17,11 +17,11 @@ function run(Request, Response)
  * @param {Object} Request
  * @param {Object} Response
  */
-function index(Params, Request, Response) {
+function qryBusList(Params, Request, Response) {
     var fileName;
-    if(Params.isTag == '1'){
+    if(Params.type == 'bus'){
         fileName = 'index/data/index1.json';
-    }else if(Params.isTag == '2'){
+    }else if(Params.type == 'meal'){
         fileName = 'index/data/index2.json';
     }else{
         fileName = 'index/data/index3.json';

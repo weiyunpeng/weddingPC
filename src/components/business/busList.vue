@@ -161,12 +161,16 @@ export default {
     },
     computed: {
         ...mapGetters({
+            qryBusList:'qryBusList'
         }),
         ...mapActions({
         })
     },
     mounted() {
-        let self = this;
+        let data = {
+            type:'bus'
+        }
+        this.$store.dispatch('qryBusList', data);
     },
     methods: {
     }

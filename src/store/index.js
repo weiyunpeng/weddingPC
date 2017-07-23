@@ -5,6 +5,7 @@ import * as getters from './getters'
 
 import msg from './modules/msg'
 import modal from './modules/modal'
+import busList from './modules/busList'
 
 Vue.use(Vuex);
 
@@ -15,7 +16,8 @@ export default new Vuex.Store({
   getters,
   modules: {
       msg,
-      modal
+      modal,
+      busList
   },
   strict: debug
 })

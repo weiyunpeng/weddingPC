@@ -7,7 +7,7 @@ var express = require('express');
 var routes = require('./server/router.js');
 var app = express();
 // all environments
-app.set('port', process.env.PORT || 150);
+app.set('port', process.env.PORT || 1300);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({limit: '2mb',extended: true}));
 app.use(cookieParser());
