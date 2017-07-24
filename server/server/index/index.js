@@ -1,7 +1,7 @@
 var MAIN = require('../main.js');
 function run(Request, Response)
 {
-    var Params = Request.query;
+    var Params = MAIN.getParams(Request)
     if(Request.params && Request.params.name){
         var funs = {
             //商家首页
@@ -20,11 +20,11 @@ function run(Request, Response)
 function qryBusList(Params, Request, Response) {
     var fileName;
     if(Params.type == 'bus'){
-        fileName = 'index/data/index1.json';
+        fileName = 'index/data/busList1.json';
     }else if(Params.type == 'meal'){
-        fileName = 'index/data/index2.json';
+        fileName = 'index/data/busList2.json';
     }else{
-        fileName = 'index/data/index3.json';
+        fileName = 'index/data/none.json';
     }
     
     MAIN.responseStub(Response,fileName);

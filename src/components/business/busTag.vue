@@ -48,7 +48,7 @@ export default {
                         "欧美大气",
                         "欧美大气"
                     ],
-                    "isTag":1
+                    "isTag":0
                 },{
                     "title": "区域",
                     "con": [
@@ -70,15 +70,22 @@ export default {
         ...mapGetters({
         }),
         ...mapActions({
+            qryBusList:'qryBusList',
+            busClear:'busClear'
         })
     },
     mounted(){
-        let self = this;
+        
     },
     methods: {
         tagChange(number,index){
             let self = this;
             self.getTags[number].isTag = index;
+            let data = {
+                    type:'meal'
+            }
+            this.$store.dispatch('busClear')
+            this.$store.dispatch('qryBusList', data)
         }
     }
 }

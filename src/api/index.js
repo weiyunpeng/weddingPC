@@ -15,6 +15,7 @@ function config() {
 }
 
 export default {
+    //查询商家列表
     qryBusList:function (data) {
         return axios.post('/index/qryBusList', data, config())
     },

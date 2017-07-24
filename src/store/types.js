@@ -6,3 +6,4 @@ export const HIDE_MODAL = 'HIDE_MODAL'
 
 export const BUS_LIST = 'BUS_LIST'
 export const BUS_STATUS = 'BUS_STATUS'
+export const BUS_CLEAR = 'BUS_CLEAR'
