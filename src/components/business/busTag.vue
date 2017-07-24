@@ -1,16 +1,16 @@
 <template>
-        <div class="container">
-            <ul class="tag">
-                <li  v-for="(tag,number) in getTags" :key="tag.title">
-                    <strong>{{tag.title}} :</strong>
-                    <ul>
-                        <li v-for="(tagCon,index) in tag.con" :key="tagCon">
-                            <a href="javascript:void(0)" v-bind:class="{tag_active: tag.isTag==index}" @click="tagChange(number,index)">{{tagCon}}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+    <div class="container">
+        <ul class="tag">
+            <li v-for="(tag,number) in busTag" :key="tag.title">
+                <strong>{{tag.title}} :</strong>
+                <ul>
+                    <li v-for="(tagCon,index) in tag.con" :key="tagCon">
+                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.isTag==index}" @click="tagBtn(number,index)">{{tagCon}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -19,73 +19,44 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
-            tagName:'',
-            getTags:[
-                {
-                    "title": "分类",
-                    "con": [
-                        "不限",
-                        "影楼",
-                        "工作室",
-                        "独立摄影师"
-                    ],
-                    "isTag":0
-                },{
-                    "title": "主打特色",
-                    "con": [
-                        "不限",
-                        "韩式",
-                        "花海",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气",
-                        "欧美大气"
-                    ],
-                    "isTag":0
-                },{
-                    "title": "区域",
-                    "con": [
-                        "不限",
-                        "中原区",
-                        "二七区",
-                        "高新区",
-                        "郑东新区",
-                        "金水区",
-                        "上街区",
-                        "管城回族区"
-                    ],
-                    "isTag":0
-                }
-            ]
         }
     },
     computed: {
         ...mapGetters({
+            busTag: 'busTag'
         }),
         ...mapActions({
-            qryBusList:'qryBusList',
-            busClear:'busClear'
+            qryBusList: 'qryBusList',
+            busClear: 'busClear',
+            qrybusTag: 'qrybusTag',
+            busTagClear:'busTagClear',
+            busTagChange:'busTagChange'
         })
     },
-    mounted(){
-        
+    mounted() {
+        let data = {
+            type: 'bus'
+        }
+        // this.$store.dispatch('busTagChange')
+        this.$store.dispatch('qrybusTag', data)
     },
     methods: {
-        tagChange(number,index){
-            let self = this;
-            self.getTags[number].isTag = index;
-            let data = {
-                    type:'meal'
+        tagBtn(number, index) {
+            let changeData = {
+                index:index,
+                number:number
+            }
+            this.$store.dispatch('busTagChange' , changeData)
+            let ajaxdata = {
+                type: 'bus'
             }
             this.$store.dispatch('busClear')
-            this.$store.dispatch('qryBusList', data)
+            this.$store.dispatch('qryBusList', ajaxdata)
+        }
+    },
+    watch:{
+        busTag:function(){
+            // console.log(this.busTag)
         }
     }
 }

@@ -73,3 +73,22 @@
         }
     }
 }
+.breadcrumb{
+    position: absolute;
+    bottom: 11px;
+    left: 0;
+    li{
+        display: inline-block;
+        font-size: 16px;
+        color: #808080;
+        line-height: 26px;
+    }
+    .nav_a:hover{
+        color: #ff516d;
+        -webkit-transition: all .6s ease;
+        transition: all .6s ease;
+    }
+    .nav_active{
+        color: #ff516d;
+    }
+}

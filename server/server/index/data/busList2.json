@@ -3,112 +3,58 @@
     "msg": "success",
     "list": [
         {
-            "business": {
-                "bus_id": 111,
-                "logo": "/static/images/10.png",
-                "name": "拉菲婚纱摄影",
-                "isYes": true,
-                "isVIP": true,
-                "price": 4999,
-                "position": "二七路大上海4楼",
-                "tag": [
-                    "工作室",
-                    "写实风格",
-                    "韩式"
-                ]
-            },
-            "meal": [
-                {
-                    "meal_id": 123,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/2.png",
-                    "price": 5699
-                },
-                {
-                    "meal_id": 1223,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/3.png",
-                    "price": 4699
-                },
-                {
-                    "meal_id": 1213,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/4.png",
-                    "price": 7699
-                }
-            ]
+            "id": 1,
+            "price": 8888,
+            "meal_name": "旅拍海滩外景LOMO风套系",
+            "business_name": "郑州蒙娜丽莎婚纱摄影",
+            "src": "/static/images/meal-list.png",
+            "tag1": true,
+            "tag2": false
         },
         {
-            "business": {
-                "bus_id": 111,
-                "logo": "/static/images/1.png",
-                "name": "郑州凹凸视觉摄影",
-                "isYes": true,
-                "isVIP": false,
-                "price": 4999,
-                "position": "二七路大上海4楼",
-                "tag": [
-                    "工作室",
-                    "写实风格",
-                    "韩式"
-                ]
-            },
-            "meal": [
-                {
-                    "meal_id": 123,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/2.png",
-                    "price": 5699
-                },
-                {
-                    "meal_id": 1223,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/3.png",
-                    "price": 4699
-                },
-                {
-                    "meal_id": 1213,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/4.png",
-                    "price": 7699
-                }
-            ]
+            "id": 2,
+            "price": 6666,
+            "meal_name": "旅拍海滩外景LOMO风套系",
+            "business_name": "郑州凹凸视觉摄影",
+            "src": "/static/images/meal-list.png",
+            "tag1": false,
+            "tag2": true
         },
         {
-            "business": {
-                "bus_id": 111,
-                "logo": "/static/images/1.png",
-                "name": "郑州凹凸视觉摄影",
-                "isYes": false,
-                "isVIP": false,
-                "price": 4999,
-                "position": "二七路大上海4楼",
-                "tag": [
-                    "工作室",
-                    "写实风格",
-                    "韩式"
-                ]
-            },
-            "meal": [
-                {
-                    "meal_id": 123,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/2.png",
-                    "price": 5699
-                },
-                {
-                    "meal_id": 1223,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/3.png",
-                    "price": 4699
-                },
-                {
-                    "meal_id": 1213,
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/4.png",
-                    "price": 7699
-                }
-            ]
+            "id": 3,
+            "price": 7777,
+            "meal_name": "旅拍海滩外景LOMO风套系",
+            "business_name": "金夫人婚纱摄影",
+            "src": "/static/images/meal-list.png",
+            "tag1": true,
+            "tag2": true
+        },
+        {
+            "id": 4,
+            "price": 4444,
+            "meal_name": "旅拍海滩外景LOMO风套系",
+            "business_name": "郑州皮皮虾婚纱摄影",
+            "src": "/static/images/meal-list.png",
+            "tag1": false,
+            "tag2": false
+        },
+        {
+            "id": 5,
+            "price": 1111,
+            "meal_name": "旅拍海滩外景LOMO风套系",
+            "business_name": "郑州皮皮虾婚纱摄影",
+            "src": "/static/images/meal-list.png",
+            "tag1": false,
+            "tag2": true
+        },
+        {
+            "id": 6,
+            "price": 2222,
+            "meal_name": "旅拍海滩外景LOMO风套系",
+            "business_name": "郑州皮皮虾婚纱摄影",
+            "src": "/static/images/meal-list.png",
+            "tag1": true,
+            "tag2": false
         }
     ]
 }

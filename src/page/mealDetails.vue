@@ -1,4 +1,6 @@
 <template>
+<div>
+    <com-header></com-header>
     <div class="container" id="mealDetails">
         <div class="meal_introduction clearfix">
             <div class="bus_name">
@@ -306,11 +308,13 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 <script>
+import header from './../components/headerDetails'
 export default {
     components: {
-
+        comHeader: header,
     },
     methods: {
         erweima: function () {

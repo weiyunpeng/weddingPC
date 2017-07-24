@@ -1,4 +1,4 @@
-import {BUS_LIST,BUS_STATUS,BUS_CLEAR} from '../types'
+import {MEAL_LIST,MEAL_STATUS,MEAL_CLEAR} from '../types'
 
 const state = {
     list: [],
@@ -6,14 +6,14 @@ const state = {
 };
 
 const mutations = {
-    [BUS_LIST](state, data){
+    [MEAL_LIST](state, data){
         state.list = data.list;
         state.status = data.status;
     },
-    [BUS_STATUS](state, data){
+    [MEAL_STATUS](state, data){
         state.status = data.status;
     },
-    [BUS_CLEAR](state,data){
+    [MEAL_CLEAR](state,data){
         state.list = [];
         state.status = 1;
     }

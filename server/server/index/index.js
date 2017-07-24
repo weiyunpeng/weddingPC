@@ -6,6 +6,8 @@ function run(Request, Response)
         var funs = {
             //商家首页
             'qryBusList' : qryBusList,
+            //商家筛选条件
+            'busTag':busTag,
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -27,6 +29,23 @@ function qryBusList(Params, Request, Response) {
         fileName = 'index/data/none.json';
     }
     
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 商家筛选条件
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function busTag(Params, Request, Response) {
+    var fileName;
+    if(Params.type == 'bus'){
+        fileName = 'index/data/tag1.json';
+    }else if(Params.type == 'meal'){
+        fileName = 'index/data/tag2.json';
+    }else{
+        fileName = 'index/data/none.json';
+    }
     MAIN.responseStub(Response,fileName);
 }
 

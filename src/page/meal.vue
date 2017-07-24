@@ -1,82 +1,140 @@
 <template>
+<div>
+    <com-header></com-header>
     <div class="container">
-        <com-tag v-bind:tag="tag"></com-tag>
+        <com-tag></com-tag>
         <meal-filter></meal-filter>
-        <meal-list></meal-list>
+        <div class="container">
+        <ul class="meal_list">
+            <li class="list_con" v-for="item in mealList" :key="item.id">
+                <div class="shop">
+                    <div class="img">
+                        <img class="shop_logo" v-lazy="item.src">
+                    </div>
+                    <ul class="shop_details">
+                        <li class="price">
+                            ￥{{item.price}}
+                            <div class="tags">
+                                <p class="tag" v-if="item.tag1">摄影师一对一</p>
+                                <p class="tag" v-if="item.tag2">化妆师一对一</p>
+                            </div>
+                        </li>
+                        <li class="meal_name">
+                            {{item.meal_name}}
+                        </li>
+                        <li class="business_name">
+                            {{item.business_name}}
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
     </div>
+    </div>
+</div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import header from './../components/header'
 import tag from "./../components/meal/mealTag"
-import list from "./../components/meal/mealList"
-import busFilter from "./../components/business/busFilter"
+import mealFilter from "./../components/meal/mealFilter"
 
 export default {
     components: {
+        comHeader: header,
         comTag: tag,
-        mealList: list,
-        mealFilter:busFilter
+        mealFilter:mealFilter
+    },
+    computed: {
+        ...mapGetters({
+            mealList:'mealList'
+        }),
+        ...mapActions({
+            qryMealList:'qryMealList',
+            mealClear:'mealClear',
+        })
     },
     data() {
-        return {
-            img: '/static/images/bg.jpg',
-            tag: {
-                tagName: '',
-                getTags: [
-                    {
-                        "title": "风格",
-                        "con": [
-                            "不限",
-                            "影楼",
-                            "工作室",
-                            "独立摄影师"
-                        ],
-                        "isTag": 0
-                    }, {
-                        "title": "场景",
-                        "con": [
-                            "不限",
-                            "草坪",
-                            "室外花海",
-                            "室内纯色",
-                            "室内花房",
-                            "宫殿",
-                            "咖啡馆",
-                            "城市旅拍",
-                            "教堂",
-                            "海景",
-                            "游乐场",
-                            "古城",
-                            "跑马场",
-                            "水下",
-                            "河湖",
-                        ],
-                        "isTag": 0
-                    }, {
-                        "title": "区域",
-                        "con": [
-                            "不限",
-                            "中原区",
-                            "二七区",
-                            "管城回族区",
-                            "金水区",
-                            "高新区",
-                            "上街区",
-                            "惠济区",
-                            "经开区",
-                            "郑东新区",
-                        ],
-                        "isTag": 0
-                    }
-                ]
-            }
-        }
+        return {}
     },
-    mounted() {
+    mounted(){
+        // this.$store.dispatch('mealClear')
+        let data = {
+            type:'meal'
+        }
+        this.$store.dispatch('qryMealList', data)
     },
     methods: {
+        loadList(){
+            let self = this;
+        }
     },
-    beforeDestroy() {
+    beforeDestroy () {
     }
 }
 </script>
+<style rel="stylesheet/scss" lang="scss" scoped>
+@charset "UTF-8";
+.meal_list {
+    margin: {
+        right:-42px;
+        top:34px;
+    }
+    .list_con {
+        display: inline-block;
+        margin: {
+            right:42px;
+            bottom:40px;
+        }
+        width:372px;
+        .price {
+            position:relative;
+            height:50px;
+            line-height: 50px;
+            font: {
+                size: 24px;
+                weight: bold;
+            }
+            color:#ff4e6b;
+            .tags{
+                position:absolute;
+                top:0;
+                right:0
+            }
+            .tag{
+                display: inline-block;
+                width:102px;
+                height:24px;
+                border:1px solid #ff4e6b;
+                border-radius: 12px;
+                color:#ff4e6b;
+                line-height: 24px;
+                text-align: center;
+                font: {
+                    size: 14px;
+                    weight: normal;
+                }
+            }
+        }
+        .meal_name {
+            margin: {
+                bottom:6px;
+            }
+            font: {
+                size: 16px;
+            }
+            color:#333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .business_name {
+            font: {
+                size: 14px;
+            }
+            color:#808080;
+        }
+    }
+}
+</style>

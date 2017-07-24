@@ -6,6 +6,9 @@ import * as getters from './getters'
 import msg from './modules/msg'
 import modal from './modules/modal'
 import busList from './modules/busList'
+import mealList from './modules/mealList'
+import busTag from './modules/busTag'
+import mealTag from './modules/mealTag'
 
 Vue.use(Vuex);
 
@@ -17,7 +20,10 @@ export default new Vuex.Store({
   modules: {
       msg,
       modal,
-      busList
+      busList,
+      mealList,
+      busTag,
+      mealTag,
   },
   strict: debug
 })

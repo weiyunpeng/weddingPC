@@ -1,4 +1,6 @@
 <template>
+<div>
+    <com-header></com-header>
     <div class="container" id="busDetails">
         <div class="bus_introduction clearfix">
             <div class="left_zoom">
@@ -242,11 +244,14 @@
         </div>
         <!-- 商家简介结束 -->
     </div>
+    </div>
 </template>
 
 <script>
+import header from './../components/headerDetails'
 export default {
     components: {
+        comHeader: header,
     },
     data() {
         return {

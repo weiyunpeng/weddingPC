@@ -19,4 +19,8 @@ export default {
     qryBusList:function (data) {
         return axios.post('/index/qryBusList', data, config())
     },
+    //查询筛选条件
+    qrybusTag:function(data){
+        return axios.post('/index/busTag', data, config())
+    }
 }

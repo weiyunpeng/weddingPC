@@ -41,15 +41,25 @@ export default {
         ...mapGetters({
         }),
         ...mapActions({
+            qryBusList:'qryBusList',
+            busClear:'busClear'
         })
+    },
+    mounted(){
     },
     methods: {
         /**
          * 搜商家按钮事件
          */
-        searchBtn(){}
+        searchBtn(){
+            this.$router.push({ name: '/'})
+            let data = {
+                type:'bus'
+            }
+            this.$store.dispatch('busClear')
+            this.$store.dispatch('qryBusList', data)
+        }
     },
-    // props:["isShow"]
 }
 </script>
 <style rel="stylesheet/scss" lang="scss">
