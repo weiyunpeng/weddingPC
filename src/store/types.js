@@ -5,6 +5,8 @@ export const SHOW_MODAL = 'SHOW_MODAL'
 export const HIDE_MODAL = 'HIDE_MODAL'
 
 export const BUS_LIST = 'BUS_LIST'
+export const BUS_INFO = 'BUS_INFO'
+export const BUS_DETAILS_LIST = 'BUS_DETAILS_LIST'
 export const BUS_STATUS = 'BUS_STATUS'
 export const BUS_CLEAR = 'BUS_CLEAR'
 export const BUS_TAG_LIST = 'BUS_TAG_LIST'
@@ -18,4 +20,3 @@ export const MEAL_CLEAR = 'MEAL_CLEAR'
 export const MEAL_TAG_LIST = 'MEAL_TAG_LIST'
 export const MEAL_TAG_CLEAR = 'MEAL_TAG_CLEAR'
 export const MEAL_TAG_CHANGE = 'MEAL_TAG_CHANGE'
-

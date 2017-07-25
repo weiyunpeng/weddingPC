@@ -9,13 +9,13 @@
             <div class="breadcrumb">
                 <ul>
                     <li>
-                        <router-link to="/" class="nav_a" active-class="nav_active" exact>首页 ></router-link>
+                        <router-link to="/" class="nav_a" active-class="nav_active" exact>首页</router-link>
                     </li>
-                    <li>
-                        <router-link :to="{ name: 'busDeatils', params: {}}" class="nav_a" active-class="nav_active">门店名称 ></router-link>
+                    <li v-show="busName">
+                        ><router-link :to="{ name: 'busDeatils', query: {busName:busName}}" class="nav_a" active-class="nav_active">{{busName}}</router-link>
                     </li>
-                    <li>
-                        <router-link :to="{ name: 'mealDeatils', params: {}}" class="nav_a" active-class="nav_active">套餐名称</router-link>
+                    <li v-show="mealName">
+                        ><router-link :to="{ name: 'mealDeatils', query: {mealName:mealName}}" class="nav_a" active-class="nav_active">{{mealName}}</router-link>
                     </li>
                 </ul>
             </div>
@@ -29,7 +29,11 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
+            busName:this.$route.query.busName,
+            mealName:this.$route.query.mealName,
         }
+    },
+    props:{
     },
     computed: {
         ...mapGetters({

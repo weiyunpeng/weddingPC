@@ -8,7 +8,7 @@
         <ul class="list">
             <li class="list_con" v-for="item in busList" :key="item.business.id">
                 <div class="shop">
-                    <router-link :to="{ name: 'busDeatils', params: {}}" target="_blank">
+                    <router-link :to="{ name: 'busDeatils', query: {busName:item.business.name}}" target="_blank">
                         <img class="shop_logo" v-lazy="item.business.logo">
                         <ul class="shop_details">
                             <li>
@@ -34,13 +34,15 @@
                 </div>
                 <div class="photo">
                     <ul>
-                        <li v-for="meal in item.meal" :key="meal.id">
-                            <img class="picture" v-lazy="meal.first_img">
-                            <div class="pho_details">
-                                <span>{{meal.name}}</span>
-                                <label>¥{{meal.price}}</label>
-                            </div>
-                        </li>
+                            <li v-for="meal in item.meal" :key="meal.id">
+                                <router-link :to="{ name: 'mealDeatils',query: {busName:item.business.name, mealName: meal.name}}" target="_blank">
+                                <img class="picture" v-lazy="meal.first_img">
+                                <div class="pho_details">
+                                    <span>{{meal.name}}</span>
+                                    <label>¥{{meal.price}}</label>
+                                </div>
+                                </router-link>
+                            </li>
                     </ul>
                 </div>
             </li>
@@ -51,8 +53,8 @@
 </template>
 
 <script>
-import header from './../components/header'
 import { mapGetters, mapActions } from 'vuex'
+import header from './../components/header'
 import tag from "./../components/business/busTag"
 import busFilter from "./../components/business/busFilter"
     export default {

@@ -8,6 +8,8 @@ function run(Request, Response)
             'qryBusList' : qryBusList,
             //商家筛选条件
             'busTag':busTag,
+            //商家详情
+            'busDetails':busDetails,
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -46,6 +48,16 @@ function busTag(Params, Request, Response) {
     }else{
         fileName = 'index/data/none.json';
     }
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 商家详情
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function busDetails(Params, Request, Response) {
+    var fileName = 'index/busData/busDetails.json';
     MAIN.responseStub(Response,fileName);
 }
 

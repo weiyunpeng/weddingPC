@@ -1,134 +1,152 @@
 {
-            "bus_introduction": [
-                {
-                    "img_list": [
-                        {
-                            "src": "/static/images/6.png",
-                            "id": 1
-                        },
-                        {
-                            "src": "/static/images/5.png",
-                            "id": 2
-                        },
-                        {
-                            "src": "/static/images/7.png",
-                            "id": 3
-                        },
-                        {
-                            "src": "/static/images/8.png",
-                            "id": 4
-                        }
-                    ]
-                },
-                {
-                    "introduction": {
-                        "bus_name": "郑州凹凸视觉摄影",
-                        "isYes": true,
-                        "isVip": false,
-                        "price": 4999,
-                        "address": "经七路丰产路交叉口西北角二楼",
-                        "tags": [
-                            { "tag": "工作室" },
-                            { "tag": "写实风格" },
-                            { "tag": "韩式" }
-                        ],
-                        "media_rating": 2,
-                        "media_comment": "进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。进入到7月，虽说是进入了结婚的淡季",
-                        "erweima": false
-                    }
-                }
+    "code": 200,
+    "msg": "success",
+    "bus_info": {
+        "media_info": {
+            "id": "1ds34asd",
+            "name": "郑州凹凸视觉摄影",
+            "isYes": true,
+            "isVip": false,
+            "price": 4999,
+            "address": "经七路丰产路交叉口西北角二楼",
+            "longitude": 116.404,
+            "latitude": 39.915,
+            "tags": [
+                "工作室",
+                "写实风格",
+                "韩式"
             ],
-            "nav": [
-                {
-                    "msg": "官方案例"
-                },
-                {
-                    "msg": "精选套餐"
-                },
-                {
-                    "msg": "摄影师团队"
-                },
-                {
-                    "msg": "化妆团队"
-                },
-                {
-                    "msg": "商家简介"
-                }
+            "star": 2,
+            "comment": "进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。进入到7月，虽说是进入了结婚的淡季",
+            "comment_url": "http://crowd.qqdayu.com:3000/crowdMobi.html#/",
+            "erwei_img": "/static/images/erweima.png",
+            "img": [
+                "/static/images/6.png",
+                "/static/images/5.png",
+                "/static/images/7.png",
+                "/static/images/9.png",
+                "/static/images/8.png"
+            ]
+        },
+        "intro_info": {
+            "logo": "/static/images/10.png",
+            "bus_name": "郑州凹凸视觉摄影",
+            "star_time": "2000年9月",
+            "bus_time": "每周一至周日 8:00-20:00",
+            "payment": "刷卡、现金",
+            "features": [
+                "7天选卡",
+                "15天出精修",
+                "一年保修",
+                "不满意重拍"
             ],
-            "business": {
-                "src": "/static/images/10.png",
-                "bus_name": "郑州凹凸视觉摄影",
-                "star_time": "2000年9月",
-                "bus_time": "每周一至周日 8:00-20:00",
-                "payment": "刷卡、现金",
-                "features": [
-                    { "feature": "7天选卡" },
-                    { "feature": "15天出精修" },
-                    { "feature": "一年保修" },
-                    { "feature": "不满意重拍" }
-                ],
-                "brief": "炎炎夏日，街上尽是短袖，相比起人人都熟悉的白T恤，黑T恤反而显得没什么存在感，其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee，举着手枪吸烟的场景弥足经典，也只有黑Tee，能够这样轻松地勾勒出这种魅惑的性感。<br>其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee。",
-                "environment": [
-                    { "src": "/static/images/9.png" },
-                    { "src": "/static/images/9.png" },
-                    { "src": "/static/images/9.png" },
-                    { "src": "/static/images/9.png" },
-                    { "src": "/static/images/9.png" }
-                ]
-            },
-            "bus_case": [
+            "brief": "炎炎夏日，街上尽是短袖，相比起人人都熟悉的白T恤，黑T恤反而显得没什么存在感，其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee，举着手枪吸烟的场景弥足经典，也只有黑Tee，能够这样轻松地勾勒出这种魅惑的性感。<br>其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee。",
+            "environment": [
+                {
+                    "src": "/static/images/9.png"
+                },
+                {
+                    "src": "/static/images/9.png"
+                },
+                {
+                    "src": "/static/images/9.png"
+                },
+                {
+                    "src": "/static/images/9.png"
+                },
+                {
+                    "src": "/static/images/9.png"
+                }
+            ]
+        }
+    },
+    "list": [
+        {
+            "nav": "官方案例",
+            "img": [
                 {
                     "src": "/static/images/11.png",
                     "case_name": "浪漫唯美花海实景美照",
                     "tags": [
-                        { "tag": "小清新" },
-                        { "tag": "韩式" }
+                        {
+                            "tag": "小清新"
+                        },
+                        {
+                            "tag": "韩式"
+                        }
                     ]
                 },
                 {
                     "src": "/static/images/11.png",
                     "case_name": "简约大气的中式秀禾服婚纱照",
                     "tags": [
-                        { "tag": "中式" },
-                        { "tag": "秀禾服" },
-                        { "tag": "简约" }
+                        {
+                            "tag": "中式"
+                        },
+                        {
+                            "tag": "秀禾服"
+                        },
+                        {
+                            "tag": "简约"
+                        }
                     ]
                 },
                 {
                     "src": "/static/images/11.png",
                     "case_name": "绿色清新唯美的户外草地照",
                     "tags": [
-                        { "tag": "小清新" },
-                        { "tag": "韩式" }
+                        {
+                            "tag": "小清新"
+                        },
+                        {
+                            "tag": "韩式"
+                        }
                     ]
                 },
                 {
                     "src": "/static/images/11.png",
                     "case_name": "皮皮照",
                     "tags": [
-                        { "tag": "大清新" },
-                        { "tag": "韩式炸鸡" }
+                        {
+                            "tag": "大清新"
+                        },
+                        {
+                            "tag": "韩式炸鸡"
+                        }
                     ]
                 },
                 {
                     "src": "/static/images/11.png",
                     "case_name": "虾虾照",
                     "tags": [
-                        { "tag": "大清新嘻嘻" },
-                        { "tag": "韩式炸鸡" }
+                        {
+                            "tag": "大清新嘻嘻"
+                        },
+                        {
+                            "tag": "韩式炸鸡"
+                        }
                     ]
                 },
                 {
                     "src": "/static/images/11.png",
                     "case_name": "骚猪照",
                     "tags": [
-                        { "tag": "pdd" },
-                        { "tag": "sao" },
-                        { "tag": "zhu" }
+                        {
+                            "tag": "pdd"
+                        },
+                        {
+                            "tag": "sao"
+                        },
+                        {
+                            "tag": "zhu"
+                        }
                     ]
                 }
-            ],
-            "package": [
+            ]
+        },
+        {
+            "nav": "精选套餐",
+            "img": [
                 {
                     "src": "/static/images/12.png",
                     "price": 8899,
@@ -162,8 +180,11 @@
                         }
                     ]
                 }
-            ],
-            "photographer": [
+            ]
+        },
+        {
+            "nav": "摄影师团队",
+            "img": [
                 {
                     "src": "/static/images/13.png",
                     "name": "皮皮虾",
@@ -194,8 +215,11 @@
                     "years": 4,
                     "special": "欧美"
                 }
-            ],
-            "dresser": [
+            ]
+        },
+        {
+            "nav": "化妆团队",
+            "img": [
                 {
                     "src": "/static/images/13.png",
                     "name": "皮皮虾",
@@ -228,3 +252,5 @@
                 }
             ]
         }
+    ]
+}

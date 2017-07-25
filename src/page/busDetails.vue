@@ -3,46 +3,28 @@
     <com-header></com-header>
     <div class="container" id="busDetails">
         <div class="bus_introduction clearfix">
-            <div class="left_zoom">
-                <div class="big_img">
-                    <img v-lazy="bus_introduction[0].img_list[1].src">
-                </div>
-                <div class="small_img">
-                    <ul>
-                        <li v-for="item in bus_introduction[0].img_list" v-bind:key="item.id">
-                            <img v-lazy="item.src" width="144" height="96">
-                        </li>
-                    </ul>
-                    <div class="arrow">
-                        <a href="javascript:void(0)" class="prev"></a>
-                        <a href="javascript:void(0)" class="next"></a>
-                    </div>
-                </div>
-                <div class="zoom_img">
-    
-                </div>
-            </div>
+            <com-pic :imgs='imgs'></com-pic>
             <div class="right_introduction">
                 <div class="top">
                     <h2>
-                        {{bus_introduction[1].introduction.bus_name}}
-                        <i class="icon icon-vip" v-if="bus_introduction[1].introduction.isVip"></i>
-                        <i class="icon icon-yes" v-if="bus_introduction[1].introduction.isYes"></i>
+                        {{mediaInfo.name}}
+                        <i class="icon icon-vip" v-if="mediaInfo.isVip"></i>
+                        <i class="icon icon-yes" v-if="mediaInfo.isYes"></i>
                     </h2>
                     <div class="price">
                         起拍价
-                        <span>￥{{bus_introduction[1].introduction.price}}</span>
+                        <span>￥{{mediaInfo.price}}</span>
                     </div>
                     <div class="address clearfix">
-                        <label class="fl">地址：{{bus_introduction[1].introduction.address}}</label>
+                        <label class="fl">地址：{{mediaInfo.address}}</label>
                         <div class="map fl">
                             <i class="icon logo_position"></i>查看地图
                         </div>
                     </div>
                     <div class="tags">
                         <ul>
-                            <li v-for="tag in bus_introduction[1].introduction.tags" v-bind:key="tag.tag">
-                                {{tag.tag}}
+                            <li v-for="tag in mediaInfo.tags" :key="tag">
+                                {{tag}}
                             </li>
                         </ul>
                     </div>
@@ -54,9 +36,9 @@
                             <ul class="star1">
                                 <li v-for="n in 5" v-bind:key="n"></li>
                             </ul>
-                            <ul class="star2">
-                                <li v-for="n in bus_introduction[1].introduction.media_rating" v-bind:key="n" class="red"></li>
-                            </ul>
+                             <ul class="star2">
+                                <li v-for="n in mediaInfo.star" v-bind:key="n" class="red"></li>
+                            </ul> 
                         </div>
                     </div>
                     <div class="clearfix">
@@ -248,13 +230,19 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import header from './../components/headerDetails'
+import bigImg from './../components/bigImg'
 export default {
     components: {
         comHeader: header,
+        comPic:bigImg
     },
     data() {
         return {
+            busName:this.$route.query.busName,
+            imgs:[],
+            mediaInfo:[],
             "bus_introduction": [
                 {
                     "img_list": [
@@ -485,11 +473,30 @@ export default {
             ],
         }
     },
+    computed: {
+        ...mapGetters({
+            busInfo:'busInfo',
+            busDetList:'busDetList'
+        }),
+        ...mapActions({
+            qryBusDetails:'qryBusDetails'
+        })
+    },
     mounted() {
+        let data = {
+            bus_id:'1asd12a1q111'
+        }
+        this.$store.dispatch('qryBusDetails', data)
     },
     methods: {
         erweima: function () {
             this.bus_introduction[1].introduction.erweima = !this.bus_introduction[1].introduction.erweima;
+        }
+    },
+    watch:{
+        busInfo(){
+            this.imgs = this.busInfo.media_info.img;
+            this.mediaInfo = this.busInfo.media_info;
         }
     },
     beforeDestroy() {

@@ -18,11 +18,13 @@
             <li>
 				 <form method="post" action="/index/qryBusList" target="_blank" >
 					type(查看商家)：<input type="text" name='type' value="bus"></br>
+					page(第几页)：<input type="text" name='page' value="1"></br>
+					totalPage(页总数)：<input type="text" name='totalPage' value="10"></br>
 					tag1(分类)：<input type="text" name='tag1' value="0"></br>
 					tag2(主打特色)：<input type="text" namea='tag2' value="1"></br>
 					tag3(区域)：<input type="text" name='tag3' value="0"></br>
 					method(类型:默认 0，媒体评分 1，价格 2)：<input type="text" name='method' value="0"></br>
-					priceHigh(价格高低 1：high ;2 low)：<input type="text" name='priceHigh' value="high"></br>
+					priceHigh价格高低(由高到低：high ;由低到高 low)：<input type="text" name='priceHigh' value="high"></br>
 					price(价格)：<input type="text" name='price' value="[0,100]"></br>
 					keyword(关键词)：<input type="text" name='keyword' value="皮皮虾，我们走"></br>
 					<input type="submit" value="获取商家列表"/>
@@ -33,20 +35,38 @@
 			<li>
 				<form method="post" action="/index/qryBusList" target="_blank" >
 					type(查看套餐)：<input type="text" name='type' value="meal"></br>
+					page(第几页)：<input type="text" name='page' value="1"></br>
+					totalPage(页总数)：<input type="text" name='totalPage' value="10"></br>
 					tag1(分类)：<input type="text" name='tag1' value="0"></br>
 					tag2(主打特色)：<input type="text" namea='tag2' value="1"></br>
 					tag3(区域)：<input type="text" name='tag3' value="0"></br>
 					method(类型:默认 0，媒体评分 1，价格 2)：<input type="text" name='method' value="0"></br>
-					priceHigh(价格高低 1：high ;2 low)：<input type="text" name='priceHigh' value="high"></br>
+					priceHigh价格高低(由高到低：high ;由低到高 low)：<input type="text" name='priceHigh' value="high"></br>
 					price(价格)：<input type="text" name='price' value="[0,100]"></br>
 					keyword(关键词)：<input type="text" name='keyword' value="皮皮虾，我们走"></br>
 					<input type="submit" value="获取套餐列表"/>
 				</form>
 			</li>
 			<li>
-                 <a href="index/busTag?type=bus" target="_blank">获取商家筛选条件</a> 
-                 <a href="index/busTag?type=meal" target="_blank">获取套餐筛选条件</a> 
-            </li>
+				<form method="post" action="/index/busTag" target="_blank" >
+					type(查看商家)：<input type="text" name='type' value="bus"></br>
+					<input type="submit" value="获取商家筛选条件"/>
+				</form>
+			</li>
+			<li>
+			<form method="post" action="/index/busTag" target="_blank" >
+				type(查看套餐)：<input type="text" name='type' value="meal"></br>
+				<input type="submit" value="获取套餐筛选条件"/>
+			</form>
+				 <!-- <a href="index/busTag?type=bus" target="_blank">获取商家筛选条件</a>   -->
+				<!-- <a href="index/busTag?type=meal" target="_blank">获取套餐筛选条件</a>  -->
+			</li>
+			<li>
+				<form method="post" action="/index/busDetails" target="_blank" >
+					bus_id(商家id)：<input type="text" name='bus_id' value="1asd1a1111"></br>
+					<input type="submit" value="商家详情"/>
+				</form>
+			</li>
         </ul>
  	</body>
 </html>

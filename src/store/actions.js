@@ -66,7 +66,7 @@ export const mealClear = ({ commit }) => {
 
 //----------------------------------------------------------------------------------------------
 export const qrybusTag = ({ commit },data) => {
-    api.qrybusTag(data).then(function (response) {
+    api.qryBusTag(data).then(function (response) {
         commit(types.BUS_TAG_LIST, {
             list: response.data.list
         })
@@ -88,7 +88,7 @@ export const busTagChange = ({ commit },data) => {
 
 //----------------------------------------------------------------------------------------------
 export const qryMealTag = ({ commit },data) => {
-    api.qrybusTag(data).then(function (response) {
+    api.qryBusTag(data).then(function (response) {
         commit(types.MEAL_TAG_LIST, {
             list: response.data.list
         })
@@ -105,5 +105,21 @@ export const mealTagClear = ({ commit }) => {
 
 export const mealTagChange = ({ commit },data) => {
     commit(types.MEAL_TAG_CHANGE,data)
+};
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+export const qryBusDetails = ({ commit },data) => {
+    api.qryBusDetails(data).then(function (response) {
+        commit(types.BUS_INFO, {
+            data: response.data.bus_info
+        })
+        commit(types.BUS_DETAILS_LIST, {
+            list: response.data.list
+        })
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
 };
 //----------------------------------------------------------------------------------------------

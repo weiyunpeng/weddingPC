@@ -3,40 +3,7 @@
   margin: {
     top: 40px;
   }
-  .left_zoom {
-    float: left;
-    width: 600px;
-    .small_img {
-      position: relative;
-      margin: {
-        right: -8px;
-        top: 8px;
-      }
-      li {
-        display: inline-block;
-        margin-right: 8px;
-      }
-      .arrow {
-        a {
-          display: block;
-          position: absolute;
-          top: 50%;
-          margin-top: -23px;
-          width: 26px;
-          height: 46px;
-          background: url("/static/images/icon1.png");
-        }
-        .prev {
-          background-position: top left;
-          left: 0;
-        }
-        .next {
-          right: 8px;
-          background-position: top right;
-        }
-      }
-    }
-  }
+  
   .right_introduction {
     float: right;
     width: 600px;

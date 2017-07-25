@@ -20,7 +20,11 @@ export default {
         return axios.post('/index/qryBusList', data, config())
     },
     //查询筛选条件
-    qrybusTag:function(data){
+    qryBusTag:function(data){
         return axios.post('/index/busTag', data, config())
+    },
+    //商家详情
+    qryBusDetails:function(data){
+        return axios.post('/index/busDetails', data, config())
     }
 }

@@ -6,7 +6,7 @@
             "business": {
                 "id": "1qsaz",
                 "logo": "/static/images/1.png",
-                "name": "郑州凹凸视觉摄影",
+                "name": "郑州凹凸视觉摄影摄影",
                 "isYes": true,
                 "isVIP": true,
                 "price": 4999,
@@ -115,7 +115,43 @@
                 "id": "3qsaz",
                 "logo": "/static/images/1.png",
                 "name": "郑州凹凸视觉摄影",
-                "isYes": false,
+                "isYes": true,
+                "isVIP": false,
+                "price": 4999,
+                "position": "二七路大上海4楼",
+                "tag": [
+                    "工作室",
+                    "写实风格",
+                    "韩式"
+                ]
+            },
+            "meal": [
+                {
+                    "id": "1qweraz",
+                    "name": "唯美韩式套餐",
+                    "first_img": "/static/images/2.png",
+                    "price": 5699
+                },
+                {
+                    "id": "2qweraz",
+                    "name": "唯美韩式套餐",
+                    "first_img": "/static/images/3.png",
+                    "price": 4699
+                },
+                {
+                    "id": "3qweraz",
+                    "name": "唯美韩式套餐",
+                    "first_img": "/static/images/4.png",
+                    "price": 7699
+                }
+            ]
+        },
+        {
+            "business": {
+                "id": "3qsaz",
+                "logo": "/static/images/1.png",
+                "name": "郑州凹凸视觉摄影",
+                "isYes": true,
                 "isVIP": false,
                 "price": 4999,
                 "position": "二七路大上海4楼",
@@ -330,43 +366,7 @@
             "business": {
                 "id": "3qsaz",
                 "logo": "/static/images/1.png",
-                "name": "郑州凹凸视觉摄影",
-                "isYes": false,
-                "isVIP": false,
-                "price": 4999,
-                "position": "二七路大上海4楼",
-                "tag": [
-                    "工作室",
-                    "写实风格",
-                    "韩式"
-                ]
-            },
-            "meal": [
-                {
-                    "id": "1qweraz",
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/2.png",
-                    "price": 5699
-                },
-                {
-                    "id": "2qweraz",
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/3.png",
-                    "price": 4699
-                },
-                {
-                    "id": "3qweraz",
-                    "name": "唯美韩式套餐",
-                    "first_img": "/static/images/4.png",
-                    "price": 7699
-                }
-            ]
-        },
-        {
-            "business": {
-                "id": "3qsaz",
-                "logo": "/static/images/1.png",
-                "name": "郑州凹凸视觉摄影",
+                "name": "郑州凹凸视觉摄影摄影",
                 "isYes": false,
                 "isVIP": false,
                 "price": 4999,
