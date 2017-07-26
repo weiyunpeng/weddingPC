@@ -40,8 +40,6 @@
                             <a href="javascript:void(0)" class="next"></a>
                         </div>
                     </div>
-                    <div class="zoom_img">
-                    </div>
                 </div>
                 <div class="right_introduction fr">
                     <div class="meal_name">
