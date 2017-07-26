@@ -1,5 +1,17 @@
 <template>
 <div>
+    <div class="bm-view"  v-show="isMap">
+        <div class="bm-bg" :class="{ zoomIn: isMap }">
+            <img class="map_btn" src="/static/images/map-no-btn.png" @click="closeMap">
+            <h3>{{mediaInfo.name}}</h3>
+            <p>地址：{{mediaInfo.address}}</p>
+            <baidu-map class="map" :center="{lng: lng, lat: lat}" :zoom="15">
+                <!-- <bm-marker :position="{lng: lng, lat: lat}" :dragging="true"></bm-marker> -->
+                <bm-marker :position="{lng: lng, lat: lat}" animation="BMAP_ANIMATION_BOUNCE" :icon="{url: '/static/images/icon_01.png', size: {width: 300, height: 157}}"></bm-marker>
+            </baidu-map>
+            <p class="fr">注：地图位置仅供参考，具体情况以实际地址信息为准</p>
+        </div>
+    </div>
     <com-header></com-header>
     <div class="container" id="busDetails">
         <div class="bus_introduction clearfix">
@@ -18,7 +30,7 @@
                     <div class="address clearfix">
                         <label class="fl">地址：{{mediaInfo.address}}</label>
                         <div class="map fl" @click="openMap">
-                            <i class="icon logo_position"></i>查看地图
+                            <i class="icon map_icon"></i>查看地图
                         </div>
                     </div>
                     <div class="tags">
@@ -242,13 +254,16 @@ export default {
         return {
             busName:this.$route.query.busName,
             isErwei:false,
+            isMap:false,
             imgs:[],
             mediaInfo:"",
             introInfo:"",
             caseInfo:"",
             packageInfo:"",
             photographer:"",
-            dresser:""
+            dresser:"",
+            lng:'',
+            lat:''
         }
     },
     computed: {
@@ -271,6 +286,10 @@ export default {
             this.isErwei = !this.isErwei;
         },
         openMap(){
+            this.isMap = true
+        },
+        closeMap(){
+            this.isMap = false
         }
     },
     watch:{
@@ -278,6 +297,8 @@ export default {
             this.imgs = this.busInfo.media_info.img;
             this.mediaInfo = this.busInfo.media_info;
             this.introInfo = this.busInfo.intro_info;
+            this.lng = this.busInfo.media_info.longitude;
+            this.lat = this.busInfo.media_info.latitude;
         },
         busDetList(){
             this.caseInfo = this.busDetList[0];
