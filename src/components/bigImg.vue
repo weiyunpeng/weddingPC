@@ -1,6 +1,6 @@
 <template>
     <div class="left_zoom">
-        <div class="big_img">
+        <div class="big_img" @click="bigBtn">
             <img v-lazy="imgs[currentIndex]" width="600" height="400">
         </div>
         <div class="small_img">
@@ -17,8 +17,8 @@
                 <a href="javascript:void(0)" class="next" @click="nextBtn"></a>
             </div>
         </div>
-        <div class="zoom_img">
-
+        <div class="zoom_img" v-show="isBig" @click="bigBtn">
+            <img :class="{ zoomIn: isBig }" :src="imgs[currentIndex]">
         </div>
     </div>
 </template>
@@ -28,6 +28,7 @@ export default {
     data() {
         return {
             currentIndex: 0,
+            isBig:false
         }
     },
     props:{
@@ -53,12 +54,31 @@ export default {
         },
         currentShow(index){
             this.currentIndex = index
+        },
+        bigBtn(){
+            this.isBig= !this.isBig
         }
     },
 }
 </script>
 <style rel="stylesheet/scss" lang="scss">
 .hide{display:none}
+.zoom_img{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding:50px;
+    img{
+        width:100%;
+        height:100%;
+    }
+}
 .left_zoom {
     float: left;
     width: 600px;

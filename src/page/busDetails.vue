@@ -1,5 +1,6 @@
 <template>
 <div>
+    <!--百度地图  start-->
     <div class="bm-view"  v-show="isMap">
         <div class="bm-bg" :class="{ zoomIn: isMap }">
             <img class="map_btn" src="/static/images/map-no-btn.png" @click="closeMap">
@@ -12,6 +13,7 @@
             <p class="fr">注：地图位置仅供参考，具体情况以实际地址信息为准</p>
         </div>
     </div>
+    <!--百度地图  end-->
     <com-header></com-header>
     <div class="container" id="busDetails">
         <div class="bus_introduction clearfix">
@@ -78,7 +80,7 @@
         </div>
         <!-- case官方案例开始 -->
         <div class="case">
-             <img class="tit" :src="caseInfo.nav_img"> 
+            <img class="tit" :src="caseInfo.nav_img"> 
             <div class="more clearfix">
                 <!--应该是<router-link>吧，先放着，等大佬回来  -->
                 <a href="javascript:void(0)" class="more_a fr">更多 ></a>
