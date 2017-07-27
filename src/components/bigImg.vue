@@ -73,9 +73,8 @@ export default {
     height: 100%;
     margin: 0 auto;
     text-align: center;
-    padding:50px;
+    padding:100px;
     img{
-        width:100%;
         height:100%;
     }
 }
