@@ -87,12 +87,12 @@
             </div>
             <div class="list">
                 <ul>
-                    <li v-for="item in caseInfo.details" v-bind:key="">
+                    <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
                         <img v-lazy="item.src">
                         <h3>{{item.case_name}}</h3>
                         <div class="tags">
                             <ul>
-                                <li v-for="tag in item.tags" v-bind:key="">
+                                <li v-for="(tag,index) in item.tags" v-bind:key="index">
                                     {{tag.tag}}
                                 </li>
                             </ul>
@@ -107,17 +107,20 @@
             <img class="tit" :src="packageInfo.nav_img"> 
             <div class="more clearfix">
                 <!--应该是<router-link>吧，先放着，等大佬回来  -->
-                <a href="javascript:void(0)" class="more_a fr">更多 ></a>
+                <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name, mealName: '套餐列表'}}" class="more_a fr" target="_blank">
+                    更多 >
+                </router-link>
+                <!-- <a href="javascript:void(0)" class="more_a fr">更多 ></a> -->
             </div>
             <div class="list">
                 <ul>
-                    <li v-for="item in packageInfo.details" v-bind:key="">
+                    <li v-for="(item,index) in packageInfo.details" v-bind:key="index">
                         <img v-lazy="item.src">
                         <div class="top clearfix">
                             <div class="price fl">￥{{item.price}}</div>
                             <div class="tags fr">
                                 <ul>
-                                    <li v-for="tag in item.tags" v-bind:key="">
+                                    <li v-for="(tag,index) in item.tags" v-bind:key="index">
                                         {{tag.tag}}
                                     </li>
                                 </ul>

@@ -12,6 +12,7 @@ import index from '../page/index';
 import meal from '../page/meal.vue';
 import busDeatils from '../page/busDetails.vue';
 import mealDeatils from '../page/mealDetails.vue';
+import mealList from '../page/mealList.vue';
 
 
 const routes = [{
@@ -30,6 +31,10 @@ const routes = [{
     path : '/mealDeatils',
     name:'mealDeatils',
     component : mealDeatils
+},{
+    path : '/mealList',
+    name:'mealList',
+    component : mealList
 }];
 
 const router = new VueRouter({
