@@ -4,8 +4,8 @@ function run(Request, Response)
     var Params = MAIN.getParams(Request)
     if(Request.params && Request.params.name){
         var funs = {
-            //商家首页
-            'list' : list,
+            //套餐首页
+            'index' : index,
             //商家筛选条件
             'busTag':busTag,
             //商家详情
@@ -21,8 +21,8 @@ function run(Request, Response)
  * @param {Object} Request
  * @param {Object} Response
  */
-function list(Params, Request, Response) {
-    var fileName = 'index/data/busList1.json';
+function index(Params, Request, Response) {
+    var fileName = 'index/data/busList2.json';
     MAIN.responseStub(Response,fileName);
 }
 

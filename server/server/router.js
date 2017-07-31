@@ -2,7 +2,8 @@
 // 路由注册
 function router_reg(app){
     //
-    app.all('/index/:name', require('./index/index').index);
+    app.all('/store/:name', require('./index/index').index);
+    app.all('/package/:name', require('./index/package').index);
 }
 
 

@@ -17,14 +17,24 @@ function config() {
 export default {
     //查询商家列表
     qryBusList:function (data) {
-        return axios.post('/index/qryBusList', data, config())
+        const type = data.type;
+        if(type == 'bus'){
+            //查询商家列表首页
+            return axios.post('/store/list', data, config())
+        }else if(type == 'meal'){
+            //查询套餐列表首页
+            return axios.post('/package/index', data, config())
+        }else{
+            //其他情况，说明传参有误
+            console.log('接口参数异常')
+        }
     },
     //查询筛选条件
     qryBusTag:function(data){
-        return axios.post('/index/busTag', data, config())
+        return axios.post('/store/busTag', data, config())
     },
     //商家详情
     qryBusDetails:function(data){
-        return axios.post('/index/busDetails', data, config())
+        return axios.post('/store/busDetails', data, config())
     }
 }

@@ -79,7 +79,7 @@
             </ul>
         </div>
         <!-- case官方案例开始 -->
-        <div class="case">
+        <div class="case" id="nav-0" name="nav-0">
             <img class="tit" :src="caseInfo.nav_img"> 
             <div class="more clearfix">
                 <!--应该是<router-link>吧，先放着，等大佬回来  -->
@@ -103,7 +103,7 @@
         </div>
         <!-- case官方案例结束 -->
         <!-- 精选套餐开始 -->
-        <div class="package">
+        <div class="package" id="nav-1" name="nav-1">
             <img class="tit" :src="packageInfo.nav_img"> 
             <div class="more clearfix">
                 <!--应该是<router-link>吧，先放着，等大佬回来  -->
@@ -133,7 +133,7 @@
         </div>
         <!-- 精选套餐结束 -->
         <!-- 摄影团队开始  -->
-        <div class="photographer">
+        <div class="photographer" id="nav-2" name="nav-2">
             <img class="tit" :src="photographer.nav_img">
             <div class="arrows">
                 <a class="prev arrow" href="javascrript:void(0)"></a>
@@ -141,7 +141,7 @@
             </div>
             <div class="list">
                 <ul>
-                    <li v-for="item in photographer.details" v-bind:key="">
+                    <li v-for="(item,index) in photographer.details" v-bind:key="index">
                         <img v-lazy="item.src">
                         <div class="top clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -162,7 +162,7 @@
         </div>
         <!-- 摄影团队结束  -->
         <!-- 化妆团队开始 -->
-        <div class="dresser">
+        <div class="dresser" id="nav-3" name="nav-3">
             <img class="tit" :src="dresser.nav_img">
             <div class="arrows">
                 <a class="prev arrow" href="javascrript:void(0)"></a>
@@ -170,7 +170,7 @@
             </div>
             <div class="list">
                 <ul>
-                    <li v-for="item in dresser.details" v-bind:key="">
+                    <li v-for="(item,index) in dresser.details" v-bind:key="index">
                         <img v-lazy="item.src">
                         <div class="top clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -222,7 +222,7 @@
                         <label class="fl">服务特色：</label>
                         <span class="fl">
                             <ul>
-                                <li v-for="item in introInfo.features">{{item}}</li>
+                                <li v-for="(item,index) in introInfo.features" :key="index">{{item}}</li>
                             </ul>
                         </span>
                     </div>
@@ -231,7 +231,7 @@
             <div class="environment">
                 <div class="subtit">门店环境</div>
                 <ul class="clearfix">
-                    <li v-for="item in introInfo.environment" class="fl">
+                    <li v-for="(item,index) in introInfo.environment" :key="index" class="fl">
                         <img v-lazy="item.src">
                     </li>
                 </ul>
