@@ -7,9 +7,9 @@ function run(Request, Response)
             //商家首页
             'list' : list,
             //商家筛选条件
-            'busTag':busTag,
+            'index':index,
             //商家详情
-            'busDetails':busDetails,
+            'detail':detail,
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -31,15 +31,8 @@ function list(Params, Request, Response) {
  * @param {Object} Request
  * @param {Object} Response
  */
-function busTag(Params, Request, Response) {
-    var fileName;
-    if(Params.type == 'bus'){
-        fileName = 'index/data/tag1.json';
-    }else if(Params.type == 'meal'){
-        fileName = 'index/data/tag2.json';
-    }else{
-        fileName = 'index/data/none.json';
-    }
+function index(Params, Request, Response) {
+    var fileName = 'index/data/tag1.json';
     MAIN.responseStub(Response,fileName);
 }
 
@@ -48,7 +41,7 @@ function busTag(Params, Request, Response) {
  * @param {Object} Request
  * @param {Object} Response
  */
-function busDetails(Params, Request, Response) {
+function detail(Params, Request, Response) {
     var fileName = 'index/busData/busDetails.json';
     MAIN.responseStub(Response,fileName);
 }

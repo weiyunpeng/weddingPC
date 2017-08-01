@@ -88,6 +88,10 @@
             display: inline-block;
             float: left;
             margin-left: 35px;
+            width: 220px;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+            overflow: hidden;
             .picture{
                 width: 220px;
                 height: 145px;
@@ -97,6 +101,10 @@
                 height: 40px;
                 line-height: 40px;
                 span{
+                    width: 170px;
+                    white-space: nowrap;
+                    text-overflow:ellipsis;
+                    overflow: hidden;
                     float: left;
                     color: #333333;
                 }

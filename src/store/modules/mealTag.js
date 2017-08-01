@@ -12,7 +12,7 @@ const mutations = {
         state.list = [];
     },
     [MEAL_TAG_CHANGE](state, data){
-        state.list[data.number].isTag = data.index;
+        state.list[data.number].selected = data.index;
     }
 };
 

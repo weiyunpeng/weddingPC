@@ -4,12 +4,12 @@ function run(Request, Response)
     var Params = MAIN.getParams(Request)
     if(Request.params && Request.params.name){
         var funs = {
-            //套餐首页
-            'index' : index,
+            //套餐首页列表
+            'list' : list,
             //商家筛选条件
-            'busTag':busTag,
-            //商家详情
-            'busDetails':busDetails,
+            'index':index,
+            //套餐详情
+            'detail':detail,
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -17,11 +17,11 @@ function run(Request, Response)
     }
 }
 /**
- * 商家首页
+ * 套餐首页列表
  * @param {Object} Request
  * @param {Object} Response
  */
-function index(Params, Request, Response) {
+function list(Params, Request, Response) {
     var fileName = 'index/data/busList2.json';
     MAIN.responseStub(Response,fileName);
 }
@@ -31,15 +31,8 @@ function index(Params, Request, Response) {
  * @param {Object} Request
  * @param {Object} Response
  */
-function busTag(Params, Request, Response) {
-    var fileName;
-    if(Params.type == 'bus'){
-        fileName = 'index/data/tag1.json';
-    }else if(Params.type == 'meal'){
-        fileName = 'index/data/tag2.json';
-    }else{
-        fileName = 'index/data/none.json';
-    }
+function index(Params, Request, Response) {
+    var fileName = 'index/data/tag2.json';
     MAIN.responseStub(Response,fileName);
 }
 
@@ -48,8 +41,8 @@ function busTag(Params, Request, Response) {
  * @param {Object} Request
  * @param {Object} Response
  */
-function busDetails(Params, Request, Response) {
-    var fileName = 'index/busData/busDetails.json';
+function detail(Params, Request, Response) {
+    var fileName = 'index/packageData/detail.json';
     MAIN.responseStub(Response,fileName);
 }
 

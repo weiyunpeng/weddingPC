@@ -5,7 +5,7 @@
                 <strong>{{tag.title}} :</strong>
                 <ul>
                     <li v-for="(tagCon,index) in tag.con" :key="tagCon">
-                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.isTag==index}" @click="tagBtn(number,index)">{{tagCon}}</a>
+                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index)">{{tagCon}}</a>
                     </li>
                 </ul>
             </li>

@@ -88,7 +88,7 @@
             <div class="list">
                 <ul>
                     <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
-                        <img v-lazy="item.src">
+                        <img v-lazy="item.src" width="372" height="248">
                         <h3>{{item.case_name}}</h3>
                         <div class="tags">
                             <ul>
@@ -115,7 +115,7 @@
             <div class="list">
                 <ul>
                     <li v-for="(item,index) in packageInfo.details" v-bind:key="index">
-                        <img v-lazy="item.src">
+                        <img v-lazy="item.src" width="372" height="248">
                         <div class="top clearfix">
                             <div class="price fl">￥{{item.price}}</div>
                             <div class="tags fr">
@@ -136,11 +136,29 @@
         <div class="photographer" id="nav-2" name="nav-2">
             <img class="tit" :src="photographer.nav_img">
             <div class="arrows">
-                <a class="prev arrow" href="javascrript:void(0)"></a>
-                <a class="next arrow" href="javascrript:void(0)"></a>
+                <a class="prev arrow photographer_prev" href="javascrript:void(0)"></a>
+                <a class="next arrow photographer_next" href="javascrript:void(0)"></a>
             </div>
             <div class="list">
-                <ul>
+                 <swiper :options="photographerOption">
+                    <swiper-slide class="mr25" v-for="(item,index) in photographer.details" v-bind:key="index">
+                        <img v-lazy="item.src" width="220" height="220">
+                        <div class="top clearfix">
+                            <div class="name fl">{{item.name}}</div>
+                            <div class="years fr">
+                                <ul>
+                                    <li>
+                                        {{item.years}}年
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="special">
+                            拍摄特点：{{item.special}}
+                        </div>
+                    </swiper-slide>
+                </swiper>
+                <!-- <ul>
                     <li v-for="(item,index) in photographer.details" v-bind:key="index">
                         <img v-lazy="item.src">
                         <div class="top clearfix">
@@ -157,7 +175,7 @@
                             拍摄特点：{{item.special}}
                         </div>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
         <!-- 摄影团队结束  -->
@@ -165,13 +183,13 @@
         <div class="dresser" id="nav-3" name="nav-3">
             <img class="tit" :src="dresser.nav_img">
             <div class="arrows">
-                <a class="prev arrow" href="javascrript:void(0)"></a>
-                <a class="next arrow" href="javascrript:void(0)"></a>
+                <a class="prev arrow dresser_prev" href="javascrript:void(0)"></a>
+                <a class="next arrow dresser_next" href="javascrript:void(0)"></a>
             </div>
             <div class="list">
-                <ul>
-                    <li v-for="(item,index) in dresser.details" v-bind:key="index">
-                        <img v-lazy="item.src">
+                <swiper :options="dresserOption">
+                    <swiper-slide class="mr25" v-for="(item,index) in dresser.details" v-bind:key="index">
+                        <img v-lazy="item.src" width="220" height="220">
                         <div class="top clearfix">
                             <div class="name fl">{{item.name}}</div>
                             <div class="years fr">
@@ -185,8 +203,8 @@
                         <div class="special">
                             拍摄特点：{{item.special}}
                         </div>
-                    </li>
-                </ul>
+                    </swiper-slide>
+                </swiper>
             </div>
         </div>
         <!-- 化妆团队结束 -->
@@ -196,7 +214,7 @@
             <div class="cont clearfix">
                 <div class="left fl">
                     <div class="top clearfix">
-                        <img v-lazy="introInfo.logo" class="fl">
+                        <img v-lazy="introInfo.logo" class="fl" width="100" height="100">
                         <div class="fl">
                             <span>商家简介</span>
                             <span class="name">{{introInfo.bus_name}}</span>
@@ -230,14 +248,14 @@
             </div>
             <div class="environment">
                 <div class="subtit">门店环境</div>
-                <ul class="clearfix">
-                    <li v-for="(item,index) in introInfo.environment" :key="index" class="fl">
-                        <img v-lazy="item.src">
-                    </li>
-                </ul>
+                <swiper :options="environmentOption">
+                    <swiper-slide class="mr25 fl" v-for="(item,index) in introInfo.environment" v-bind:key="index">
+                        <img v-lazy="item" width="216" height="144">
+                    </swiper-slide>
+                </swiper>
                 <div class="arrows">
-                    <a class="prev arrow" href="javascrript:void(0)"></a>
-                    <a class="next arrow" href="javascrript:void(0)"></a>
+                    <a class="prev arrow env_prev" href="javascrript:void(0)"></a>
+                    <a class="next arrow env_next" href="javascrript:void(0)"></a>
                 </div>
             </div>
         </div>
@@ -250,10 +268,14 @@
 import { mapGetters, mapActions } from 'vuex'
 import header from './../components/headerDetails'
 import bigImg from './../components/bigImg'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
+    name: 'carrousel',
     components: {
         comHeader: header,
-        comPic:bigImg
+        comPic:bigImg,
+        swiper,
+        swiperSlide
     },
     data() {
         return {
@@ -268,7 +290,35 @@ export default {
             photographer:"",
             dresser:"",
             lng:'',
-            lat:''
+            lat:'',
+            photographerOption: {
+                // autoplay: 3500,
+                setWrapperSize :false,
+                slidesPerView : 5,
+                paginationClickable :false,
+                mousewheelControl : true,
+                observeParents:true,
+                prevButton:'.photographer_prev',
+                nextButton:'.photographer_next',
+            },
+            dresserOption:{
+                setWrapperSize :false,
+                slidesPerView : 5,
+                paginationClickable :false,
+                mousewheelControl : true,
+                observeParents:true,
+                prevButton:'.dresser_prev',
+                nextButton:'.dresser_next',
+            },
+            environmentOption:{
+                setWrapperSize :false,
+                slidesPerView : 5,
+                paginationClickable :false,
+                mousewheelControl : true,
+                observeParents:true,
+                prevButton:'.env_prev',
+                nextButton:'.env_next',
+            }
         }
     },
     computed: {
@@ -282,7 +332,7 @@ export default {
     },
     mounted() {
         let data = {
-            bus_id:'1asd12a1q111'
+            id:'1'
         }
         this.$store.dispatch('qryBusDetails', data)
     },

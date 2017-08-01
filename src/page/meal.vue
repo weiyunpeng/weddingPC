@@ -10,7 +10,7 @@
                 <div class="shop">
                     <router-link :to="{ name: 'mealDeatils', query: {busName:item.business_name,mealName:item.meal_name}}" target="_blank">
                     <div class="img">
-                        <img class="shop_logo" v-lazy="item.src">
+                        <img class="shop_logo" v-lazy="item.logo" width="372" height="209">
                     </div>
                     <ul class="shop_details">
                         <li class="price">

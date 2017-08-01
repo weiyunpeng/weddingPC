@@ -34,7 +34,7 @@
                 </div>
                 <div class="photo">
                     <ul>
-                            <li v-for="meal in item.meal" :key="meal.id">
+                            <li v-for="meal in item.packages" :key="meal.id">
                                 <router-link :to="{ name: 'mealDeatils',query: {busName:item.business.name, mealName: meal.name}}" target="_blank">
                                 <img class="picture" v-lazy="meal.first_img">
                                 <div class="pho_details">

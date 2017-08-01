@@ -25,11 +25,11 @@ export const hideModal = ({ commit }, data) => {
 
 //----------------------------------------------------------------------------------------------
 export const qryBusList = ({ commit },data) => {
-    commit(types.BUS_STATUS, {status: 0});
+    // commit(types.BUS_STATUS, {status: 0});
     api.qryBusList(data).then(function (response) {
-        const status = response.data.list.length == 20?0:2;
+        const status = response.data.data.list.length == 20?0:2;
         commit(types.BUS_LIST, {
-            list: response.data.list,
+            list: response.data.data.list,
             status: status
         })
     })
@@ -47,10 +47,10 @@ export const busClear = ({ commit }) => {
 //----------------------------------------------------------------------------------------------
 export const qryMealList = ({ commit },data) => {
     commit(types.MEAL_STATUS, {status: 0});
-    api.qryBusList(data).then(function (response) {
-        const status = response.data.list.length == 20?0:2;
+    api.qryMealList(data).then(function (response) {
+        const status = response.data.data.list.length == 20?0:2;
         commit(types.MEAL_LIST, {
-            list: response.data.list,
+            list: response.data.data.list,
             status: status
         })
     })
@@ -68,7 +68,7 @@ export const mealClear = ({ commit }) => {
 export const qrybusTag = ({ commit },data) => {
     api.qryBusTag(data).then(function (response) {
         commit(types.BUS_TAG_LIST, {
-            list: response.data.list
+            list: response.data.data
         })
     })
         .catch(function (error) {
@@ -88,9 +88,9 @@ export const busTagChange = ({ commit },data) => {
 
 //----------------------------------------------------------------------------------------------
 export const qryMealTag = ({ commit },data) => {
-    api.qryBusTag(data).then(function (response) {
+    api.qryMealTag(data).then(function (response) {
         commit(types.MEAL_TAG_LIST, {
-            list: response.data.list
+            list: response.data.data
         })
     })
         .catch(function (error) {
@@ -112,10 +112,10 @@ export const mealTagChange = ({ commit },data) => {
 export const qryBusDetails = ({ commit },data) => {
     api.qryBusDetails(data).then(function (response) {
         commit(types.BUS_INFO, {
-            data: response.data.bus_info
+            data: response.data.data.bus_info
         })
         commit(types.BUS_DETAILS_LIST, {
-            list: response.data.list
+            list: response.data.data.list
         })
     })
         .catch(function (error) {

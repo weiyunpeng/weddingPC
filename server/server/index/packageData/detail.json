@@ -1,0 +1,89 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "package_info": {
+            "img": [
+                "/static/images/15.png",
+                "/static/images/15.png",
+                "/static/images/15.png",
+                "/static/images/15.png",
+                "/static/images/15.png"
+            ],
+            "bus_id": "1123123asd1",
+            "bus_name": "郑州凹凸视觉摄影",
+            "isYes": true,
+            "isVip": true,
+            "star": 3,
+            "address": "宇宙银河皮皮虾星系",
+            "meal_id": "sdas1231231",
+            "meal_name": "私人定制D3套系-内外双景+多种风格+爱情微电影",
+            "price": 6999,
+            "tags": [
+                "摄影师一对一",
+                "化妆师一对一"
+            ],
+            "clothes_num": 5,
+            "ps_num": 120,
+            "scene": "内外双景，5-6个场景",
+            "erwei_img": "/static/images/erweima.png"
+        },
+        "package_detail": {
+            "deposit": 2000,
+            "deposit_explain": "进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。",
+            "female_clothes": "5套服装",
+            "man_clothes": "5套服装",
+            "clothes_explain": "我是全英雄联盟最骚的骚猪我F可以实力手动换子弹这波百发百中我必不可能这波死的就是你这个骚猪 (诶)对面出动一个师的兵力干我骚猪我依然发育起来了而且还躲过他们很多波的围剿(你们觉得PDD躺的扣个6好不好)我把烟 掉在地上 捡起来 抽反了把TM燃着的 抽到嘴巴里去了孙亚龙的车队你们就别拿来说了好吗",
+            "model_num": 5,
+            "model_explain": "我是全英雄联盟最骚的骚猪",
+            "cosmetic_explain": "全套 Makeup Forever 系列彩妆组合",
+            "scene_in": 5,
+            "scene_out": 2,
+            "scene_in_explain": "我是全英雄联盟最骚的骚猪我F可以实力手动换子弹这波百发百中我必不可能这波死的就是你这个骚猪 (诶)对面出动一个师的兵力干我骚猪我依然发育起来了而且还躲过他们很多波的围剿(你们觉得PDD躺的扣个6好不好)",
+            "scene_out_explain": "我是全英雄联盟最骚的骚猪我F可以实力手动换子弹这波百发百中我必不可能这波死的就是你这个骚猪 (诶)对面出动一个师的兵力干我骚猪我依然发育起来了而且还躲过他们很多波的围剿(你们觉得PDD躺的扣个6好不好)",
+            "photo_days": 1,
+            "photo_num": 250,
+            "ps_num": 88,
+            "in_num": 60,
+            "replenish_explain": "额外精修，一张100元",
+            "photo_strategy_url": "http://www.baidu.com",
+            "album_num": 2,
+            "album_explain": "我是全英雄联盟最骚的骚猪",
+            "frame_num": 2,
+            "frame_explain": "我是全英雄联盟最骚的骚猪",
+            "other_con": "替换相框材质，需要补差价，不支持比套内更低档的更换",
+            "product_strategy_url": "http://www.baidu.com",
+            "cameraman": "老猪",
+            "cameraman_help": "小猪",
+            "dresser": "老杨",
+            "dresser_help": "小杨",
+            "lighting_engineer": "老王",
+            "w_video": true,
+            "pay_notice": "交付定金后，不可随意更改拍摄日期或替换其他套餐",
+            "gift": "送你一个么么哒",
+            "lightspot": "清新唯美，韩式风格。资深级摄影师一对一服务",
+            "graphic": [
+                "/static/images/16.png",
+                "/static/images/16.png",
+                "/static/images/16.png"
+            ],
+            "see_and_see": [
+                {
+                    "src": "/static/images/17.png",
+                    "name": "唯美韩式海滩外景套系",
+                    "price": 5699
+                },
+                {
+                    "src": "/static/images/17.png",
+                    "name": "唯美韩式海滩外景套系",
+                    "price": 5699
+                },
+                {
+                    "src": "/static/images/17.png",
+                    "name": "唯美韩式海滩外景套系",
+                    "price": 5699
+                }
+            ]
+        }
+    }
+}
