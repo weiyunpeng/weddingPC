@@ -15,10 +15,9 @@
                     <ul class="shop_details">
                         <li class="price">
                             ￥{{item.price}}
-                            <div class="tags">
-                                <p class="tag" v-if="item.tag1">摄影师一对一</p>
-                                <p class="tag" v-if="item.tag2">化妆师一对一</p>
-                            </div>
+                            <ul class="tags">
+                                 <li v-for="(tag,index) in item.tags" :key="index" class="tag">{{tag}}</li>
+                            </ul>
                         </li>
                         <li class="meal_name">
                             {{item.meal_name}}
@@ -113,6 +112,7 @@ export default {
                 color:#ff4e6b;
                 line-height: 24px;
                 text-align: center;
+                margin-right: 8px;
                 font: {
                     size: 14px;
                     weight: normal;

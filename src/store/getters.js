@@ -12,3 +12,5 @@ export const mealList = state => state.mealList.list;
 export const mealTag = state => state.mealTag.list;
 export const mealInfo = state => state.mealDetails.info;
 export const mealDetails = state => state.mealDetails.detail;
+export const thisMealList = state => state.thisMealList.list;
+export const thisMealStore = state => state.thisMealList.store;

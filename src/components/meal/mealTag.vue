@@ -26,8 +26,6 @@ export default {
             mealTag: 'mealTag'
         }),
         ...mapActions({
-            qryMealList: 'qryMealList',
-            mealClear: 'mealClear',
             qryMealTag: 'qryMealTag',
             mealTagClear:'mealTagClear',
             mealTagChange:'mealTagChange'
@@ -51,12 +49,11 @@ export default {
                 type: 'meal'
             }
             this.$store.dispatch('mealClear')
-            this.$store.dispatch('qryMealList', data)
         }
     },
     watch:{
         mealTag:function(){
-            // console.log(this.mealTag)
+            console.log(this.mealTag)
         }
     }
 }

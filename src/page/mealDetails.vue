@@ -273,7 +273,7 @@
             <div class="fr see">
                 <div class="tit clearfix">
                     看了又看
-                    <a class="more fr" href="#">查看全部 ></a>
+                     <router-link :to="{ name: 'mealList',query: {busName:mealInfo.store_name, thisMealName: '套餐列表'}}" class="more fr" target="_blank">查看全部</router-link>
                 </div>
                 <div class="list">
                     <ul>

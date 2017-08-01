@@ -27,6 +27,10 @@ export default {
     qryBusDetails:function(data){
         return axios.post('/store/detail', qs.stringify(data), config())
     },
+    //某店铺的套餐列表
+    qryThisMealList:function(data){
+        return axios.post('/store/storelist', qs.stringify(data), config())
+    },
     //查询套餐列表首页
     qryMealList:function (data) {
         return axios.post('/package/list', qs.stringify(data), config())

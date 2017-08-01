@@ -2,29 +2,47 @@
 <div>
     <com-header></com-header>
     <div class="container">
+        <div class="meal_introduction clearfix">
+            <div class="bus_name">
+                {{thisMealStore.store_name}}
+                <i class="icon icon-yes" v-if="thisMealStore.isYes"></i>
+                <i class="icon icon-vip" v-if="thisMealStore.isVip"></i>
+            </div>
+            <div class="second clearfix">
+                <div class="clearfix fl">
+                    <label class="fl">媒体评定分：</label>
+                    <div class="media_rating fl">
+                        <ul class="star1">
+                            <li v-for="n in 5" :key="n"></li>
+                        </ul>
+                        <ul class="star2">
+                            <li v-for="m in thisMealStore.star" class="red" :key="m"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="address fl">
+                    地址：{{thisMealStore.address}}
+                </div> 
+            </div>
+        </div>
         <com-tag></com-tag>
-        <meal-filter></meal-filter>
         <div class="container">
         <ul class="meal_list">
-            <li class="list_con" v-for="item in mealList" :key="item.id">
+            <li class="list_con" v-for="item in thisMealList" :key="item.id">
                 <div class="shop">
                     <router-link :to="{ name: 'mealDeatils', query: {mealName:item.meal_name}}" target="_blank">
                     <div class="img">
-                        <img class="shop_logo" v-lazy="item.src">
+                        <img class="shop_logo" v-lazy="item.logo">
                     </div>
                     <ul class="shop_details">
                         <li class="price">
                             ￥{{item.price}}
-                            <div class="tags">
-                                <p class="tag" v-if="item.tag1">摄影师一对一</p>
-                                <p class="tag" v-if="item.tag2">化妆师一对一</p>
-                            </div>
+                            <ul class="tags">
+                                 <li v-for="(tag,index) in item.tags" :key="index" class="tag">{{tag}}</li>
+                            </ul>
                         </li>
                         <li class="meal_name">
                             {{item.meal_name}}
-                        </li>
-                        <li class="business_name">
-                            {{item.business_name}}
                         </li>
                     </ul>
                     </router-link>
@@ -40,21 +58,19 @@
 import { mapGetters, mapActions } from 'vuex'
 import header from './../components/headerDetails'
 import tag from "./../components/meal/mealTag"
-import mealFilter from "./../components/meal/mealFilter"
 
 export default {
     components: {
         comHeader: header,
-        comTag: tag,
-        mealFilter:mealFilter
+        comTag: tag
     },
     computed: {
         ...mapGetters({
-            mealList:'mealList'
+            thisMealList:'thisMealList',
+            thisMealStore:'thisMealStore'
         }),
         ...mapActions({
-            qryMealList:'qryMealList',
-            mealClear:'mealClear',
+            qryThisMealList:'qryThisMealList'
         })
     },
     data() {
@@ -63,13 +79,16 @@ export default {
     mounted(){
         // this.$store.dispatch('mealClear')
         let data = {
-            type:'meal'
+            storeId:'1'
         }
-        this.$store.dispatch('qryMealList', data)
+        this.$store.dispatch('qryThisMealList', data)
     },
     methods: {
-        loadList(){
-            let self = this;
+    },
+    watch:{
+        thisMealList(){
+        },
+        thisMealStore(){
         }
     },
     beforeDestroy () {
@@ -113,6 +132,7 @@ export default {
                 color:#ff4e6b;
                 line-height: 24px;
                 text-align: center;
+                margin-right: 8px;
                 font: {
                     size: 14px;
                     weight: normal;

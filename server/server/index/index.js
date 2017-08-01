@@ -10,6 +10,8 @@ function run(Request, Response)
             'index':index,
             //商家详情
             'detail':detail,
+            //某店铺的套餐列表
+            'storelist':storelist
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -43,6 +45,16 @@ function index(Params, Request, Response) {
  */
 function detail(Params, Request, Response) {
     var fileName = 'index/busData/busDetails.json';
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 某店铺的套餐列表
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function storelist(Params, Request, Response) {
+    var fileName = 'index/busData/storeList.json';
     MAIN.responseStub(Response,fileName);
 }
 

@@ -2,127 +2,134 @@
   "code": 200,
   "msg": "success",
   "data": {
-    "list": [{
+    "list": [
+      {
         "id": 1,
-        "price": 8888,
-        "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州蒙娜丽莎婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+          "red",
+          "sddd",
+          "dfff"
+        ],
+        "meal_name": "旅拍海滩外景LOMO风套系",
+        "price": 8888,
+        "tags": [
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 2,
         "price": 6666,
-        "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州凹凸视觉摄影",
+        "meal_name": "旅拍海滩外景LOMO风套系旅拍海滩外景LOMO风套系",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 3,
         "price": 7777,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "金夫人婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 4,
         "price": 4444,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州皮皮虾婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 5,
         "price": 1111,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州皮皮虾婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 6,
         "price": 2222,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州皮皮虾婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 6,
         "price": 2222,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州皮皮虾婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 6,
         "price": 2222,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州皮皮虾婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 6,
         "price": 2222,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州皮皮虾婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 6,
         "price": 2222,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州皮皮虾婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       },
       {
         "id": 6,
         "price": 2222,
         "meal_name": "旅拍海滩外景LOMO风套系",
-        "business_name": "郑州皮皮虾婚纱摄影",
         "logo": "/static/images/meal-list.png",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
+            "摄影师一对一",
+            "化妆师一对一"
         ]
       }
-    ]
+    ],
+    "store": {
+      "store_name": "郑州艾维美婚纱摄影(国贸360店)",
+      "isYes": true,
+      "isVip": true,
+      "address": "宇宙银河皮皮虾星系lake星球",
+      "star": 3
+    },
+    "page": {
+      "totalCount": 3,
+      "pageSize": 10,
+      "currentPage": 0
+    }
   }
 }

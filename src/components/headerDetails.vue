@@ -17,6 +17,9 @@
                     <li v-show="mealName">
                         ><router-link :to="{ name: 'mealDeatils', query: {mealName:mealName}}" class="nav_a" active-class="nav_active">{{mealName}}</router-link>
                     </li>
+                    <li v-show="thisMealName">
+                        ><router-link :to="{ name: 'mealList', query: {thisMealName:thisMealName}}" class="nav_a" active-class="nav_active">{{thisMealName}}</router-link>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -31,6 +34,7 @@ export default {
         return {
             busName:this.$route.query.busName,
             mealName:this.$route.query.mealName,
+            thisMealName:this.$route.query.thisMealName,
         }
     },
     props:{
