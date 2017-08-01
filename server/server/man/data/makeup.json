@@ -1,0 +1,51 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "bus_info": {
+            "store_name": "郑州艾维美婚纱摄影(国贸360店)",
+            "isYes": true,
+            "isVip": true,
+            "address": "宇宙银河皮皮虾星系lake星球",
+            "star": 3
+        },
+        "makeup": {
+            "name": "马振华",
+            "nick": "",
+            "intro": "sd",
+            "tags": [],
+            "astro": 1,
+            "head": "http://marriage-1252045209.image.myqcloud.com/20170723094741.jpg?imageView2/0/w//h/",
+            "photos": [
+                "http://marriage-1252045209.image.myqcloud.com/default.jpg?imageView2/0/w//h/"
+            ],
+            "birthYear": 1996,
+            "workYears": 2,
+            "specialty": "asdf"
+        },
+        "packages": [
+            {
+                "cover": "12?imageView2/0/w//h/",
+                "name": "12",
+                "tag": [
+                    "adf"
+                ],
+                "price": 12
+            },
+            {
+                "cover": "http://marriage-1252045209.image.myqcloud.com/default.jpg?imageView2/0/w//h/",
+                "name": "12",
+                "tag": [
+                    "sd"
+                ],
+                "price": 12
+            },
+            {
+                "cover": "http://marriage-1252045209.image.myqcloud.com/20170723113145.jpg?imageView2/0/w//h/",
+                "name": "仅售2000元，价值2657元冬日感恩回馈套餐1份，节假日通",
+                "tag": [],
+                "price": 2000
+            }
+        ]
+    }
+}

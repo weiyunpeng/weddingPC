@@ -10,6 +10,8 @@ function run(Request, Response)
             'index':index,
             //套餐详情
             'detail':detail,
+            //某店铺的套餐列表
+            'storelist':storelist
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -32,7 +34,7 @@ function list(Params, Request, Response) {
  * @param {Object} Response
  */
 function index(Params, Request, Response) {
-    var fileName = 'index/data/tag2.json';
+    var fileName = 'index/packageData/tag2.json';
     MAIN.responseStub(Response,fileName);
 }
 
@@ -43,6 +45,16 @@ function index(Params, Request, Response) {
  */
 function detail(Params, Request, Response) {
     var fileName = 'index/packageData/detail.json';
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 某店铺的套餐列表
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function storelist(Params, Request, Response) {
+    var fileName = 'index/busData/storeList.json';
     MAIN.responseStub(Response,fileName);
 }
 

@@ -90,7 +90,7 @@ export const busTagChange = ({ commit },data) => {
 export const qryMealTag = ({ commit },data) => {
     api.qryMealTag(data).then(function (response) {
         commit(types.MEAL_TAG_LIST, {
-            list: response.data.data.list
+            list: response.data.data
         })
     })
         .catch(function (error) {
@@ -153,6 +153,19 @@ export const qryThisMealList = ({ commit },data) => {
     })
         .catch(function (error) {
             commit(types.THIS_MEAL_LIST);
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+export const qryCamaramanDetails = ({ commit },data) => {
+    api.qryCamaramanDetails(data).then(function (response) {
+        commit(types.CAMARAMAN_DETAILS, {
+            data: response.data.data
+        })
+    })
+        .catch(function (error) {
             console.log(error)
         });
 };

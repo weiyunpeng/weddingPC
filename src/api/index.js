@@ -6,7 +6,7 @@ axios.defaults.timeout = 50000;
 const ROOT = (process.env.NODE_ENV === 'production')
     ? 'http://10.97.204.99:1300'
     :'http://10.97.204.99:1300';
-
+//http://10.97.204.142:81
 function config() {
     const base = {
         baseURL: ROOT
@@ -29,7 +29,7 @@ export default {
     },
     //某店铺的套餐列表
     qryThisMealList:function(data){
-        return axios.post('/store/storelist', qs.stringify(data), config())
+        return axios.post('/package/storelist', qs.stringify(data), config())
     },
     //查询套餐列表首页
     qryMealList:function (data) {
@@ -42,5 +42,9 @@ export default {
     //套餐详情
     qryMealDetails:function(data){
         return axios.post('/package/detail', qs.stringify(data), config())
+    },
+    //摄影师详情
+    qryCamaramanDetails:function(data){
+        return axios.post('/camaraman', qs.stringify(data), config())
     },
 }

@@ -4,8 +4,8 @@
             <li v-for="(tag,number) in mealTag" :key="tag.title">
                 <strong>{{tag.title}} :</strong>
                 <ul>
-                    <li v-for="(tagCon,index) in tag.con" :key="tagCon">
-                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index)">{{tagCon}}</a>
+                    <li v-for="(tagCon,index) in tag.con" :key="index">
+                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index,tagCon.id,tag.name)">{{tagCon.name}}</a>
                     </li>
                 </ul>
             </li>
@@ -39,16 +39,15 @@ export default {
         this.$store.dispatch('qryMealTag', data)
     },
     methods: {
-        tagBtn(number, index) {
+        tagBtn(number, index,id,name) {
             let changeData = {
                 index:index,
                 number:number
             }
             this.$store.dispatch('mealTagChange' , changeData)
-            let data = {
-                type: 'meal'
-            }
-            this.$store.dispatch('mealClear')
+            let ajaxdata = {}
+            ajaxdata[name] = id
+            this.$store.dispatch('qryMealList', ajaxdata)
         }
     },
     watch:{

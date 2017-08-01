@@ -9,9 +9,7 @@ function run(Request, Response)
             //商家筛选条件
             'index':index,
             //商家详情
-            'detail':detail,
-            //某店铺的套餐列表
-            'storelist':storelist
+            'detail':detail
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -34,7 +32,7 @@ function list(Params, Request, Response) {
  * @param {Object} Response
  */
 function index(Params, Request, Response) {
-    var fileName = 'index/data/tag1.json';
+    var fileName = 'index/busData/tag1.json';
     MAIN.responseStub(Response,fileName);
 }
 
@@ -48,14 +46,6 @@ function detail(Params, Request, Response) {
     MAIN.responseStub(Response,fileName);
 }
 
-/**
- * 某店铺的套餐列表
- * @param {Object} Request
- * @param {Object} Response
- */
-function storelist(Params, Request, Response) {
-    var fileName = 'index/busData/storeList.json';
-    MAIN.responseStub(Response,fileName);
-}
+
 
 exports.index = run;

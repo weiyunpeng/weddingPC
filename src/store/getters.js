@@ -14,3 +14,8 @@ export const mealInfo = state => state.mealDetails.info;
 export const mealDetails = state => state.mealDetails.detail;
 export const thisMealList = state => state.thisMealList.list;
 export const thisMealStore = state => state.thisMealList.store;
+
+export const camaraman = state => state.camaraman.camaraman;
+export const camaramanBusinfo = state => state.camaraman.bus_info;
+export const camaramanPackages = state => state.camaraman.packages;
+
