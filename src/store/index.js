@@ -10,6 +10,7 @@ import mealList from './modules/mealList'
 import busTag from './modules/busTag'
 import mealTag from './modules/mealTag'
 import busDetails from './modules/busDetails'
+import mealDetails from './modules/mealDetails'
 
 Vue.use(Vuex);
 
@@ -25,7 +26,8 @@ export default new Vuex.Store({
       mealList,
       busTag,
       mealTag,
-      busDetails
+      busDetails,
+      mealDetails
   },
   strict: debug
 })

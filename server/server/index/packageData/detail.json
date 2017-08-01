@@ -5,19 +5,22 @@
         "package_info": {
             "img": [
                 "/static/images/15.png",
+                "/static/images/16.png",
+                "/static/images/17.png",
                 "/static/images/15.png",
+                "/static/images/16.png",
                 "/static/images/15.png",
-                "/static/images/15.png",
-                "/static/images/15.png"
+                "/static/images/16.png",
+                "/static/images/17.png"
             ],
-            "bus_id": "1123123asd1",
-            "bus_name": "郑州凹凸视觉摄影",
+            "store_id": "1123123asd1",
+            "store_name": "郑州凹凸视觉摄影",
             "isYes": true,
             "isVip": true,
             "star": 3,
-            "address": "宇宙银河皮皮虾星系",
-            "meal_id": "sdas1231231",
-            "meal_name": "私人定制D3套系-内外双景+多种风格+爱情微电影",
+            "address": "宇宙银河皮皮虾星系lake星球",
+            "package_id": "sdas1231231",
+            "package_name": "私人定制D3套系-内外双景+多种风格+爱情微电影",
             "price": 6999,
             "tags": [
                 "摄影师一对一",
@@ -58,7 +61,7 @@
             "dresser": "老杨",
             "dresser_help": "小杨",
             "lighting_engineer": "老王",
-            "w_video": true,
+            "w_video": "无",
             "pay_notice": "交付定金后，不可随意更改拍摄日期或替换其他套餐",
             "gift": "送你一个么么哒",
             "lightspot": "清新唯美，韩式风格。资深级摄影师一对一服务",

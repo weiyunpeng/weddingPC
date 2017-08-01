@@ -123,3 +123,19 @@ export const qryBusDetails = ({ commit },data) => {
         });
 };
 //----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+export const qryMealDetails = ({ commit },data) => {
+    api.qryMealDetails(data).then(function (response) {
+        commit(types.MEAL_INFO, {
+            info: response.data.data.package_info
+        })
+        commit(types.MEAL_DETAILS, {
+            detail: response.data.data.package_detail
+        })
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------

@@ -1,11 +1,11 @@
 <template>
     <div class="left_zoom">
         <div class="big_img" @click="bigBtn">
-            <img v-lazy="imgs[currentIndex]" width="600" height="400">
+            <img v-lazy="imgs[currentIndex]" width="605" height="400">
         </div>
         <div class="small_img">
             <transition-group tag="ul" name="list">
-                <li v-for="(item,index) in imgs" :key="index" v-show="currentIndex-index<1" :class="{'active':index===currentIndex}" @click="currentShow(index)">
+                <li v-for="(item,index) in imgs" :key="index" v-show="currentIndex-index<4" :class="{'active':index===currentIndex}" @click="currentShow(index)">
                     <img v-lazy="item" width="144" height="96">
                 </li>
                 <li v-for="(item,index) in imgs" :key="index" v-show="currentIndex-index>1" :class="{'active':index===currentIndex}" @click="currentShow(index)">
@@ -80,7 +80,7 @@ export default {
 }
 .left_zoom {
     float: left;
-    width: 600px;
+    width: 605px;
     .small_img {
       position: relative;
       margin: {

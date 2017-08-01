@@ -15,6 +15,8 @@ export const BUS_TAG_CHANGE = 'BUS_TAG_CHANGE'
 export const BUS_KEYWORD = 'BUS_KEYWORD'
 
 export const MEAL_LIST = 'MEAL_LIST'
+export const MEAL_INFO = 'MEAL_INFO'
+export const MEAL_DETAILS = 'MEAL_DETAILS'
 export const MEAL_STATUS = 'MEAL_STATUS'
 export const MEAL_CLEAR = 'MEAL_CLEAR'
 export const MEAL_TAG_LIST = 'MEAL_TAG_LIST'

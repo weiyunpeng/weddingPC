@@ -38,39 +38,6 @@
         }
       }
     }
-    .left_zoom {
-      width: 720px;
-      .small_img {
-        position: relative;
-        margin: {
-          top: 8px;
-          right: -7.5px;
-        }
-        li {
-          display: inline-block;
-          margin-right: 7.5px;
-        }
-        .arrow {
-          a {
-            display: block;
-            position: absolute;
-            top: 50%;
-            margin-top: -23px;
-            width: 26px;
-            height: 46px;
-            background: url("/static/images/icon1.png");
-          }
-          .prev {
-            background-position: top left;
-            left: 0;
-          }
-          .next {
-            right: 8px;
-            background-position: top right;
-          }
-        }
-      }
-    }
     .right_introduction {
       width: 450px;
       .meal_name {
@@ -131,7 +98,6 @@
           top: 50px;
           width: 172px;
           height: 186px;
-          background: url("/static/images/erweima.png");
         }
       }
     }
@@ -153,8 +119,13 @@
           font-size: 16px;
           color: #333;
           margin-right: 60px;
+          a:hover{
+            color: #ff506d;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+          }
         }
-        .subnav_li.cur {
+        .cur {
           color: #ff506d;
         }
       }

@@ -25,7 +25,6 @@ export default {
     },
     //商家详情
     qryBusDetails:function(data){
-        console.log(data)
         return axios.post('/store/detail', qs.stringify(data), config())
     },
     //查询套餐列表首页
@@ -38,7 +37,6 @@ export default {
     },
     //套餐详情
     qryMealDetails:function(data){
-        console.log(data)
         return axios.post('/package/detail', qs.stringify(data), config())
     },
 }
