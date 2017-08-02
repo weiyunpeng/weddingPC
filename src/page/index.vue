@@ -4,7 +4,7 @@
 <div class="container">
     <com-tag></com-tag>
     <com-filter></com-filter>
-    <div class="container">
+    <div>
         <ul class="list">
             <li class="list_con" v-for="item in busList" :key="item.business.id">
                 <div class="shop">
@@ -48,6 +48,7 @@
             </li>
         </ul>
     </div>
+    <com-paging :busPage="busPage"></com-paging>
 </div>
 </div>
 </template>
@@ -57,15 +58,18 @@ import { mapGetters, mapActions } from 'vuex'
 import header from './../components/header'
 import tag from "./../components/business/busTag"
 import busFilter from "./../components/business/busFilter"
+import paging from "./../components/paging"
     export default {
         components: {
             comHeader: header,
             comTag: tag,
             comFilter: busFilter,
+            comPaging: paging,
         },
         computed: {
             ...mapGetters({
-                busList:'busList'
+                busList:'busList',
+                busPage:'busPage'
             }),
             ...mapActions({
                 qryBusList:'qryBusList',
@@ -79,17 +83,11 @@ import busFilter from "./../components/business/busFilter"
         mounted(){
             // this.$store.dispatch('busClear')
             let data = {
-                type:'bus'
+                page:1
             }
             this.$store.dispatch('qryBusList', data)
         },
         methods: {
-            loadList(){
-                let data = {
-                    type:'bus'
-                }
-                this.$store.dispatch('qryBusList', data)
-            }
         },
         beforeDestroy () {
         }

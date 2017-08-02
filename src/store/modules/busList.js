@@ -1,21 +1,17 @@
-import {BUS_LIST,BUS_STATUS,BUS_CLEAR} from '../types'
+import {BUS_LIST,BUS_CLEAR} from '../types'
 
 const state = {
     list: [],
-    status: 1,
+    page: {},
 };
 
 const mutations = {
     [BUS_LIST](state, data){
         state.list = data.list;
-        state.status = data.status;
-    },
-    [BUS_STATUS](state, data){
-        state.status = data.status;
+        state.page = data.page;
     },
     [BUS_CLEAR](state,data){
         state.list = [];
-        state.status = 1;
     }
 };
 

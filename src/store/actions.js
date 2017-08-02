@@ -25,12 +25,10 @@ export const hideModal = ({ commit }, data) => {
 
 //----------------------------------------------------------------------------------------------
 export const qryBusList = ({ commit },data) => {
-    // commit(types.BUS_STATUS, {status: 0});
     api.qryBusList(data).then(function (response) {
-        const status = response.data.data.list.length == 20?0:2;
         commit(types.BUS_LIST, {
             list: response.data.data.list,
-            status: status
+            page: response.data.data.page
         })
     })
         .catch(function (error) {

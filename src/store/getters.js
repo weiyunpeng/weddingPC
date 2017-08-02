@@ -3,6 +3,7 @@ export const getModal = state => state.modal;
 export const getModalConfirm = state => state.modal.confirm;
 
 export const busList = state => state.busList.list;
+export const busPage = state => state.busList.page;
 export const busTag = state => state.busTag.list;
 export const busInfo = state => state.busDetails.busInfo;
 export const busDetList = state => state.busDetails.list;
