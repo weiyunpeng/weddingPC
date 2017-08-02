@@ -14,6 +14,7 @@ import busDeatils from '../page/busDetails.vue';
 import mealDeatils from '../page/mealDetails.vue';
 import mealList from '../page/mealList.vue';
 import cameraman from '../page/cameraman.vue';
+import makeupman from '../page/makeupman.vue';
 
 
 const routes = [{
@@ -40,6 +41,10 @@ const routes = [{
     path : '/cameraman',
     name:'cameraman',
     component : cameraman
+},{
+    path : '/makeupman',
+    name:'makeupman',
+    component : makeupman
 }];
 
 const router = new VueRouter({

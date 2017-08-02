@@ -170,10 +170,15 @@
             height: 48px;
             line-height: 48px;
             cursor: pointer;
+            a:hover{
+                color: #ff506d;
+                text-decoration: underline;
+                -webkit-transition: all .3s ease;
+                transition: all .3s ease;
+            }
         }
-        li.cur {
-            color: #ff4e6b;
-            text-decoration: underline;
+        .cur {
+          color: #ff506d;
         }
     }
     .case {

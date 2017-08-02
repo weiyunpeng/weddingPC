@@ -170,3 +170,16 @@ export const qryCamaramanDetails = ({ commit },data) => {
         });
 };
 //----------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------
+export const qryMakeupDetails = ({ commit },data) => {
+    api.qryMakeupDetails(data).then(function (response) {
+        commit(types.MAKEUP_DETAILS, {
+            data: response.data.data
+        })
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------

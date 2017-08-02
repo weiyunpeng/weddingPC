@@ -2,26 +2,26 @@
 <div>
 <com-header></com-header>
 <div class="container">
-    <com-store :storeInfo="camaramanBusinfo"></com-store>
+    <com-store :storeInfo="makeupmanBusinfo"></com-store>
     <div class="fl">
         <div class="camara_user">
-            <img class="head_photo" v-lazy="camaraman.head" width="220" height="220">
+            <img class="head_photo" v-lazy="makeupman.head" width="220" height="220">
             <ul>
                 <li>
-                    <span>摄影师</span>
-                    <label style="font-weight: bold;font-size: 20px;">{{camaraman.name}}</label>
+                    <span>化妆师</span>
+                    <label style="font-weight: bold;font-size: 20px;">{{makeupman.name}}</label>
                 </li>
                 <li>
                     <span>工龄</span>
-                    <label>{{camaraman.workYears}}年</label>
+                    <label>{{makeupman.workYears}}年</label>
                 </li>
                 <li>
                     <span>星座</span>
-                    <label>{{camaraman.astro}}</label>
+                    <label>{{makeupman.astro}}</label>
                 </li>
                 <li>
-                    <span>拍摄特点</span>
-                    <label style="line-height:28px;height: 58px;">{{camaraman.specialty}}</label>
+                    <span>化妆特点</span>
+                    <label style="line-height:28px;height: 58px;">{{makeupman.specialty}}</label>
                 </li>
             </ul>
         </div>
@@ -30,8 +30,8 @@
                 相关套餐
             </p>
             <ul>
-                <li v-for="(item,s) in camaramanPackages" :key="s">
-                    <router-link :to="{ name: 'mealDeatils',query: {busName:camaramanBusinfo.store_name, mealName: item.name}}" target="_blank">
+                <li v-for="(item,s) in makeupmanPackages" :key="s">
+                    <router-link :to="{ name: 'mealDeatils',query: {busName:makeupmanBusinfo.store_name, mealName: item.name}}" target="_blank">
                         <img v-lazy="item.cover" width="300" height="200">
                         <div class="p_info clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -45,8 +45,8 @@
     <div class="fr caman_info">
         <div class="subnav">
             <ul>
-                <li v-for="(item,i) in ['摄影师简介','拍摄特点','作品展示']" :key="i" class="subnav_li">
-                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item}}</a>
+                <li v-for="(item,i) in infoDetails" :key="i" class="subnav_li">
+                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item.tag}}</a>
                 </li>
             </ul>
         </div>
@@ -87,19 +87,19 @@ import storeInfo from './../components/storeInfo'
         },
         computed: {
             ...mapGetters({
-                camaraman:'camaraman',
-                camaramanBusinfo:'camaramanBusinfo',
-                camaramanPackages:'camaramanPackages'
+                makeupman:'makeupman',
+                makeupmanBusinfo:'makeupmanBusinfo',
+                makeupmanPackages:'makeupmanPackages'
             }),
             ...mapActions({
-                qryCamaramanDetails:'qryCamaramanDetails'
+                qryMakeupDetails:'qryMakeupDetails'
             })
         },
         mounted(){
             let data = {
                 id:'1'
             }
-            this.$store.dispatch('qryCamaramanDetails', data)
+            this.$store.dispatch('qryMakeupDetails', data)
         },
         methods: {
             changeTab(i){
@@ -107,15 +107,12 @@ import storeInfo from './../components/storeInfo'
             }
         },
         watch:{
-            camaraman(){
-                // console.log(this.camaraman)
-                this.infoDetails = this.camaraman.info_details
+            makeupman(){
+                this.infoDetails = this.makeupman.info_details
             },
-            camaramanBusinfo(){
-                // console.log(this.camaramanBusinfo)
+            makeupmanBusinfo(){
             },
-            camaramanPackages(){
-                // console.log(this.camaramanPackages)
+            makeupmanPackages(){
             }
         },
         beforeDestroy () {

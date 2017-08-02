@@ -1,0 +1,134 @@
+.camara_user {
+    position: relative;
+    width: 300px;
+    height: 515px;
+    text-align: center;
+    background: #f2f2f2;
+    overflow: hidden;
+    .head_photo {
+        margin-top: 40px;
+    }
+    ul {
+        width: 220px;
+        margin: 0 auto;
+        margin-top: 30px;
+        li {
+            line-height: 30px;
+            font-size: 16px;
+            span {
+                width: 85px;
+                text-align: left;
+                float: left;
+                color: #808080;
+            }
+            label {
+                width: 130px;
+                overflow: hidden;
+                text-align: left;
+                color: #333333;
+            }
+        }
+    }
+}
+
+.about_package {
+    position: relative;
+    top: 50px;
+    width: 300px;
+    overflow: hidden;
+    .p_tit {
+        color: #333333;
+        font-size: 20px;
+        line-height: 40px;
+    }
+    ul {
+        li {
+            margin-bottom: 20px;
+            .p_info {
+                width: 300px;
+                overflow: hidden;
+                .name {
+                    width: 230px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    color: #333333;
+                    font-size: 16px;
+                    line-height: 40px;
+                }
+                .price {
+                    color: #ff506d;
+                    font-size: 16px;
+                    line-height: 40px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.caman_info {
+    width: 800px;
+    .subnav {
+        height: 50px;
+        line-height: 50px;
+        border: {
+            top: 1px solid #e6e6e6;
+            bottom: 1px solid #e6e6e6;
+        }
+        padding-left: 25px;
+        .subnav_li {
+            display: inline-block;
+            font-size: 16px;
+            color: #333;
+            margin-right: 60px;
+            a:hover {
+                color: #ff506d;
+                -webkit-transition: all .3s ease;
+                transition: all .3s ease;
+            }
+        }
+        .cur {
+            color: #ff506d;
+        }
+    }
+    .caman_tit {
+        margin: 30px 0;
+        padding-left: 50px;
+        position: relative;
+        font-size: 20px;
+        color: #000;
+        .mark {
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            left: 15px;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #ff506d;
+            border-radius: 50%;
+        }
+        .mark:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            display: block;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+        }
+    }
+    .caman_con {
+        width: 692px;
+        font-size: 16px;
+        color: #808080;
+        line-height: 28px;
+        padding-left: 10px;
+    }
+}

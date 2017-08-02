@@ -47,4 +47,8 @@ export default {
     qryCamaramanDetails:function(data){
         return axios.post('/camaraman', qs.stringify(data), config())
     },
+    //化妆师详情
+    qryMakeupDetails:function(data){
+        return axios.post('/makeup', qs.stringify(data), config())
+    },
 }

@@ -14,35 +14,56 @@
             "nick": "阿萨德发送到分",
             "intro": "",
             "tags": [],
-            "astro": null,
-            "head": "http://marriage-1252045209.image.myqcloud.com/default.jpg?imageView2/0/w//h/",
+            "astro": "摩羯座",
+            "head": "/static/images/13.png",
             "photos": [
                 "http://marriage-1252045209.image.myqcloud.com/default.jpg?imageView2/0/w//h/"
             ],
             "birthYear": 2015,
-            "workYears": null,
-            "specialty": ""
+            "workYears": 3,
+            "specialty": "浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格",
+            "info_details": [
+                {
+                    "tag": "摄影师简介",
+                    "detail": "进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。",
+                    "imgs": []
+                },
+                {
+                    "tag": "拍摄特点",
+                    "detail": "浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格",
+                    "imgs": []
+                },
+                {
+                    "tag": "作品展示",
+                    "detail": "",
+                    "imgs": [
+                        "/static/images/15.png",
+                        "/static/images/15.png",
+                        "/static/images/15.png"
+                    ]
+                }
+            ]
         },
         "packages": [
             {
-                "cover": "12?imageView2/0/w//h/",
-                "name": "12",
+                "cover": "/static/images/5.png",
+                "name": "唯美韩式海滩外景套系",
                 "tag": [
                     "adf"
                 ],
-                "price": 12
+                "price": 12000
             },
             {
-                "cover": "http://marriage-1252045209.image.myqcloud.com/default.jpg?imageView2/0/w//h/",
-                "name": "12",
+                "cover": "/static/images/2.png",
+                "name": "韩式花海奢华内外双景套系",
                 "tag": [
                     "sd"
                 ],
-                "price": 12
+                "price": 12000
             },
             {
-                "cover": "http://marriage-1252045209.image.myqcloud.com/20170723113145.jpg?imageView2/0/w//h/",
-                "name": "仅售2000元，价值2657元冬日感恩回馈套餐1份，节假日通",
+                "cover": "/static/images/15.png",
+                "name": "欧式复古唯美教堂外景套系",
                 "tag": [],
                 "price": 2000
             }

@@ -13,6 +13,7 @@ import busDetails from './modules/busDetails'
 import mealDetails from './modules/mealDetails'
 import thisMealList from './modules/thisMealList'
 import camaraman from './modules/camaraman'
+import makeupman from './modules/makeupman'
 
 Vue.use(Vuex);
 
@@ -31,7 +32,8 @@ export default new Vuex.Store({
       busDetails,
       mealDetails,
       thisMealList,
-      camaraman
+      camaraman,
+      makeupman
   },
   strict: debug
 })

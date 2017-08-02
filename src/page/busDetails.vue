@@ -73,13 +73,13 @@
         </div>
         <div class="nav">
             <ul>
-                <li v-for="(item,index) in busDetList" v-bind:key="index">
-                   <a :href="'#nav-'+index">{{item.nav}}</a>
+                <li v-for="(item,i) in busDetList" :key="i">
+                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item.nav}}</a>
                 </li>
             </ul>
         </div>
         <!-- case官方案例开始 -->
-        <div class="case" id="nav-0" name="nav-0">
+        <div class="case" v-show="0 >= selected">
             <img class="tit" :src="caseInfo.nav_img"> 
             <div class="more clearfix">
                 <!--应该是<router-link>吧，先放着，等大佬回来  -->
@@ -103,11 +103,11 @@
         </div>
         <!-- case官方案例结束 -->
         <!-- 精选套餐开始 -->
-        <div class="package" id="nav-1" name="nav-1">
+        <div class="package" v-show="1 >= selected">
             <img class="tit" :src="packageInfo.nav_img"> 
             <div class="more clearfix">
                 <!--应该是<router-link>吧，先放着，等大佬回来  -->
-                <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name, mealName: '套餐列表'}}" class="more_a fr" target="_blank">
+                <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name, thisMealName: '套餐列表'}}" class="more_a fr" target="_blank">
                     更多 >
                 </router-link>
                 <!-- <a href="javascript:void(0)" class="more_a fr">更多 ></a> -->
@@ -133,7 +133,7 @@
         </div>
         <!-- 精选套餐结束 -->
         <!-- 摄影团队开始  -->
-        <div class="photographer" id="nav-2" name="nav-2">
+        <div class="photographer" v-show="2 >= selected">
             <img class="tit" :src="photographer.nav_img">
             <div class="arrows">
                 <a class="prev arrow photographer_prev" href="javascrript:void(0)"></a>
@@ -158,29 +158,11 @@
                         </div>
                     </swiper-slide>
                 </swiper>
-                <!-- <ul>
-                    <li v-for="(item,index) in photographer.details" v-bind:key="index">
-                        <img v-lazy="item.src">
-                        <div class="top clearfix">
-                            <div class="name fl">{{item.name}}</div>
-                            <div class="years fr">
-                                <ul>
-                                    <li>
-                                        {{item.years}}年
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="special">
-                            拍摄特点：{{item.special}}
-                        </div>
-                    </li>
-                </ul> -->
             </div>
         </div>
         <!-- 摄影团队结束  -->
         <!-- 化妆团队开始 -->
-        <div class="dresser" id="nav-3" name="nav-3">
+        <div class="dresser" v-show="3 >= selected">
             <img class="tit" :src="dresser.nav_img">
             <div class="arrows">
                 <a class="prev arrow dresser_prev" href="javascrript:void(0)"></a>
@@ -279,6 +261,7 @@ export default {
     },
     data() {
         return {
+            selected:0,
             busName:this.$route.query.busName,
             isErwei:false,
             isMap:false,
@@ -337,6 +320,9 @@ export default {
         this.$store.dispatch('qryBusDetails', data)
     },
     methods: {
+        changeTab(i){
+            this.selected = i;
+        },
         erweima () {
             this.isErwei = !this.isErwei;
         },
