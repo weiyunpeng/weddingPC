@@ -261,6 +261,7 @@ export default {
     },
     data() {
         return {
+            id:this.$route.query.id,
             selected:0,
             busName:this.$route.query.busName,
             isErwei:false,
@@ -315,7 +316,7 @@ export default {
     },
     mounted() {
         let data = {
-            id:'1'
+            id:this.id
         }
         this.$store.dispatch('qryBusDetails', data)
     },

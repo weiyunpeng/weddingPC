@@ -44,12 +44,10 @@ export const busClear = ({ commit }) => {
 
 //----------------------------------------------------------------------------------------------
 export const qryMealList = ({ commit },data) => {
-    commit(types.MEAL_STATUS, {status: 0});
     api.qryMealList(data).then(function (response) {
-        const status = response.data.data.list.length == 20?0:2;
         commit(types.MEAL_LIST, {
             list: response.data.data.list,
-            status: status
+            page: response.data.data.page
         })
     })
         .catch(function (error) {

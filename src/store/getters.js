@@ -10,6 +10,7 @@ export const busDetList = state => state.busDetails.list;
 
 
 export const mealList = state => state.mealList.list;
+export const mealPage = state => state.mealList.page;
 export const mealTag = state => state.mealTag.list;
 export const mealInfo = state => state.mealDetails.info;
 export const mealDetails = state => state.mealDetails.detail;

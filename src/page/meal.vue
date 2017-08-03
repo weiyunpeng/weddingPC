@@ -2,8 +2,8 @@
 <div>
     <com-header></com-header>
     <div class="container">
-        <com-tag></com-tag>
-        <meal-filter></meal-filter>
+        <com-tag @ajaxTag="ajaxTag"></com-tag>
+        <com-filter @ajaxfilter="ajaxfilter" @ajaxPrice="ajaxPrice"></com-filter>
         <div class="container">
         <ul class="meal_list">
             <li class="list_con" v-for="item in mealList" :key="item.id">
@@ -31,6 +31,7 @@
             </li>
         </ul>
     </div>
+    <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
     </div>
 </div>
 </template>
@@ -40,16 +41,19 @@ import { mapGetters, mapActions } from 'vuex'
 import header from './../components/header'
 import tag from "./../components/meal/mealTag"
 import mealFilter from "./../components/meal/mealFilter"
+import paging from "./../components/paging"
 
 export default {
     components: {
         comHeader: header,
         comTag: tag,
-        mealFilter:mealFilter
+        comFilter:mealFilter,
+        comPaging: paging
     },
     computed: {
         ...mapGetters({
-            mealList:'mealList'
+            mealList:'mealList',
+            mealPage:'mealPage'
         }),
         ...mapActions({
             qryMealList:'qryMealList',
@@ -57,7 +61,19 @@ export default {
         })
     },
     data() {
-        return {}
+        return {
+            ajaxdata:{
+                page:1,
+                method:0,
+                priceToSort:0,
+            },
+            pageInfo:{
+                total:0,  // 记录总条数
+                current:1,  // 当前页数，
+                pagenum:20, // 每页显示条数
+                pagegroup:6,    // 分页器每次展示出的条数
+                skin:'#ff4e6b'  // 选中页码的颜色主题
+            }}
     },
     mounted(){
         // this.$store.dispatch('mealClear')
@@ -67,8 +83,34 @@ export default {
         this.$store.dispatch('qryMealList', data)
     },
     methods: {
-        loadList(){
-            let self = this;
+        pagechange(current){   // 页码改变传入新的页码，此处做回调
+            this.ajaxdata.page = current
+            this.$store.dispatch('qryMealList', this.ajaxdata)
+        },
+        skip(current){
+            this.ajaxdata.page = current
+            this.$store.dispatch('qryMealList', this.ajaxdata)
+        },
+        ajaxTag(data){
+            this.ajaxdata = this.objExtend(this.ajaxdata,data,false);
+            this.$store.dispatch('qryMealList', this.ajaxdata)
+        },
+        ajaxfilter(method,priceToSort){
+            this.ajaxdata.method = method;
+            this.ajaxdata.priceToSort = priceToSort;
+            this.$store.dispatch('qryMealList', this.ajaxdata)
+        },
+        ajaxPrice(minPrice,maxPrice){
+            this.ajaxdata.minPrice = minPrice
+            this.ajaxdata.maxPrice = maxPrice
+            this.$store.dispatch('qryMealList', this.ajaxdata)
+        }
+    },
+    watch:{
+        mealPage(){
+            this.pageInfo.current = this.mealPage.currentPage+1
+            this.pageInfo.total = this.mealPage.totalCount
+            this.pageInfo.pagenum = this.mealPage.pageSize
         }
     },
     beforeDestroy () {
