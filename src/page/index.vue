@@ -79,7 +79,7 @@ import paging from "./../components/paging"
         data(){
             return {
                 pageInfo:{
-                    total:1000,  // 记录总条数
+                    total:0,  // 记录总条数
                     current:1,  // 当前页数，
                     pagenum:20, // 每页显示条数
                     pagegroup:6,    // 分页器每次展示出的条数
@@ -105,7 +105,7 @@ import paging from "./../components/paging"
         watch:{
             busPage(){
                 this.pageInfo.current = this.busPage.currentPage+1
-                this.pageInfo.totalCount = this.busPage.total
+                this.pageInfo.total = this.busPage.totalCount
                 this.pageInfo.pagenum = this.busPage.pageSize
             }
         },

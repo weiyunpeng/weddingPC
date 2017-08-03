@@ -8,15 +8,14 @@
     position: relative;
     top: 0;
     z-index: 3;
-    background: url('/static/images/bg.jpg') left center no-repeat;
     background-size: cover;
     @include boxShadow(0 0 10px #ccc);
     .logo {
+        position: relative;
+        top:55px;
         height: auto;
         width: 100%;
-        float: left;
-        margin-top: 55px;
-        margin-left: -12px;
+        text-align: center;
     }
     .nav{
         position: absolute;
