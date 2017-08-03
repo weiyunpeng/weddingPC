@@ -2,8 +2,8 @@
 <div>
 <com-header></com-header>
 <div class="container">
-    <com-tag></com-tag>
-    <com-filter></com-filter>
+    <com-tag @ajaxTag="ajaxTag"></com-tag>
+    <com-filter @ajaxfilter="ajaxfilter" @ajaxPrice="ajaxPrice"></com-filter>
     <div>
         <ul class="list">
             <li class="list_con" v-for="item in busList" :key="item.business.id">
@@ -34,15 +34,15 @@
                 </div>
                 <div class="photo">
                     <ul>
-                            <li v-for="meal in item.packages" :key="meal.id">
-                                <router-link :to="{ name: 'mealDeatils',query: {busName:item.business.name, mealName: meal.name}}" target="_blank">
-                                <img class="picture" v-lazy="meal.first_img">
-                                <div class="pho_details">
-                                    <span>{{meal.name}}</span>
-                                    <label>¥{{meal.price}}</label>
-                                </div>
-                                </router-link>
-                            </li>
+                        <li v-for="meal in item.packages" :key="meal.id">
+                            <router-link :to="{ name: 'mealDeatils',query: {busName:item.business.name, mealName: meal.name}}" target="_blank">
+                            <img class="picture" v-lazy="meal.first_img">
+                            <div class="pho_details">
+                                <span>{{meal.name}}</span>
+                                <label>¥{{meal.price}}</label>
+                            </div>
+                            </router-link>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -78,6 +78,11 @@ import paging from "./../components/paging"
         },
         data(){
             return {
+                ajaxdata:{
+                    page:1,
+                    method:0,
+                    priceToSort:0,
+                },
                 pageInfo:{
                     total:0,  // 记录总条数
                     current:1,  // 当前页数，
@@ -88,18 +93,30 @@ import paging from "./../components/paging"
             }
         },
         mounted(){
-            // this.$store.dispatch('busClear')
-            let data = {
-                page:1
-            }
-            this.$store.dispatch('qryBusList', data)
+            this.$store.dispatch('qryBusList', this.ajaxdata)
         },
         methods: {
             pagechange(current){   // 页码改变传入新的页码，此处做回调
-                // console.log(current);
+                this.ajaxdata.page = current
+                this.$store.dispatch('qryBusList', this.ajaxdata)
             },
-            skip(page){
-                // console.log(page)
+            skip(current){
+                this.ajaxdata.page = current
+                this.$store.dispatch('qryBusList', this.ajaxdata)
+            },
+            ajaxTag(data){
+                this.ajaxdata = this.objExtend(this.ajaxdata,data,false);
+                this.$store.dispatch('qryBusList', this.ajaxdata)
+            },
+            ajaxfilter(method,priceToSort){
+                this.ajaxdata.method = method;
+                this.ajaxdata.priceToSort = priceToSort;
+                this.$store.dispatch('qryBusList', this.ajaxdata)
+            },
+            ajaxPrice(minPrice,maxPrice){
+                this.ajaxdata.minPrice = minPrice
+                this.ajaxdata.maxPrice = maxPrice
+                this.$store.dispatch('qryBusList', this.ajaxdata)
             }
         },
         watch:{

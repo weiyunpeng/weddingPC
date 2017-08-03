@@ -55,11 +55,11 @@ export default {
          * 搜商家按钮事件
          */
         searchBtn(){
-            this.$router.push({ name: '/'})
+            this.$router.push({ name: '/index'})
             let data = {
-                page:1
+                keyword:this.keyword
             }
-            this.$store.dispatch('busClear')
+            // this.$store.dispatch('busClear')
             this.$store.dispatch('qryBusList', data)
         }
     },

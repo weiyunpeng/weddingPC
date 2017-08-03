@@ -26,29 +26,25 @@ export default {
             busTag: 'busTag'
         }),
         ...mapActions({
-            qrybusTag: 'qrybusTag',
             busTagClear:'busTagClear',
             busTagChange:'busTagChange'
         })
     },
     mounted() {
-        let data = {
-            type: 'bus'
-        }
-        // this.$store.dispatch('busTagChange')
-        this.$store.dispatch('qrybusTag', data)
+        this.$store.dispatch('qrybusTag')
     },
     methods: {
         tagBtn(number, index,id,name) {
-            let changeData = {
+            const changeData = {
                 index:index,
                 number:number
             }
             this.$store.dispatch('busTagChange' , changeData)
-            let ajaxdata = {}
-            ajaxdata[name] = id
-            // this.$store.dispatch('busClear')
-            this.$store.dispatch('qryBusList', ajaxdata)
+            const ajaxdata = {}
+            for(var i = 0; i<this.busTag.length;i++){
+                ajaxdata[this.busTag[i].name] = this.busTag[i].selected
+            }
+            this.$emit('ajaxTag',ajaxdata);
         }
     },
     watch:{

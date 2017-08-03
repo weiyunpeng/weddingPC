@@ -7,7 +7,7 @@
                 <a href="javascript:;" v-else  @click="clickCurrent(p.val)"> {{ p.text }} </a>
             </li>
             <li :class="{'disabled': pageInfo.current == pageInfo.page}"><a href="javascript:;" @click="clickCurrent(pageInfo.current + 1)"> 下一页</a></li>
-            <input class="inputPage" type="text" v-model.trim="skipPage">
+            <input class="inputPage" type="text" v-model.number="skipPage">
             <li><a href="javascript:;" @click="clickSkip()">跳转</a></li>
             <span class="page_total">共{{pageInfo.total}}条</span>
         </ul>
@@ -53,7 +53,7 @@ export default {
         }
     },
     created:function (argument) {
-        console.log(this.pageInfo)
+        // console.log(this.pageInfo)
     },
     methods: {
         clickCurrent: function(idx) {
@@ -63,7 +63,6 @@ export default {
             }
         },
         clickSkip:function(){
-            this.skipPage = Number(this.skipPage)
             if( this.pageInfo.current != this.skipPage && this.skipPage > 0 && this.skipPage < this.page + 1) {
                 this.pageInfo.current = this.skipPage;
                 this.$emit('skip',this.skipPage);

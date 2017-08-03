@@ -4,7 +4,7 @@ const qs = require('querystring');
 axios.defaults.timeout = 50000;
 
 const ROOT = (process.env.NODE_ENV === 'production')
-    ? 'http://10.97.204.99:1300'
+    ? 'dev.hunjia.qqdayu.com'
     :'http://10.97.204.99:1300';
 //http://10.97.204.142:81
 function config() {
@@ -20,7 +20,7 @@ export default {
        return axios.post('/store/list', qs.stringify(data), config())
     },
     //搜索店铺列表
-    qryBusTag:function(data){
+    qryBusTag:function(){
        return axios.get('/store/index', config())
     },
     //商家详情
