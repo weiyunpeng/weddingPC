@@ -9,7 +9,7 @@
             <div class="nav clearfix">
                 <ul>
                     <li>
-                        <router-link to="/" class="nav_a" active-class="nav_active" exact>查看商家</router-link>
+                        <router-link to="/index" class="nav_a" active-class="nav_active" exact>查看商家</router-link>
                     </li>
                     <li>
                         <router-link to="/meal" class="nav_a" active-class="nav_active">查看套餐</router-link>

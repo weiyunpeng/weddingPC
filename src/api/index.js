@@ -5,7 +5,7 @@ axios.defaults.timeout = 50000;
 
 const ROOT = (process.env.NODE_ENV === 'production')
     ? 'http://10.97.204.99:1300'
-    :'http://10.97.204.99:1300';
+    :'http://localhost:1300';
 //http://10.97.204.142:81
 function config() {
     const base = {

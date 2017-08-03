@@ -48,7 +48,7 @@
             </li>
         </ul>
     </div>
-    <com-paging :busPage="busPage"></com-paging>
+    <com-paging :pageInfo="pageInfo" @change="pagechange"></com-paging>
 </div>
 </div>
 </template>
@@ -78,6 +78,13 @@ import paging from "./../components/paging"
         },
         data(){
             return {
+                pageInfo:{
+                    total:100,  // 记录总条数   默认空，如果小于pageNum则组件不显示   类型Number
+                    current:1,  // 当前页数，   默认为1                             类型Number
+                    pagenum:10, // 每页显示条数,默认10                              类型Number
+                    pagegroup:5,    // 分页条数     默认为5，需传入奇数                 类型Number
+                    skin:'#ff4e6b'  // 选中页码的颜色主题               类型String
+                }
             }
         },
         mounted(){
@@ -88,6 +95,9 @@ import paging from "./../components/paging"
             this.$store.dispatch('qryBusList', data)
         },
         methods: {
+            pagechange:function(current){     // 页码改变传入新的页码，此处做回调
+                console.log(current);
+            }
         },
         beforeDestroy () {
         }

@@ -19,8 +19,13 @@ import makeupman from '../page/makeupman.vue';
 
 const routes = [{
     path: '/',
-    name:'/',
-    component: index
+    name:'首页',
+    one:true,
+    redirect: '/index',
+    component: index,
+    children: [
+        { path: '/index', component: index, name: '主页' }
+    ]
 },{
     path : '/meal',
     name:'meal',
