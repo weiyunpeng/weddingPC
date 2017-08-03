@@ -28,7 +28,7 @@ app.use(function (req, res, next) {
 //路由
 routes(app)
 http.createServer(app).listen(app.get('port'), function () {
-    console.log('大豫新娘帮项目桩接口已启动，端口： ' + app.get('port'));
+    console.log('大豫新娘帮项目Stub接口已启动，端口： ' + app.get('port'));
 });
 
 

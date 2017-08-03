@@ -48,7 +48,7 @@
             </li>
         </ul>
     </div>
-    <com-paging :pageInfo="pageInfo" @change="pagechange"></com-paging>
+    <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
 </div>
 </div>
 </template>
@@ -79,11 +79,11 @@ import paging from "./../components/paging"
         data(){
             return {
                 pageInfo:{
-                    total:100,  // 记录总条数   默认空，如果小于pageNum则组件不显示   类型Number
-                    current:1,  // 当前页数，   默认为1                             类型Number
-                    pagenum:10, // 每页显示条数,默认10                              类型Number
-                    pagegroup:5,    // 分页条数     默认为5，需传入奇数                 类型Number
-                    skin:'#ff4e6b'  // 选中页码的颜色主题               类型String
+                    total:1000,  // 记录总条数
+                    current:1,  // 当前页数，
+                    pagenum:20, // 每页显示条数
+                    pagegroup:6,    // 分页器每次展示出的条数
+                    skin:'#ff4e6b'  // 选中页码的颜色主题
                 }
             }
         },
@@ -95,8 +95,18 @@ import paging from "./../components/paging"
             this.$store.dispatch('qryBusList', data)
         },
         methods: {
-            pagechange:function(current){     // 页码改变传入新的页码，此处做回调
-                console.log(current);
+            pagechange(current){   // 页码改变传入新的页码，此处做回调
+                // console.log(current);
+            },
+            skip(page){
+                // console.log(page)
+            }
+        },
+        watch:{
+            busPage(){
+                this.pageInfo.current = this.busPage.currentPage+1
+                this.pageInfo.totalCount = this.busPage.total
+                this.pageInfo.pagenum = this.busPage.pageSize
             }
         },
         beforeDestroy () {

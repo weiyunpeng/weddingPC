@@ -7,7 +7,7 @@ function run(Request, Response)
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
-       camaraman(Params, Request, Response);
+       cameraman(Params, Request, Response);
     }
 }
 /**
@@ -15,7 +15,7 @@ function run(Request, Response)
  * @param {Object} Request
  * @param {Object} Response
  */
-function camaraman(Params, Request, Response) {
+function cameraman(Params, Request, Response) {
     var fileName = 'man/data/camaraman.json';
     MAIN.responseStub(Response,fileName);
 }

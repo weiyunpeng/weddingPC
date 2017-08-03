@@ -4,7 +4,7 @@ function router_reg(app){
     //
     app.all('/store/:name', require('./index/index').index);
     app.all('/package/:name', require('./index/package').index);
-    app.all('/camaraman', require('./man/camaraman').index);
+    app.all('/cameraman', require('./man/cameraman').index);
     app.all('/makeup', require('./man/makeup').index);
 }
 

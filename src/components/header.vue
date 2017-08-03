@@ -54,7 +54,7 @@ export default {
         searchBtn(){
             this.$router.push({ name: '/'})
             let data = {
-                type:'bus'
+                page:1
             }
             this.$store.dispatch('busClear')
             this.$store.dispatch('qryBusList', data)
