@@ -1,9 +1,9 @@
 <template>
-    <div class="header">
+    <div class="header" :style="{background:'url('+skin+') left center no-repeat', borderBottom:skinBorder}">
         <div class="container">
             <div class="logo">
                 <router-link to="/">
-                    <img src="./../../static/images/logo.png" alt="大豫新娘帮">
+                    <img :src="logo" alt="大豫新娘帮">
                 </router-link>
             </div>
             <div class="breadcrumb">
@@ -32,6 +32,9 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
+            skin:'/static/images/bg.jpg',
+            skinBorder:'2px solid #ff4e6b',
+            logo:'/static/images/logo.png',
             busName:this.$route.query.busName,
             mealName:this.$route.query.mealName,
             thisMealName:this.$route.query.thisMealName,
