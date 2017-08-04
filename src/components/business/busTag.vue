@@ -5,7 +5,7 @@
                 <strong>{{tag.title}} :</strong>
                 <ul>
                     <li v-for="(tagCon,index) in tag.con" :key="index">
-                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index,tagCon.id,tag.name)">{{tagCon.name}}</a>
+                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index)">{{tagCon.name}}</a>
                     </li>
                 </ul>
             </li>
@@ -34,7 +34,7 @@ export default {
         this.$store.dispatch('qrybusTag')
     },
     methods: {
-        tagBtn(number, index,id,name) {
+        tagBtn(number, index) {
             const changeData = {
                 index:index,
                 number:number

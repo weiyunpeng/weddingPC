@@ -5,7 +5,7 @@
                 <strong>{{tag.title}} :</strong>
                 <ul>
                     <li v-for="(tagCon,index) in tag.con" :key="index">
-                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index,tagCon.id,tag.name)">{{tagCon.name}}</a>
+                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index)">{{tagCon.name}}</a>
                     </li>
                 </ul>
             </li>
@@ -26,33 +26,25 @@ export default {
             mealTag: 'mealTag'
         }),
         ...mapActions({
-            qryMealTag: 'qryMealTag',
             mealTagClear:'mealTagClear',
             mealTagChange:'mealTagChange'
         })
     },
     mounted() {
-        let data = {
-            type: 'meal'
-        }
-        // this.$store.dispatch('mealTagClear')
-        this.$store.dispatch('qryMealTag', data)
+        this.$store.dispatch('qryMealTag')
     },
     methods: {
         tagBtn(number, index,id,name) {
-            let changeData = {
+            const changeData = {
                 index:index,
                 number:number
             }
             this.$store.dispatch('mealTagChange' , changeData)
-            let ajaxdata = {}
-            ajaxdata[name] = id
-            this.$store.dispatch('qryMealList', ajaxdata)
-        }
-    },
-    watch:{
-        mealTag:function(){
-            console.log(this.mealTag)
+            const ajaxdata = {}
+            for(var i = 0; i<this.mealTag.length;i++){
+                ajaxdata[this.mealTag[i].name] = this.mealTag[i].selected
+            }
+            this.$emit('ajaxTag',ajaxdata);
         }
     }
 }
