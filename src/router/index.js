@@ -25,35 +25,35 @@ const routes = [{
     redirect: '/index',
     component: index,
     children: [
-        { path: '/index', component: index, name: '主页' }
+        { path: '/index', component: index, name: 'index' }
     ]
 },{
     path : '/meal',
-    name:'套餐列表首页',
+    name:'meal',
     component : meal
 },{
     path : '/busDeatils',
-    name:'商家详情页',
+    name:'busDeatils',
     component : busDeatils
 },{
     path : '/mealDeatils',
-    name:'套餐详情页',
+    name:'mealDeatils',
     component : mealDeatils
 },{
     path : '/mealList',
-    name:'商家的套餐列表',
+    name:'mealList',
     component : mealList
 },{
     path : '/busSample',
-    name:'商家的官方案例',
+    name:'busSample',
     component : busSample
 },{
     path : '/cameraman',
-    name:'摄影师',
+    name:'cameraman',
     component : cameraman
 },{
     path : '/makeupman',
-    name:'化妆师',
+    name:'makeupman',
     component : makeupman
 }];
 

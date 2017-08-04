@@ -83,8 +83,9 @@
         <div class="case" v-show="0 >= selected">
             <img class="tit" :src="caseInfo.nav_img"> 
             <div class="more clearfix">
-                <!--应该是<router-link>吧，先放着，等大佬回来  -->
-                <a href="javascript:void(0)" class="more_a fr">更多 ></a>
+                <router-link :to="{ name: 'busSample', query: {busName:mediaInfo.name, busSample: '官方案例' ,id:id}}" class="more_a fr" target="_blank">
+                    更多 >
+                </router-link>
             </div>
             <div class="list">
                 <ul>
@@ -107,11 +108,9 @@
         <div class="package" v-show="1 >= selected">
             <img class="tit" :src="packageInfo.nav_img"> 
             <div class="more clearfix">
-                <!--应该是<router-link>吧，先放着，等大佬回来  -->
                 <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name, thisMealName: '套餐列表'}}" class="more_a fr" target="_blank">
                     更多 >
                 </router-link>
-                <!-- <a href="javascript:void(0)" class="more_a fr">更多 ></a> -->
             </div>
             <div class="list">
                 <ul>
