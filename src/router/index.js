@@ -15,6 +15,7 @@ import mealDeatils from '../page/mealDetails.vue';
 import mealList from '../page/mealList.vue';
 import cameraman from '../page/cameraman.vue';
 import makeupman from '../page/makeupman.vue';
+import busSample from '../page/busSample.vue';
 
 
 const routes = [{
@@ -28,27 +29,31 @@ const routes = [{
     ]
 },{
     path : '/meal',
-    name:'meal',
+    name:'套餐列表首页',
     component : meal
 },{
     path : '/busDeatils',
-    name:'busDeatils',
+    name:'商家详情页',
     component : busDeatils
 },{
     path : '/mealDeatils',
-    name:'mealDeatils',
+    name:'套餐详情页',
     component : mealDeatils
 },{
     path : '/mealList',
-    name:'mealList',
+    name:'商家的套餐列表',
     component : mealList
 },{
+    path : '/busSample',
+    name:'商家的官方案例',
+    component : busSample
+},{
     path : '/cameraman',
-    name:'cameraman',
+    name:'摄影师',
     component : cameraman
 },{
     path : '/makeupman',
-    name:'makeupman',
+    name:'化妆师',
     component : makeupman
 }];
 

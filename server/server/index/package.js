@@ -15,7 +15,7 @@ function run(Request, Response)
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
-       Response.end('this is 桩接口')
+       Response.end('this is stub')
     }
 }
 /**

@@ -1,17 +1,22 @@
 export const SHOW_MSG = 'SHOW_MSG'
 export const HIDE_MSG = 'HIDE_MSG'
-
 export const SHOW_MODAL = 'SHOW_MODAL'
 export const HIDE_MODAL = 'HIDE_MODAL'
 
+
 export const BUS_LIST = 'BUS_LIST'
-export const BUS_INFO = 'BUS_INFO'
-export const BUS_DETAILS_LIST = 'BUS_DETAILS_LIST'
 export const BUS_CLEAR = 'BUS_CLEAR'
 export const BUS_TAG_LIST = 'BUS_TAG_LIST'
 export const BUS_TAG_CLEAR = 'BUS_TAG_CLEAR'
 export const BUS_TAG_CHANGE = 'BUS_TAG_CHANGE'
-export const BUS_KEYWORD = 'BUS_KEYWORD'
+export const BUS_INFO = 'BUS_INFO'
+export const BUS_DETAILS_LIST = 'BUS_DETAILS_LIST'
+export const BUS_SAMPLE = 'BUS_SAMPLE'
+export const BUS_SAMPLE_CLEAR = 'BUS_SAMPLE_CLEAR'
+export const BUS_SAMPLE_TAG = 'BUS_SAMPLE_TAG'
+export const BUS_SAMPLE_TAG_CLEAR = 'BUS_SAMPLE_TAG_CLEAR'
+export const BUS_SAMPLE_TAG_CHANGE = 'BUS_SAMPLE_TAG_CHANGE'
+
 
 export const MEAL_LIST = 'MEAL_LIST'
 export const MEAL_INFO = 'MEAL_INFO'
@@ -22,6 +27,9 @@ export const MEAL_TAG_CLEAR = 'MEAL_TAG_CLEAR'
 export const MEAL_TAG_CHANGE = 'MEAL_TAG_CHANGE'
 export const THIS_MEAL_LIST = 'THIS_MEAL_LIST'
 export const THIS_MEAL_PAGE = 'THIS_MEAL_PAGE'
+export const THIS_MEAL_TAG = 'THIS_MEAL_TAG'
+export const THIS_MEAL_TAG_CLEAR = 'THIS_MEAL_TAG_CLEAR'
+export const THIS_MEAL_TAG_CHANGE = 'THIS_MEAL_TAG_CHANGE'
 
 export const CAMARAMAN_DETAILS = 'CAMARAMAN_DETAILS'
 export const MAKEUP_DETAILS = 'MAKEUP_DETAILS'

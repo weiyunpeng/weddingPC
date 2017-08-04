@@ -15,11 +15,11 @@ function config() {
 }
 
 export default {
-    //查询商家列表首页
+    //查询商家首页列表
     qryBusList:function (data) {
        return axios.post('/store/list', qs.stringify(data), config())
     },
-    //搜索店铺列表
+    //商家首页分类
     qryBusTag:function(){
        return axios.get('/store/index', config())
     },
@@ -27,15 +27,21 @@ export default {
     qryBusDetails:function(data){
         return axios.post('/store/detail', qs.stringify(data), config())
     },
-    //某店铺的套餐列表
-    qryThisMealList:function(data){
-        return axios.post('/package/storelist', qs.stringify(data), config())
+    //查询商家的官方案例
+    qryBusSample:function(data){
+        return axios.post('/store/sample', qs.stringify(data), config())
     },
-    //查询套餐列表首页
+    //商家官方案例的分类
+    qryBusSampleTag:function(data){
+        return axios.post('/store/sampletag', qs.stringify(data), config())
+    },
+    
+
+    //查询套餐首页列表
     qryMealList:function (data) {
         return axios.post('/package/list', qs.stringify(data), config())
     },
-    //搜索套餐列表
+    //套餐首页分类
     qryMealTag:function(data){
         return axios.get('/package/index', config())
     },
@@ -43,6 +49,16 @@ export default {
     qryMealDetails:function(data){
         return axios.post('/package/detail', qs.stringify(data), config())
     },
+    //查询商家的套餐列表
+    qryThisMealList:function(data){
+        return axios.post('/package/storelist', qs.stringify(data), config())
+    },
+    //查询商家的套餐列表的分类
+    qryThisMealTag:function(data){
+        return axios.post('/package/storetag', qs.stringify(data), config())
+    },
+
+
     //摄影师详情
     qryCamaramanDetails:function(data){
         return axios.post('/cameraman', qs.stringify(data), config())

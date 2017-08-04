@@ -9,11 +9,13 @@ function run(Request, Response)
             //商家筛选条件
             'index':index,
             //商家详情
-            'detail':detail
+            'detail':detail,
+            //商家官方案例列表
+            'sample':sample
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
-       Response.end('this is 桩接口')
+       Response.end('this is stub')
     }
 }
 /**
@@ -43,6 +45,16 @@ function index(Params, Request, Response) {
  */
 function detail(Params, Request, Response) {
     var fileName = 'index/busData/busDetails.json';
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 商家官方案例列表
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function sample(Params, Request, Response) {
+    var fileName = 'index/busData/sample.json';
     MAIN.responseStub(Response,fileName);
 }
 

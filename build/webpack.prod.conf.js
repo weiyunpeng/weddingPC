@@ -47,7 +47,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: 'src/index.html',  // 生成的html 入口文件
+      template: 'index.html',  // 生成的html 入口文件
       inject: true,
       minify: {
         removeComments: true,

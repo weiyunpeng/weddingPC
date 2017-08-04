@@ -7,6 +7,10 @@ export const busPage = state => state.busList.page;
 export const busTag = state => state.busTag.list;
 export const busInfo = state => state.busDetails.busInfo;
 export const busDetList = state => state.busDetails.list;
+export const busSampleList = state => state.busSample.list;
+export const busSampleStore = state => state.busSample.store;
+export const busSamplePage = state => state.busSample.page;
+export const busSampleTag = state => state.busSampleTag.list;
 
 
 export const mealList = state => state.mealList.list;
@@ -16,6 +20,7 @@ export const mealInfo = state => state.mealDetails.info;
 export const mealDetails = state => state.mealDetails.detail;
 export const thisMealList = state => state.thisMealList.list;
 export const thisMealStore = state => state.thisMealList.store;
+export const thisMealTag = state => state.thisMealTag.list;
 
 export const camaraman = state => state.camaraman.camaraman;
 export const camaramanBusinfo = state => state.camaraman.bus_info;
