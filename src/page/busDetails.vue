@@ -142,20 +142,22 @@
             <div class="list">
                  <swiper :options="photographerOption">
                     <swiper-slide class="mr25" v-for="(item,index) in photographer.details" v-bind:key="index">
-                        <img v-lazy="item.src" width="220" height="220">
-                        <div class="top clearfix">
-                            <div class="name fl">{{item.name}}</div>
-                            <div class="years fr">
-                                <ul>
-                                    <li>
-                                        {{item.years}}年
-                                    </li>
-                                </ul>
+                        <router-link :to="{ name: 'cameraman', query: {busName:mediaInfo.name,cameraman: '摄影师',id:item.id}}" target="_blank">
+                            <img v-lazy="item.src" width="220" height="220">
+                            <div class="top clearfix">
+                                <div class="name fl">{{item.name}}</div>
+                                <div class="years fr">
+                                    <ul>
+                                        <li>
+                                            {{item.years}}年
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="special">
-                            拍摄特点：{{item.special}}
-                        </div>
+                            <div class="special">
+                                拍摄特点：{{item.special}}
+                            </div>
+                        </router-link>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -171,6 +173,7 @@
             <div class="list">
                 <swiper :options="dresserOption">
                     <swiper-slide class="mr25" v-for="(item,index) in dresser.details" v-bind:key="index">
+                        <router-link :to="{ name: 'makeupman', query: {busName:mediaInfo.name,makeupman: '化妆师',id:item.id}}" target="_blank">
                         <img v-lazy="item.src" width="220" height="220">
                         <div class="top clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -185,6 +188,7 @@
                         <div class="special">
                             拍摄特点：{{item.special}}
                         </div>
+                        </router-link>
                     </swiper-slide>
                 </swiper>
             </div>

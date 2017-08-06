@@ -23,6 +23,12 @@
                     <li v-show="busSample">
                         ><router-link :to="{ name: 'busSample', query: {busSample:busSample}}" class="nav_a" active-class="nav_active">{{busSample}}</router-link>
                     </li>
+                    <li v-show="cameraman">
+                        ><router-link :to="{ name: 'cameraman', query: {cameraman:cameraman}}" class="nav_a" active-class="nav_active">{{cameraman}}</router-link>
+                    </li>
+                    <li v-show="makeupman">
+                        ><router-link :to="{ name: 'makeupman', query: {makeupman:makeupman}}" class="nav_a" active-class="nav_active">{{makeupman}}</router-link>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -42,6 +48,8 @@ export default {
             mealName:this.$route.query.mealName,
             thisMealName:this.$route.query.thisMealName,
             busSample:this.$route.query.busSample,
+            cameraman:this.$route.query.cameraman,
+            makeupman:this.$route.query.makeupman,
         }
     },
     props:{

@@ -81,6 +81,7 @@ import storeInfo from './../components/storeInfo'
         },
         data(){
             return {
+                id:this.$route.query.id,
                 selected:0,
                 infoDetails: []
             }
@@ -97,7 +98,7 @@ import storeInfo from './../components/storeInfo'
         },
         mounted(){
             let data = {
-                id:'1'
+                id:this.id
             }
             this.$store.dispatch('qryCamaramanDetails', data)
         },

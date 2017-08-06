@@ -186,36 +186,42 @@
                 "nav_img": "/static/images/photographer.png",
                 "details": [
                     {
+                        "id":"21231",
                         "src": "/static/images/13.png",
                         "name": "皮皮虾",
                         "years": 2,
                         "special": "欧美、小清新、韩式"
                     },
                     {
+                        "id":"21231s",
                         "src": "/static/images/13.png",
                         "name": "pdd",
                         "years": 5,
                         "special": "欧美、小清新"
                     },
                     {
+                        "id":"212as31",
                         "src": "/static/images/13.png",
                         "name": "骚猪",
                         "years": 4,
                         "special": "欧美"
                     },
                     {
+                        "id":"21we231",
                         "src": "/static/images/13.png",
                         "name": "骚猪",
                         "years": 4,
                         "special": "欧美"
                     },
                     {
+                        "id":"2qs1231",
                         "src": "/static/images/13.png",
                         "name": "骚猪",
                         "years": 4,
                         "special": "欧美"
                     },
                     {
+                        "id":"2qweq1231",
                         "src": "/static/images/12.png",
                         "name": "骚猪",
                         "years": 4,
@@ -228,48 +234,56 @@
                 "nav_img": "/static/images/dresser.png",
                 "details": [
                     {
+                        "id":"21231efd",
                         "src": "/static/images/13.png",
                         "name": "皮皮虾",
                         "years": 2,
                         "special": "欧美、小清新、韩式"
                     },
                     {
+                        "id":"212qwex31",
                         "src": "/static/images/13.png",
                         "name": "pdd",
                         "years": 5,
                         "special": "欧美、小清新"
                     },
                     {
+                        "id":"2qweed1231",
                         "src": "/static/images/13.png",
                         "name": "骚猪",
                         "years": 4,
                         "special": "欧美"
                     },
                     {
+                        "id":"assd21231",
                         "src": "/static/images/12.png",
                         "name": "骚猪",
                         "years": 4,
                         "special": "欧美"
                     },
                     {
+                        "id":"2sdvv1231",
                         "src": "/static/images/13.png",
                         "name": "骚猪",
                         "years": 4,
                         "special": "欧美"
                     },
                     {
+                        "id":"2asxx1231",
                         "src": "/static/images/13.png",
                         "name": "骚猪",
                         "years": 4,
                         "special": "欧美"
                     },
                     {
+                        "id":"21erfd231",
                         "src": "/static/images/14.png",
                         "name": "骚猪",
                         "years": 4,
                         "special": "欧美"
                     },
                     {
+                        "id":"212jkh31",
                         "src": "/static/images/15.png",
                         "name": "骚猪",
                         "years": 4,
