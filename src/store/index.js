@@ -17,6 +17,8 @@ import makeupman from './modules/makeupman'
 import busSample from './modules/busSample'
 import busSampleTag from './modules/busSampleTag'
 import thisMealTag from './modules/thisMealTag'
+import index from './modules/index'
+import viewPhoto from './modules/viewPhoto'
 
 Vue.use(Vuex);
 
@@ -39,7 +41,9 @@ export default new Vuex.Store({
       makeupman,
       busSample,
       busSampleTag,
-      thisMealTag
+      thisMealTag,
+      index,
+      viewPhoto
   },
   strict: debug
 })

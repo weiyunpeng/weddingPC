@@ -1,0 +1,85 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "photo": [
+            {
+                "id":"111",
+                "img": "http://localhost:1300/images/1.jpg",
+                "fav_num": 121,
+                "tag": [
+                    "古风"
+                ]
+            },
+            {
+                "id":"222",
+                "img": "http://localhost:1300/images/2.jpg",
+                "fav_num": 212,
+                "tag": [
+                    "古风"
+                ]
+            },
+            {
+                "id":"333",
+                "img": "http://localhost:1300/images/3.jpg",
+                "fav_num": 321,
+                "tag": [
+                    "古风"
+                ]
+            },
+            {
+                "id":"444",
+                "img": "http://localhost:1300/images/4.jpg",
+                "fav_num": 231,
+                "tag": [
+                    "古风"
+                ]
+            },
+            {
+                "id":"555",
+                "img": "http://localhost:1300/images/5.jpg",
+                "fav_num": 1112,
+                "tag": [
+                    "古风"
+                ]
+            },
+            {
+                "id":"666",
+                "img": "http://localhost:1300/images/6.jpg",
+                "fav_num": 22221,
+                "tag": [
+                    "古风"
+                ]
+            },
+            {
+                "id":"777",
+                "img": "http://localhost:1300/images/7.jpg",
+                "fav_num": 321321,
+                "tag": [
+                    "古风"
+                ]
+            },
+            {
+                "id":"888",
+                "img": "http://localhost:1300/images/8.jpg",
+                "fav_num": 43321,
+                "tag": [
+                    "古风"
+                ]
+            }
+        ],
+        "banner": "/static/images/unlogin_bg.jpg",
+        "logo": "/static/images/logo-3.png",
+        "nav": [
+            {
+                "img": "/static/images/demo_01.jpg"
+            },
+            {
+                "img": "/static/images/demo_02.jpg"
+            },
+            {
+                "img": "/static/images/demo_03.jpg"
+            }
+        ]
+    }
+}

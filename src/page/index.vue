@@ -1,137 +1,194 @@
 <template>
-<div>
-<com-header></com-header>
-<div class="container">
-    <com-tag @ajaxTag="ajaxTag"></com-tag>
-    <com-filter @ajaxfilter="ajaxfilter" @ajaxPrice="ajaxPrice"></com-filter>
     <div>
-        <ul class="list">
-            <li class="list_con" v-for="item in busList" :key="item.business.id">
-                <div class="shop">
-                    <router-link :to="{ name: 'busDeatils', query: {id:item.business.id,busName:item.business.name}}" target="_blank">
-                        <img class="shop_logo" v-lazy="item.business.logo">
-                        <ul class="shop_details">
-                            <li>
-                                <span class="meal_name">{{item.business.name}}</span>
-                                <i v-show="item.business.isYes" class="icon icon-yes"></i>
-                                <i v-show="item.business.isVIP" class="icon icon-vip"></i>
-                            </li>
-                            <li class="price">
-                                <span>起拍价</span>
-                                <label>¥{{item.business.price}}</label>
-                            </li>
-                            <li style="height:55px;">
-                                <ul class="meal_tag">
-                                    <li v-for="tag in item.business.tag" :key="tag">{{tag}}</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <i class="icon logo_position"></i>
-                                <span class="position">{{item.business.position}}</span>
-                            </li>
-                        </ul>
-                    </router-link>
-                </div>
-                <div class="photo">
-                    <ul>
-                        <li v-for="meal in item.packages" :key="meal.id">
-                            <router-link :to="{ name: 'mealDeatils',query: {busName:item.business.name, mealName: meal.name}}" target="_blank">
-                            <img class="picture" v-lazy="meal.first_img">
-                            <div class="pho_details">
-                                <span>{{meal.name}}</span>
-                                <label>¥{{meal.price}}</label>
-                            </div>
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+        <div class="i-header" :style="{background:'url('+banner+') left center no-repeat', borderBottom:skinBorder}">
+            <img class="logo zoomIn" v-lazy="logo">
+            <div class="header-con">
+                <a href="http://dev.hunjia.qqdayu.com/login"><img class="user" src="/static/images/user_icon.png"></a>
+                <ul class="zoomIn">
+                    <li class="flipInY">
+                        <router-link :to="{ name: '', query: {}}" target="_blank">
+                            <img v-lazy="test" width="390" height="390">
+                        </router-link>
+                    </li>
+                    <li class="flipInY">
+                        <img v-lazy="test" width="390" height="390">
+                    </li>
+                    <li class="flipInY">
+                        <img v-lazy="test" width="390" height="390">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hot-wedding">
+                <img class="tit" src="/static/images/hot_hs_head.png">
+                <router-link :to="{ name: '', query: {}}" class="more_a fr" target="_blank">
+                    查看更多>
+                </router-link>
+            </div>
+            <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getPhotoList.list">
+                <waterfall-slot v-for="(item, index) in getPhotoList.list" :width="291" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
+                    <div class="panel photo_box hover_sh">
+                        <!-- <div class="photo_box_top">
+                                        <span class="photo_like" @click="photoLikeBtn(item._id,index)"><i class="iconfont icon-like"></i> {{item.likeCount}}</span>
+                                    </div> -->
+                        <img :src="item.img" @click="showPhotoModal(item, index)">
+                        <div class="photo_info">
+                            <span class="photo_like" @click="photoLikeBtn(item.id,index)">
+                                <i class="iconfont icon-like"></i> {{item.fav_num}}
+                            </span>
+                            <ul>
+                                <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
+                            </ul>
+                        </div>
+    
+                    </div>
+                </waterfall-slot>
+            </waterfall>
+        </div>
+        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
+        </com-photoModal>
     </div>
-    <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
-</div>
-</div>
 </template>
 
 <script>
+import { waterfall, waterfallSlot } from 'vue-waterfall'
+import photoModal from './../components/photoModal'
 import { mapGetters, mapActions } from 'vuex'
-import header from './../components/header'
-import tag from "./../components/business/busTag"
-import busFilter from "./../components/business/busFilter"
-import paging from "./../components/paging"
-    export default {
-        components: {
-            comHeader: header,
-            comTag: tag,
-            comFilter: busFilter,
-            comPaging: paging,
-        },
-        computed: {
-            ...mapGetters({
-                busList:'busList',
-                busPage:'busPage'
-            }),
-            ...mapActions({
-                qryBusList:'qryBusList',
-                busClear:'busClear',
-            })
-        },
-        data(){
-            return {
-                ajaxdata:{
-                    page:1,
-                    method:0,
-                    priceToSort:0,
-                },
-                pageInfo:{
-                    total:0,  // 记录总条数
-                    current:1,  // 当前页数，
-                    pagenum:20, // 每页显示条数
-                    pagegroup:6,    // 分页器每次展示出的条数
-                    skin:'#ff4e6b'  // 选中页码的颜色主题
-                }
-            }
-        },
-        mounted(){
-            this.$store.dispatch('qryBusList', this.ajaxdata)
-        },
-        methods: {
-            pagechange(current){   // 页码改变传入新的页码，此处做回调
-                this.ajaxdata.page = current
-                this.$store.dispatch('qryBusList', this.ajaxdata)
-            },
-            skip(current){
-                this.ajaxdata.page = current
-                this.$store.dispatch('qryBusList', this.ajaxdata)
-            },
-            ajaxTag(data){
-                this.ajaxdata = this.objExtend(this.ajaxdata,data,false);
-                this.$store.dispatch('qryBusList', this.ajaxdata)
-            },
-            ajaxfilter(method,priceToSort){
-                this.ajaxdata.method = method;
-                this.ajaxdata.priceToSort = priceToSort;
-                this.$store.dispatch('qryBusList', this.ajaxdata)
-            },
-            ajaxPrice(minPrice,maxPrice){
-                this.ajaxdata.minPrice = minPrice
-                this.ajaxdata.maxPrice = maxPrice
-                this.$store.dispatch('qryBusList', this.ajaxdata)
-            }
-        },
-        watch:{
-            busPage(){
-                this.pageInfo.current = this.busPage.currentPage+1
-                this.pageInfo.total = this.busPage.totalCount
-                this.pageInfo.pagenum = this.busPage.pageSize
-            }
-        },
-        beforeDestroy () {
+export default {
+    components: {
+        'waterfall': waterfall,
+        'waterfallSlot': waterfallSlot,
+        'comPhotoModal': photoModal
+    },
+    computed: {
+        ...mapGetters({
+            getPhotoList: 'getPhotoList'
+        }),
+        ...mapActions({
+            qryIndex: 'qryIndex',
+            qryViewPhoto: 'qryViewPhoto'
+        })
+    },
+    data() {
+        return {
+            show: false,
+            photoModal: {},
+            index: null,
+            banner: '/static/images/unlogin_bg.jpg',
+            skinBorder: '20px solid #f2f2f2',
+            logo: '/static/images/logo-3.png',
+            test: '/static/images/demo_01.jpg'
         }
+    },
+    mounted() {
+        this.$store.dispatch('qryIndex')
+    },
+    methods: {
+        photoLikeBtn() {
+        },
+        showPhotoModal(item, index) {
+            this.photoModal = item;
+            this.index = index;
+            this.show = true;
+            const ajaxdata = {
+                id: this.photoModal.id
+            }
+            this.$store.dispatch('qryViewPhoto', ajaxdata)
+        }
+    },
+    watch: {
+    },
+    beforeDestroy() {
     }
+}
 </script>
 
 
 <style rel="stylesheet/scss" lang="scss">
-@import "./../assets/css/list.scss";
+.i-header {
+    width: 100%;
+    height: 715px;
+    position: relative;
+    top: 0;
+    z-index: 3;
+    background-size: 100%;
+    text-align: center;
+    .logo {
+        position: relative;
+        top: 80px;
+    }
+    .header-con {
+        width: 1200px;
+        height: auto;
+        position: relative;
+        margin: 0 auto;
+        .user {
+            position: absolute;
+            right: 0;
+            top: 100px;
+        }
+        ul {
+            width: 100%;
+            position: relative;
+            top: 163px;
+            li {
+                display: inline-block;
+                margin-right: 8px;
+            }
+            li:last-child {
+                margin-right: 0;
+            }
+            li:hover {
+                -webkit-box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
+                -moz-box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
+                box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
+                -webkit-transition: all .5s ease;
+                transition: all .5s ease;
+            }
+        }
+    }
+}
+
+.hot-wedding {
+    width: 1200px;
+    text-align: center;
+    .tit {
+        height: 42px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    .more_a {
+        color: #ff516d;
+        font-size: 14px;
+        margin-right: 30px;
+        margin-top: 23px;
+    }
+}
+
+.photo_info {
+    position: relative;
+    height: 32px;
+    line-height: 32px;
+    color: #b3b3b3;
+    font-size: 14px;
+    .photo_like {
+        position: relative;
+        left: 12px;
+    }
+    ul{
+        position: relative;
+        right: 8px;
+        float: right;
+    }
+}
+
+@mixin animation($animation) {
+    animation: $animation;
+    -webkit-animation: $animation;
+}
+
+.flipInY {
+    @include animation(1s flipInY 1);
+}
 </style>

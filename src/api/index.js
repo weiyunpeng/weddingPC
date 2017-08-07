@@ -4,7 +4,7 @@ const qs = require('querystring');
 axios.defaults.timeout = 50000;
 
 const ROOT = (process.env.NODE_ENV === 'production')
-    ? 'dev.hunjia.qqdayu.com'
+    ? 'http://dev.hunjia.qqdayu.com'
     :'http://localhost:1300';
 //http://10.97.204.142:81
 function config() {
@@ -66,5 +66,14 @@ export default {
     //化妆师详情
     qryMakeupDetails:function(data){
         return axios.post('/makeup', qs.stringify(data), config())
+    },
+
+    //首页未登录状态
+    qryIndex:function(){
+        return axios.get('/site/index', config())
+    },
+    //查看图组详情
+    qryViewPhoto:function(data){
+        return axios.post('/site/view_photo',qs.stringify(data), config())
     },
 }

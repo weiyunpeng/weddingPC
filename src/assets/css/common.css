@@ -1683,3 +1683,40 @@ fieldset[disabled] .btn-danger.focus {
     cursor: pointer;
 }
 /*search end*/
+
+/*photo*/
+.photo_move{
+    transition: all .5s ease;
+    -webkit-transition: all .5s ease;
+}
+.photo_box{
+    position: relative;
+    padding: 7px;
+    margin-right: 15px;
+    cursor: zoom-in;
+}
+.photo_box:hover .photo_box_top{
+    opacity: 1;
+}
+.photo_box_top{
+    opacity: 0;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    position: absolute;
+    background-color: #fff;
+    top: 7px;
+    right: 7px;
+    padding: 5px 10px;
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
+}
+.photo_like{
+    cursor: pointer;
+}
+.photo_like i{
+    /* color: #ff5b7e; */
+}
+.photo_box > img{
+    width: 100%
+}
+/*photo end*/

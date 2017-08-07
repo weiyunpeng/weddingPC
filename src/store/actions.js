@@ -238,3 +238,69 @@ export const qryMakeupDetails = ({ commit },data) => {
         });
 };
 //----------------------------------------------------------------------------------------------
+
+//----------------------------------------首页未登录状态------------------------------------------------------
+export const qryIndex = ({ commit },data) => {
+    api.qryIndex(data).then(function (response) {
+        let photoCount = 0;
+        for(let i=0;i < response.data.data.photo.length;i++){
+            const tempImage = new Image();
+            tempImage.onload = function() {
+                photoCount++;
+                response.data.data.photo[i].height = tempImage.height + 30;
+                if( photoCount == response.data.data.photo.length) {
+                    commit(types.PHOTO_LIST, {
+                        list: response.data.data.photo,
+                    })
+                }
+            };
+            tempImage.onerror = function(){
+                photoCount++;
+                response.data.data.photo[i].height = 0;
+                if( photoCount == response.data.data.photo.length) {
+                    commit(types.PHOTO_LIST, {
+                        list: response.data.data.photo,
+                    })
+                }
+            };
+            tempImage.src = response.data.data.photo[i].img;
+        }
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------查看图组详情------------------------------------------------------
+export const qryViewPhoto = ({ commit },data) => {
+    api.qryViewPhoto(data).then(function (response) {
+        let photoCount = 0;
+        for(let i=0;i < response.data.data.list.length;i++){
+            const tempImage = new Image();
+            tempImage.onload = function() {
+                photoCount++;
+                response.data.data.list[i].height = tempImage.height /2 + 15;
+                if( photoCount == response.data.data.list.length) {
+                    commit(types.VIEW_PHOTO, {
+                        list: response.data.data.list,
+                    })
+                }
+            };
+            tempImage.onerror = function(){
+                photoCount++;
+                response.data.data.list[i].height = 0;
+                if( photoCount == response.data.data.list.length) {
+                    commit(types.VIEW_PHOTO, {
+                        list: response.data.data.list,
+                    })
+                }
+            };
+            tempImage.src = response.data.data.list[i].img;
+        }
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------

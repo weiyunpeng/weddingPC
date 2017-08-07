@@ -8,11 +8,12 @@ import BaiduMap from 'vue-baidu-map'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 import './assets/css/common.css'
+import './assets/css/animate.css'
 import './assets/css/iconfont.css'
 
 Vue.use(VueLazyload, {　　 
     // 设置默认显示的图片
-  loading: require('./../static/images/logo.png')
+  loading: require('./../static/images/logo-3.png')
 })
 
 Vue.use(BaiduMap, {

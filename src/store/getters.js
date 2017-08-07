@@ -29,3 +29,6 @@ export const camaramanPackages = state => state.camaraman.packages;
 export const makeupman = state => state.makeupman.makeup;
 export const makeupmanBusinfo = state => state.makeupman.bus_info;
 export const makeupmanPackages = state => state.makeupman.packages;
+
+export const getPhotoList = state => state.index;
+export const getViewPhoto = state => state.viewPhoto.list;
