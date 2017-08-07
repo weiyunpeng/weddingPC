@@ -25,9 +25,9 @@
     
                 <div class="photo_fr fr">
                     <p class="pg_name">TA的套系</p>
-                    <waterfall :line-gap="150" :min-line-gap="10" :max-line-gap="150" :single-max-width="10" :watch="getViewPhoto">
+                    <waterfall :line-gap="160" :min-line-gap="10" :max-line-gap="160" :single-max-width="10" :watch="getViewPhoto">
                         <waterfall-slot v-for="(item, index) in getViewPhoto" :width="150" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
-                            <img :src="item.img">
+                            <img :src="item.img" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
                         </waterfall-slot>
                     </waterfall>
                 </div>
@@ -50,6 +50,7 @@ export default {
     },
     data() {
         return {
+            selected:0,
             loading: false,
             swiperOption: {
                 notNextTick: true,
@@ -97,6 +98,10 @@ export default {
         close() {
             this.loading = false;
             this.$emit('input', false);
+        },
+        changeSwiper(item,index){
+            this.selected = index
+            this.swiper.slideTo(index, 1000, false)
         },
         photoLikeBtn(pid, index) {
             this.$store.dispatch('photoLike', {
@@ -179,7 +184,7 @@ export default {
 }
 
 .photo_fr {
-    width: 300px;
+    width: 320px;
     height: 500px;
     overflow-x: hidden;
 }
@@ -207,5 +212,16 @@ export default {
     color: #999999;
     font-size: 14px;
     line-height: 28px;
+}
+.water_img{
+    padding-right:10px;
+    ilter:alpha(Opacity=80);
+    -moz-opacity:0.5;
+    opacity: 0.5;
+}
+.cur{
+    ilter:alpha(Opacity=100);
+    -moz-opacity:1;
+    opacity: 1;
 }
 </style>
