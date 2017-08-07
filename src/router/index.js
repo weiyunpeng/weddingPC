@@ -20,7 +20,7 @@ import busSample from '../page/busSample.vue';
 
 const routes = [{
     path: '/',
-    name:'首页',
+    name:'/',
     one:true,
     redirect: '/index',
     component: index,
