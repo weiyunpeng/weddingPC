@@ -38,7 +38,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from './../components/header'
+import header from './../components/user/userHead'
 import tag from "./../components/meal/mealTag"
 import mealFilter from "./../components/meal/mealFilter"
 import paging from "./../components/paging"

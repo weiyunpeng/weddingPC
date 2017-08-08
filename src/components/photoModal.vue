@@ -61,9 +61,7 @@ export default {
                 observeParents: true,
                 prevButton: '.swiper-button-prev',
                 nextButton: '.swiper-button-next',
-                onTransitionStart(swiper) {
-                    console.log(swiper)
-                }
+                onTransitionStart(swiper) {}
             },
         }
     },
@@ -91,7 +89,6 @@ export default {
         }
     },
     mounted() {
-        console.log("每次切换都会触发我");
         this.swiper.slideTo(3, 1000, false)
     },
     methods: {
@@ -215,12 +212,12 @@ export default {
 }
 .water_img{
     padding-right:10px;
-    ilter:alpha(Opacity=80);
+    filter:alpha(Opacity=80);
     -moz-opacity:0.5;
     opacity: 0.5;
 }
 .cur{
-    ilter:alpha(Opacity=100);
+    filter:alpha(Opacity=100);
     -moz-opacity:1;
     opacity: 1;
 }

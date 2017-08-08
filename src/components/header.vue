@@ -1,5 +1,5 @@
 <template>
-    <div class="header" :style="{background:'url('+skin+') left center no-repeat', borderBottom:skinBorder}">
+    <div class="header" :style="{background:skin, borderBottom:skinBorder}">
         <div class="container">
             <div class="logo">
                 <router-link to="/">
@@ -9,7 +9,7 @@
             <div class="nav clearfix">
                 <ul>
                     <li>
-                        <router-link to="/index" class="nav_a" active-class="nav_active" exact>查看商家</router-link>
+                        <router-link to="/business" class="nav_a" active-class="nav_active" exact>查看商家</router-link>
                     </li>
                     <li>
                         <router-link to="/meal" class="nav_a" active-class="nav_active">查看套餐</router-link>
@@ -34,9 +34,9 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
-            skin:'/static/images/bg.jpg',
-            skinBorder:'2px solid #ff4e6b',
-            logo:'/static/images/logo.png',
+            skin:'#fff',
+            skinBorder:'2px solid #e4e4e4',
+            logo:'/static/images/logo-2.png',
             keyword:'皮皮虾，我们走'
         }
     },

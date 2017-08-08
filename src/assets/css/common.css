@@ -15,7 +15,7 @@ body {
     font-family: Microsoft Yahei , Arial;
     font-size: 14px;
     line-height: 1.42857;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
     color:#2c3e50;
 }
 ol,ul {
@@ -1720,3 +1720,22 @@ fieldset[disabled] .btn-danger.focus {
     width: 100%
 }
 /*photo end*/
+
+.icon_collage{
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    background: url(/static/images/icon_3.png) no-repeat;
+    background-position: 0px 2px;
+    width: 20px;
+    height: 20px;
+}
+.icon_logout{
+    position: absolute;
+    left: 8px;
+    top: 43px;
+    background: url(/static/images/icon_3.png) no-repeat;
+    background-position: -26px 0;
+    width: 20px;
+    height: 20px;
+}

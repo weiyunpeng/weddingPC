@@ -20,8 +20,8 @@ export default {
        return axios.post('/store/list', qs.stringify(data), config())
     },
     //商家首页分类
-    qryBusTag:function(){
-       return axios.get('/store/index', config())
+    qryBusTag:function(data){
+       return axios.post('/store/index', qs.stringify(data), config())
     },
     //商家详情
     qryBusDetails:function(data){
@@ -75,5 +75,10 @@ export default {
     //查看图组详情
     qryViewPhoto:function(data){
         return axios.post('/site/view_photo',qs.stringify(data), config())
+    },
+
+    //退出登录
+    loginOut:function(){
+        return axios.get('/user/get', config())
     },
 }

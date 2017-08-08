@@ -54,6 +54,8 @@ export default {
   transition: opacity .7s;
 }
 .back-to-top-fade-enter, .back-to-top-fade-leave-to{
+  filter:alpha(Opacity=0);
+  -moz-opacity:0;
   opacity: 0;
 }
 
@@ -68,6 +70,8 @@ export default {
 }
 
 .vue-back-to-top:hover{
+    filter:alpha(Opacity=50);
+    -moz-opacity:0.5;
     opacity: 0.5;
     -webkit-transition: all .6s ease;
     transition: all .6s ease;

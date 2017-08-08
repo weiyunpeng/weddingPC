@@ -16,6 +16,11 @@ import mealList from '../page/mealList.vue';
 import cameraman from '../page/cameraman.vue';
 import makeupman from '../page/makeupman.vue';
 import busSample from '../page/busSample.vue';
+import user from '../page/user.vue';
+import business from '../page/business.vue';
+import guide from '../page/guide.vue';
+import comment from '../page/comment.vue';
+import collect from '../page/collect.vue';
 
 
 const routes = [{
@@ -25,12 +30,23 @@ const routes = [{
     redirect: '/index',
     component: index,
     children: [
-        { path: '/index', component: index, name: 'index' }
+        { path: '/index', component: index, name: 'index', meta: { auth: false }}
     ]
+},{
+    path: '/',
+    name:'我的首页',
+    component: user,
+    children: [
+        { path: '/user', component: user, name: 'user', meta: { auth: false }},
+    ]
+},{
+    path : '/business',
+    name:'business',
+    component : business,
 },{
     path : '/meal',
     name:'meal',
-    component : meal
+    component : meal,
 },{
     path : '/busDeatils',
     name:'busDeatils',
@@ -55,12 +71,34 @@ const routes = [{
     path : '/makeupman',
     name:'makeupman',
     component : makeupman
+},{
+    path : '/guide',
+    name:'guide',
+    component : guide,
+},{
+    path : '/comment',
+    name:'comment',
+    component : comment,
+},{
+    path : '/collect',
+    name:'collect',
+    component : collect,
 }];
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     saveScrollPosition: true,
     routes
+});
+
+router.beforeEach(({meta, path}, from, next) => {
+    var { auth = true } = meta;
+    // if(auth){
+    //     window.location.href= 'http://dev.hunjia.qqdayu.com/login'
+    // }else{
+    //     return next({ path: '/user' })
+    // }
+    next()
 });
 
 export default router;

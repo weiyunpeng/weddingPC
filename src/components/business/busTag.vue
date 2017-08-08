@@ -5,7 +5,7 @@
                 <strong>{{tag.title}} :</strong>
                 <ul>
                     <li v-for="(tagCon,index) in tag.con" :key="index">
-                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index)">{{tagCon.name}}</a>
+                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index,tag.name,tagCon.id)">{{tagCon.name}}</a>
                     </li>
                 </ul>
             </li>
@@ -31,10 +31,15 @@ export default {
         })
     },
     mounted() {
+        const ajaxdata={
+            "tag1" :0,
+            "tag2":0,
+            "tag3":0
+        }
         this.$store.dispatch('qrybusTag')
     },
     methods: {
-        tagBtn(number, index) {
+        tagBtn(number, index,name,id) {
             const changeData = {
                 index:index,
                 number:number
@@ -42,7 +47,7 @@ export default {
             this.$store.dispatch('busTagChange' , changeData)
             const ajaxdata = {}
             for(var i = 0; i<this.busTag.length;i++){
-                ajaxdata[this.busTag[i].name] = this.busTag[i].selected
+                ajaxdata[this.busTag[i].name] = this.busTag[i].con[this.busTag[i].selected].id
             }
             this.$emit('ajaxTag',ajaxdata);
         }

@@ -3,7 +3,9 @@
         <div class="i-header" :style="{background:'url('+banner+') left center no-repeat', borderBottom:skinBorder}">
             <img class="logo zoomIn" v-lazy="logo">
             <div class="header-con">
-                <a href="http://dev.hunjia.qqdayu.com/login"><img class="user" src="/static/images/user_icon.png"></a>
+                <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
+                    <img class="user" src="/static/images/user_icon.png">
+                </a>
                 <ul class="zoomIn">
                     <li class="flipInY">
                         <router-link :to="{ name: '', query: {}}" target="_blank">
@@ -30,8 +32,8 @@
                 <waterfall-slot v-for="(item, index) in getPhotoList.list" :width="291" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
                     <div class="panel photo_box hover_sh">
                         <!-- <div class="photo_box_top">
-                                        <span class="photo_like" @click="photoLikeBtn(item._id,index)"><i class="iconfont icon-like"></i> {{item.likeCount}}</span>
-                                    </div> -->
+                                            <span class="photo_like" @click="photoLikeBtn(item._id,index)"><i class="iconfont icon-like"></i> {{item.likeCount}}</span>
+                                        </div> -->
                         <img :src="item.img" @click="showPhotoModal(item, index)">
                         <div class="photo_info">
                             <span class="photo_like" @click="photoLikeBtn(item.id,index)">
@@ -45,6 +47,141 @@
                     </div>
                 </waterfall-slot>
             </waterfall>
+    
+            <div class="hot-raiders">
+                <img class="tit" src="/static/images/hot_gl_head.png">
+                <router-link :to="{ name: 'guide', query: {}}" class="more_a fr" target="_blank">
+                    查看更多>
+                </router-link>
+                <ul>
+                    <li>
+                        <div class="img-hover fl">
+                            <img src="/static/images/demo04.png" width="195">
+                        </div>
+                        
+                        <div class="fr raid-con">
+                            <p>拍的照片我不满意怎么办</p>
+                            <span>我在活动当中，看上一个女孩子，能否帮忙联系一下？“小姑娘，下次我能不能帮我儿子去相亲？”......面对这样的强需求，我们在7月策划的百人相亲活动终于开始招募了...</span>
+                            <div class="raid-num fr">
+                                浏览338 评论25
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-hover fl">
+                            <img src="/static/images/demo04.png" width="195">
+                        </div>
+                        <div class="fr raid-con">
+                            <p>拍的照片我不满意怎么办</p>
+                            <span>我在活动当中，看上一个女孩子，能否帮忙联系一下？“小姑娘，下次我能不能帮我儿子去相亲？”......面对这样的强需求，我们在7月策划的百人相亲活动终于开始招募了...</span>
+                            <div class="raid-num fr">
+                                浏览338 评论25
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-hover fl">
+                            <img src="/static/images/demo04.png" width="195">
+                        </div>
+                        <div class="fr raid-con">
+                            <p>拍的照片我不满意怎么办</p>
+                            <span>我在活动当中，看上一个女孩子，能否帮忙联系一下？“小姑娘，下次我能不能帮我儿子去相亲？”......面对这样的强需求，我们在7月策划的百人相亲活动终于开始招募了...</span>
+                            <div class="raid-num fr">
+                                浏览338 评论25
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-hover fl">
+                            <img src="/static/images/demo04.png" width="195">
+                        </div>
+                        <div class="fr raid-con">
+                            <p>拍的照片我不满意怎么办</p>
+                            <span>我在活动当中，看上一个女孩子，能否帮忙联系一下？“小姑娘，下次我能不能帮我儿子去相亲？”......面对这样的强需求，我们在7月策划的百人相亲活动终于开始招募了...</span>
+                            <div class="raid-num fr">
+                                浏览338 评论25
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="store-comment">
+                <img class="tit" src="/static/images/bus_dp_head.png">
+                <router-link :to="{ name: 'comment', query: {}}" class="more_a fr" target="_blank">
+                    查看更多>
+                </router-link>
+                <ul>
+                    <li>
+                        <img src="/static/images/demo05.png" height="210">
+                        <div class="com-con">
+                            <p>蒙娜丽莎婚纱摄影</p>
+                             <div class="clearfix">
+                                <label class="fl">媒体评定分：</label>
+                                <div class="media_rating fl">
+                                </div>
+                            </div> 
+                            <div class="clearfix">
+                                <label>拍客评价：</label>
+                                <span class="blog">
+                                    拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的... ...
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="/static/images/demo05.png" height="210">
+                        <div class="com-con">
+                            <p>蒙娜丽莎婚纱摄影</p>
+                             <div class="clearfix">
+                                <label class="fl">媒体评定分：</label>
+                                <div class="media_rating fl">
+                                </div>
+                            </div> 
+                            <div class="clearfix">
+                                <label>拍客评价：</label>
+                                <span class="blog">
+                                    拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的... ...
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="/static/images/demo05.png" height="210">
+                        <div class="com-con">
+                            <p>蒙娜丽莎婚纱摄影</p>
+                             <div class="clearfix">
+                                <label class="fl">媒体评定分：</label>
+                                <div class="media_rating fl">
+                                </div>
+                            </div> 
+                            <div class="clearfix">
+                                <label>拍客评价：</label>
+                                <span class="blog">
+                                    拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的... ...
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="/static/images/demo05.png" height="210">
+                        <div class="com-con">
+                            <p>蒙娜丽莎婚纱摄影</p>
+                             <div class="clearfix">
+                                <label class="fl">媒体评定分：</label>
+                                <div class="media_rating fl">
+                                </div>
+                            </div> 
+                            <div class="clearfix">
+                                <label>拍客评价：</label>
+                                <span class="blog">
+                                    拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的... ...
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
         </com-photoModal>
@@ -106,89 +243,5 @@ export default {
 
 
 <style rel="stylesheet/scss" lang="scss">
-.i-header {
-    width: 100%;
-    height: 715px;
-    position: relative;
-    top: 0;
-    z-index: 3;
-    background-size: 100%;
-    text-align: center;
-    .logo {
-        position: relative;
-        top: 80px;
-    }
-    .header-con {
-        width: 1200px;
-        height: auto;
-        position: relative;
-        margin: 0 auto;
-        .user {
-            position: absolute;
-            right: 0;
-            top: 100px;
-        }
-        ul {
-            width: 100%;
-            position: relative;
-            top: 163px;
-            li {
-                display: inline-block;
-                margin-right: 8px;
-            }
-            li:last-child {
-                margin-right: 0;
-            }
-            li:hover {
-                -webkit-box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
-                -moz-box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
-                box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
-                -webkit-transition: all .5s ease;
-                transition: all .5s ease;
-            }
-        }
-    }
-}
-
-.hot-wedding {
-    width: 1200px;
-    text-align: center;
-    .tit {
-        height: 42px;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
-    .more_a {
-        color: #ff516d;
-        font-size: 14px;
-        margin-right: 30px;
-        margin-top: 23px;
-    }
-}
-
-.photo_info {
-    position: relative;
-    height: 32px;
-    line-height: 32px;
-    color: #b3b3b3;
-    font-size: 14px;
-    .photo_like {
-        position: relative;
-        left: 12px;
-    }
-    ul{
-        position: relative;
-        right: 8px;
-        float: right;
-    }
-}
-
-@mixin animation($animation) {
-    animation: $animation;
-    -webkit-animation: $animation;
-}
-
-.flipInY {
-    @include animation(1s flipInY 1);
-}
+@import "./../assets/css/index.scss";
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="header" :style="{background:'url('+skin+') left center no-repeat', borderBottom:skinBorder}">
+    <div class="header" :style="{background:skin, borderBottom:skinBorder}">
         <div class="container">
             <div class="logo">
                 <router-link to="/">
@@ -41,8 +41,8 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
-            skin:'/static/images/bg.jpg',
-            skinBorder:'2px solid #ff4e6b',
+            skin:'#fff',
+            skinBorder:'2px solid #e4e4e4',
             logo:'/static/images/logo.png',
             busName:this.$route.query.busName,
             mealName:this.$route.query.mealName,
