@@ -251,7 +251,7 @@ export default {
 
 
 .nav_user {
-    margin-left: 7px;
+    padding:20px 0 20px 7px;
 }
 
 .nav_user:hover .nav_user_ul {
