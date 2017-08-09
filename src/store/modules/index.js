@@ -1,18 +1,25 @@
-import { PHOTO_LIST,PHOTO_CLEAR,PHOTO_LIKE_USER } from '../types'
+import { PHOTO_LIST,PHOTO_CLEAR } from '../types'
 
 const state = {
+    banner:'',
+    logo:'',
+    nav:[],
+    guide:[],
     list: [],
+    store: [],
 };
 
 const mutations = {
     [PHOTO_LIST](state, data) {
-        state.list = state.list.concat(data.list);
+        state.nav = data.list.nav;
+        state.guide = data.list.guide;
+        state.store = data.list.store;
+        state.list = data.list.photo;
+        state.banner = data.list.banner;
+        state.logo = data.list.logo;
     },
     [PHOTO_CLEAR](state){
         state.list = [];
-    },
-    [PHOTO_LIKE_USER](state,data){
-        state.list[data.index].likeCount = data.likeCount;
     }
 };
 

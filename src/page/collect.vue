@@ -353,7 +353,7 @@ export default {
                 overflow: hidden;
             }
             img {
-                cursor: pointer;
+                cursor: zoom-in;
                 transition: all 0.6s;
             }
             img:hover {

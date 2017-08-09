@@ -250,7 +250,7 @@ export const qryIndex = ({ commit },data) => {
                 response.data.data.photo[i].height = tempImage.height + 30;
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
-                        list: response.data.data.photo,
+                        list: response.data.data,
                     })
                 }
             };
@@ -259,7 +259,7 @@ export const qryIndex = ({ commit },data) => {
                 response.data.data.photo[i].height = 0;
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
-                        list: response.data.data.photo,
+                        list: response.data.data,
                     })
                 }
             };
