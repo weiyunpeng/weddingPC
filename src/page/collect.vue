@@ -43,7 +43,7 @@
                             <div class="c-type-photo">
                                 <ul v-bind:class="{active:item.showall}">
                                     <li v-for="(img,m) in item.photo" :key="m">
-                                        <div class="img-hover">
+                                        <div class="img-hover" @click="showPhotoModal(img, m)">
                                             <img v-lazy="img.img" width="320" height="200">
                                         </div>
                                     </li>
@@ -58,16 +58,20 @@
                 </div>
             </div>
         </div>
+        <com-photoModal v-model="show" :value="show" :photoModal="photoModal">
+        </com-photoModal>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import photoModal from './../components/photoModal'
 import header from './../components/user/userHead'
 
 export default {
     components: {
         comHeader: header,
+        comPhotoModal: photoModal
     },
     computed: {
         ...mapGetters({
@@ -77,8 +81,10 @@ export default {
     },
     data() {
         return {
+            show: false,
             isDd: true,
             isTag: 0,
+            photoModal: {},
             head: '/static/images/demo_06.png',
             list: [
                 {
@@ -176,6 +182,14 @@ export default {
         },
         showAll(ln){
             this.list[ln].showall = !this.list[ln].showall
+        },
+        showPhotoModal(img, m) {
+            this.photoModal = img;
+            this.show = true;
+            const ajaxdata = {
+                id: this.photoModal.id
+            }
+            this.$store.dispatch('qryViewPhoto', ajaxdata)
         }
     },
     watch: {
