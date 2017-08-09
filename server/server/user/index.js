@@ -6,6 +6,7 @@ function run(Request, Response)
         var funs = {
             'get':get,
             'logout':logout,
+            'collect_list':collect_list,
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -30,6 +31,16 @@ function get(Params, Request, Response) {
  */
 function logout(Params, Request, Response) {
     var fileName = 'user/data/logout.json';
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 我的收藏
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function collect_list(Params, Request, Response) {
+    var fileName = 'user/data/collect_list.json';
     MAIN.responseStub(Response,fileName);
 }
 

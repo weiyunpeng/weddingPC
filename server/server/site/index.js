@@ -6,7 +6,8 @@ function run(Request, Response)
         var funs = {
             'index':index,
             'view_photo':view_photo,
-            'index_login':index_login
+            'index_login':index_login,
+            'photo_flow':photo_flow,
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -40,6 +41,16 @@ function view_photo(Params, Request, Response) {
  */
 function index_login(Params, Request, Response) {
     var fileName = 'site/data/index_login.json';
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 图片瀑布流
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function photo_flow(Params, Request, Response) {
+    var fileName = 'site/data/photo_flow.json';
     MAIN.responseStub(Response,fileName);
 }
 exports.index = run;

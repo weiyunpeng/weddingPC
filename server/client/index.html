@@ -109,6 +109,18 @@
 					<input type="submit" value="查看图组详情"/>
 				</form>
 			</li>
+			<li>
+				<form method="post" action="/site/index_login" target="_blank">
+					uid(用户id)：<input type="text" name='uid' value="22222"></br>
+					<input type="submit" value="登录后首页"/>
+				</form>
+			</li>
+			<li>
+				<form method="post" action="/site/photo_flow" target="_blank">
+					page(分页)：<input type="text" name='page' value="1"></br>
+					<input type="submit" value="图片瀑布流"/>
+				</form>
+			</li>
 		</ul>
 
 		<h3>用户接口</h3>
@@ -118,6 +130,13 @@
 			</li>
 			<li>
 				<a href="/user/logout" target="_blank">退出登录</a>
+			</li>
+			<li>
+				<form method="post" action="/user/collect_list" target="_blank">
+					uid(用户id)：<input type="text" name='uid' value="22222"></br>
+					type(类型)：<input type="text" name='type' value="0"></br>
+					<input type="submit" value="我的收藏"/>
+				</form>
 			</li>
 		</ul>
  	</body>
