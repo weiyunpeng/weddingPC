@@ -9,13 +9,13 @@
                 <ul class="zoomIn">
                     <li class="flipInY" v-for="(nav,navNum) in getPhotoList.nav" :key="navNum">
                         <router-link :to="{ name: 'user'}" target="_blank" v-if="navNum == 0">
-                            <img v-lazy="nav.img" width="390" height="390">
+                            <img :src="nav.img" width="390" height="390">
                         </router-link>
                         <router-link :to="{ name: 'guide'}" target="_blank" v-if="navNum == 1">
-                            <img v-lazy="nav.img" width="390" height="390">
+                            <img :src="nav.img" width="390" height="390">
                         </router-link>
                         <router-link :to="{ name: 'comment'}" target="_blank" v-if="navNum == 2">
-                            <img v-lazy="nav.img" width="390" height="390">
+                            <img :src="nav.img" width="390" height="390">
                         </router-link>
                     </li>
                 </ul>
@@ -26,7 +26,7 @@
         <div class="hot-wedding">
             <div class="container">
                 <img class="tit" src="/static/images/hot_hs_head.png">
-                <router-link :to="{ name: 'user', query: {}}" class="more_a fr" target="_blank">
+                <router-link :to="{ name: 'user', query: {}}" class="more_a fr u-index-nav" target="_blank">
                     查看更多>
                 </router-link>
                 <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getPhotoList.list">
@@ -35,7 +35,8 @@
                             <img :src="item.img" @click="showPhotoModal(item, index)">
                             <div class="photo_info">
                                 <span class="photo_like" @click="photoLikeBtn(item.id,index)">
-                                    <i class="iconfont icon-like"></i> {{item.fav_num}}
+                                    <!-- <i class="icon_like_act"></i>  -->
+                                    <i class="icon_like"></i> {{item.fav_num}}
                                 </span>
                                 <ul>
                                     <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
@@ -52,12 +53,12 @@
         <div class="hot-raiders">
             <div class="container">
                 <img class="tit" src="/static/images/hot_gl_head.png">
-                <router-link :to="{ name: 'guide', query: {}}" class="more_a fr" target="_blank">
+                <router-link :to="{ name: 'guide', query: {}}" class="more_a fr u-index-nav" target="_blank">
                     查看更多>
                 </router-link>
                 <ul>
                     <li v-for="(raiders,raiNum) in getPhotoList.guide" :key="raiNum">
-                        <a :href="raiders.url" target="_blank" style="text-decoration:underline">
+                        <a :href="raiders.url" target="_blank">
                             <div class="img-hover fl">
                                 <img v-lazy="raiders.img" width="195" height="192">
                             </div>
@@ -79,31 +80,37 @@
         <div class="store-comment">
             <div class="container">
                 <img class="tit" src="/static/images/bus_dp_head.png">
-                <router-link :to="{ name: 'comment', query: {}}" class="more_a fr" target="_blank">
+                <router-link :to="{ name: 'comment', query: {}}" class="more_a fr u-index-nav" target="_blank">
                     查看更多>
                 </router-link>
                 <ul>
                     <li v-for="(store,storeNum) in getPhotoList.store" :key="storeNum">
-                        <img v-lazy="store.img" height="210" width="295">
+                        <router-link :to="{ name: 'busDeatils', query: {id:store.id,busName:store.store_name}}" target="_blank">
+                            <img v-lazy="store.img" height="210" width="295">
+                        </router-link>
                         <div class="com-con">
-                            <p>{{store.store_name}}</p>
+                            <router-link :to="{ name: 'busDeatils', query: {id:store.id,busName:store.store_name}}" target="_blank">
+                                <p>{{store.store_name}}</p>
+                            </router-link>
                             <div class="clearfix">
                                 <label class="fl">媒体评定分：</label>
                                 <div class="media_rating fl">
                                 </div>
                             </div>
-                            <div class="clearfix">
-                                <label>拍客评价：</label>
-                                <span class="blog">
-                                   {{store.desc}}
-                                </span>
-                            </div>
+                            <a :href="store.url" target="_blank">
+                                <div class="clearfix">
+                                    <label>拍客评价：</label>
+                                    <span class="blog">
+                                        {{store.desc}}
+                                    </span>
+                                </div>
+                            </a>
                         </div>
+    
                     </li>
                 </ul>
             </div>
         </div>
-    
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
         </com-photoModal>
     </div>
@@ -144,6 +151,7 @@ export default {
     },
     methods: {
         photoLikeBtn() {
+            alert('登录后才能收藏哦~')
         },
         showPhotoModal(item, index) {
             this.photoModal = item;
@@ -165,4 +173,12 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
 @import "./../assets/css/index.scss";
+a:hover {
+    text-decoration: underline;
+}
+.u-index-nav:hover{
+    color: #fd4040;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
 </style>

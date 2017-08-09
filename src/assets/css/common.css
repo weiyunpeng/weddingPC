@@ -1739,3 +1739,21 @@ fieldset[disabled] .btn-danger.focus {
     width: 20px;
     height: 20px;
 }
+.icon_like{
+    position: absolute;
+    left: -22px;
+    top: -3px;
+    background: url(/static/images/icon_heart.png) no-repeat;
+    background-position: -7px 0;
+    width: 20px;
+    height: 20px;
+}
+.icon_like_act{
+    position: absolute;
+    left: -22px;
+    top: -3px;
+    background: url(/static/images/icon_heart.png) no-repeat;
+    background-position: -39px 0;
+    width: 20px;
+    height: 20px;
+}
