@@ -1,15 +1,17 @@
 <template>
-    <div class="container">
-        <ul class="tag">
-            <li v-for="(tag,number) in busTag" :key="tag.title">
-                <strong>{{tag.title}} :</strong>
-                <ul>
-                    <li v-for="(tagCon,index) in tag.con" :key="index">
-                        <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index,tag.name,tagCon.id)">{{tagCon.name}}</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+    <div class="bus-tag">
+        <div class="container">
+            <ul class="tag">
+                <li v-for="(tag,number) in busTag" :key="tag.title">
+                    <strong>{{tag.title}} :</strong>
+                    <ul>
+                        <li v-for="(tagCon,index) in tag.con" :key="index">
+                            <a href="javascript:void(0)" v-bind:class="{tag_active: tag.selected==index}" @click="tagBtn(number,index,tag.name,tagCon.id)">{{tagCon.name}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -26,34 +28,34 @@ export default {
             busTag: 'busTag'
         }),
         ...mapActions({
-            busTagClear:'busTagClear',
-            busTagChange:'busTagChange'
+            busTagClear: 'busTagClear',
+            busTagChange: 'busTagChange'
         })
     },
     mounted() {
-        const ajaxdata={
-            "tag1" :0,
-            "tag2":0,
-            "tag3":0
+        const ajaxdata = {
+            "tag1": 0,
+            "tag2": 0,
+            "tag3": 0
         }
         this.$store.dispatch('qrybusTag')
     },
     methods: {
-        tagBtn(number, index,name,id) {
+        tagBtn(number, index, name, id) {
             const changeData = {
-                index:index,
-                number:number
+                index: index,
+                number: number
             }
-            this.$store.dispatch('busTagChange' , changeData)
+            this.$store.dispatch('busTagChange', changeData)
             const ajaxdata = {}
-            for(var i = 0; i<this.busTag.length;i++){
+            for (var i = 0; i < this.busTag.length; i++) {
                 ajaxdata[this.busTag[i].name] = this.busTag[i].con[this.busTag[i].selected].id
             }
-            this.$emit('ajaxTag',ajaxdata);
+            this.$emit('ajaxTag', ajaxdata);
         }
     },
-    watch:{
-        busTag:function(){
+    watch: {
+        busTag: function () {
             // console.log(this.busTag)
         }
     }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="user-header-top" :style="{background:skin, borderBottom:skinBorder}" v-show="!visible">
+        <div class="user-header-top" :style="{background:skin, borderBottom:skinBorder}" v-show="!visHNav">
             <div class="container">
                 <div class="logo">
                     <router-link to="/">
@@ -49,7 +49,7 @@
         </div>
     
         <!--向上滑动后展示小的头部菜单  -->
-        <div class="user-header" :style="{background:skin, borderBottom:skinBorder}" v-show="visible">
+        <div class="user-header" :style="{background:skin, borderBottom:skinBorder}" v-show="visHNav">
             <div class="container">
                 <div class="logo">
                     <router-link to="/">
@@ -105,8 +105,8 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
-            visible: false,
-            visibleOffset: 100,
+            visHNav: false,
+            HNavOffset: 100,
             skin: '#fff',
             skinBorder: '3px solid #e4e4e4',
             logoTop: '/static/images/logo-2.png',
@@ -124,14 +124,15 @@ export default {
         })
     },
     mounted() {
-        const catchScroll = () => {
-            if (window.pageYOffset > parseInt(this.visibleOffset) || window.pageYOffset > parseInt(this.visibleOffset) - 100) {
-                this.visible = true
+        let catchScroll = () => {
+            if (window.pageYOffset > parseInt(this.HNavOffset) || window.pageYOffset > 0) {
+                this.visHNav = true
             } else {
-                this.visible = false
+                this.visHNav = false
             }
         }
-        window.onscroll = catchScroll
+        // window.onscroll = catchHeadScroll
+        // this.onscroll(window, 'scroll', catchHeadScroll);
     },
     methods: {
         /**
@@ -144,6 +145,10 @@ export default {
             }
             // this.$store.dispatch('busClear')
             // this.$store.dispatch('qryBusList', data)
+        },
+        logout() {
+            this.$store.dispatch('loginOut')
+            this.$router.push({ name: 'index' })
         }
     },
 }
@@ -251,7 +256,7 @@ export default {
 
 
 .nav_user {
-    padding:20px 0 20px 7px;
+    padding: 20px 0 20px 7px;
 }
 
 .nav_user:hover .nav_user_ul {

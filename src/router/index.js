@@ -26,27 +26,23 @@ import collect from '../page/collect.vue';
 const routes = [{
     path: '/',
     name:'首页',
-    one:true,
-    redirect: '/index',
     component: index,
     children: [
-        { path: '/index', component: index, name: 'index', meta: { auth: false }}
+        { path: '/index', component: index, name: 'index'}
     ]
 },{
-    path: '/',
-    name:'我的首页',
+    path: '/user',
+    name:'user',
     component: user,
-    children: [
-        { path: '/user', component: user, name: 'user', meta: { auth: false }},
-    ]
+    meta: { auth: false }
 },{
     path : '/business',
     name:'business',
-    component : business,
+    component : business
 },{
     path : '/meal',
     name:'meal',
-    component : meal,
+    component : meal
 },{
     path : '/busDeatils',
     name:'busDeatils',
@@ -74,15 +70,16 @@ const routes = [{
 },{
     path : '/guide',
     name:'guide',
-    component : guide,
+    component : guide
 },{
     path : '/comment',
     name:'comment',
-    component : comment,
+    component : comment
 },{
     path : '/collect',
     name:'collect',
     component : collect,
+    meta: { auth: false }
 }];
 
 const router = new VueRouter({
@@ -93,11 +90,15 @@ const router = new VueRouter({
 
 router.beforeEach(({meta, path}, from, next) => {
     var { auth = true } = meta;
-    // if(auth){
-    //     window.location.href= 'http://dev.hunjia.qqdayu.com/login'
-    // }else{
-    //     return next({ path: '/user' })
-    // }
+    store.dispatch('getUserInfo');
+    const token = localStorage.getItem('user');
+    var isLogin = Boolean(token);
+    if(auth && isLogin && (path == '/user' || path == '/')){
+        return next({ path: '/user' })
+    }
+    if(!isLogin && path == '/index'){
+        return next({ path: '/' })
+    }
     next()
 });
 

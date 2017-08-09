@@ -77,8 +77,12 @@ export default {
         return axios.post('/site/view_photo',qs.stringify(data), config())
     },
 
+    //获取用户信息
+    getUserInfo:function(){
+        return axios.get('/user/get', config())
+    },
     //退出登录
     loginOut:function(){
-        return axios.get('/user/get', config())
+        return axios.get('/user/logout', config())
     },
 }

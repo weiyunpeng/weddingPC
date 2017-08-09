@@ -1,0 +1,190 @@
+{
+  "code": 200,
+  "msg": "success",
+  "data": {
+    "user": {
+      "head": "",
+      "nike": "",
+      "category": {
+        "style": [{
+            "name": "欧美大气",
+            "value": "33%",
+            "photo": [{
+                "id": 1,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d13dd743510153737.jpg"
+              },
+              {
+                "id": 2,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d0feefa2022650525.jpg"
+              },
+              {
+                "id": 3,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d12441c6422302325.jpg"
+              }
+            ]
+          },
+          {
+            "name": "小清新",
+            "value": "33%",
+            "photo": [{
+                "id": 4,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858da1b1c7b500152050.jpg"
+              },
+              {
+                "id": 5,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858da39c910255978105.jpg"
+              },
+              {
+                "id": 6,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/5985ab1209d2f886428459.jpg"
+              }
+            ]
+          },
+          {
+            "name": "韩式",
+            "value": "33%",
+            "photo": [{
+                "id": 7,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/cover/20170802/5981489cb091d974325685.png"
+              },
+              {
+                "id": 8,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3d9d1198752876912.png"
+              },
+              {
+                "id": 9,
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3db53635927738280.jpg"
+              }
+            ]
+          }
+        ],
+        "stores": [{
+          "name": "郑州艾维美婚纱摄影(国贸360店)",
+          "value": "100%",
+          "photo": [{
+              "id": 1,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d13dd743510153737.jpg"
+            },
+            {
+              "id": 2,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d0feefa2022650525.jpg"
+            },
+            {
+              "id": 3,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d12441c6422302325.jpg"
+            },
+            {
+              "id": 4,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858da1b1c7b500152050.jpg"
+            },
+            {
+              "id": 5,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858da39c910255978105.jpg"
+            },
+            {
+              "id": 6,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/5985ab1209d2f886428459.jpg"
+            },
+            {
+              "id": 7,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/cover/20170802/5981489cb091d974325685.png"
+            },
+            {
+              "id": 8,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3d9d1198752876912.png"
+            },
+            {
+              "id": 9,
+              "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3db53635927738280.jpg"
+            }
+          ]
+        }]
+      }
+    },
+    "photo": [{
+        "id": 4,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858da1b1c7b500152050.jpg",
+        "fav_num": 3,
+        "tag": "小清新"
+      },
+      {
+        "id": 5,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858da39c910255978105.jpg",
+        "fav_num": 1,
+        "tag": "小清新"
+      },
+      {
+        "id": 3,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d12441c6422302325.jpg",
+        "fav_num": 1,
+        "tag": "欧美大气"
+      },
+      {
+        "id": 9,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3db53635927738280.jpg",
+        "fav_num": 4,
+        "tag": "韩式"
+      },
+      {
+        "id": 1,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d13dd743510153737.jpg",
+        "fav_num": 4,
+        "tag": "欧美大气"
+      },
+      {
+        "id": 8,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3d9d1198752876912.png",
+        "fav_num": 3,
+        "tag": "韩式"
+      },
+      {
+        "id": 7,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/cover/20170802/5981489cb091d974325685.png",
+        "fav_num": 3,
+        "tag": "韩式"
+      },
+      {
+        "id": 6,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/5985ab1209d2f886428459.jpg",
+        "fav_num": 1,
+        "tag": "小清新"
+      },
+      {
+        "id": 2,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d0feefa2022650525.jpg",
+        "fav_num": 1,
+        "tag": "欧美大气"
+      },
+      {
+        "id": 14,
+        "img": "http://marriage-1252045209.image.myqcloud.com/20170723095535.jpg",
+        "fav_num": 0,
+        "tag": "韩式"
+      },
+      {
+        "id": 13,
+        "img": "http://marriage-1252045209.image.myqcloud.com/20170723095534.jpg",
+        "fav_num": 0,
+        "tag": "韩式"
+      },
+      {
+        "id": 12,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3df8c937710223254.jpg",
+        "fav_num": 0,
+        "tag": "韩式"
+      },
+      {
+        "id": 11,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3de26fe6827806188.jpg",
+        "fav_num": 0,
+        "tag": "韩式"
+      },
+      {
+        "id": 10,
+        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3dcb4935073020710.jpg",
+        "fav_num": 0,
+        "tag": "韩式"
+      }
+    ]
+  }
+}

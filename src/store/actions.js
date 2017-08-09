@@ -23,6 +23,27 @@ export const hideModal = ({ commit }, data) => {
 };
 //----------------------------------------------------------------------------------------------
 
+//----------------------------------------获取用户信息------------------------------------------------------
+export const getUserInfo = ({ commit },data) => {
+    api.getUserInfo(data).then(function (response) {
+        if(response.data.code == 404){
+            //说明未登录
+            commit(types.AUTH_INFO_CLEAR)
+        }else{
+            commit(types.AUTH_INFO, {
+                token: response.data.data
+            })
+        }
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+export const loginOut = ({ commit }) => {
+    commit(types.USER_LOGOUT)
+};
+//----------------------------------------------------------------------------------------------
+
 //-------------------------------查询商家首页列表---------------------------------------------------------------
 export const qryBusList = ({ commit },data) => {
     api.qryBusList(data).then(function (response) {

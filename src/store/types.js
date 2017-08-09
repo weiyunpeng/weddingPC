@@ -3,6 +3,9 @@ export const HIDE_MSG = 'HIDE_MSG'
 export const SHOW_MODAL = 'SHOW_MODAL'
 export const HIDE_MODAL = 'HIDE_MODAL'
 
+export const AUTH_INFO = 'AUTH_INFO'
+export const AUTH_INFO_CLEAR = 'AUTH_INFO_CLEAR'
+export const USER_LOGOUT = 'USER_LOGOUT'
 
 export const BUS_LIST = 'BUS_LIST'
 export const BUS_CLEAR = 'BUS_CLEAR'

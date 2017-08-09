@@ -128,7 +128,8 @@ export default {
     },
     computed: {
         ...mapGetters({
-            getPhotoList: 'getPhotoList'
+            getPhotoList: 'getPhotoList',
+            getAuth:'getAuth'
         }),
         ...mapActions({
             qryIndex: 'qryIndex',
@@ -164,6 +165,12 @@ export default {
         }
     },
     watch: {
+        getAuth(){
+            // console.log(this.getAuth)
+            // if(this.getAuth){
+            //     this.$router.push({ name: 'user'})
+            // }
+        }
     },
     beforeDestroy() {
     }

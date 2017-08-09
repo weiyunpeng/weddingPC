@@ -72,6 +72,17 @@ Vue.prototype.objExtend = function (target, source, deep) {
   return target;
 }
 
+Vue.prototype.onscroll = function (obj,type,fn) {
+  if(obj.attachEvent){
+        obj.attachEvent('on'+type,function(){
+            fn.call(obj);
+        })
+    }else{
+        obj.addEventListener(type,fn,false);
+    }
+}
+
+
 var app = new Vue({
   el: '#app',
   router,

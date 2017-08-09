@@ -2,6 +2,9 @@ export const getmessage = state => state.msg.message;
 export const getModal = state => state.modal;
 export const getModalConfirm = state => state.modal.confirm;
 
+
+export const getAuth = state => state.authInfo.token;
+
 export const busList = state => state.busList.list;
 export const busPage = state => state.busList.page;
 export const busTag = state => state.busTag.list;

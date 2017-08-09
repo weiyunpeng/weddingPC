@@ -19,6 +19,7 @@ import busSampleTag from './modules/busSampleTag'
 import thisMealTag from './modules/thisMealTag'
 import index from './modules/index'
 import viewPhoto from './modules/viewPhoto'
+import authInfo from './modules/auth'
 
 Vue.use(Vuex);
 
@@ -43,7 +44,8 @@ export default new Vuex.Store({
       busSampleTag,
       thisMealTag,
       index,
-      viewPhoto
+      viewPhoto,
+      authInfo
   },
   strict: debug
 })

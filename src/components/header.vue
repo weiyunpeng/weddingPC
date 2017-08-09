@@ -55,7 +55,7 @@ export default {
          * 搜商家按钮事件
          */
         searchBtn(){
-            this.$router.push({ name: '/index'})
+            this.$router.push({ name: 'index'})
             let data = {
                 keyword:this.keyword
             }

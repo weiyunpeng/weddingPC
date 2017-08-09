@@ -19,61 +19,61 @@ export default {
       default: 600
     }
   },
-  data () {
+  data() {
     return {
       visible: false
     }
   },
-  /**
-   * Catch window scroll event 
-   * @return {void}
-   */
-  created () {
+  created() {
     let catchScroll = () => {
       this.visible = (window.pageYOffset > parseInt(this.visibleOffset))
     }
     window.smoothscroll = () => {
-        
+
       let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
       if (currentScroll > 0) {
         requestAnimFrame(window.smoothscroll)
         window.scrollTo(0, currentScroll - (currentScroll / 5))
       }
     }
-    window.onscroll = catchScroll
+    this.onscroll(window, 'scroll', catchScroll);
+    // window.onscroll = catchScroll
   },
   methods: {
-    backToTop () {
+    backToTop() {
       window.smoothscroll()
     }
   }
 }
 </script>
 <style scoped>
-.back-to-top-fade-enter-active, .back-to-top-fade-leave-active {
+.back-to-top-fade-enter-active,
+.back-to-top-fade-leave-active {
   transition: opacity .7s;
 }
-.back-to-top-fade-enter, .back-to-top-fade-leave-to{
-  filter:alpha(Opacity=0);
-  -moz-opacity:0;
+
+.back-to-top-fade-enter,
+.back-to-top-fade-leave-to {
+  filter: alpha(Opacity=0);
+  -moz-opacity: 0;
   opacity: 0;
 }
 
-.vue-back-to-top{
+.vue-back-to-top {
   position: fixed;
   bottom: 40px;
   right: 30px;
   width: 160px;
   border-radius: 3px;
   z-index: 1000;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.vue-back-to-top:hover{
-    filter:alpha(Opacity=50);
-    -moz-opacity:0.5;
-    opacity: 0.5;
-    -webkit-transition: all .6s ease;
-    transition: all .6s ease;
+.vue-back-to-top:hover {
+  filter: alpha(Opacity=50);
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+  -webkit-transition: all .6s ease;
+  transition: all .6s ease;
 }
 </style>

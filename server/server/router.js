@@ -7,6 +7,7 @@ function router_reg(app){
     app.all('/cameraman', require('./man/cameraman').index);
     app.all('/makeup', require('./man/makeup').index);
     app.all('/site/:name', require('./site/index').index);
+    app.all('/user/:name', require('./user/index').index);
 }
 
 
