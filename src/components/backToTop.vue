@@ -29,7 +29,6 @@ export default {
       this.visible = (window.pageYOffset > parseInt(this.visibleOffset))
     }
     window.smoothscroll = () => {
-
       let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
       if (currentScroll > 0) {
         requestAnimFrame(window.smoothscroll)

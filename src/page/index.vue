@@ -180,9 +180,6 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
 @import "./../assets/css/index.scss";
-a:hover {
-    text-decoration: underline;
-}
 .u-index-nav:hover{
     color: #fd4040;
     -webkit-transition: all .3s ease;

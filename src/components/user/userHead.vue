@@ -34,7 +34,7 @@
                         <img :src="header" class="circle" width="30" height="30">
                         <ul class="nav_user_ul">
                             <li>
-                                <router-link to="/collect" target="_blank">
+                                <router-link :to="{ name: 'collect', query: {uid:uid,type:0}}" target="_blank">
                                     <i class="icon_collage"></i>我的收藏
                                 </router-link>
                             </li>
@@ -111,8 +111,9 @@ export default {
             skinBorder: '3px solid #e4e4e4',
             logoTop: '/static/images/logo-2.png',
             logo: '/static/images/logo-4.png',
-            keyword: '',
-            header: '/static/images/demo_head.png',
+            keyword: null,
+            header: '/static/images/user_icon.png',
+            uid:null,
         }
     },
     computed: {
@@ -124,6 +125,17 @@ export default {
         })
     },
     mounted() {
+        try{
+            let token = JSON.parse(localStorage.getItem('user'));
+            let isLogin = Boolean(token);
+            if(isLogin){
+                this.header = token.headimgurl
+                this.uid = token.uid
+            }else{
+            }
+        }catch(e){
+            console.log(e)
+        }
         let catchScroll = () => {
             if (window.pageYOffset > parseInt(this.HNavOffset) || window.pageYOffset > 0) {
                 this.visHNav = true
@@ -131,7 +143,7 @@ export default {
                 this.visHNav = false
             }
         }
-        // window.onscroll = catchHeadScroll
+        window.onscroll = catchScroll
         // this.onscroll(window, 'scroll', catchHeadScroll);
     },
     methods: {

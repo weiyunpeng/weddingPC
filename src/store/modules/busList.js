@@ -1,4 +1,4 @@
-import {BUS_LIST,BUS_CLEAR} from '../types'
+import {BUS_LIST,BUS_CLEAR,BUS_CHANGE} from '../types'
 
 const state = {
     list: [],
@@ -12,6 +12,10 @@ const mutations = {
     },
     [BUS_CLEAR](state,data){
         state.list = [];
+    },
+    [BUS_CHANGE](state,data){
+        console.log(data)
+        state.list[data.index].showAll = data.showAll
     }
 };
 

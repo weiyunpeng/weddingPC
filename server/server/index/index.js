@@ -5,7 +5,7 @@ function run(Request, Response)
     if(Request.params && Request.params.name){
         var funs = {
             //商家首页
-            'list' : list,
+            'comments' : comments,
             //商家筛选条件
             'index':index,
             //商家详情
@@ -23,7 +23,7 @@ function run(Request, Response)
  * @param {Object} Request
  * @param {Object} Response
  */
-function list(Params, Request, Response) {
+function comments(Params, Request, Response) {
     var fileName = 'index/data/busList1.json';
     MAIN.responseStub(Response,fileName);
 }

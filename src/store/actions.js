@@ -47,15 +47,22 @@ export const loginOut = ({ commit }) => {
 //-------------------------------查询商家首页列表---------------------------------------------------------------
 export const qryBusList = ({ commit },data) => {
     api.qryBusList(data).then(function (response) {
-        commit(types.BUS_LIST, {
-            list: response.data.data.list,
-            page: response.data.data.page
-        })
+        for(var i = 0; i<response.data.data.list.length;i++){
+            response.data.data.list[i].showAll = false
+            commit(types.BUS_LIST, {
+                list: response.data.data.list,
+                page: response.data.data.page
+            })
+        }
     })
         .catch(function (error) {
             commit(types.BUS_LIST);
             console.log(error)
         });
+};
+
+export const busChange = ({ commit },data) => {
+    commit(types.BUS_CHANGE,data)
 };
 
 export const busClear = ({ commit }) => {
@@ -348,6 +355,7 @@ export const qryPhotoFlow = ({ commit },data) => {
             tempImage.onload = function() {
                 photoCount++;
                 response.data.data.photo[i].height = tempImage.height + 30;
+                response.data.data.photo[i].width = tempImage.width;
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.VIEW_PHOTO_INDEX, {
                         list: response.data.data.photo,

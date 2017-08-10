@@ -11,6 +11,7 @@ export const USER_INFO = 'USER_INFO'
 export const USER_INFO_CLEAR = 'USER_INFO_CLEAR'
 
 export const BUS_LIST = 'BUS_LIST'
+export const BUS_CHANGE = 'BUS_CHANGE'
 export const BUS_CLEAR = 'BUS_CLEAR'
 export const BUS_TAG_LIST = 'BUS_TAG_LIST'
 export const BUS_TAG_CLEAR = 'BUS_TAG_CLEAR'

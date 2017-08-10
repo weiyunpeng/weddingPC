@@ -17,7 +17,7 @@ function config() {
 export default {
     //查询商家首页列表
     qryBusList:function (data) {
-       return axios.post('/store/list', qs.stringify(data), config())
+       return axios.post('/store/comments', qs.stringify(data), config())
     },
     //商家首页分类
     qryBusTag:function(data){
