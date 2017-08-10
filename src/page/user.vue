@@ -149,10 +149,8 @@ export default {
     padding: 2px 10px;
 }
 .user-water{
-    width: 900px;
     position: relative;
     left:10px;
-    float: left;
 }
 
 .user-nike {
