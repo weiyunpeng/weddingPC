@@ -43,7 +43,7 @@ export default {
         return {
             skin:'#fff',
             skinBorder:'2px solid #e4e4e4',
-            logo:'/static/images/logo.png',
+            logo:'/static/images/logo-2.png',
             busName:this.$route.query.busName,
             mealName:this.$route.query.mealName,
             thisMealName:this.$route.query.thisMealName,

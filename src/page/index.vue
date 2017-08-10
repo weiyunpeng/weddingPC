@@ -30,7 +30,7 @@
                     查看更多>
                 </router-link>
                 <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getPhotoList.list">
-                    <waterfall-slot v-for="(item, index) in getPhotoList.list" :width="291" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
+                    <waterfall-slot v-for="(item, index) in getPhotoList.list" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <img :src="item.img" @click="showPhotoModal(item, index)">
                             <div class="photo_info">

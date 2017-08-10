@@ -1,8 +1,7 @@
 <template>
-<div>
-    <com-header></com-header>
-    <div class="container">
-        <div class="meal_introduction clearfix">
+    <div>
+        <com-header></com-header>
+        <div class="container meal_introduction clearfix">
             <div class="bus_name">
                 {{busSampleStore.store_name}}
                 <i class="icon icon-yes" v-if="busSampleStore.isYes"></i>
@@ -22,33 +21,32 @@
                 </div>
                 <div class="address fl">
                     地址：{{busSampleStore.address}}
-                </div> 
+                </div>
             </div>
         </div>
         <com-tag></com-tag>
-        <div class="container">
-        <ul class="meal_list">
-            <li class="list_con" v-for="item in busSampleList" :key="item.id">
-                <div class="shop">
-                    <router-link :to="{ name: 'mealDeatils', query: {mealName:item.meal_name}}" target="_blank">
-                    <div class="img">
-                        <img class="shop_logo" v-lazy="item.logo" width="372" height="248">
+        <div class="meal-con">
+            <ul class="meal_list container">
+                <li class="list_con" v-for="item in busSampleList" :key="item.id">
+                    <div class="shop">
+                        <router-link :to="{ name: 'mealDeatils', query: {mealName:item.meal_name}}" target="_blank">
+                            <div class="img">
+                                <img class="shop_logo" v-lazy="item.logo" width="372" height="248">
+                            </div>
+                            <p class="meal_name">
+                                {{item.name}}
+                            </p>
+                            <div class="tags">
+                                <ul>
+                                    <li v-for="(tag,index) in item.tags" :key="index" class="tag">{{tag}}</li>
+                                </ul>
+                            </div>
+                        </router-link>
                     </div>
-                    <p class="meal_name">
-                        {{item.name}}
-                    </p>
-                    <div class="tags">
-                        <ul>
-                                <li v-for="(tag,index) in item.tags" :key="index" class="tag">{{tag}}</li>
-                        </ul>
-                    </div>
-                    </router-link>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    </div>
-</div>
 </template>
 
 <script>
@@ -63,61 +61,64 @@ export default {
     },
     computed: {
         ...mapGetters({
-            busSampleList:'busSampleList',
-            busSampleStore:'busSampleStore'
+            busSampleList: 'busSampleList',
+            busSampleStore: 'busSampleStore'
         }),
         ...mapActions({
-            qryBusSample:'qryBusSample'
+            qryBusSample: 'qryBusSample'
         })
     },
     data() {
         return {
-            id:this.$route.query.id,
+            id: this.$route.query.id,
         }
     },
-    mounted(){
+    mounted() {
         // this.$store.dispatch('mealClear')
         let data = {
-            id:this.id
+            id: this.id
         }
         this.$store.dispatch('qryBusSample', data)
     },
     methods: {
     },
-    watch:{
+    watch: {
     },
-    beforeDestroy () {
+    beforeDestroy() {
     }
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 @charset "UTF-8";
+.meal-con {
+    width: 100%;
+    background: #fff;
+    background-color: #fff;
+}
+
 .meal_list {
-    margin: {
-        right:-42px;
-        top:34px;
-    }
+    margin-top: 10px;
     .list_con {
         display: inline-block;
         margin: {
-            right:42px;
-            bottom:40px;
+            right: 28px;
+            top: 20px;
         }
         width:372px;
-        .tags{
+        .tags {
             font: {
-            size: 24px;
-            weight: bold;
-        }
-        color:#ff4e6b;
-        }
-        .tag{
-            display: inline-block;
-            width:102px;
-            height:24px;
-            border:1px solid #ff4e6b;
-            border-radius: 12px;
+                size: 24px;
+                weight: bold;
+            }
             color:#ff4e6b;
+        }
+        .tag {
+            display: inline-block;
+            width: 102px;
+            height: 24px;
+            border: 1px solid #ff4e6b;
+            border-radius: 12px;
+            color: #ff4e6b;
             line-height: 24px;
             text-align: center;
             margin-right: 8px;
@@ -128,7 +129,7 @@ export default {
         }
         .meal_name {
             margin: {
-                bottom:6px;
+                bottom: 6px;
             }
             font-size: 20px;
             color: #333;

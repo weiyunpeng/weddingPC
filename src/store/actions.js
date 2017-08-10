@@ -276,6 +276,7 @@ export const qryIndex = ({ commit },data) => {
             tempImage.onload = function() {
                 photoCount++;
                 response.data.data.photo[i].height = tempImage.height + 30;
+                response.data.data.photo[i].width = tempImage.width;
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
                         list: response.data.data,

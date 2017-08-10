@@ -1,8 +1,8 @@
 <template>
 <div>
     <com-header></com-header>
-    <div class="container">
-        <div class="meal_introduction clearfix">
+    <div class="">
+        <div class="meal_introduction clearfix container">
             <div class="bus_name">
                 {{thisMealStore.store_name}}
                 <i class="icon icon-yes" v-if="thisMealStore.isYes"></i>
@@ -26,8 +26,8 @@
             </div>
         </div>
         <com-tag></com-tag>
-        <div class="container">
-        <ul class="meal_list">
+        <div class="meal-con">
+        <ul class="meal_list container">
             <li class="list_con" v-for="item in thisMealList" :key="item.id">
                 <div class="shop">
                     <router-link :to="{ name: 'mealDeatils', query: {mealName:item.meal_name}}" target="_blank">
@@ -97,16 +97,19 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 @charset "UTF-8";
+.meal-con {
+    width: 100%;
+    background: #fff;
+    background-color: #fff;
+}
+
 .meal_list {
-    margin: {
-        right:-42px;
-        top:34px;
-    }
+    margin-top: 10px;
     .list_con {
         display: inline-block;
         margin: {
-            right:42px;
-            bottom:40px;
+            right: 28px;
+            top: 20px;
         }
         width:372px;
         .price {
