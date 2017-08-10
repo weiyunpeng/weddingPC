@@ -39,8 +39,13 @@ export const getUserInfo = ({ commit },data) => {
             console.log(error)
         });
 };
-export const loginOut = ({ commit }) => {
-    commit(types.USER_LOGOUT)
+export const loginOut = ({ commit },data) => {
+    api.loginOut(data).then(function(response){
+        commit(types.USER_LOGOUT)
+    })
+    .catch(function (error) {
+            console.log(error)
+        });
 };
 //----------------------------------------------------------------------------------------------
 
