@@ -76,6 +76,15 @@ export default {
     qryViewPhoto:function(data){
         return axios.post('/site/view_photo',qs.stringify(data), config())
     },
+    //首页已登录状态
+    qryLoginIndex:function(data){
+        return axios.post('/site/index_login',qs.stringify(data), config())
+    },
+
+    //首页图片瀑布流
+    qryPhotoFlow:function(data){
+        return axios.post('/site/photo_flow',qs.stringify(data), config())
+    },
 
     //获取用户信息
     getUserInfo:function(){

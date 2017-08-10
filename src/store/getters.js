@@ -4,6 +4,7 @@ export const getModalConfirm = state => state.modal.confirm;
 
 
 export const getAuth = state => state.authInfo.token;
+export const getUser = state => state.user.data;
 
 export const busList = state => state.busList.list;
 export const busPage = state => state.busList.page;
@@ -35,3 +36,4 @@ export const makeupmanPackages = state => state.makeupman.packages;
 
 export const getPhotoList = state => state.index;
 export const getViewPhoto = state => state.viewPhoto.list;
+export const getViewPhotoIndex = state => state.viewPhoto.photo;

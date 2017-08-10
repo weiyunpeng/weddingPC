@@ -2,90 +2,129 @@
     <div class="user">
         <com-header></com-header>
         <div class="container">
-            <div class="user-info">
-                <img class="user-head fl" src="/static/images/demo_06.png" width="124" height="124">
+            <div class="user-info" v-show="isAuth">
+                <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
                 <div class="user-nike">
-                    <p>张小萌</p>
+                    <p>{{getUser.nike}}</p>
                     <label>我的收藏</label>
                 </div>
                 <ul class="user_category user_category_style">
                     <li v-for="(item,s) in style" :key="s">
                          <span class="show_list">{{item.name}}</span> 
                          <div class="line">
-                            <div class="bar" v-bind:style="{ width: item.value + '%' }"></div>
+                            <div class="bar" v-bind:style="{ width: item.value }"></div>
                         </div> 
-                         <span class="percent">{{item.value}}%</span> 
+                         <span class="percent">{{item.value}}</span> 
                     </li>
                     <img style="margin:20px 0" src="/static/images/icon_photo_from.png">
                 </ul>
                 <ul class="user_category user_category_store">
-                    <li v-for="(item,s) in store" :key="s">
+                    <li v-for="(item,s) in stores" :key="s">
                         <div class="show_img"><img :src="item.logo" width="64" height="64"></div>
                          <div class="line line-store">
-                            <div class="bar" v-bind:style="{ width: item.value + '%' }"></div>
+                            <div class="bar" v-bind:style="{ width: item.value}"></div>
                         </div> 
-                         <span class="percent">{{item.value}}%</span> 
+                         <span class="percent">{{item.value}}</span> 
                     </li>
                 </ul>
             </div>
+            <div class="user-water">
+            <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getViewPhotoIndex">
+                    <waterfall-slot v-for="(item, flowNum) in getViewPhotoIndex" :width="291" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
+                        <div class="panel photo_box hover_sh">
+                            <img :src="item.img" @click="showPhotoModal(item, flowNum)">
+                            <div class="photo_info">
+                                <span class="photo_like" @click="photoLikeBtn(item.id,flowNum)">
+                                    <!-- <i class="icon_like_act"></i>  -->
+                                    <i class="icon_like"></i> {{item.fav_num}}
+                                </span>
+                                <ul>
+                                    <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
+                                </ul>
+                            </div>
+    
+                        </div>
+                    </waterfall-slot>
+                </waterfall>
+            </div>
         </div>
+        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
+        </com-photoModal>
     </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
 import header from './../components/user/userHead'
+import { waterfall, waterfallSlot } from 'vue-waterfall'
+import photoModal from './../components/photoModal'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     components: {
-        comHeader: header,
+        'comHeader': header,
+        'waterfall': waterfall,
+        'waterfallSlot': waterfallSlot,
+        'comPhotoModal': photoModal
     },
     computed: {
         ...mapGetters({
+            getUser:'getUser',
+            getViewPhotoIndex: 'getViewPhotoIndex'
         }),
         ...mapActions({
+            qryLoginIndex:'qryLoginIndex'
         })
     },
     data() {
         return {
-            style: [
-                {
-                    "name": "古风",
-                    "value": 56
-                },
-                {
-                    "name": "小清新",
-                    "value": 36
-                },
-                {
-                    "name": "韩式",
-                    "value": 76
-                }
-            ],
-            store: [
-                {
-                    "logo":"/static/images/1.png",
-                    "name": "古风",
-                    "value": 56
-                },
-                {
-                    "logo":"/static/images/1.png",
-                    "name": "小清新",
-                    "value": 36
-                },
-                {
-                    "logo":"/static/images/1.png",
-                    "name": "韩式",
-                    "value": 76
-                }
-            ]
+            isAuth:false,
+            style:null,
+            stores:null,
+            show: false,
+            photoModal: {},
+            index: null,
         }
     },
     mounted() {
+        let data={
+            page:1
+        }
+        this.$store.dispatch('qryPhotoFlow', data)
+        try{
+            let token = JSON.parse(localStorage.getItem('user'));
+            let isLogin = Boolean(token);
+            if(isLogin){
+                this.isAuth = true
+                let data={
+                    uid:token.uid
+                }
+                this.$store.dispatch('qryLoginIndex', data)
+            }else{
+                this.isAuth = false
+            }
+        }catch(e){
+            console.log(e)
+        }
     },
     methods: {
+        photoLikeBtn() {
+            alert('登录后才能收藏哦~')
+        },
+        showPhotoModal(item, index) {
+            this.photoModal = item;
+            this.index = index;
+            this.show = true;
+            const ajaxdata = {
+                id: this.photoModal.id
+            }
+            this.$store.dispatch('qryViewPhoto', ajaxdata)
+        }
     },
     watch: {
+        getUser(){
+            this.style = this.getUser.category.style
+            this.stores = this.getUser.category.stores
+        }
     },
     beforeDestroy() {
     }
@@ -100,6 +139,7 @@ export default {
 }
 
 .user-info {
+    float:left;
     z-index: 6;
     position: relative;
     top: 50px;
@@ -107,6 +147,12 @@ export default {
     height: 565px;
     background: #ffffff;
     padding: 2px 10px;
+}
+.user-water{
+    width: 900px;
+    position: relative;
+    left:10px;
+    float: left;
 }
 
 .user-nike {

@@ -325,3 +325,49 @@ export const qryViewPhoto = ({ commit },data) => {
         });
 };
 //----------------------------------------------------------------------------------------------
+
+//----------------------------------------首页已登录状态------------------------------------------------------
+export const qryLoginIndex = ({ commit },data) => {
+    api.qryLoginIndex(data).then(function (response) {
+        commit(types.USER_INFO, {
+            data: response.data.data.user,
+        })
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------首页图片瀑布流------------------------------------------------------
+export const qryPhotoFlow = ({ commit },data) => {
+    api.qryPhotoFlow(data).then(function (response) {
+        let photoCount = 0;
+        for(let i=0;i < response.data.data.photo.length;i++){
+            const tempImage = new Image();
+            tempImage.onload = function() {
+                photoCount++;
+                response.data.data.photo[i].height = tempImage.height + 30;
+                if( photoCount == response.data.data.photo.length) {
+                    commit(types.VIEW_PHOTO_INDEX, {
+                        list: response.data.data.photo,
+                    })
+                }
+            };
+            tempImage.onerror = function(){
+                photoCount++;
+                response.data.data.photo[i].height = 0;
+                if( photoCount == response.data.data.photo.length) {
+                    commit(types.VIEW_PHOTO_INDEX, {
+                        list: response.data.data.photo,
+                    })
+                }
+            };
+            tempImage.src = response.data.data.photo[i].img;
+        }
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------

@@ -89,7 +89,7 @@ export default {
         }
     },
     mounted() {
-        this.swiper.slideTo(3, 1000, false)
+        this.swiper.slideTo(1, 1000, false)
     },
     methods: {
         close() {

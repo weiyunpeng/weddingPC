@@ -3,8 +3,8 @@
     "msg": "success",
     "data": {
         "user": {
-            "head": "",
-            "nike": "",
+            "head": "/static/images/demo_06.png",
+            "nike": "张小萌",
             "category": {
                 "style": [
                     {
@@ -28,7 +28,19 @@
                         "id": 1,
                         "name": "郑州艾维美婚纱摄影(国贸360店)",
                         "value": "100%",
-                        "logo": "http://marriage-1252045209.image.myqcloud.com/2017072520170725145816.jpg?imageView2/0/w//h/"
+                        "logo": "/static/images/1.png"
+                    },
+                    {
+                        "id": 2,
+                        "name": "古风",
+                        "value": "56%",
+                        "logo": "/static/images/1.png"
+                    },
+                    {
+                        "id": 3,
+                        "name": "小清新",
+                        "value": "37%",
+                        "logo": "/static/images/1.png"
                     }
                 ]
             }

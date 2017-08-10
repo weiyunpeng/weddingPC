@@ -148,6 +148,7 @@ export default {
         }
     },
     mounted() {
+        this.$store.dispatch('getUserInfo');
         this.$store.dispatch('qryIndex')
     },
     methods: {
@@ -166,10 +167,9 @@ export default {
     },
     watch: {
         getAuth(){
-            // console.log(this.getAuth)
-            // if(this.getAuth){
-            //     this.$router.push({ name: 'user'})
-            // }
+            if(this.getAuth){
+                this.$router.push({ name: 'user'})
+            }
         }
     },
     beforeDestroy() {

@@ -20,6 +20,7 @@ import thisMealTag from './modules/thisMealTag'
 import index from './modules/index'
 import viewPhoto from './modules/viewPhoto'
 import authInfo from './modules/auth'
+import user from './modules/user'
 
 Vue.use(Vuex);
 
@@ -45,7 +46,8 @@ export default new Vuex.Store({
       thisMealTag,
       index,
       viewPhoto,
-      authInfo
+      authInfo,
+      user
   },
   strict: debug
 })
