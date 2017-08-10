@@ -48,3 +48,5 @@ export const VIEW_PHOTO = 'VIEW_PHOTO'
 export const VIEW_PHOTO_INDEX = 'VIEW_PHOTO_INDEX'
 
 export const GUIDE_LIST = 'GUIDE_LIST'
+
+export const COLLECT_LIST = 'COLLECT_LIST'

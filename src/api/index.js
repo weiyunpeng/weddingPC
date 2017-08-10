@@ -91,6 +91,15 @@ export default {
         return axios.get('/guide/index', config())
     },
 
+    //收藏图片
+    collectPhoto:function(data){
+        return axios.post('/user/collect',qs.stringify(data), config())
+    },
+    //取消收藏
+    cancelCollectPhoto:function(data){
+        return axios.post('/user/cancel',qs.stringify(data), config())
+    },
+
     //获取用户信息
     getUserInfo:function(){
         return axios.get('/user/get', config())
@@ -98,5 +107,9 @@ export default {
     //退出登录
     loginOut:function(){
         return axios.get('/user/logout', config())
+    },
+     //我的收藏
+    qryMyCollectList:function(data){
+        return axios.post('/user/collect_list',qs.stringify(data), config())
     },
 }

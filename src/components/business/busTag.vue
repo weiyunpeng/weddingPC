@@ -33,11 +33,6 @@ export default {
         })
     },
     mounted() {
-        const ajaxdata = {
-            "tag1": 0,
-            "tag2": 0,
-            "tag3": 0
-        }
         this.$store.dispatch('qrybusTag')
     },
     methods: {

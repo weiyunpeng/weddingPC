@@ -1,7 +1,7 @@
 <template>
     <div class="user">
         <com-header></com-header>
-        <div class="container">
+        <div class="container" style="padding-bottom:255px;">
             <div class="user-info" v-show="isAuth">
                 <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
                 <div class="user-nike">
@@ -34,9 +34,10 @@
                         <div class="panel photo_box hover_sh">
                             <img :src="item.img" @click="showPhotoModal(item, flowNum)">
                             <div class="photo_info">
-                                <span class="photo_like" @click="photoLikeBtn(item.id,flowNum)">
-                                    <!-- <i class="icon_like_act"></i>  -->
-                                    <i class="icon_like"></i> {{item.fav_num}}
+                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav)">
+                                     <i v-if="item.is_fav" class="icon_like_act"></i>  
+                                     <i v-if="!item.is_fav" class="icon_like"></i>  
+                                    {{item.fav_num}}
                                 </span>
                                 <ul>
                                     <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
@@ -83,6 +84,7 @@ export default {
             show: false,
             photoModal: {},
             index: null,
+            uid:null,
         }
     },
     mounted() {
@@ -95,8 +97,9 @@ export default {
             let isLogin = Boolean(token);
             if(isLogin){
                 this.isAuth = true
+                this.uid = token.uid
                 let data={
-                    uid:token.uid
+                    uid:this.uid
                 }
                 this.$store.dispatch('qryLoginIndex', data)
             }else{
@@ -107,8 +110,29 @@ export default {
         }
     },
     methods: {
-        photoLikeBtn() {
-            alert('登录后才能收藏哦~')
+        photoLikeBtn(id,fav) {
+            if(this.isAuth){
+                if(fav == 0){
+                    //说明未收藏，可以收藏
+                    let ajaxdata = {
+                        id:id,
+                        uid:this.uid
+                    }
+                    this.$store.dispatch('collectPhoto', ajaxdata)
+                }else if(fav == 1){
+                    //说明已经收藏了,为取消收藏
+                    let ajaxdata = {
+                        id:id,
+                        uid:this.uid
+                    }
+                    this.$store.dispatch('cancelCollectPhoto', ajaxdata)
+                }else{
+                    //未知异常
+                    console.log('collect 接口异常')
+                }
+            }else{
+                alert('登录后才能收藏哦~')
+            }
         },
         showPhotoModal(item, index) {
             this.photoModal = item;

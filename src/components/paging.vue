@@ -73,6 +73,8 @@ export default {
 </script>
 <style scoped>
 .pages-wrap {
+    background: #fff;
+    background-color: #fff;
     text-align: center;
 }
 .pagination {

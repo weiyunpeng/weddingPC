@@ -3,9 +3,9 @@
     "msg": "获取成功",
     "data": {
         "user": {
-            "head": "",
+            "head": "/static/images/demo_06.png",
             "uid": 1,
-            "nickname": "",
+            "nickname": "张小萌",
             "category": {
                 "id": 1,
                 "name": "婚纱照"
@@ -18,17 +18,25 @@
                 "value": "33%",
                 "photo": [
                     {
-                        "id": 1,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d13dd743510153737.jpg"
-                    },
-                    {
-                        "id": 2,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d0feefa2022650525.jpg"
-                    },
-                    {
-                        "id": 3,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858d12441c6422302325.jpg"
-                    }
+                            "id": 1,
+                            "img": "/static/images/16.png"
+                        },
+                        {
+                            "id": 2,
+                            "img": "/static/images/15.png"
+                        },
+                        {
+                            "id": 3,
+                            "img": "/static/images/14.png"
+                        },
+                        {
+                            "id": 4,
+                            "img": "/static/images/13.png"
+                        },
+                        {
+                            "id": 4,
+                            "img": "/static/images/12.png"
+                        }
                 ]
             },
             {
@@ -37,17 +45,25 @@
                 "value": "33%",
                 "photo": [
                     {
-                        "id": 4,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858da1b1c7b500152050.jpg"
-                    },
-                    {
-                        "id": 5,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/59858da39c910255978105.jpg"
-                    },
-                    {
-                        "id": 6,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170805/5985ab1209d2f886428459.jpg"
-                    }
+                            "id": 1,
+                            "img": "/static/images/16.png"
+                        },
+                        {
+                            "id": 2,
+                            "img": "/static/images/15.png"
+                        },
+                        {
+                            "id": 3,
+                            "img": "/static/images/14.png"
+                        },
+                        {
+                            "id": 4,
+                            "img": "/static/images/13.png"
+                        },
+                        {
+                            "id": 4,
+                            "img": "/static/images/12.png"
+                        }
                 ]
             },
             {
@@ -56,17 +72,25 @@
                 "value": "33%",
                 "photo": [
                     {
-                        "id": 7,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/cover/20170802/5981489cb091d974325685.png"
-                    },
-                    {
-                        "id": 8,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3d9d1198752876912.png"
-                    },
-                    {
-                        "id": 9,
-                        "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170803/5982d3db53635927738280.jpg"
-                    }
+                            "id": 1,
+                            "img": "/static/images/16.png"
+                        },
+                        {
+                            "id": 2,
+                            "img": "/static/images/15.png"
+                        },
+                        {
+                            "id": 3,
+                            "img": "/static/images/14.png"
+                        },
+                        {
+                            "id": 4,
+                            "img": "/static/images/13.png"
+                        },
+                        {
+                            "id": 4,
+                            "img": "/static/images/12.png"
+                        }
                 ]
             }
         ]

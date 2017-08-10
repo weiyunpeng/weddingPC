@@ -40,3 +40,6 @@ export const getViewPhotoIndex = state => state.viewPhoto.photo;
 
 export const getGuideList = state => state.guide.list;
 
+export const getCollectList = state => state.collect.list;
+export const getCollectUserInfo = state => state.collect.user;
+

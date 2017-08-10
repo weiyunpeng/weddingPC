@@ -4,7 +4,7 @@
         <com-tag @ajaxTag="ajaxTag"></com-tag>
         <com-filter @ajaxfilter="ajaxfilter" @ajaxPrice="ajaxPrice"></com-filter>
         <div class="bus-commit">
-            <div class="container">
+            <div class="container" style="padding-bottom:255px;">
                 <ul class="list">
                     <li v-for="(item,busIndex) in busList" :key="busIndex">
                         <ul class="list-con">
@@ -90,14 +90,15 @@
                                 </ul>
                             </li>
                             <li class="list-con-btn">
-                                <div v-show="!item.showAll">
-                                    <i class="icon-angle"></i>
-                                    <a href="javascript:void(0)" @click="showAll(busIndex,true)">展示全部</a>
-                                </div>
-                                <div v-show="item.showAll">
-                                    <i class="icon-angle-act"></i>
-                                    <a href="javascript:void(0)" @click="showAll(busIndex,false)">收 起</a>
-                                </div>
+                                 <div v-if="item.showAll"> 
+                                     <i class="icon-angle-act"></i> 
+                                    <a  href="javascript:void(0)" @click="showBtn(busIndex,false)">收 起</a>
+                                 </div> 
+                                 <div v-else-if="!item.showAll"> 
+                                     <i class="icon-angle"></i> 
+                                    <a  href="javascript:void(0)" @click="showBtn(busIndex,true)">展示全部</a>
+                                 </div> 
+                                
                             </li>
                         </ul>
                     </li>
@@ -173,13 +174,13 @@ export default {
             this.ajaxdata.maxPrice = maxPrice
             this.$store.dispatch('qryBusList', this.ajaxdata)
         },
-        showAll(index,showAll){
+        showBtn(busIndex,showAll){
             let data={
-                index:index,
+                index:busIndex,
                 showAll :showAll
             }
             this.$store.dispatch('busChange', data)
-            console.log(this.busList)
+            console.log(this.busList[busIndex].showAll)
         }
     },
     watch: {

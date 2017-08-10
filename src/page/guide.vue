@@ -2,7 +2,7 @@
     <div>
         <com-header></com-header>
         <div class="hot-raiders">
-            <div class="container" style="padding-bottom:50px;">
+            <div class="container" style="padding-bottom:255px;">
                 <ul>
                     <li v-for="(item,guideNum) in getGuideList" :key="guideNum">
                         <a :href="item.url" target="_blank">

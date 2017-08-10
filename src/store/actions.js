@@ -392,3 +392,38 @@ export const qryGuideList = ({ commit },data) => {
         });
 };
 //----------------------------------------------------------------------------------------------
+
+//----------------------------------------收藏图片------------------------------------------------------
+export const collectPhoto = ({ commit },data) => {
+    api.collectPhoto(data).then(function (response) {
+        console.log(response.data.msg)
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------取消收藏图片------------------------------------------------------
+export const cancelCollectPhoto = ({ commit },data) => {
+    api.cancelCollectPhoto(data).then(function (response) {
+        console.log(response.data.msg)
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------我的收藏------------------------------------------------------
+export const qryMyCollectList = ({ commit },data) => {
+    api.qryMyCollectList(data).then(function (response) {
+        commit(types.COLLECT_LIST, {
+            data: response.data.data,
+        })
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------

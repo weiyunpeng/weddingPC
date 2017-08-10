@@ -13,7 +13,8 @@
                         <swiper-slide class="photo_fl fl" v-for="(item,i) in getViewPhoto" v-bind:key="i">
                             <img v-lazy="item.img" width="800" height="475">
                             <span class="pg_like" @click="photoLikeBtn(item.id,index)">
-                                <i class="iconfont icon-like"></i>
+                                <i v-if="item.is_fav" class="icon_like_act"></i>  
+                                <i v-if="!item.is_fav" class="icon_like"></i>  
                                 {{item.fav_num}}
                             </span>
                         </swiper-slide>

@@ -3,14 +3,14 @@
         <com-header></com-header>
         <div class="container">
             <div class="c-user fl">
-                <img class="circle c-user-head" :src="head" width="100" height="100">
-                <p class="c-user-name">张小萌</p>
+                <img class="circle c-user-head" :src="userInfo.head" width="100" height="100">
+                <p class="c-user-name">{{userInfo.nickname}}</p>
                 <dl>
                     <dt>
                         <i class="icon_collage" @click="toggleDD"></i>
                         <a href="javascript:void(0)" @click="toggleDD">我的收藏</a>
                         <dd v-show="isDd">
-                            <a href="javascript:void(0)">婚纱照</a>
+                            <a href="javascript:void(0)">{{category.name}}</a>
                         </dd>
                     </dt>
                     <dt>
@@ -21,7 +21,9 @@
             <div class="c-type fl">
                 <div class="clearfix c-type-tag">
                     <ul>
-                        <li v-for="(item,c) in ['按风格排序','按影楼排序']" :key="c" v-bind:class="{cur : isTag == c}" @click="changeTab(c)">{{item}}</li>
+                        <li v-for="(item,c) in ['按风格排序','按影楼排序']" :key="c" v-bind:class="{cur : isTag == c}" @click="changeTab(c)">
+                            <a href="javascript:void(0)">{{item}}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="clearfix c-type-list">
@@ -34,7 +36,7 @@
                                 </div>
                                 <span class="percent">{{item.value}}</span>
                                 <div v-show="ln == 0" class="fr c-type-router">
-                                    <router-link to="/collect" target="_blank">
+                                    <router-link to="/guide" target="_blank">
                                         去看看如何选择合适的婚纱照>
                                     </router-link>
                                 </div>
@@ -75,103 +77,32 @@ export default {
     },
     computed: {
         ...mapGetters({
+            getCollectList:'getCollectList',
+            getCollectUserInfo:'getCollectUserInfo'
         }),
         ...mapActions({
+            qryMyCollectList:'qryMyCollectList'
         })
     },
     data() {
         return {
+            uid:this.$route.query.uid,
+            type:this.$route.query.type,
             show: false,
             isDd: true,
             isTag: 0,
             photoModal: {},
-            head: '/static/images/demo_06.png',
-            list: [
-                {
-                    "name": "欧美大气",
-                    "value": "33%",
-                    "showall":false,
-                    "photo": [
-                        {
-                            "id": 1,
-                            "img": "/static/images/16.png"
-                        },
-                        {
-                            "id": 2,
-                            "img": "/static/images/15.png"
-                        },
-                        {
-                            "id": 3,
-                            "img": "/static/images/14.png"
-                        },
-                        {
-                            "id": 4,
-                            "img": "/static/images/13.png"
-                        },
-                        {
-                            "id": 4,
-                            "img": "/static/images/12.png"
-                        }
-                    ]
-                },
-                {
-                    "name": "小清新",
-                    "value": "33%",
-                    "showall":false,
-                    "photo": [
-                        {
-                            "id": 1,
-                            "img": "/static/images/16.png"
-                        },
-                        {
-                            "id": 2,
-                            "img": "/static/images/15.png"
-                        },
-                        {
-                            "id": 3,
-                            "img": "/static/images/14.png"
-                        },
-                        {
-                            "id": 4,
-                            "img": "/static/images/13.png"
-                        },
-                        {
-                            "id": 4,
-                            "img": "/static/images/12.png"
-                        }
-                    ]
-                },
-                {
-                    "name": "韩式",
-                    "value": "33%",
-                    "showall":false,
-                    "photo": [
-                        {
-                            "id": 1,
-                            "img": "/static/images/16.png"
-                        },
-                        {
-                            "id": 2,
-                            "img": "/static/images/15.png"
-                        },
-                        {
-                            "id": 3,
-                            "img": "/static/images/14.png"
-                        },
-                        {
-                            "id": 4,
-                            "img": "/static/images/13.png"
-                        },
-                        {
-                            "id": 4,
-                            "img": "/static/images/12.png"
-                        }
-                    ]
-                }
-            ]
+            userInfo:{},
+            category:{},
+            list:[]
         }
     },
     mounted() {
+        let ajaxdata={
+            uid:this.uid,
+            type:this.type
+        }
+        this.$store.dispatch('qryMyCollectList', ajaxdata)
     },
     methods: {
         toggleDD() {
@@ -181,7 +112,9 @@ export default {
             this.isTag = c
         },
         showAll(ln){
-            this.list[ln].showall = !this.list[ln].showall
+            let obj = this.list[ln]
+            obj.showall = !obj.showall
+            this.$set(this.list, ln, obj);
         },
         showPhotoModal(img, m) {
             this.photoModal = img;
@@ -193,6 +126,13 @@ export default {
         }
     },
     watch: {
+        getCollectUserInfo(){
+            this.userInfo = this.getCollectUserInfo
+            this.category = this.getCollectUserInfo.category
+        },
+        getCollectList(){
+            this.list = this.getCollectList
+        }
     },
     beforeDestroy() {
     }

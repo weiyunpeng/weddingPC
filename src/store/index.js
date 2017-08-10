@@ -22,6 +22,7 @@ import viewPhoto from './modules/viewPhoto'
 import authInfo from './modules/auth'
 import user from './modules/user'
 import guide from './modules/guide'
+import collect from './modules/collect'
 
 Vue.use(Vuex);
 
@@ -49,7 +50,8 @@ export default new Vuex.Store({
       viewPhoto,
       authInfo,
       user,
-      guide
+      guide,
+      collect
   },
   strict: debug
 })

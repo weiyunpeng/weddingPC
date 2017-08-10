@@ -7,6 +7,8 @@ function run(Request, Response)
             'get':get,
             'logout':logout,
             'collect_list':collect_list,
+            'collect':collect,
+            'cancel':cancel,
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -41,6 +43,26 @@ function logout(Params, Request, Response) {
  */
 function collect_list(Params, Request, Response) {
     var fileName = 'user/data/collect_list.json';
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 收藏图片
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function collect(Params, Request, Response) {
+    var fileName = 'user/data/collect.json';
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
+ * 取消收藏
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function cancel(Params, Request, Response) {
+    var fileName = 'user/data/cancel.json';
     MAIN.responseStub(Response,fileName);
 }
 
