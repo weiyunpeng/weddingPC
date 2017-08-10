@@ -86,6 +86,11 @@ export default {
         return axios.post('/site/photo_flow',qs.stringify(data), config())
     },
 
+    //攻略
+    qryGuideList:function(){
+        return axios.get('/guide/index', config())
+    },
+
     //获取用户信息
     getUserInfo:function(){
         return axios.get('/user/get', config())

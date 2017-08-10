@@ -371,3 +371,16 @@ export const qryPhotoFlow = ({ commit },data) => {
         });
 };
 //----------------------------------------------------------------------------------------------
+
+//----------------------------------------攻略------------------------------------------------------
+export const qryGuideList = ({ commit },data) => {
+    api.qryGuideList(data).then(function (response) {
+        commit(types.GUIDE_LIST, {
+            list: response.data.data,
+        })
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------

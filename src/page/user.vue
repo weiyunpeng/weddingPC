@@ -29,8 +29,8 @@
                 </ul>
             </div>
             <div class="user-water">
-            <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getViewPhotoIndex">
-                    <waterfall-slot v-for="(item, flowNum) in getViewPhotoIndex" :width="291" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
+            <waterfall :line-gap="300" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getViewPhotoIndex">
+                    <waterfall-slot v-for="(item, flowNum) in getViewPhotoIndex" :width="300" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <img :src="item.img" @click="showPhotoModal(item, flowNum)">
                             <div class="photo_info">
@@ -151,6 +151,7 @@ export default {
 .user-water{
     position: relative;
     left:10px;
+    overflow: hidden;
 }
 
 .user-nike {

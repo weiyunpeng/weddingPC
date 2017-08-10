@@ -45,3 +45,5 @@ export const PHOTO_CLEAR = 'PHOTO_CLEAR'
 export const PHOTO_LIKE_USER = 'PHOTO_LIKE_USER'
 export const VIEW_PHOTO = 'VIEW_PHOTO'
 export const VIEW_PHOTO_INDEX = 'VIEW_PHOTO_INDEX'
+
+export const GUIDE_LIST = 'GUIDE_LIST'

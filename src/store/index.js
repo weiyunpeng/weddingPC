@@ -21,6 +21,7 @@ import index from './modules/index'
 import viewPhoto from './modules/viewPhoto'
 import authInfo from './modules/auth'
 import user from './modules/user'
+import guide from './modules/guide'
 
 Vue.use(Vuex);
 
@@ -47,7 +48,8 @@ export default new Vuex.Store({
       index,
       viewPhoto,
       authInfo,
-      user
+      user,
+      guide
   },
   strict: debug
 })
