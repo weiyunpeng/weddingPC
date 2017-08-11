@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="i-header" :style="{background:'url('+getPhotoList.banner || '/static/images/unlogin_bg.jpg'+') left center no-repeat', borderBottom:skinBorder}">
-            <img class="logo zoomIn" v-lazy="getPhotoList.logo || '/static/images/logo-2.png'">
+        <div class="i-header" :style="{background:'url('+ getPhotoList.banner +' ) left center no-repeat', borderBottom:skinBorder}">
+            <img class="logo zoomIn" v-lazy="getPhotoList.logo || logo">
             <div class="header-con">
                 <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
                     <img class="user" src="/static/images/user_icon.png">
@@ -143,8 +143,7 @@ export default {
             index: null,
             banner: '/static/images/unlogin_bg.jpg',
             skinBorder: '2px solid #f2f2f2',
-            logo: '/static/images/logo-3.png',
-            test: '/static/images/demo_01.jpg'
+            logo: '/static/images/logo-3.png'
         }
     },
     mounted() {
