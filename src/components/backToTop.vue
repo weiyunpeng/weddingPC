@@ -66,12 +66,15 @@ export default {
   border-radius: 3px;
   z-index: 1000;
   cursor: pointer;
-}
-
-.vue-back-to-top:hover {
   filter: alpha(Opacity=50);
   -moz-opacity: 0.5;
   opacity: 0.5;
+}
+
+.vue-back-to-top:hover {
+  filter: alpha(Opacity=100);
+  -moz-opacity: 1;
+  opacity: 1;
   -webkit-transition: all .6s ease;
   transition: all .6s ease;
 }

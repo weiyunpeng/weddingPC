@@ -283,7 +283,7 @@ export const qryIndex = ({ commit },data) => {
                 response.data.data.photo[i].height = tempImage.height + 30;
                 response.data.data.photo[i].width = tempImage.width;
                 if( photoCount == response.data.data.photo.length) {
-                    commit(types.PHOTO_LIST, {
+                    commit(types.INDEX_LIST, {
                         list: response.data.data,
                     })
                 }
@@ -292,7 +292,7 @@ export const qryIndex = ({ commit },data) => {
                 photoCount++;
                 response.data.data.photo[i].height = 0;
                 if( photoCount == response.data.data.photo.length) {
-                    commit(types.PHOTO_LIST, {
+                    commit(types.INDEX_LIST, {
                         list: response.data.data,
                     })
                 }
@@ -316,7 +316,7 @@ export const qryViewPhoto = ({ commit },data) => {
                 photoCount++;
                 response.data.data.list[i].height = tempImage.height /2 + 15;
                 if( photoCount == response.data.data.list.length) {
-                    commit(types.VIEW_PHOTO, {
+                    commit(types.VIEW_PHOTO_MODAL, {
                         data: response.data.data,
                     })
                 }
@@ -325,7 +325,7 @@ export const qryViewPhoto = ({ commit },data) => {
                 photoCount++;
                 response.data.data.list[i].height = 0;
                 if( photoCount == response.data.data.list.length) {
-                    commit(types.VIEW_PHOTO, {
+                    commit(types.VIEW_PHOTO_MODAL, {
                         list: response.data.data.list,
                     })
                 }
@@ -354,7 +354,11 @@ export const qryLoginIndex = ({ commit },data) => {
 
 //----------------------------------------首页图片瀑布流------------------------------------------------------
 export const qryPhotoFlow = ({ commit },data) => {
+    commit(types.PHOTO_STATUS, {status: 1});
     api.qryPhotoFlow(data).then(function (response) {
+        if(response.data.data.photo.length == 0){
+            return commit(types.PHOTO_STATUS, {status: 2});
+        }
         let photoCount = 0;
         for(let i=0;i < response.data.data.photo.length;i++){
             const tempImage = new Image();
@@ -363,8 +367,9 @@ export const qryPhotoFlow = ({ commit },data) => {
                 response.data.data.photo[i].height = tempImage.height + 30;
                 response.data.data.photo[i].width = tempImage.width;
                 if( photoCount == response.data.data.photo.length) {
-                    commit(types.VIEW_PHOTO_INDEX, {
+                    commit(types.PHOTO_LIST, {
                         list: response.data.data.photo,
+                        status: status
                     })
                 }
             };
@@ -372,8 +377,9 @@ export const qryPhotoFlow = ({ commit },data) => {
                 photoCount++;
                 response.data.data.photo[i].height = 0;
                 if( photoCount == response.data.data.photo.length) {
-                    commit(types.VIEW_PHOTO_INDEX, {
+                    commit(types.PHOTO_LIST, {
                         list: response.data.data.photo,
+                        status: status
                     })
                 }
             };
@@ -381,8 +387,12 @@ export const qryPhotoFlow = ({ commit },data) => {
         }
     })
         .catch(function (error) {
+            commit(types.PHOTO_STATUS, {status: 0});
             console.log(error)
         });
+};
+export const photoClear = ({ commit }) => {
+    commit(types.PHOTO_CLEAR)
 };
 //----------------------------------------------------------------------------------------------
 

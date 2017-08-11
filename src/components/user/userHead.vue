@@ -137,7 +137,6 @@ export default {
             console.log(e)
         }
         let catchScroll = () => {
-            console.log(window.pageYOffset)
             if (window.pageYOffset >= parseInt(this.HNavOffset)) {
                 this.visHNav = true
             } else if (window.pageYOffset < 50) {

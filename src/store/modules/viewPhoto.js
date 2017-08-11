@@ -1,19 +1,29 @@
-import { VIEW_PHOTO,VIEW_PHOTO_INDEX} from '../types'
+import { PHOTO_LIST,VIEW_PHOTO_MODAL,PHOTO_STATUS,PHOTO_CLEAR} from '../types'
 
 const state = {
     list: [],
     photoInfo:null,
-    photo: [],
+    photoList: [],
+    status: 0
 };
 
 const mutations = {
-    [VIEW_PHOTO](state, data) {
+    [VIEW_PHOTO_MODAL](state, data) {
         state.list = data.data.list;
         state.photoInfo = data.data;
     },
-    [VIEW_PHOTO_INDEX](state, data) {
-        state.photo = data.list;
-    }
+    [PHOTO_LIST](state, data) {
+        state.photoList = state.list.concat(data.list);
+        console.log(state.photoList)
+        state.status = data.status;
+    },
+    [PHOTO_STATUS](state, data){
+        state.status = data.status;
+    },
+    [PHOTO_CLEAR](state){
+        state.list = [];
+        state.status = 0;
+    },
 };
 
 export default {

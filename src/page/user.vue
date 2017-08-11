@@ -1,7 +1,7 @@
 <template>
     <div class="user">
         <com-header></com-header>
-        <div class="container" style="padding-bottom:255px;">
+        <div class="container">
             <div class="user-info" v-show="isAuth">
                 <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
                 <div class="user-nike">
@@ -29,8 +29,8 @@
                 </ul>
             </div>
             <div class="user-water">
-            <waterfall :line-gap="300" :max-line-gap="640" :single-max-width="320" :watch="getViewPhotoIndex">
-                    <waterfall-slot v-for="(item, flowNum) in getViewPhotoIndex" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
+            <waterfall :line-gap="300" :max-line-gap="640" :single-max-width="320" :watch="getPhotoList">
+                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <img :src="item.img" @click="showPhotoModal(item, flowNum)">
                             <div class="photo_info">
@@ -70,10 +70,13 @@ export default {
     computed: {
         ...mapGetters({
             getUser:'getUser',
-            getViewPhotoIndex: 'getViewPhotoIndex'
+            getPhotoList: 'getPhotoList',
+            getPhotoStatus: 'getPhotoStatus',
         }),
         ...mapActions({
-            qryLoginIndex:'qryLoginIndex'
+            qryPhotoFlow:'qryPhotoFlow',
+            qryLoginIndex:'qryLoginIndex',
+            photoClear: 'photoClear',
         })
     },
     data() {
@@ -85,13 +88,13 @@ export default {
             photoModal: {},
             index: null,
             uid:null,
+            page:1
         }
     },
     mounted() {
-        let data={
-            page:1
-        }
-        this.$store.dispatch('qryPhotoFlow', data)
+        this.$store.dispatch('photoClear');
+        this.loadPhoto();
+        window.addEventListener('scroll',this.loadMore);
         try{
             let token = JSON.parse(localStorage.getItem('user'));
             let isLogin = Boolean(token);
@@ -112,9 +115,9 @@ export default {
     methods: {
         photoLikeBtn(id,fav,flowNum) {
             if(this.isAuth){
-                let obj = this.getViewPhotoIndex[flowNum]
+                let obj = this.getPhotoList[flowNum]
                 obj.is_fav = !obj.is_fav
-                this.$set(this.getViewPhotoIndex, flowNum, obj);
+                this.$set(this.getPhotoList, flowNum, obj);
                 if(fav == 0){
                     //说明未收藏，可以收藏
                     let ajaxdata = {
@@ -145,6 +148,25 @@ export default {
                 id: this.photoModal.id
             }
             this.$store.dispatch('qryViewPhoto', ajaxdata)
+        },
+        loadPhoto(){
+            let data={
+                page:this.page
+            }
+            this.$store.dispatch('qryPhotoFlow', data)
+        },
+        loadMore() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const allHeight = document.body.scrollHeight;
+            const pageHeight =  document.documentElement.clientHeight;
+            console.log(this.getPhotoStatus)
+            if(scrollTop == allHeight - pageHeight && this.getPhotoStatus == 0){
+                this.page++
+                this.loadPhoto();
+            }else if(scrollTop == 0){
+                this.page = 1;
+                this.$store.dispatch('photoClear');
+            }
         }
     },
     watch: {
@@ -154,6 +176,7 @@ export default {
         }
     },
     beforeDestroy() {
+        window.removeEventListener('scroll',this.loadMore);
     }
 }
 </script>

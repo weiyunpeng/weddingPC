@@ -1,4 +1,4 @@
-import { PHOTO_LIST,PHOTO_CLEAR } from '../types'
+import { INDEX_LIST,PHOTO_CLEAR } from '../types'
 
 const state = {
     banner:'',
@@ -10,7 +10,7 @@ const state = {
 };
 
 const mutations = {
-    [PHOTO_LIST](state, data) {
+    [INDEX_LIST](state, data) {
         state.nav = data.list.nav;
         state.guide = data.list.guide;
         state.store = data.list.store;

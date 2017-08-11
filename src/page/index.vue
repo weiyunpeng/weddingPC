@@ -1,13 +1,14 @@
 <template>
     <div>
-        <div class="i-header" :style="{background:'url('+ getPhotoList.banner +' ) left center no-repeat', borderBottom:skinBorder}">
-            <img class="logo zoomIn" v-lazy="getPhotoList.logo || logo">
+        <div class="i-header" :style="{
+            background:'url('+ getIndexPhoto.banner +' ) left center no-repeat', borderBottom:skinBorder}">
+            <img class="logo zoomIn" v-lazy="getIndexPhoto.logo || logo">
             <div class="header-con">
                 <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
                     <img class="user" src="/static/images/user_icon.png">
                 </a>
                 <ul class="zoomIn">
-                    <li class="flipInY" v-for="(nav,navNum) in getPhotoList.nav" :key="navNum">
+                    <li class="flipInY" v-for="(nav,navNum) in getIndexPhoto.nav" :key="navNum">
                         <router-link :to="{ name: 'user'}" target="_blank" v-if="navNum == 0">
                             <img :src="nav.img || '/static/images/demo_01.jpg'" width="390" height="390">
                         </router-link>
@@ -29,8 +30,8 @@
                 <router-link :to="{ name: 'user', query: {}}" class="more_a fr u-index-nav" target="_blank">
                     查看更多>
                 </router-link>
-                <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getPhotoList.list">
-                    <waterfall-slot v-for="(item, index) in getPhotoList.list" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
+                <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getIndexPhoto.list">
+                    <waterfall-slot v-for="(item, index) in getIndexPhoto.list" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <img :src="item.img" @click="showPhotoModal(item, index)">
                             <div class="photo_info">
@@ -57,7 +58,7 @@
                     查看更多>
                 </router-link>
                 <ul>
-                    <li v-for="(raiders,raiNum) in getPhotoList.guide" :key="raiNum">
+                    <li v-for="(raiders,raiNum) in getIndexPhoto.guide" :key="raiNum">
                         <a :href="raiders.url" target="_blank">
                             <div class="img-hover fl">
                                 <img v-lazy="raiders.img" width="195" height="192">
@@ -84,7 +85,7 @@
                     查看更多>
                 </router-link>
                 <ul>
-                    <li v-for="(store,storeNum) in getPhotoList.store" :key="storeNum">
+                    <li v-for="(store,storeNum) in getIndexPhoto.store" :key="storeNum">
                         <router-link :to="{ name: 'busDeatils', query: {id:store.id,busName:store.store_name}}" target="_blank">
                             <img v-lazy="store.img" height="210" width="295">
                         </router-link>
@@ -128,7 +129,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            getPhotoList: 'getPhotoList',
+            getIndexPhoto: 'getIndexPhoto',
             getAuth:'getAuth'
         }),
         ...mapActions({
