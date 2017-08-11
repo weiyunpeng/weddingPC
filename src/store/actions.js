@@ -367,6 +367,10 @@ export const qryPhotoFlow = ({ commit },data) => {
                 response.data.data.photo[i].height = tempImage.height + 30;
                 response.data.data.photo[i].width = tempImage.width;
                 if( photoCount == response.data.data.photo.length) {
+                    showMsg({ commit },{
+                        content: '登录成功',
+                        type: 'info'
+                    })
                     commit(types.PHOTO_LIST, {
                         list: response.data.data.photo,
                         status: status

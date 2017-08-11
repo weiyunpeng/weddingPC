@@ -95,9 +95,9 @@
     }
 
     .message-type-info {
-        background-color: #43b4ec;
+        background-color: #eb5f74;
     }
     .message-type-danger {
-        background-color: #f3755e;
+        background-color: #eb5f74;
     }
 </style>

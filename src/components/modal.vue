@@ -73,7 +73,7 @@
     .modal-dialog{
         width: 300px;
         margin: 0 auto;
-        background: #fff;
+        background: #eb5f74;
         padding: 10px;
         border-radius: 10px;
         transition: all .3s ease;
