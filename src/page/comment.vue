@@ -16,7 +16,7 @@
                                             <li>
                                                 <span class="meal_name">{{item.name}}</span>
                                                 <i v-show="item.isYes" class="icon icon-yes"></i>
-                                                <i v-show="item.isVIP" class="icon icon-vip"></i>
+                                                <i v-show="item.isVip" class="icon icon-vip"></i>
                                             </li>
                                             <li>
                                                 <!-- <i class="icon logo_position"></i> -->

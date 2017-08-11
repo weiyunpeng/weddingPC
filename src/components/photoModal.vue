@@ -10,18 +10,22 @@
                 </div>
                 <div class="photo_fl fl">
                     <swiper :options="swiperOption" ref="mySwiper">
-                        <swiper-slide class="photo_fl fl" v-for="(item,i) in getViewPhoto" v-bind:key="i">
-                            <img v-lazy="item.img" width="800" height="475">
-                            <span class="pg_like" @click="photoLikeBtn(item.id,index)">
-                                <i v-if="item.is_fav" class="icon_like_act"></i>  
-                                <i v-if="!item.is_fav" class="icon_like"></i>  
+                        <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">
+                            <img :src="item.img" width="800" height="475">
+                            <span class="pg_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
+                                <i v-if="item.is_fav" class="icon_like_act"></i>
+                                <i v-if="!item.is_fav" class="icon_like"></i>
                                 {{item.fav_num}}
                             </span>
                         </swiper-slide>
-                        <div class="swiper-button-prev" slot="button-prev"></div>
-                        <div class="swiper-button-next" slot="button-next"></div>
+                        <div class="swiper-button-prev" slot="button-prev" @click="changeWaterfall()"></div>
+                        <div class="swiper-button-next" slot="button-next" @click="changeWaterfall()"></div>
                     </swiper>
-                    <p>aaaaaaa</p>
+                    <div class="modal-details">
+                        <span>{{photoInfo.time}}</span>
+                        <label>{{photoInfo.comment}}</label>
+                        <a :href="photoInfo.comment_url" target="_blank">TA的拍摄历程>>></a>
+                    </div>
                 </div>
     
                 <div class="photo_fr fr">
@@ -51,8 +55,9 @@ export default {
     },
     data() {
         return {
-            selected:0,
+            selected: 0,
             loading: false,
+            photoInfo:{},
             swiperOption: {
                 notNextTick: true,
                 setWrapperSize: false,
@@ -62,7 +67,13 @@ export default {
                 observeParents: true,
                 prevButton: '.swiper-button-prev',
                 nextButton: '.swiper-button-next',
-                onTransitionStart(swiper) {}
+                // Disable preloading of all images
+                preloadImages: false,
+                // Enable lazy loading
+                lazyLoading: true,
+                onTransitionStart(swiper) {
+                    this.index = swiper.realIndex
+                }
             },
         }
     },
@@ -81,7 +92,8 @@ export default {
     },
     computed: {
         ...mapGetters({
-            getViewPhoto: 'getViewPhoto'
+            getViewPhoto: 'getViewPhoto',
+            getViewPhotoInfo: 'getViewPhotoInfo'
         }),
         ...mapActions({
         }),
@@ -90,22 +102,51 @@ export default {
         }
     },
     mounted() {
-        this.swiper.slideTo(1, 1000, false)
+        this.swiper.slideTo(0, 1000, false)
     },
     methods: {
         close() {
             this.loading = false;
             this.$emit('input', false);
         },
-        changeSwiper(item,index){
+        changeSwiper(item, index) {
             this.selected = index
             this.swiper.slideTo(index, 1000, false)
         },
-        photoLikeBtn(pid, index) {
-            this.$store.dispatch('photoLike', {
-                pid: pid,
-                index: index
-            });
+        changeWaterfall(){
+            this.selected = this.swiper.realIndex+1
+        },
+        photoLikeBtn(id, fav, flowNum) {
+            let token = JSON.parse(localStorage.getItem('user'));
+            let isLogin = Boolean(token);
+            if (isLogin) {
+                let obj = this.getViewPhoto[flowNum]
+                obj.is_fav = !obj.is_fav
+                this.$set(this.getViewPhoto, flowNum, obj);
+                if (fav == 0) {
+                    //说明未收藏，可以收藏
+                    let ajaxdata = {
+                        id: id,
+                        uid: this.uid
+                    }
+                    this.$store.dispatch('collectPhoto', ajaxdata)
+                } else if (fav == 1) {
+                    //说明已经收藏了,为取消收藏
+                    let ajaxdata = {
+                        id: id,
+                        uid: this.uid
+                    }
+                    this.$store.dispatch('cancelCollectPhoto', ajaxdata)
+                } else {
+                    //未知异常
+                    console.log('collect 接口异常')
+                }
+            } else {
+                alert('登录后才能收藏哦~')
+            }
+        },
+        swiper(a){
+            console.log(a)
         }
     },
     watch: {
@@ -122,7 +163,8 @@ export default {
                 tempImage.src = self.photoModal.img;
             }
         },
-        getViewPhoto() {
+        getViewPhotoInfo() {
+            this.photoInfo = this.getViewPhotoInfo
         }
     }
 }
@@ -211,15 +253,30 @@ export default {
     font-size: 14px;
     line-height: 28px;
 }
-.water_img{
-    padding-right:10px;
-    filter:alpha(Opacity=80);
-    -moz-opacity:0.5;
+
+.water_img {
+    padding-right: 10px;
+    filter: alpha(Opacity=80);
+    -moz-opacity: 0.5;
     opacity: 0.5;
 }
-.cur{
-    filter:alpha(Opacity=100);
-    -moz-opacity:1;
+
+.cur {
+    filter: alpha(Opacity=100);
+    -moz-opacity: 1;
     opacity: 1;
+}
+
+.modal-details {
+    color: #808080;
+    font-size: 14px;
+    line-height: 27.28px;
+    a{
+        color: #236dd3;
+    }
+    a:hover{
+        text-decoration: underline;
+        color: #ff506d;
+    }
 }
 </style>

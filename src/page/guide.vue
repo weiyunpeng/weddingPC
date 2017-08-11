@@ -52,7 +52,6 @@ export default {
     },
     watch: {
         getGuideList() {
-            console.log(this.getGuideList)
         }
     },
     beforeDestroy() {

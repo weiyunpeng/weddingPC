@@ -34,7 +34,7 @@
                         <div class="panel photo_box hover_sh">
                             <img :src="item.img" @click="showPhotoModal(item, flowNum)">
                             <div class="photo_info">
-                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav)">
+                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
                                      <i v-if="item.is_fav" class="icon_like_act"></i>  
                                      <i v-if="!item.is_fav" class="icon_like"></i>  
                                     {{item.fav_num}}
@@ -110,8 +110,11 @@ export default {
         }
     },
     methods: {
-        photoLikeBtn(id,fav) {
+        photoLikeBtn(id,fav,flowNum) {
             if(this.isAuth){
+                let obj = this.getViewPhotoIndex[flowNum]
+                obj.is_fav = !obj.is_fav
+                this.$set(this.getViewPhotoIndex, flowNum, obj);
                 if(fav == 0){
                     //说明未收藏，可以收藏
                     let ajaxdata = {

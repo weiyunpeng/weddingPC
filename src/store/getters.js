@@ -36,6 +36,7 @@ export const makeupmanPackages = state => state.makeupman.packages;
 
 export const getPhotoList = state => state.index;
 export const getViewPhoto = state => state.viewPhoto.list;
+export const getViewPhotoInfo = state => state.viewPhoto.photoInfo;
 export const getViewPhotoIndex = state => state.viewPhoto.photo;
 
 export const getGuideList = state => state.guide.list;

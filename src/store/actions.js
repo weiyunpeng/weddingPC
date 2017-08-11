@@ -317,7 +317,7 @@ export const qryViewPhoto = ({ commit },data) => {
                 response.data.data.list[i].height = tempImage.height /2 + 15;
                 if( photoCount == response.data.data.list.length) {
                     commit(types.VIEW_PHOTO, {
-                        list: response.data.data.list,
+                        data: response.data.data,
                     })
                 }
             };

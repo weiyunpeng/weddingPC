@@ -39,20 +39,18 @@
             width: 230px;
             height: 170px;
             margin-left: 20px;
-            overflow: hidden;
             li {
                 display: block;
-                width: 100%;
+                width: 487px;
                 height: 40px;
                 line-height: 40px;
-                overflow: hidden;
             }
             .meal_name {
                 float: left;
                 display: inline-block;
                 color: #262626;
                 font-size: 22px;
-                width: 160px;
+                width: 380px;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;

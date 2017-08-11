@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="i-header" :style="{background:'url('+getPhotoList.banner+') left center no-repeat', borderBottom:skinBorder}">
-            <img class="logo zoomIn" v-lazy="getPhotoList.logo">
+        <div class="i-header" :style="{background:'url('+getPhotoList.banner || '/static/images/unlogin_bg.jpg'+') left center no-repeat', borderBottom:skinBorder}">
+            <img class="logo zoomIn" v-lazy="getPhotoList.logo || '/static/images/logo-2.png'">
             <div class="header-con">
                 <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
                     <img class="user" src="/static/images/user_icon.png">
@@ -9,13 +9,13 @@
                 <ul class="zoomIn">
                     <li class="flipInY" v-for="(nav,navNum) in getPhotoList.nav" :key="navNum">
                         <router-link :to="{ name: 'user'}" target="_blank" v-if="navNum == 0">
-                            <img :src="nav.img" width="390" height="390">
+                            <img :src="nav.img || '/static/images/demo_01.jpg'" width="390" height="390">
                         </router-link>
                         <router-link :to="{ name: 'guide'}" target="_blank" v-if="navNum == 1">
-                            <img :src="nav.img" width="390" height="390">
+                            <img :src="nav.img || '/static/images/demo_02.jpg'" width="390" height="390">
                         </router-link>
                         <router-link :to="{ name: 'comment'}" target="_blank" v-if="navNum == 2">
-                            <img :src="nav.img" width="390" height="390">
+                            <img :src="nav.img || '/static/images/demo_03.jpg'" width="390" height="390">
                         </router-link>
                     </li>
                 </ul>

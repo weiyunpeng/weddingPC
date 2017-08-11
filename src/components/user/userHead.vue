@@ -106,7 +106,7 @@ export default {
     data() {
         return {
             visHNav: false,
-            HNavOffset: 100,
+            HNavOffset: 300,
             skin: '#fff',
             skinBorder: '3px solid #e4e4e4',
             logoTop: '/static/images/logo-2.png',
@@ -137,9 +137,10 @@ export default {
             console.log(e)
         }
         let catchScroll = () => {
-            if (window.pageYOffset > parseInt(this.HNavOffset) || window.pageYOffset > 0) {
+            console.log(window.pageYOffset)
+            if (window.pageYOffset >= parseInt(this.HNavOffset)) {
                 this.visHNav = true
-            } else {
+            } else if (window.pageYOffset < 50) {
                 this.visHNav = false
             }
         }

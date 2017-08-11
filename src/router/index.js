@@ -95,7 +95,7 @@ router.beforeEach(({meta, path}, from, next) => {
     if(auth && isLogin && (path == '/user' || path == '/')){
         return next({ path: '/user' })
     }
-    if(!isLogin && path == '/index'){
+    if(!isLogin && (path == '/index' || path == '/collect')){
         return next({ path: '/' })
     }
     next()
