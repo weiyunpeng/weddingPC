@@ -13,7 +13,7 @@ const mutations = {
         state.photoInfo = data.data;
     },
     [PHOTO_LIST](state, data) {
-        state.photoList = state.list.concat(data.list);
+        state.photoList = state.photoList.concat(data.list);
         console.log(state.photoList)
         state.status = data.status;
     },

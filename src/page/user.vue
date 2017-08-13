@@ -49,6 +49,11 @@
                 </waterfall>
             </div>
         </div>
+        <!-- <div class="panel_msg">
+            <template v-if="getPhotoStatus == 0">加载更多</template>
+            <template v-if="getPhotoStatus == 1">加载中...</template>
+            <template v-if="getPhotoStatus == 2">没有更多照片啦</template>
+        </div> -->
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
         </com-photoModal>
     </div>
@@ -170,9 +175,6 @@ export default {
             if(scrollTop == allHeight - pageHeight && this.getPhotoStatus == 0){
                 this.page++
                 this.loadPhoto();
-            }else if(scrollTop == 0){
-                this.page = 1;
-                this.$store.dispatch('photoClear');
             }
         }
     },
@@ -314,5 +316,14 @@ export default {
     0% {
         width: 0;
     }
+}
+.panel_msg{
+    background: #fff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border-right: solid 1px #dededf;
+    border-bottom: solid 1px #d9d9da;
+    line-height: 45px;
+    text-align: center;
 }
 </style>

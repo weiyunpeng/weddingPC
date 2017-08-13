@@ -50,7 +50,15 @@ function index_login(Params, Request, Response) {
  * @param {Object} Response
  */
 function photo_flow(Params, Request, Response) {
-    var fileName = 'site/data/photo_flow.json';
+    var page = Params.page;
+    var fileName;
+    if(page == 1){
+        fileName = 'site/data/photo_flow.json';
+    }else if(page == 2){
+        fileName = 'site/data/photo_flow2.json';
+    }else{
+        fileName = 'index/data/none.json'
+    }
     MAIN.responseStub(Response,fileName);
 }
 exports.index = run;

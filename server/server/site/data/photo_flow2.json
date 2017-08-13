@@ -1,0 +1,139 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "photo": [
+            {
+                "id": 4,
+                "img": "http://localhost:1300/images/5.jpg",
+                "fav_num": 3,
+                "tag": [
+                    "aa小清新"
+                ],
+                "is_fav": 0
+            },
+            {
+                "id": 5,
+                "img": "http://localhost:1300/images/2.jpg",
+                "fav_num": 1,
+                "tag": [
+                    "aa小清新"
+                ],
+                "is_fav": 1
+            },
+            {
+                "id": 3,
+                "img": "http://localhost:1300/images/3.jpg",
+                "fav_num": 1,
+                "tag": [
+                    "aa欧美大气"
+                ],
+                "is_fav": 1
+            },
+            {
+                "id": 9,
+                "img": "http://localhost:1300/images/4.jpg",
+                "fav_num": 4,
+                "tag": [
+                    "aaa韩式"
+                ],
+                "is_fav": 1
+            },
+            {
+                "id": 1,
+                "img": "http://localhost:1300/images/5.jpg",
+                "fav_num": 4,
+                "tag": [
+                    "aaa欧美大气"
+                ],
+                "is_fav": 1
+            },
+            {
+                "id": 8,
+                "img": "http://localhost:1300/images/6.jpg",
+                "fav_num": 3,
+                "tag": [
+                    "aaa韩式"
+                ],
+                "is_fav": 1
+            },
+            {
+                "id": 7,
+                "img": "http://localhost:1300/images/7.jpg",
+                "fav_num": 3,
+                "tag": [
+                    "韩式"
+                ],
+                "is_fav": 1
+            },
+            {
+                "id": 6,
+                "img": "http://localhost:1300/images/8.jpg",
+                "fav_num": 1,
+                "tag": [
+                    "小清新"
+                ],
+                "is_fav": 1
+            },
+            {
+                "id": 2,
+                "img": "http://localhost:1300/images/1.jpg",
+                "fav_num": 1,
+                "tag": [
+                    "欧美大气"
+                ],
+                "is_fav": 1
+            },
+            {
+                "id": 14,
+                "img": "http://localhost:1300/images/1.jpg",
+                "fav_num": 0,
+                "tag": [
+                    "韩式"
+                ],
+                "is_fav": 0
+            },
+            {
+                "id": 13,
+                "img": "http://localhost:1300/images/1.jpg",
+                "fav_num": 0,
+                "tag": [
+                    "韩式"
+                ],
+                "is_fav": 0
+            },
+            {
+                "id": 12,
+                "img": "http://localhost:1300/images/1.jpg",
+                "fav_num": 0,
+                "tag": [
+                    "韩式"
+                ],
+                "is_fav": 0
+            },
+            {
+                "id": 11,
+                "img": "http://localhost:1300/images/1.jpg",
+                "fav_num": 0,
+                "tag": [
+                    "韩式"
+                ],
+                "is_fav": 0
+            },
+            {
+                "id": 10,
+                "img": "http://localhost:1300/images/1.jpg",
+                "fav_num": 0,
+                "tag": [
+                    "韩式"
+                ],
+                "is_fav": 0
+            }
+        ],
+        "page": {
+            "totalcount": 14,
+            "pageSize": 20,
+            "currentPage": 0
+        }
+    }
+}

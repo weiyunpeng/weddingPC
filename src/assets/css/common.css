@@ -1689,6 +1689,8 @@ fieldset[disabled] .btn-danger.focus {
 }
 .photo_box{
     position: relative;
+    background: #fff;
+    background-color: #fff;
     padding: 7px;
     margin-right: 15px;
     cursor: zoom-in;
