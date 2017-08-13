@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="i-header" :style="{
-            background:'url('+ getIndexPhoto.banner +' ) left center no-repeat', borderBottom:skinBorder}">
+                background:'url('+ getIndexPhoto.banner +' ) left center no-repeat', borderBottom:skinBorder}">
             <img class="logo zoomIn" v-lazy="getIndexPhoto.logo || logo">
             <div class="header-con">
                 <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
@@ -130,11 +130,12 @@ export default {
     computed: {
         ...mapGetters({
             getIndexPhoto: 'getIndexPhoto',
-            getAuth:'getAuth'
+            getAuth: 'getAuth'
         }),
         ...mapActions({
             qryIndex: 'qryIndex',
-            qryViewPhoto: 'qryViewPhoto'
+            qryViewPhoto: 'qryViewPhoto',
+            showModal: 'showModal',
         })
     },
     data() {
@@ -153,7 +154,13 @@ export default {
     },
     methods: {
         photoLikeBtn() {
-            alert('登录后才能收藏哦~')
+            const data = {
+                name: 'delPhoto',
+                info: {
+                    text: '登录后才能收藏哦~'
+                }
+            };
+            this.$store.dispatch('showModal', data);
         },
         showPhotoModal(item, index) {
             this.photoModal = item;
@@ -166,9 +173,9 @@ export default {
         }
     },
     watch: {
-        getAuth(){
-            if(this.getAuth){
-                this.$router.push({ name: 'user'})
+        getAuth() {
+            if (this.getAuth) {
+                this.$router.push({ name: 'user' })
             }
         }
     },
@@ -180,7 +187,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
 @import "./../assets/css/index.scss";
-.u-index-nav:hover{
+.u-index-nav:hover {
     color: #fd4040;
     -webkit-transition: all .3s ease;
     transition: all .3s ease;

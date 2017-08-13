@@ -145,7 +145,6 @@ export default {
                     }
                 };
                 this.$store.dispatch('showModal',data);
-                // alert('登录后才能收藏哦~')
             }
         },
         showPhotoModal(item, index) {

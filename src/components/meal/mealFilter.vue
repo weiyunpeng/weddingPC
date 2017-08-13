@@ -33,6 +33,7 @@ export default {
         ...mapGetters({
         }),
         ...mapActions({
+            showModal: 'showModal',
         })
     },
     mounted(){
@@ -54,7 +55,13 @@ export default {
         },
         qryPrice(){
             if(!this.minPrice || !this.maxPrice || !this.flag.test(this.minPrice) || !this.flag.test(this.maxPrice)){
-                alert("请输入正确的价格")
+                const data = {
+                    name: 'delPhoto',
+                    info: {
+                        text: '请输入正确的价格'
+                    }
+                };
+                this.$store.dispatch('showModal',data);
             }else{
                 this.$emit('ajaxPrice',this.minPrice,this.maxPrice);
             }

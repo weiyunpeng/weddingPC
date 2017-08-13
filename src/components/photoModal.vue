@@ -96,6 +96,7 @@ export default {
             getViewPhotoInfo: 'getViewPhotoInfo'
         }),
         ...mapActions({
+            showModal: 'showModal',
         }),
         swiper() {
             return this.$refs.mySwiper.swiper
@@ -142,7 +143,13 @@ export default {
                     console.log('collect 接口异常')
                 }
             } else {
-                alert('登录后才能收藏哦~')
+                const data = {
+                    name: 'delPhoto',
+                    info: {
+                        text: '登录后才能收藏哦~'
+                    }
+                };
+                this.$store.dispatch('showModal',data);
             }
         },
         swiper(a){

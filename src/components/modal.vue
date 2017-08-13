@@ -59,11 +59,11 @@
         display: table;
         height: 100%;
         width: 100%;
-        background: rgba(0, 0, 0, .5);
+        background: rgba(0, 0, 0, .3);
         -webkit-overflow-scrolling: touch;
         outline: 0;
         transition: opacity .3s ease;
-        filter: alpha(opacity=70);/*IE*/
+        filter: alpha(opacity=30);/*IE*/
         background: #000\9;/*IE*/
     }
     .modal_wrapper{
@@ -77,8 +77,9 @@
         margin: 0 auto;
         background: #fff;
         border-radius: 10px;
-        -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(242,242,242, .6);
-        box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(242,242,242, .6);
+        -webkit-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 0 3px 3px rgba(100, 100, 100, 0.4);
         transition: all .3s ease;
     }
     .modal-enter {
@@ -116,12 +117,14 @@
     .btn-info{
         float: left;
         display: inline-block;
+        border-bottom-left-radius: 10px;
         width: 50%;
     }
     .btn-danger{
         float: left;
         display: inline-block;
         width: 50%;
+        border-bottom-right-radius: 10px;
         background: #fff;
         background-color: #fff;
     }
