@@ -63,19 +63,22 @@
         -webkit-overflow-scrolling: touch;
         outline: 0;
         transition: opacity .3s ease;
-        background: #000\9;/*IE*/
         filter: alpha(opacity=70);/*IE*/
+        background: #000\9;/*IE*/
     }
     .modal_wrapper{
         display: table-cell;
         vertical-align: middle;
     }
     .modal-dialog{
-        width: 300px;
+        position: relative;
+        width: 400px;
+        height: auto;
         margin: 0 auto;
-        background: #eb5f74;
-        padding: 10px;
+        background: #fff;
         border-radius: 10px;
+        -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(242,242,242, .6);
+        box-shadow: inset 0 2px 2px rgba(0, 0, 0, .075), 0 0 8px rgba(242,242,242, .6);
         transition: all .3s ease;
     }
     .modal-enter {
@@ -92,5 +95,42 @@
     .modal-leave-active .modal-dialog {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
+    }
+    .panel_tit{
+        width: 100%;
+        height: 35px;
+        padding: 0 20px;
+        line-height: 35px;
+        font-size: 16px;
+        color: #fff;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background: #eb5f74;
+        background-color: #eb5f74;
+    }
+    .panel_foot{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    .btn-info{
+        float: left;
+        display: inline-block;
+        width: 50%;
+    }
+    .btn-danger{
+        float: left;
+        display: inline-block;
+        width: 50%;
+        background: #fff;
+        background-color: #fff;
+    }
+    .btn-danger:hover{
+        background: #fff;
+        background-color: #fff;
+    }
+    .panel_body{
+        min-height: 100px;
+        padding: 20px;
     }
 </style>

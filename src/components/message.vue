@@ -41,7 +41,7 @@
     .message {
         position: absolute;
         width: 350px;;
-        z-index: 100;
+        z-index: 9999;
     }
     .message_div {
         position: relative;
@@ -91,13 +91,15 @@
 
     .message-position {
         top: 50%;
-        right: 45%;
+        right: 38%;
     }
 
     .message-type-info {
+        background: #eb5f74;
         background-color: #eb5f74;
     }
     .message-type-danger {
+        background: #eb5f74;
         background-color: #eb5f74;
     }
 </style>
