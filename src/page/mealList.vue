@@ -25,7 +25,7 @@
                 </div> 
             </div>
         </div>
-        <com-tag></com-tag>
+        <com-tag @ajaxTag="ajaxTag"></com-tag>
         <div class="meal-con">
         <ul class="meal_list container">
             <li class="list_con" v-for="item in thisMealList" :key="item.id">
@@ -57,7 +57,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import header from './../components/headerDetails'
-import tag from "./../components/meal/mealTag"
+import tag from "./../components/meal/thisMealTag"
 
 export default {
     components: {
@@ -74,16 +74,25 @@ export default {
         })
     },
     data() {
-        return {}
+        return {
+            id: this.$route.query.id,
+            ajaxdata: {
+                storeId: this.$route.query.id
+            },
+        }
     },
     mounted(){
         // this.$store.dispatch('mealClear')
         let data = {
-            storeId:'1'
+            storeId:this.id
         }
         this.$store.dispatch('qryThisMealList', data)
     },
     methods: {
+        ajaxTag(data) {
+            this.ajaxdata = this.objExtend(this.ajaxdata, data, false);
+            this.$store.dispatch('qryThisMealList', this.ajaxdata)
+        }
     },
     watch:{
         thisMealList(){

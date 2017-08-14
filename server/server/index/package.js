@@ -11,7 +11,9 @@ function run(Request, Response)
             //套餐详情
             'detail':detail,
             //某店铺的套餐列表
-            'storelist':storelist
+            'storelist':storelist,
+            //店铺内套餐搜索条件
+            'search_tag':search_tag
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -58,4 +60,13 @@ function storelist(Params, Request, Response) {
     MAIN.responseStub(Response,fileName);
 }
 
+/**
+ * 店铺内套餐搜索条件
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function search_tag(Params, Request, Response) {
+    var fileName = 'index/busData/search_tag.json';
+    MAIN.responseStub(Response,fileName);
+}
 exports.index = run;

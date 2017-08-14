@@ -55,7 +55,7 @@ export default {
     },
     //查询商家的套餐列表的分类
     qryThisMealTag:function(data){
-        return axios.post('/package/storetag', qs.stringify(data), config())
+        return axios.post('/package/search_tag', qs.stringify(data), config())
     },
 
 
