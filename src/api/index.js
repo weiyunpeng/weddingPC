@@ -33,7 +33,7 @@ export default {
     },
     //商家官方案例的分类
     qryBusSampleTag:function(data){
-        return axios.post('/store/sampletag', qs.stringify(data), config())
+        return axios.post('/store/sample_tag', qs.stringify(data), config())
     },
     
 

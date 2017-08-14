@@ -1,8 +1,8 @@
 <template>
+<div class="filter">
         <div class="container">
-            <div class="filter">
+            <div class="filter-con">
                 <a href="javascript:void(0)" v-bind:class="{tag_active:method == 0}" @click="tagChange(0)">默认</a>
-                <a href="javascript:void(0)" v-bind:class="{tag_active:method == 1}" @click="tagChange(1)">媒体评分</a>
                 <a href="javascript:void(0)" v-bind:class="{tag_active:method == 2}" @click="tagChange(2)">价格<i class="price_icon" v-bind:class="{price_position:isHigh}"></i></a>
                 <div class="fil_input">
                     <span>¥</span>
@@ -14,6 +14,7 @@
                 </div>
             </div>
         </div>
+</div>
 </template>
 
 <script>
@@ -33,7 +34,7 @@ export default {
         ...mapGetters({
         }),
         ...mapActions({
-            showModal: 'showModal',
+            showModal:'showModal'
         })
     },
     mounted(){
@@ -45,6 +46,7 @@ export default {
             self.method = index;
             if(index == 2){
                 //需要价格箭头的切换
+                console.log(this.isHigh)
                 if(this.isHigh){
                     this.isHigh = 0
                 }else{

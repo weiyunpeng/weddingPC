@@ -40,7 +40,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import header from './../components/user/userHead'
 import tag from "./../components/meal/mealTag"
-import mealFilter from "./../components/business/busFilter"
+import mealFilter from "./../components/meal/mealFilter"
 import paging from "./../components/paging"
 
 export default {

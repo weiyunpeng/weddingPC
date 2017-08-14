@@ -11,7 +11,9 @@ function run(Request, Response)
             //商家详情
             'detail':detail,
             //商家官方案例列表
-            'sample':sample
+            'sample':sample,
+            //店铺内案例搜索条件
+            'sample_tag':sample_tag
         }
         funs[Request.params.name](Params, Request, Response);
     }else{
@@ -58,6 +60,14 @@ function sample(Params, Request, Response) {
     MAIN.responseStub(Response,fileName);
 }
 
-
+/**
+ * 商家官方案例列表
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function sample_tag(Params, Request, Response) {
+    var fileName = 'index/busData/sample_tag.json';
+    MAIN.responseStub(Response,fileName);
+}
 
 exports.index = run;

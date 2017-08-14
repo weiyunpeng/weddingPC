@@ -30,9 +30,9 @@
                             <img src="/static/images/icon_search.png">
                         </a>
                     </div>
-                    <a href="javascript:void(0)" class="nav_user">
+                    <a href="javascript:void(0)" class="nav_user" @click="userLogin">
                         <img :src="header" class="circle" width="30" height="30">
-                        <ul class="nav_user_ul">
+                        <ul class="nav_user_ul" v-show="isLogin">
                             <li>
                                 <router-link :to="{ name: 'collect', query: {uid:uid,type:0}}" target="_blank">
                                     <i class="icon_collage"></i>我的收藏
@@ -40,7 +40,7 @@
                             </li>
                             <li>
                                 <a href="javascript:void(0)" class="text-center" @click="logout()">
-                                    <i class="icon_logout"></i>退出登陆</a>
+                                    <i class="icon_logout"></i>退出登录</a>
                             </li>
                         </ul>
                     </a>
@@ -79,9 +79,9 @@
                             <img src="/static/images/icon_search.png">
                         </a>
                     </div>
-                    <a href="javascript:void(0)" class="nav_user">
+                    <a href="javascript:void(0)" class="nav_user" @click="userLogin">
                         <img :src="header" class="circle" width="30" height="30">
-                        <ul class="nav_user_ul">
+                        <ul class="nav_user_ul" v-show="isLogin">
                             <li>
                                 <router-link to="/collect" target="_blank">
                                     <i class="icon_collage"></i>我的收藏
@@ -89,7 +89,7 @@
                             </li>
                             <li>
                                 <a href="javascript:void(0)" class="text-center" @click="logout()">
-                                    <i class="icon_logout"></i>退出登陆</a>
+                                    <i class="icon_logout"></i>退出登录</a>
                             </li>
                         </ul>
                     </a>
@@ -114,6 +114,7 @@ export default {
             keyword: null,
             header: '/static/images/user_icon.png',
             uid:null,
+            isLogin:null,
         }
     },
     computed: {
@@ -127,8 +128,8 @@ export default {
     mounted() {
         try{
             let token = JSON.parse(localStorage.getItem('user'));
-            let isLogin = Boolean(token);
-            if(isLogin){
+            this.isLogin = Boolean(token);
+            if(this.isLogin){
                 this.header = token.headimgurl
                 this.uid = token.uid
             }else{
@@ -161,6 +162,11 @@ export default {
         logout() {
             this.$store.dispatch('loginOut')
             this.$router.push({ name: 'index' })
+        },
+        userLogin(){
+            if(!this.isLogin){
+                window.location.href = 'http://dev.hunjia.qqdayu.com/login'
+            }
         }
     },
 }

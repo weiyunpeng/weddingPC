@@ -99,6 +99,7 @@
                             <div class="clearfix">
                                 <label class="fl">媒体评定分：</label>
                                 <div class="media_rating fl">
+                                    <star :score="3.5"></star>
                                 </div>
                             </div>
                             <a :href="store.url" target="_blank">
@@ -121,6 +122,7 @@
 </template>
 
 <script>
+import star from './../components/star'
 import { waterfall, waterfallSlot } from 'vue-waterfall'
 import photoModal from './../components/photoModal'
 import { mapGetters, mapActions } from 'vuex'
@@ -128,7 +130,8 @@ export default {
     components: {
         'waterfall': waterfall,
         'waterfallSlot': waterfallSlot,
-        'comPhotoModal': photoModal
+        'comPhotoModal': photoModal,
+        'star':star
     },
     computed: {
         ...mapGetters({
