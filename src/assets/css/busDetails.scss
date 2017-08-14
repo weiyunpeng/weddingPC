@@ -259,8 +259,12 @@
                 font-weight: bold;
             }
             h3 {
+                overflow: hidden;
+                width: 365px;
+                height: 20px;
                 font-size: 16px;
                 color: #333;
+                margin-top: 5px;
             }
             .tags {
                 height: 34px;

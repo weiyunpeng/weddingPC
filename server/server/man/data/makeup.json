@@ -3,6 +3,7 @@
     "msg": "success",
     "data": {
         "bus_info": {
+            "id":1,
             "store_name": "郑州艾维美婚纱摄影(国贸360店)",
             "isYes": true,
             "isVip": true,
@@ -46,6 +47,7 @@
         },
         "packages": [
             {
+                "id": 1,
                 "cover": "/static/images/5.png",
                 "name": "唯美韩式海滩外景套系",
                 "tag": [
@@ -54,6 +56,7 @@
                 "price": 12000
             },
             {
+                "id": 1,
                 "cover": "/static/images/2.png",
                 "name": "韩式花海奢华内外双景套系",
                 "tag": [
@@ -62,6 +65,7 @@
                 "price": 12000
             },
             {
+                "id": 1,
                 "cover": "/static/images/15.png",
                 "name": "欧式复古唯美教堂外景套系",
                 "tag": [],

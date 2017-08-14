@@ -80,9 +80,9 @@
             </ul>
         </div>
         <!-- case官方案例开始 -->
-        <div class="case" v-show="0 >= selected">
+        <div class="case" v-show="0 >= selected" v-if="caseInfo.details">
             <img class="tit" :src="caseInfo.nav_img"> 
-            <div class="more clearfix">
+            <div class="more clearfix" v-show="caseInfo.details && caseInfo.details.length>=6">
                 <router-link :to="{ name: 'busSample', query: {busName:mediaInfo.name, busSample: '官方案例' ,id:id}}" class="more_a fr" target="_blank">
                     更多 >
                 </router-link>
@@ -107,10 +107,10 @@
         </div>
         <!-- case官方案例结束 -->
         <!-- 精选套餐开始 -->
-        <div class="package" v-show="1 >= selected">
+        <div class="package" v-show="1 >= selected" v-if="packageInfo.details">
             <img class="tit" :src="packageInfo.nav_img"> 
-            <div class="more clearfix">
-                <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name, thisMealName: '套餐列表'}}" class="more_a fr" target="_blank">
+            <div class="more clearfix" v-show="packageInfo.details && packageInfo.details.length>=3">
+                <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name,busId:mediaInfo.id, thisMealName: '套餐列表'}}" class="more_a fr" target="_blank">
                     更多 >
                 </router-link>
             </div>
@@ -137,9 +137,9 @@
         </div>
         <!-- 精选套餐结束 -->
         <!-- 摄影团队开始  -->
-        <div class="photographer" v-show="2 >= selected">
+        <div class="photographer" v-show="2 >= selected" v-if="photographer.details">
             <img class="tit" :src="photographer.nav_img">
-            <div class="arrows">
+            <div class="arrows" v-show="photographer.details && photographer.details.length>=5">
                 <a class="prev arrow photographer_prev" href="javascrript:void(0)"></a>
                 <a class="next arrow photographer_next" href="javascrript:void(0)"></a>
             </div>
@@ -168,9 +168,9 @@
         </div>
         <!-- 摄影团队结束  -->
         <!-- 化妆团队开始 -->
-        <div class="dresser" v-show="3 >= selected">
+        <div class="dresser" v-show="3 >= selected" v-if="dresser.details">
             <img class="tit" :src="dresser.nav_img">
-            <div class="arrows">
+            <div class="arrows" v-show="dresser.details && dresser.details.length>=5">
                 <a class="prev arrow dresser_prev" href="javascrript:void(0)"></a>
                 <a class="next arrow dresser_next" href="javascrript:void(0)"></a>
             </div>

@@ -32,7 +32,7 @@
             </p>
             <ul>
                 <li v-for="(item,s) in makeupmanPackages" :key="s">
-                    <router-link :to="{ name: 'mealDeatils',query: {busName:makeupmanBusinfo.store_name,busId:makeupmanBusinfo.busId, mealName: item.name,mealId:item.mealId}}" target="_blank">
+                    <router-link :to="{ name: 'mealDeatils',query: {busName:makeupmanBusinfo.store_name,busId:makeupmanBusinfo.id, mealName: item.name,mealId:item.id}}" target="_blank">
                         <img v-lazy="item.cover" width="300" height="200">
                         <div class="p_info clearfix">
                             <div class="name fl">{{item.name}}</div>
