@@ -3,11 +3,6 @@
         <div class="photo_modal text-center" v-show="value && loading">
             <div class="photo_modal_dialog panel text-left">
                 <img @click="close" class="close_btn" src="/static/images/icon-no-btn.png">
-    
-                <div class="arrows">
-                    <a class="prev arrow dresser_prev" href="javascrript:void(0)"></a>
-                    <a class="next arrow dresser_next" href="javascrript:void(0)"></a>
-                </div>
                 <div class="photo_fl fl">
                     <swiper :options="swiperOption" ref="mySwiper">
                         <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">

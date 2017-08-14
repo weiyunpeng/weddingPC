@@ -91,7 +91,7 @@
                 <ul>
                     <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
                         <div class="img-hover">
-                            <img v-lazy="item.src" width="372" height="248">
+                            <img v-lazy="item.src" width="372" height="248" @click="showSwiperModal([item.src])">
                         </div>
                         <h3>{{item.case_name}}</h3>
                         <div class="tags">
@@ -116,7 +116,7 @@
             </div>
             <div class="list">
                 <ul>
-                    <li v-for="(item,index) in packageInfo.details" v-bind:key="index">
+                    <li v-for="(item,pIndex) in packageInfo.details" v-bind:key="pIndex">
                         <router-link :to="{ name: 'mealDeatils', query: {busName:mediaInfo.name,busId:mediaInfo.id,mealName:item.package_name,mealId:item.id}}" target="_blank">
                             <img v-lazy="item.src" width="372" height="248">
                             <div class="top clearfix">
@@ -146,7 +146,7 @@
             <div class="list">
                  <swiper :options="photographerOption">
                     <swiper-slide class="mr25" v-for="(item,index) in photographer.details" v-bind:key="index">
-                        <router-link :to="{ name: 'cameraman', query: {busName:mediaInfo.name,cameraman: '摄影师',id:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'cameraman', query: {busName:mediaInfo.name,busId:mediaInfo.id,cameraman: '摄影师',id:item.id}}" target="_blank">
                             <img v-lazy="item.src" width="220" height="220">
                             <div class="top clearfix">
                                 <div class="name fl">{{item.name}}</div>
@@ -177,7 +177,7 @@
             <div class="list">
                 <swiper :options="dresserOption">
                     <swiper-slide class="mr25" v-for="(item,index) in dresser.details" v-bind:key="index">
-                        <router-link :to="{ name: 'makeupman', query: {busName:mediaInfo.name,makeupman: '化妆师',id:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'makeupman', query: {busName:mediaInfo.name,busId:mediaInfo.id,makeupman: '化妆师',id:item.id}}" target="_blank">
                         <img v-lazy="item.src" width="220" height="220">
                         <div class="top clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -240,10 +240,10 @@
                 <div class="subtit">门店环境</div>
                 <swiper :options="environmentOption">
                     <swiper-slide class="mr25 fl" v-for="(item,index) in introInfo.environment" v-bind:key="index">
-                        <img v-lazy="item" width="216" height="144">
+                        <img v-lazy="item" width="216" height="144" @click="showSwiperModal(introInfo.environment)">
                     </swiper-slide>
                 </swiper>
-                <div class="arrows">
+                <div class="arrows" v-show="introInfo.environment && introInfo.environment.length>=5">
                     <a class="prev arrow env_prev" href="javascrript:void(0)"></a>
                     <a class="next arrow env_next" href="javascrript:void(0)"></a>
                 </div>
@@ -251,6 +251,7 @@
         </div>
         <!-- 商家简介结束 -->
     </div>
+    <com-swiper @closeSwiper="closeSwiper" v-show="showSwiper" :swiperImgs='swiperImgs'></com-swiper>
     </div>
 </template>
 
@@ -258,12 +259,14 @@
 import { mapGetters, mapActions } from 'vuex'
 import header from './../components/headerDetails'
 import bigImg from './../components/bigImg'
+import swiperModel from './../components/swiper'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
     name: 'carrousel',
     components: {
         comHeader: header,
         comPic:bigImg,
+        comSwiper:swiperModel,
         swiper,
         swiperSlide
     },
@@ -283,6 +286,8 @@ export default {
             dresser:"",
             lng:'',
             lat:'',
+            showSwiper:false,
+            swiperImgs:[],
             photographerOption: {
                 // autoplay: 3500,
                 setWrapperSize :false,
@@ -340,6 +345,13 @@ export default {
         },
         closeMap(){
             this.isMap = false
+        },
+        showSwiperModal(imgs){
+            this.showSwiper = true
+            this.swiperImgs = imgs
+        },
+        closeSwiper(){
+            this.showSwiper = false
         }
     },
     watch:{
