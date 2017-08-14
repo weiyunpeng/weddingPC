@@ -63,81 +63,58 @@
                 "nav_img": "/static/images/case.png",
                 "details": [
                     {
+                        "id":"21231efd",
                         "src": "/static/images/11.png",
                         "case_name": "浪漫唯美花海实景美照",
                         "tags": [
-                            {
-                                "tag": "小清新"
-                            },
-                            {
-                                "tag": "韩式"
-                            }
+                            "小清新",
+                            "韩式"
                         ]
                     },
                     {
+                        "id":"21231efd",
                         "src": "/static/images/11.png",
                         "case_name": "简约大气的中式秀禾服婚纱照",
                         "tags": [
-                            {
-                                "tag": "中式"
-                            },
-                            {
-                                "tag": "秀禾服"
-                            },
-                            {
-                                "tag": "简约"
-                            }
+                             "中式", 
+                             "秀禾服",
+                             "简约"
                         ]
                     },
                     {
+                        "id":"21231efd",
                         "src": "/static/images/11.png",
                         "case_name": "绿色清新唯美的户外草地照",
                         "tags": [
-                            {
-                                "tag": "小清新"
-                            },
-                            {
-                                "tag": "韩式"
-                            }
+                            "小清新",
+                            "韩式"
                         ]
                     },
                     {
+                        "id":"21231efd",
                         "src": "/static/images/11.png",
                         "case_name": "皮皮照",
                         "tags": [
-                            {
-                                "tag": "大清新"
-                            },
-                            {
-                                "tag": "韩式炸鸡"
-                            }
+                            "小清新",
+                            "韩式"
                         ]
                     },
                     {
+                        "id":"21231efd",
                         "src": "/static/images/11.png",
                         "case_name": "虾虾照",
                         "tags": [
-                            {
-                                "tag": "大清新嘻嘻"
-                            },
-                            {
-                                "tag": "韩式炸鸡"
-                            }
+                            "小清新",
+                            "韩式"
                         ]
                     },
                     {
+                        "id":"21231efd",
                         "src": "/static/images/11.png",
                         "case_name": "骚猪照",
                         "tags": [
-                            {
-                                "tag": "pdd"
-                            },
-                            {
-                                "tag": "sao"
-                            },
-                            {
-                                "tag": "zhu"
-                            }
+                            "小清新",
+                            "韩式"
                         ]
                     }
                 ]
@@ -147,36 +124,33 @@
                 "nav_img": "/static/images/package.png",
                 "details": [
                     {
+                        "id":"21231efd",
                         "src": "/static/images/12.png",
                         "price": 8899,
                         "package_name": "旅拍海滩外景LOMO风套系",
                         "tags": [
-                            {
-                                "tag": "摄影师一对一"
-                            },
-                            {
-                                "tag": "化妆师一对一"
-                            }
+                            "摄影师一对一",
+                            "化妆师一对一"
                         ]
                     },
                     {
+                        "id":"21231efd",
                         "src": "/static/images/12.png",
                         "price": 6999,
                         "package_name": "皮皮虾套系",
                         "tags": [
-                            {
-                                "tag": "摄影师一对一"
-                            }
+                            "摄影师一对一",
+                            "化妆师一对一"
                         ]
                     },
                     {
+                        "id":"21231efd",
                         "src": "/static/images/12.png",
                         "price": 6666,
                         "package_name": "骚猪套系",
                         "tags": [
-                            {
-                                "tag": "化妆师一对一"
-                            }
+                            "摄影师一对一",
+                            "化妆师一对一"
                         ]
                     }
                 ]

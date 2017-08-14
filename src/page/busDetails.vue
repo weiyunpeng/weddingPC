@@ -59,8 +59,8 @@
                         <label class="fl">媒体评定语：</label>
                         <div class="media_comment fl">
                             {{mediaInfo.comment}}
-                            <!-- <a :href="mediaInfo.comment_url" class="comment_url">[查看详情]</a> -->
-                            <a href="javascript:void(0)" class="comment_url">[查看详情]</a>
+                            <a :href="mediaInfo.comment_url" class="comment_url">[查看详情]</a>
+                            <!-- <a href="javascript:void(0)" class="comment_url">[查看详情]</a> -->
                         </div>
                     </div>
                     <div class="code">
@@ -90,12 +90,14 @@
             <div class="list">
                 <ul>
                     <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
-                        <img v-lazy="item.src" width="372" height="248">
+                        <div class="img-hover">
+                            <img v-lazy="item.src" width="372" height="248">
+                        </div>
                         <h3>{{item.case_name}}</h3>
                         <div class="tags">
                             <ul>
                                 <li v-for="(tag,index) in item.tags" v-bind:key="index">
-                                    {{tag.tag}}
+                                    {{tag}}
                                 </li>
                             </ul>
                         </div>
@@ -121,7 +123,7 @@
                             <div class="tags fr">
                                 <ul>
                                     <li v-for="(tag,index) in item.tags" v-bind:key="index">
-                                        {{tag.tag}}
+                                        {{tag}}
                                     </li>
                                 </ul>
                             </div>
