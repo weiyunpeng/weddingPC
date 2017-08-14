@@ -32,7 +32,9 @@
             <waterfall :line-gap="300" :max-line-gap="640" :single-max-width="320" :watch="getPhotoList">
                     <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
-                            <img :src="item.img" @click="showPhotoModal(item, flowNum)">
+                            <div class="img-hover" @click="showPhotoModal(item, flowNum)">
+                                <img :src="item.img" >
+                            </div>
                             <div class="photo_info">
                                 <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
                                      <i v-if="item.is_fav" class="icon_like_act"></i>  

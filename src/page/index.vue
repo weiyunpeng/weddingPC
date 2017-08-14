@@ -33,7 +33,9 @@
                 <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getIndexPhoto.list">
                     <waterfall-slot v-for="(item, index) in getIndexPhoto.list" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
-                            <img :src="item.img" @click="showPhotoModal(item, index)">
+                            <div class="img-hover" @click="showPhotoModal(item, index)">
+                                <img :src="item.img">
+                            </div>
                             <div class="photo_info">
                                 <span class="photo_like" @click="photoLikeBtn(item.id,index)">
                                     <!-- <i class="icon_like_act"></i>  -->
