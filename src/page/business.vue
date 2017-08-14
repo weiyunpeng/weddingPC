@@ -8,7 +8,7 @@
         <ul class="list">
             <li class="list_con" v-for="item in busList" :key="item.business.id">
                 <div class="shop">
-                    <router-link :to="{ name: 'busDeatils', query: {id:item.business.id,busName:item.business.name}}" target="_blank">
+                    <router-link :to="{ name: 'busDeatils', query: {busId:item.business.id,busName:item.business.name}}" target="_blank">
                         <img class="shop_logo" v-lazy="item.business.logo">
                         <ul class="shop_details">
                             <li>
@@ -35,7 +35,7 @@
                 <div class="photo">
                     <ul>
                         <li v-for="meal in item.packages" :key="meal.id">
-                            <router-link :to="{ name: 'mealDeatils',query: {busName:item.business.name, mealName: meal.name}}" target="_blank">
+                            <router-link :to="{ name: 'mealDeatils',query: {busName:item.business.name,busId: item.business.busId,mealName: meal.name,mealId:meal.id}}" target="_blank">
                             <img class="picture" v-lazy="meal.first_img">
                             <div class="pho_details">
                                 <span>{{meal.name}}</span>

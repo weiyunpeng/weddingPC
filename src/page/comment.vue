@@ -10,7 +10,7 @@
                         <ul class="list-con">
                             <li class="list-con-li">
                                 <div class="shop fl">
-                                    <router-link :to="{ name: 'busDeatils', query: {id:item.id,busName:item.name}}" target="_blank">
+                                    <router-link :to="{ name: 'busDeatils', query: {busId:item.id,busName:item.name}}" target="_blank">
                                         <img class="fl shop_logo" v-lazy="item.logo" width="124" height="109">
                                         <ul class="shop_details">
                                             <li>

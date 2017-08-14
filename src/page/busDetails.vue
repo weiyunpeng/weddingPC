@@ -117,7 +117,7 @@
             <div class="list">
                 <ul>
                     <li v-for="(item,index) in packageInfo.details" v-bind:key="index">
-                        <router-link :to="{ name: 'mealDeatils', query: {busName:mediaInfo.name,mealName:item.package_name,id:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'mealDeatils', query: {busName:mediaInfo.name,busId:mediaInfo.id,mealName:item.package_name,mealId:item.id}}" target="_blank">
                             <img v-lazy="item.src" width="372" height="248">
                             <div class="top clearfix">
                                 <div class="price fl">￥{{item.price}}</div>
@@ -269,7 +269,7 @@ export default {
     },
     data() {
         return {
-            id:this.$route.query.id,
+            id:this.$route.query.busId,
             selected:0,
             busName:this.$route.query.busName,
             isErwei:false,

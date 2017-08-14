@@ -29,7 +29,7 @@
             <ul class="meal_list container">
                 <li class="list_con" v-for="item in busSampleList" :key="item.id">
                     <div class="shop">
-                        <router-link :to="{ name: 'mealDeatils', query: {mealName:item.meal_name}}" target="_blank">
+                        <router-link :to="{ name: 'mealDeatils', query: {busName:busSampleStore.store_name,busId:busSampleStore.id,mealName:item.meal_name,mealId:item.id}}" target="_blank">
                             <div class="img">
                                 <img class="shop_logo" v-lazy="item.logo" width="372" height="248">
                             </div>

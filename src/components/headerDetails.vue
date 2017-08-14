@@ -12,10 +12,10 @@
                         <router-link to="/" class="nav_a" active-class="nav_active" exact>首页</router-link>
                     </li>
                     <li v-show="busName">
-                        ><router-link :to="{ name: 'busDeatils', query: {busName:busName}}" class="nav_a" active-class="nav_active">{{busName}}</router-link>
+                        ><router-link :to="{ name: 'busDeatils', query: {busName:busName,busId:busId}}" class="nav_a" active-class="nav_active">{{busName}}</router-link>
                     </li>
                     <li v-show="mealName">
-                        ><router-link :to="{ name: 'mealDeatils', query: {mealName:mealName}}" class="nav_a" active-class="nav_active">{{mealName}}</router-link>
+                        ><router-link :to="{ name: 'mealDeatils', query: {mealName:mealName,mealId:mealId}}" class="nav_a" active-class="nav_active">{{mealName}}</router-link>
                     </li>
                     <li v-show="thisMealName">
                         ><router-link :to="{ name: 'mealList', query: {thisMealName:thisMealName}}" class="nav_a" active-class="nav_active">{{thisMealName}}</router-link>
@@ -45,7 +45,9 @@ export default {
             skinBorder:'2px solid #e4e4e4',
             logo:'/static/images/logo-2.png',
             busName:this.$route.query.busName,
+            busId:this.$route.query.busId,
             mealName:this.$route.query.mealName,
+            mealId:this.$route.query.mealId,
             thisMealName:this.$route.query.thisMealName,
             busSample:this.$route.query.busSample,
             cameraman:this.$route.query.cameraman,
