@@ -59,7 +59,7 @@
                         <label class="fl">媒体评定语：</label>
                         <div class="media_comment fl">
                             {{mediaInfo.comment}}
-                            <a :href="mediaInfo.comment_url" class="comment_url">[查看详情]</a>
+                            <a :href="mediaInfo.comment_url" class="comment_url" target="_blank">[查看详情]</a>
                             <!-- <a href="javascript:void(0)" class="comment_url">[查看详情]</a> -->
                         </div>
                     </div>
@@ -117,18 +117,20 @@
             <div class="list">
                 <ul>
                     <li v-for="(item,index) in packageInfo.details" v-bind:key="index">
-                        <img v-lazy="item.src" width="372" height="248">
-                        <div class="top clearfix">
-                            <div class="price fl">￥{{item.price}}</div>
-                            <div class="tags fr">
-                                <ul>
-                                    <li v-for="(tag,index) in item.tags" v-bind:key="index">
-                                        {{tag}}
-                                    </li>
-                                </ul>
+                        <router-link :to="{ name: 'mealDeatils', query: {busName:mediaInfo.name,mealName:item.package_name,id:item.id}}" target="_blank">
+                            <img v-lazy="item.src" width="372" height="248">
+                            <div class="top clearfix">
+                                <div class="price fl">￥{{item.price}}</div>
+                                <div class="tags fr">
+                                    <ul>
+                                        <li v-for="(tag,index) in item.tags" v-bind:key="index">
+                                            {{tag}}
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <h3>{{item.package_name}}</h3>
+                            <h3>{{item.package_name}}</h3>
+                        </router-link>
                     </li>
                 </ul>
             </div>

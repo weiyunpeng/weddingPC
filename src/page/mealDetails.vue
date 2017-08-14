@@ -283,7 +283,7 @@
                     <div class="list">
                         <ul>
                             <li v-for="(item,s) in see_and_see" :key="s">
-                                <router-link :to="{ name: 'mealDeatils',query: {busName:mealInfo.store_name, mealName: item.name}}" target="_blank">
+                                <router-link :to="{ name: 'mealDeatils',query: {busName:mealInfo.store_name, mealName: item.name,id:item.id}}" target="_blank">
                                     <img v-lazy="item.src">
                                     <div class="name_price clearfix">
                                         <div class="name fl">{{item.name}}</div>
@@ -314,6 +314,7 @@ export default {
     },
     data() {
         return {
+            id:this.$route.query.id,
             imgs: [],
             isErwei: false,
             selected: 0,
@@ -332,7 +333,7 @@ export default {
     },
     mounted() {
         let data = {
-            id: '1'
+            id: this.id
         }
         this.$store.dispatch('qryMealDetails', data)
     },

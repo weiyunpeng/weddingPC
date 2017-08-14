@@ -1,7 +1,8 @@
 <template>
     <div>
-        <div class="i-header" :style="{
-                background:'url('+ getIndexPhoto.banner +' ) left center no-repeat', borderBottom:skinBorder}">
+        <!-- <div class="i-header" :style="{
+                background:'url('+ getIndexPhoto.banner +' ) left center no-repeat', borderBottom:skinBorder}"> -->
+            <div class="i-header" :style="{borderBottom:skinBorder}">
             <img class="logo zoomIn" v-lazy="getIndexPhoto.logo || logo">
             <div class="header-con">
                 <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
