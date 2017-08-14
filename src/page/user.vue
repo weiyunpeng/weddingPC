@@ -10,35 +10,37 @@
                 </div>
                 <ul class="user_category user_category_style">
                     <li v-for="(item,s) in style" :key="s">
-                         <span class="show_list">{{item.name}}</span> 
-                         <div class="line">
+                        <span class="show_list">{{item.name}}</span>
+                        <div class="line">
                             <div class="bar" v-bind:style="{ width: item.value }"></div>
-                        </div> 
-                         <span class="percent">{{item.value}}</span> 
+                        </div>
+                        <span class="percent">{{item.value}}</span>
                     </li>
                     <img style="margin:20px 0" src="/static/images/icon_photo_from.png">
                 </ul>
                 <ul class="user_category user_category_store">
                     <li v-for="(item,s) in stores" :key="s">
-                        <div class="show_img"><img :src="item.logo" width="64" height="64"></div>
-                         <div class="line line-store">
+                        <div class="show_img">
+                            <img :src="item.logo" width="64" height="64">
+                        </div>
+                        <div class="line line-store">
                             <div class="bar" v-bind:style="{ width: item.value}"></div>
-                        </div> 
-                         <span class="percent">{{item.value}}</span> 
+                        </div>
+                        <span class="percent">{{item.value}}</span>
                     </li>
                 </ul>
             </div>
             <div class="user-water">
-            <waterfall :line-gap="300" :max-line-gap="640" :single-max-width="320" :watch="getPhotoList">
+                <waterfall :line-gap="300" :max-line-gap="640" :single-max-width="320" :watch="getPhotoList">
                     <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
-                                <img :src="item.img" >
+                                <img :src="item.img">
                             </div>
                             <div class="photo_info">
                                 <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
-                                     <i v-if="item.is_fav" class="icon_like_act"></i>  
-                                     <i v-if="!item.is_fav" class="icon_like"></i>  
+                                    <i v-if="item.is_fav" class="icon_like_act"></i>
+                                    <i v-if="!item.is_fav" class="icon_like"></i>
                                     {{item.fav_num}}
                                 </span>
                                 <ul>
@@ -52,10 +54,10 @@
             </div>
         </div>
         <!-- <div class="panel_msg">
-            <template v-if="getPhotoStatus == 0">加载更多</template>
-            <template v-if="getPhotoStatus == 1">加载中...</template>
-            <template v-if="getPhotoStatus == 2">没有更多照片啦</template>
-        </div> -->
+                <template v-if="getPhotoStatus == 0">加载更多</template>
+                <template v-if="getPhotoStatus == 1">加载中...</template>
+                <template v-if="getPhotoStatus == 2">没有更多照片啦</template>
+            </div> -->
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
         </com-photoModal>
     </div>
@@ -76,82 +78,82 @@ export default {
     },
     computed: {
         ...mapGetters({
-            getUser:'getUser',
+            getUser: 'getUser',
             getPhotoList: 'getPhotoList',
             getPhotoStatus: 'getPhotoStatus',
         }),
         ...mapActions({
-            qryPhotoFlow:'qryPhotoFlow',
-            qryLoginIndex:'qryLoginIndex',
+            qryPhotoFlow: 'qryPhotoFlow',
+            qryLoginIndex: 'qryLoginIndex',
             photoClear: 'photoClear',
             showModal: 'showModal',
         })
     },
     data() {
         return {
-            isAuth:false,
-            style:null,
-            stores:null,
+            isAuth: false,
+            style: null,
+            stores: null,
             show: false,
             photoModal: {},
             index: null,
-            uid:null,
-            page:1
+            uid: null,
+            page: 1
         }
     },
     mounted() {
         this.$store.dispatch('photoClear');
         this.loadPhoto();
-        window.addEventListener('scroll',this.loadMore);
-        try{
+        window.addEventListener('scroll', this.loadMore);
+        try {
             let token = JSON.parse(localStorage.getItem('user'));
             let isLogin = Boolean(token);
-            if(isLogin){
+            if (isLogin) {
                 this.isAuth = true
                 this.uid = token.uid
-                let data={
-                    uid:this.uid
+                let data = {
+                    uid: this.uid
                 }
                 this.$store.dispatch('qryLoginIndex', data)
-            }else{
+            } else {
                 this.isAuth = false
             }
-        }catch(e){
+        } catch (e) {
             console.log(e)
         }
     },
     methods: {
-        photoLikeBtn(id,fav,flowNum) {
-            if(this.isAuth){
+        photoLikeBtn(id, fav, flowNum) {
+            if (this.isAuth) {
                 let obj = this.getPhotoList[flowNum]
                 obj.is_fav = !obj.is_fav
                 this.$set(this.getPhotoList, flowNum, obj);
-                if(fav == 0){
+                if (fav == 0) {
                     //说明未收藏，可以收藏
                     let ajaxdata = {
-                        id:id,
-                        uid:this.uid
+                        id: id,
+                        uid: this.uid
                     }
                     this.$store.dispatch('collectPhoto', ajaxdata)
-                }else if(fav == 1){
+                } else if (fav == 1) {
                     //说明已经收藏了,为取消收藏
                     let ajaxdata = {
-                        id:id,
-                        uid:this.uid
+                        id: id,
+                        uid: this.uid
                     }
                     this.$store.dispatch('cancelCollectPhoto', ajaxdata)
-                }else{
+                } else {
                     //未知异常
                     console.log('collect 接口异常')
                 }
-            }else{
+            } else {
                 const data = {
                     name: 'delPhoto',
                     info: {
                         text: '登录后才能收藏哦~'
                     }
                 };
-                this.$store.dispatch('showModal',data);
+                this.$store.dispatch('showModal', data);
             }
         },
         showPhotoModal(item, index) {
@@ -163,31 +165,31 @@ export default {
             }
             this.$store.dispatch('qryViewPhoto', ajaxdata)
         },
-        loadPhoto(){
-            let data={
-                page:this.page
+        loadPhoto() {
+            let data = {
+                page: this.page
             }
             this.$store.dispatch('qryPhotoFlow', data)
         },
         loadMore() {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             const allHeight = document.body.scrollHeight;
-            const pageHeight =  document.documentElement.clientHeight;
+            const pageHeight = document.documentElement.clientHeight;
             console.log(this.getPhotoStatus)
-            if(scrollTop == allHeight - pageHeight && this.getPhotoStatus == 0){
+            if (scrollTop == allHeight - pageHeight && this.getPhotoStatus == 0) {
                 this.page++
                 this.loadPhoto();
             }
         }
     },
     watch: {
-        getUser(){
+        getUser() {
             this.style = this.getUser.category.style
             this.stores = this.getUser.category.stores
         }
     },
     beforeDestroy() {
-        window.removeEventListener('scroll',this.loadMore);
+        window.removeEventListener('scroll', this.loadMore);
     }
 }
 </script>
@@ -200,7 +202,7 @@ export default {
 }
 
 .user-info {
-    float:left;
+    float: left;
     z-index: 6;
     position: relative;
     top: 50px;
@@ -209,9 +211,10 @@ export default {
     background: #ffffff;
     padding: 2px 10px;
 }
-.user-water{
+
+.user-water {
     position: relative;
-    left:10px;
+    left: 10px;
     overflow: hidden;
 }
 
@@ -243,7 +246,8 @@ export default {
         line-height: 28.06px;
     }
 }
-.user_category_style{
+
+.user_category_style {
     top: 100px;
 }
 
@@ -257,15 +261,15 @@ export default {
     overflow: hidden;
 }
 
-.user_category_store{
+.user_category_store {
     top: 260px;
-    li{
+    li {
         height: 60px;
         line-height: 88.06px;
     }
 }
 
-.show_img{
+.show_img {
     width: 70px;
     line-height: 38.06px;
     float: left;
@@ -281,11 +285,12 @@ export default {
     margin-right: 7px;
     margin-top: 10px;
 }
-.line-store{
+
+.line-store {
     margin-top: 40px;
 }
 
-.percent{
+.percent {
     float: left;
     color: #808080;
     font-size: 14px;
@@ -319,7 +324,8 @@ export default {
         width: 0;
     }
 }
-.panel_msg{
+
+.panel_msg {
     background: #fff;
     border-radius: 5px;
     margin-bottom: 15px;

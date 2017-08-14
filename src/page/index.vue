@@ -23,9 +23,8 @@
                 </ul>
             </div>
         </div>
-    
         <!--热门婚纱照  -->
-        <div class="hot-wedding">
+        <div class="hot-wedding" v-if="getIndexPhoto.list.length>0">
             <div class="container">
                 <img class="tit" src="/static/images/hot_hs_head.png">
                 <router-link :to="{ name: 'user', query: {}}" class="more_a fr u-index-nav" target="_blank">
@@ -54,7 +53,7 @@
         </div>
     
         <!--热门攻略  -->
-        <div class="hot-raiders">
+        <div class="hot-raiders" v-if="getIndexPhoto.guide.length>0">
             <div class="container">
                 <img class="tit" src="/static/images/hot_gl_head.png">
                 <router-link :to="{ name: 'guide', query: {}}" class="more_a fr u-index-nav" target="_blank">
@@ -81,7 +80,7 @@
         </div>
     
         <!--商家评论  -->
-        <div class="store-comment">
+        <div class="store-comment" v-if="getIndexPhoto.store.length>0">
             <div class="container">
                 <img class="tit" src="/static/images/bus_dp_head.png">
                 <router-link :to="{ name: 'comment', query: {}}" class="more_a fr u-index-nav" target="_blank">

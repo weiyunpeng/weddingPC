@@ -276,6 +276,12 @@ export const qryMakeupDetails = ({ commit },data) => {
 export const qryIndex = ({ commit },data) => {
     api.qryIndex(data).then(function (response) {
         let photoCount = 0;
+        if(response.data.data.photo.length<=0){
+            commit(types.INDEX_LIST, {
+                list: response.data.data,
+            })
+            return false
+        }
         for(let i=0;i < response.data.data.photo.length;i++){
             const tempImage = new Image();
             tempImage.onload = function() {
