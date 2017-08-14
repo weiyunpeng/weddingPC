@@ -1,6 +1,7 @@
 <template>
 <div>
 <com-header></com-header>
+<div style="background:#fff;background-color: #fff;">
 <div class="container">
     <com-store :storeInfo="camaramanBusinfo"></com-store>
     <div class="fl">
@@ -66,6 +67,7 @@
         </transition-group>
         <div style="height:60px;"></div>
     </div>
+</div>
 </div>
 </div>
 </template>

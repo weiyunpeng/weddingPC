@@ -26,7 +26,7 @@ export const thisMealList = state => state.thisMealList.list;
 export const thisMealStore = state => state.thisMealList.store;
 export const thisMealTag = state => state.thisMealTag.list;
 
-export const camaraman = state => state.camaraman.camaraman;
+export const camaraman = state => state.camaraman.cameraman;
 export const camaramanBusinfo = state => state.camaraman.bus_info;
 export const camaramanPackages = state => state.camaraman.packages;
 

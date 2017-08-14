@@ -4,7 +4,7 @@
         <com-tag @ajaxTag="ajaxTag"></com-tag>
         <com-filter @ajaxfilter="ajaxfilter" @ajaxPrice="ajaxPrice"></com-filter>
         <div class="bus-commit">
-            <div class="container" style="padding-bottom:255px;">
+            <div class="container">
                 <ul class="list">
                     <li v-for="(item,busIndex) in busList" :key="busIndex">
                         <ul class="list-con">

@@ -43,7 +43,6 @@ export default {
     },
     watch:{
         storeInfo(){
-            console.log(this.storeInfo)
         }
     }
 }
@@ -87,5 +86,5 @@ export default {
                 position: relative;
                 color: #808080;
                 font-size: 16px;
-                margin-bottom: 25px;}
+          }
 </style>
