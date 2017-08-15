@@ -135,36 +135,10 @@ export default {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
-
-.photo_fr {
-    width: 320px;
-    height: 500px;
-    overflow-x: hidden;
-}
-
-.pg_name {
-    font-size: 16px;
-    color: #4c4c4c;
-    line-height: 28px;
-}
-
 .close_btn {
     position: absolute;
     top: -63px;
     right: 0;
-}
-
-.photo_fl {
-    width: 800px;
-    position: relative
-}
-
-.pg_like {
-    position: relative;
-    right: 44px;
-    color: #999999;
-    font-size: 14px;
-    line-height: 28px;
 }
 
 .water_img {
@@ -178,18 +152,5 @@ export default {
     filter: alpha(Opacity=100);
     -moz-opacity: 1;
     opacity: 1;
-}
-
-.modal-details {
-    color: #808080;
-    font-size: 14px;
-    line-height: 27.28px;
-    a {
-        color: #236dd3;
-    }
-    a:hover {
-        text-decoration: underline;
-        color: #ff506d;
-    }
 }
 </style>

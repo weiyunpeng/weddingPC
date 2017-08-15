@@ -6,7 +6,7 @@
                 <div class="photo_fl fl">
                     <swiper :options="swiperOption" ref="mySwiper">
                         <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">
-                            <img :src="item.img" width="800" height="475">
+                            <img :src="item.img" height="475">
                             <span class="pg_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
                                 <i v-if="item.is_fav" class="icon_like_act"></i>
                                 <i v-if="!item.is_fav" class="icon_like"></i>
@@ -245,12 +245,15 @@ export default {
 
 .photo_fl {
     width: 800px;
-    position: relative
+    height: auto;
+    position: relative;
+    text-align: center;
 }
 
 .pg_like {
-    position: relative;
-    right: 44px;
+    position: absolute;
+    right: 16px;
+    bottom: 2px;
     color: #999999;
     font-size: 14px;
     line-height: 28px;

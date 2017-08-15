@@ -5,7 +5,7 @@
         "photo": [
             {
                 "id": 4,
-                "img": "http://localhost:1300/images/5.jpg",
+                "img": "http://marriage-1252045209.image.myqcloud.com/none/photos/20170815/59926e56306d3521400072.png",
                 "fav_num": 3,
                 "tag": [
                     "aa小清新"
@@ -77,7 +77,7 @@
             },
             {
                 "id": 2,
-                "img": "http://localhost:1300/images/1.jpg",
+                "img": "http://localhost:1300/images/9.jpg",
                 "fav_num": 1,
                 "tag": [
                     "欧美大气"
@@ -86,7 +86,7 @@
             },
             {
                 "id": 14,
-                "img": "http://localhost:1300/images/1.jpg",
+                "img": "http://localhost:1300/images/2.jpg",
                 "fav_num": 0,
                 "tag": [
                     "韩式"
@@ -95,7 +95,7 @@
             },
             {
                 "id": 13,
-                "img": "http://localhost:1300/images/1.jpg",
+                "img": "http://localhost:1300/images/4.jpg",
                 "fav_num": 0,
                 "tag": [
                     "韩式"
@@ -104,7 +104,7 @@
             },
             {
                 "id": 12,
-                "img": "http://localhost:1300/images/1.jpg",
+                "img": "http://localhost:1300/images/5.jpg",
                 "fav_num": 0,
                 "tag": [
                     "韩式"

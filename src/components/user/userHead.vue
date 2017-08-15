@@ -75,7 +75,7 @@
                 <div class="user-search clearfix">
                     <div class="nav_search">
                         <input type="text" v-model.trim="keyword" placeholder="" class="nav_form" @keyup.enter="seaBtn">
-                        <a href="javascript:void(0)" class="focus-search">
+                        <a href="javascript:void(0)" class="focus-search" @click="seaBtn">
                             <img src="/static/images/icon_search.png">
                         </a>
                     </div>
@@ -156,7 +156,7 @@ export default {
             let data = {
                 keyword: this.keyword
             }
-            // this.$store.dispatch('busClear')
+            this.$store.dispatch('busClear')
             this.$store.dispatch('qryBusList', data)
         },
         logout() {
@@ -241,26 +241,14 @@ export default {
     .nav_form {
         position: absolute;
         top: 0;
-        right: 0;
-        border: none;
         outline: none;
-        width: 98%;
         height: 30px;
         line-height: 30px;
         z-index: 10;
         padding-left: 10px;
-        background: transparent;
         color: #808080;
         font-size: 12px;
         line-height: 40px;
-        filter: alpha(Opacity=0);
-        -moz-opacity: 0;
-        opacity: 0;
-        -webkit-transition: width 0.3s;
-        -moz-transition: width 0.3s;
-        transition: width 0.3s;
-    }
-    .nav_form:focus {
         border: 1px solid #d9d9d9;
         width: 150px;
         border-radius: 15px;
@@ -269,7 +257,42 @@ export default {
         filter: alpha(Opacity=100);
         -moz-opacity: 1;
         opacity: 1;
+        -webkit-transition: width 0.3s;
+        -moz-transition: width 0.3s;
+        transition: width 0.3s;
     }
+    // .nav_form {
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     border: none;
+    //     outline: none;
+    //     width: 98%;
+    //     height: 30px;
+    //     line-height: 30px;
+    //     z-index: 10;
+    //     padding-left: 10px;
+    //     background: transparent;
+    //     color: #808080;
+    //     font-size: 12px;
+    //     line-height: 40px;
+    //     filter: alpha(Opacity=0);
+    //     -moz-opacity: 0;
+    //     opacity: 0;
+    //     -webkit-transition: width 0.3s;
+    //     -moz-transition: width 0.3s;
+    //     transition: width 0.3s;
+    // }
+    // .nav_form:focus {
+    //     border: 1px solid #d9d9d9;
+    //     width: 150px;
+    //     border-radius: 15px;
+    //     background: #f2f2f2;
+    //     right: 50px;
+    //     filter: alpha(Opacity=100);
+    //     -moz-opacity: 1;
+    //     opacity: 1;
+    // }
 }
 
 

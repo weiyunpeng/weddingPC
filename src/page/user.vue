@@ -2,40 +2,42 @@
     <div class="user">
         <com-header></com-header>
         <div class="container">
-            <div class="user-info" v-show="isAuth">
-                <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
-                <div class="user-nike">
-                    <p>{{getUser.nike}}</p>
-                    <label>我的收藏</label>
+            <div class="user-info fl" v-show="isAuth">
+                <div class="Profile">
+                    <div class="user-nike">
+                        <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
+                        <p>{{getUser.nike}}</p>
+                        <label>我的收藏</label>
+                    </div>
+                    <ul class="user_category user_category_style">
+                        <li v-for="(item,s) in style" :key="s">
+                            <span class="show_list">{{item.name}}</span>
+                            <div class="line">
+                                <div class="bar" v-bind:style="{ width: item.value }"></div>
+                            </div>
+                            <span class="percent">{{item.value}}</span>
+                        </li>
+                        <img style="margin:20px 0" src="/static/images/icon_photo_from.png">
+                    </ul>
+                    <ul class="user_category user_category_store">
+                        <li v-for="(item,s) in stores" :key="s">
+                            <div class="show_img">
+                                <img :src="item.logo" width="64" height="64">
+                                <span class="show_name">{{item.name}}</span>
+                            </div>
+    
+                            <div class="line line-store">
+                                <div class="bar" v-bind:style="{ width: item.value}"></div>
+                            </div>
+                            <span class="percent">{{item.value}}</span>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="user_category user_category_style">
-                    <li v-for="(item,s) in style" :key="s">
-                        <span class="show_list">{{item.name}}</span>
-                        <div class="line">
-                            <div class="bar" v-bind:style="{ width: item.value }"></div>
-                        </div>
-                        <span class="percent">{{item.value}}</span>
-                    </li>
-                    <img style="margin:20px 0" src="/static/images/icon_photo_from.png">
-                </ul>
-                <ul class="user_category user_category_store">
-                    <li v-for="(item,s) in stores" :key="s">
-                        <div class="show_img">
-                            <img :src="item.logo" width="64" height="64">
-                            <span class="show_name">{{item.name}}</span>
-                        </div>
-                        
-                        <div class="line line-store">
-                            <div class="bar" v-bind:style="{ width: item.value}"></div>
-                        </div>
-                        <span class="percent">{{item.value}}</span>
-                    </li>
-                </ul>
             </div>
             <div class="user-water">
-                <waterfall :line-gap="300" :max-line-gap="640" :single-max-width="320" :watch="getPhotoList">
+                <waterfall :line="line" :grow="grow" :watch="getPhotoList" :line-gap="300">
                     <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
-                        <div class="panel photo_box hover_sh">
+                        <div class="panel photo_box hover_sh" style="text-align:center">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
                                 <img :src="item.img">
                             </div>
@@ -53,13 +55,14 @@
                         </div>
                     </waterfall-slot>
                 </waterfall>
+                <!-- <vueWaterfallEasy :imgsArr='getPhotoList'></vueWaterfallEasy> -->
             </div>
         </div>
         <!-- <div class="panel_msg">
-                <template v-if="getPhotoStatus == 0">加载更多</template>
-                <template v-if="getPhotoStatus == 1">加载中...</template>
-                <template v-if="getPhotoStatus == 2">没有更多照片啦</template>
-            </div> -->
+                                    <template v-if="getPhotoStatus == 0">加载更多</template>
+                                    <template v-if="getPhotoStatus == 1">加载中...</template>
+                                    <template v-if="getPhotoStatus == 2">没有更多照片啦</template>
+                                </div> -->
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
         </com-photoModal>
     </div>
@@ -67,6 +70,7 @@
 
 <script>
 import header from './../components/user/userHead'
+// import vueWaterfallEasy from './../components/waterfall'
 import { waterfall, waterfallSlot } from 'vue-waterfall'
 import photoModal from './../components/photoModal'
 import { mapGetters, mapActions } from 'vuex'
@@ -76,7 +80,8 @@ export default {
         'comHeader': header,
         'waterfall': waterfall,
         'waterfallSlot': waterfallSlot,
-        'comPhotoModal': photoModal
+        'comPhotoModal': photoModal,
+        // 'vueWaterfallEasy':vueWaterfallEasy
     },
     computed: {
         ...mapGetters({
@@ -100,7 +105,9 @@ export default {
             photoModal: {},
             index: null,
             uid: null,
-            page: 1
+            page: 1,
+            grow: [2, 2, 2],
+            line: 'v'
         }
     },
     mounted() {
@@ -196,22 +203,18 @@ export default {
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-.user-head {
-    position: relative;
-    top: -45px;
-    left: 5px;
-    z-index: 9;
-}
-
 .user-info {
-    float: left;
-    z-index: 6;
     position: relative;
-    top: 50px;
-    width: 290px;
-    height: auto;
-    background: #ffffff;
-    padding: 2px 10px;
+    top: 0;
+    left: 0;
+    .Profile {
+        position: relative;
+        top: 50px;
+        width: 290px;
+        height: auto;
+        background: #ffffff;
+        z-index: 9;
+    }
 }
 
 .user-water {
@@ -222,14 +225,19 @@ export default {
 
 .user-nike {
     position: relative;
-    left: 20px;
-    top: 18px;
+    background: #fff;
     p {
+        position: relative;
+        left: 18px;
+        top: 10px;
         color: #4c4c4c;
         font-size: 22px;
         line-height: 27.28px;
     }
     label {
+        position: relative;
+        left: 18px;
+        top: 10px;
         display: block;
         color: #b2b2b2;
         font-size: 14px;
@@ -237,8 +245,15 @@ export default {
     }
 }
 
+.user-head {
+    position: relative;
+    top: -45px;
+    left: 5px;
+    z-index: 9;
+}
+
 .user_category {
-    position: absolute;
+    position: relative;
     left: 0;
     width: 290px;
     padding: 0 15px;
@@ -253,9 +268,7 @@ export default {
     }
 }
 
-.user_category_style {
-    top: 100px;
-}
+.user_category_style {}
 
 .show_list {
     float: left;
@@ -268,13 +281,15 @@ export default {
 }
 
 .user_category_store {
-    top: 260px;
     li {
         height: 60px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         width: 100%;
         overflow: hidden;
         line-height: 88.06px;
+    }
+    li:last-child {
+        margin-bottom: 50px;
     }
 }
 
@@ -283,7 +298,7 @@ export default {
     width: 70px;
     line-height: 38.06px;
     float: left;
-    .show_name{
+    .show_name {
         font-size: 14px;
         color: #4c4c4c;
         line-height: 28.06px;

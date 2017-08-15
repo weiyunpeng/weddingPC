@@ -77,7 +77,7 @@
             },
             {
                 "id": 2,
-                "img": "/static/images/1.png",
+                "img": "http://localhost:1300/images/1.jpg",
                 "fav_num": 1,
                 "tag": [
                     "欧美大气"
@@ -86,7 +86,7 @@
             },
             {
                 "id": 14,
-                "img": "/static/images/2.png",
+                "img": "http://localhost:1300/images/9.jpg",
                 "fav_num": 0,
                 "tag": [
                     "韩式"
@@ -104,7 +104,7 @@
             },
             {
                 "id": 12,
-                "img": "http://localhost:1300/images/1.jpg",
+                "img": "http://localhost:1300/images/2.jpg",
                 "fav_num": 0,
                 "tag": [
                     "韩式"
@@ -113,7 +113,7 @@
             },
             {
                 "id": 11,
-                "img": "http://localhost:1300/images/1.jpg",
+                "img": "http://localhost:1300/images/3.jpg",
                 "fav_num": 0,
                 "tag": [
                     "韩式"
@@ -122,7 +122,7 @@
             },
             {
                 "id": 10,
-                "img": "http://localhost:1300/images/1.jpg",
+                "img": "http://localhost:1300/images/4.jpg",
                 "fav_num": 0,
                 "tag": [
                     "韩式"
