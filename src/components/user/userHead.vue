@@ -347,7 +347,7 @@ export default {
     border-bottom: 2px solid #ff4e6b;
     position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 9999;
     .logo {
         position: relative;
         height: auto;

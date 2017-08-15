@@ -22,7 +22,9 @@
                     <li v-for="(item,s) in stores" :key="s">
                         <div class="show_img">
                             <img :src="item.logo" width="64" height="64">
+                            <span class="show_name">{{item.name}}</span>
                         </div>
+                        
                         <div class="line line-store">
                             <div class="bar" v-bind:style="{ width: item.value}"></div>
                         </div>
@@ -207,7 +209,7 @@ export default {
     position: relative;
     top: 50px;
     width: 290px;
-    height: 565px;
+    height: auto;
     background: #ffffff;
     padding: 2px 10px;
 }
@@ -237,7 +239,11 @@ export default {
 
 .user_category {
     position: absolute;
-    width: 275px;
+    left: 0;
+    width: 290px;
+    padding: 0 15px;
+    background: #ffffff;
+    height: auto;
     overflow: hidden;
     li {
         width: 100%;
@@ -265,14 +271,30 @@ export default {
     top: 260px;
     li {
         height: 60px;
+        margin-bottom: 10px;
+        width: 100%;
+        overflow: hidden;
         line-height: 88.06px;
     }
 }
 
 .show_img {
+    position: relative;
     width: 70px;
     line-height: 38.06px;
     float: left;
+    .show_name{
+        font-size: 14px;
+        color: #4c4c4c;
+        line-height: 28.06px;
+        position: absolute;
+        top: 0px;
+        left: 76px;
+        width: 140px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
 
 .line {
