@@ -13,8 +13,8 @@
                             <a href="javascript:void(0)">{{category.name}}</a>
                         </dd>
                     </dt>
-                    <dt>
-                        <i class="icon_logout"></i>退出登陆</a>
+                    <dt @click="logout()">
+                        <a href="javascript:void(0)"><i class="icon_logout"></i>退出登录</a>
                     </dt>
                 </dl>
             </div>
@@ -123,6 +123,10 @@ export default {
                 id: this.photoModal.id
             }
             this.$store.dispatch('qryViewPhoto', ajaxdata)
+        },
+        logout() {
+            this.$store.dispatch('loginOut')
+            this.$router.push({ name: 'index' })
         }
     },
     watch: {

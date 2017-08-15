@@ -7,7 +7,7 @@
                     <div class="user-nike">
                         <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
                         <p>{{getUser.nike}}</p>
-                        <label>我的收藏</label>
+                        <label v-if="style&&style.length>0">我的收藏</label>
                     </div>
                     <ul class="user_category user_category_style">
                         <li v-for="(item,s) in style" :key="s">
@@ -17,7 +17,7 @@
                             </div>
                             <span class="percent">{{item.value}}</span>
                         </li>
-                        <img style="margin:20px 0" src="/static/images/icon_photo_from.png">
+                        <img src="/static/images/icon_photo_from.png" v-if="stores&&stores.length>0">
                     </ul>
                     <ul class="user_category user_category_store">
                         <li v-for="(item,s) in stores" :key="s">
@@ -268,7 +268,11 @@ export default {
     }
 }
 
-.user_category_style {}
+.user_category_style {
+    li:nth-child(3) {
+        margin-bottom: 20px;
+    }
+}
 
 .show_list {
     float: left;
@@ -282,13 +286,14 @@ export default {
 
 .user_category_store {
     li {
+        margin-top: 20px;
         height: 60px;
         margin-bottom: 20px;
         width: 100%;
         overflow: hidden;
         line-height: 88.06px;
     }
-    li:last-child {
+    li:nth-child(3) {
         margin-bottom: 50px;
     }
 }
