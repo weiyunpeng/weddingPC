@@ -103,6 +103,8 @@ export default {
     methods: {
         close() {
             this.loading = false;
+            this.swiper.slideTo(0, 1000, false)
+            this.selected = 0
             this.$emit('input', false);
         },
         changeSwiper(item, index) {

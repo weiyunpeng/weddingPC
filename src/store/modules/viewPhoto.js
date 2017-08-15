@@ -20,9 +20,9 @@ const mutations = {
         state.status = data.status;
     },
     [PHOTO_CLEAR](state){
-        state.list = [];
+        state.photoList = [];
         state.status = 0;
-    },
+    }
 };
 
 export default {
