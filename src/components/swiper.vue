@@ -1,12 +1,13 @@
 <template>
-    <transition name="photo_modal">
-        <div class="photo_modal text-center">
-            <div class="photo_modal_dialog panel">
+    <transition name="swiper_modal">
+        <div class="swiper_modal text-center">
+            <div class="swiper_modal_dialog panel">
                 <img @click="close" class="close_btn" src="/static/images/icon-no-btn.png">
                 <swiper :options="swiperOption" ref="mySwiper">
                     <swiper-slide class="photo_fl fl" v-for="(img,index) in swiperImgs" v-bind:key="index">
                         <img :src="img" width="900" height="475">
                     </swiper-slide>
+                    <div class="swiper-pagination" slot="pagination"></div>
                     <div class="swiper-button-prev" slot="button-prev"></div>
                     <div class="swiper-button-next" slot="button-next"></div>
                 </swiper>
@@ -28,6 +29,7 @@ export default {
             photoInfo: {},
             swiperOption: {
                 notNextTick: true,
+                pagination: '.swiper-pagination',
                 setWrapperSize: false,
                 slidesPerView: 1,
                 paginationClickable: false,
@@ -83,7 +85,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-.photo_modal {
+.swiper_modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -99,38 +101,37 @@ export default {
     transition: opacity .3s ease;
 }
 
-.photo_modal_dialog {
+.swiper_modal_dialog {
     position: relative;
     background: transparent;
     width: 1200px;
-    height: 550px;
+    height: auto;
     border-radius: 15px;
-    max-width: 1200px;
-    min-width: 400px;
     display: inline-block;
-    margin: 75px auto;
+    top: 20%;
     padding: 15px;
+    background: #fff;
     transition: all .3s ease;
 }
 
-.photo_modal_dialog .panel_body {
+.swiper_modal_dialog .panel_body {
     cursor: zoom-out;
 }
 
-.photo_modal_dialog img {
+.swiper_modal_dialog img {
     max-height: 450px;
 }
 
-.photo_modal-enter {
+.swiper_modal-enter {
     opacity: 0;
 }
 
-.photo_modal-leave-active {
+.swiper_modal-leave-active {
     opacity: 0;
 }
 
-.photo_modal-enter .photo_modal_dialog,
-.photo_modal-leave-active .photo_modal_dialog {
+.swiper_modal-enter .swiper_modal_dialog,
+.swiper_modal-leave-active .swiper_modal_dialog {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }

@@ -57,7 +57,7 @@ function photo_flow(Params, Request, Response) {
     }else if(page == 2){
         fileName = 'site/data/photo_flow2.json';
     }else{
-        fileName = 'index/data/none.json'
+        fileName = 'site/data/none.json'
     }
     MAIN.responseStub(Response,fileName);
 }

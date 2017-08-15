@@ -10,23 +10,23 @@
                 <div class="nav clearfix">
                     <ul>
                         <li>
-                            <router-link to="/user" class="nav_a" active-class="nav_active" exact target="_blank">首页</router-link>
+                            <router-link to="/user" class="nav_a" active-class="nav_active" exact>首页</router-link>
                         </li>
                         <li>
-                            <router-link to="/guide" class="nav_a" active-class="nav_active" target="_blank">攻略</router-link>
+                            <router-link to="/guide" class="nav_a" active-class="nav_active">攻略</router-link>
                         </li>
                         <li>
-                            <router-link to="/comment" class="nav_a" active-class="nav_active" target="_blank">点评</router-link>
+                            <router-link to="/comment" class="nav_a" active-class="nav_active">点评</router-link>
                         </li>
                         <li>
-                            <router-link to="/meal" class="nav_a" active-class="nav_active" target="_blank">套餐</router-link>
+                            <router-link to="/meal" class="nav_a" active-class="nav_active">套餐</router-link>
                         </li>
                     </ul>
                 </div>
                 <div class="user-search clearfix">
                     <div class="nav_search">
                         <input type="text" v-model.trim="keyword" placeholder="搜商家" class="nav_form" @keyup.enter="seaBtn">
-                        <a href="javascript:void(0)" class="focus-search">
+                        <a href="javascript:void(0)" class="focus-search" @click="seaBtn">
                             <img src="/static/images/icon_search.png">
                         </a>
                     </div>
@@ -157,7 +157,7 @@ export default {
                 keyword: this.keyword
             }
             // this.$store.dispatch('busClear')
-            // this.$store.dispatch('qryBusList', data)
+            this.$store.dispatch('qryBusList', data)
         },
         logout() {
             this.$store.dispatch('loginOut')
