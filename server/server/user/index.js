@@ -21,8 +21,8 @@ function run(Request, Response)
  * @param {Object} Response
  */
 function get(Params, Request, Response) {
-    // var fileName = 'user/data/getF.json';
-    var fileName = 'user/data/getSucc.json';
+    var fileName = 'user/data/getF.json';
+    // var fileName = 'user/data/getSucc.json';
     MAIN.responseStub(Response,fileName);
 }
 
