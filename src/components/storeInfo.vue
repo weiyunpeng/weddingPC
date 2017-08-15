@@ -9,12 +9,7 @@
                 <div class="clearfix fl">
                     <label class="fl">媒体评定分：</label>
                     <div class="media_rating fl">
-                        <ul class="star1">
-                            <li v-for="n in 5" :key="n"></li>
-                        </ul>
-                        <ul class="star2">
-                            <li v-for="m in storeInfo.star" class="red" :key="m"></li>
-                        </ul>
+                        <star :score="storeInfo.star"></star>
                     </div>
                 </div>
                 <div class="address fl">
@@ -25,7 +20,11 @@
 </template>
 
 <script>
+import star from './star'
 export default {
+    components: {
+        star:star
+    },
     data() {
         return {
         }

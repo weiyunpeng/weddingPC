@@ -12,12 +12,7 @@
                 <div class="clearfix fl">
                     <label class="fl">媒体评定分：</label>
                     <div class="media_rating fl">
-                        <ul class="star1">
-                            <li v-for="n in 5" :key="n"></li>
-                        </ul>
-                        <ul class="star2">
-                            <li v-for="m in thisMealStore.star" class="red" :key="m"></li>
-                        </ul>
+                        <star :score="thisMealStore.star"></star>
                     </div>
                 </div>
                 <div class="address fl">
@@ -58,11 +53,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import header from './../components/headerDetails'
 import tag from "./../components/meal/thisMealTag"
+import star from './../components/star'
 
 export default {
     components: {
         comHeader: header,
-        comTag: tag
+        comTag: tag,
+        star:star
     },
     computed: {
         ...mapGetters({

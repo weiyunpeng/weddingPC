@@ -47,12 +47,7 @@
                     <div class="clearfix">
                         <label class="fl">媒体评定分：</label>
                         <div class="media_rating fl">
-                            <ul class="star1">
-                                <li v-for="n in 5" v-bind:key="n"></li>
-                            </ul>
-                             <ul class="star2">
-                                <li v-for="n in mediaInfo.star" v-bind:key="n" class="red"></li>
-                            </ul> 
+                            <star :score="mediaInfo.star"></star> 
                         </div>
                     </div>
                     <div class="clearfix">
@@ -60,7 +55,6 @@
                         <div class="media_comment fl">
                             {{mediaInfo.comment}}
                             <a :href="mediaInfo.comment_url" class="comment_url" target="_blank">[查看详情]</a>
-                            <!-- <a href="javascript:void(0)" class="comment_url">[查看详情]</a> -->
                         </div>
                     </div>
                     <div class="code">
@@ -261,6 +255,7 @@ import header from './../components/headerDetails'
 import bigImg from './../components/bigImg'
 import swiperModel from './../components/swiper'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import star from './../components/star'
 export default {
     name: 'carrousel',
     components: {
@@ -268,7 +263,8 @@ export default {
         comPic:bigImg,
         comSwiper:swiperModel,
         swiper,
-        swiperSlide
+        swiperSlide,
+        'star':star
     },
     data() {
         return {

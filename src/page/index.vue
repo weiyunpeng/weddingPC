@@ -98,7 +98,7 @@
                             <div class="clearfix">
                                 <label class="fl">媒体评定分：</label>
                                 <div class="media_rating fl">
-                                    <star :score="3.5"></star>
+                                    <star :score="store.star"></star>
                                 </div>
                             </div>
                             <a :href="store.url" target="_blank">
