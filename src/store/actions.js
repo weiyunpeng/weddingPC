@@ -321,6 +321,7 @@ export const qryViewPhoto = ({ commit },data) => {
             tempImage.onload = function() {
                 photoCount++;
                 response.data.data.list[i].height = tempImage.height /2 + 15;
+                response.data.data.list[i].width = tempImage.width/2;
                 if( photoCount == response.data.data.list.length) {
                     commit(types.VIEW_PHOTO_MODAL, {
                         data: response.data.data,

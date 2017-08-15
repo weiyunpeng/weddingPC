@@ -25,8 +25,8 @@
     
                 <div class="photo_fr fr">
                     <p class="pg_name">TA的套系</p>
-                    <waterfall :line-gap="160" :min-line-gap="10" :max-line-gap="160" :single-max-width="10" :watch="getViewPhoto">
-                        <waterfall-slot v-for="(item, index) in getViewPhoto" :width="150" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
+                    <waterfall :line-gap="200" :min-line-gap="140" :max-line-gap="140" :single-max-width="140" :watch="getViewPhoto">
+                        <waterfall-slot v-for="(item, index) in getViewPhoto" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
                             <img :src="item.img" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
                         </waterfall-slot>
                     </waterfall>
@@ -193,12 +193,12 @@ export default {
     position: relative;
     background: #fff;
     width: 1200px;
-    height: 550px;
+    height: auto;
     border-radius: 15px;
     max-width: 1200px;
     min-width: 400px;
     display: inline-block;
-    margin: 75px auto;
+    top: 15%;
     padding: 15px;
     transition: all .3s ease;
 }
