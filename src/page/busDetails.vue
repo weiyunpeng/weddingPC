@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="nav">
-            <ul>
+            <ul v-if="busDetList && busDetList >0 ">
                 <li v-for="(item,i) in busDetList" :key="i">
                     <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item.nav}}</a>
                 </li>

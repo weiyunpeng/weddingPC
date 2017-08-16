@@ -377,7 +377,7 @@ export const qryPhotoFlow = ({ commit },data) => {
             const tempImage = new Image();
             tempImage.onload = function() {
                 photoCount++;
-                response.data.data.photo[i].height = tempImage.height+85;
+                response.data.data.photo[i].height = tempImage.height+30;
                 response.data.data.photo[i].width = tempImage.width;
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
