@@ -24,18 +24,34 @@ const mutations = {
         state.status = 0;
     },
     [PHOTO_LIKE_USER](state, data){
-        let obj = state.photoList[data.index]
+        const obj = state.photoList[data.order]
         obj.is_fav = !obj.is_fav
-        state.photoList[data.index].is_fav = obj.is_fav
-        state.photoList[data.index].fav_num++
-        state.photoList.splice(data.index, 1, obj)
+        state.photoList[data.order].is_fav = obj.is_fav
+        state.photoList[data.order].fav_num++
+        state.photoList.splice(data.order, 1, obj)
+
+        if(state.list[data.index]){
+            const objModal = state.list[data.index]
+            objModal.is_fav = !objModal.is_fav
+            state.list[data.index].is_fav = objModal.is_fav
+            state.list[data.index].fav_num++
+            state.list.splice(data.index, 1, objModal)
+        }
     },
     [CANCEL_PHOTO_LIKE_USER](state, data){
-        let obj = state.photoList[data.index]
+        const obj = state.photoList[data.order]
         obj.is_fav = !obj.is_fav
-        state.photoList[data.index].is_fav = obj.is_fav
-        state.photoList[data.index].fav_num--
-        state.photoList.splice(data.index, 1, obj)
+        state.photoList[data.order].is_fav = obj.is_fav
+        state.photoList[data.order].fav_num--
+        state.photoList.splice(data.order, 1, obj)
+
+        if(state.list[data.index]){
+            const objModal = state.list[data.index]
+            objModal.is_fav = !objModal.is_fav
+            state.list[data.index].is_fav = objModal.is_fav
+            state.list[data.index].fav_num--
+            state.list.splice(data.index, 1, objModal)
+        }
     }
 };
 

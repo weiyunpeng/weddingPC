@@ -80,7 +80,7 @@ export default {
             type: Object,
             'default': null
         },
-        index: {
+        order: {
             type: Number,
             'default': null
         }
@@ -118,23 +118,27 @@ export default {
             let token = JSON.parse(localStorage.getItem('user'));
             let isLogin = Boolean(token);
             if (isLogin) {
-                let obj = this.getViewPhoto[flowNum]
-                obj.is_fav = !obj.is_fav
-                this.$set(this.getViewPhoto, flowNum, obj);
+                // let obj = this.getViewPhoto[flowNum]
+                // obj.is_fav = !obj.is_fav
+                // this.$set(this.getViewPhoto, flowNum, obj);
                 if (fav == 0) {
                     //说明未收藏，可以收藏
-                    obj.fav_num++
                     let ajaxdata = {
                         id: id,
-                        uid: this.uid
+                        uid: token.uid,
+                        index:flowNum,
+                        order:this.order,
+                        is_fav:fav
                     }
                     this.$store.dispatch('collectPhoto', ajaxdata)
                 } else if (fav == 1) {
                     //说明已经收藏了,为取消收藏
-                    obj.fav_num--
                     let ajaxdata = {
                         id: id,
-                        uid: this.uid
+                        uid: token.uid,
+                        index:flowNum,
+                        order:this.order,
+                        is_fav:fav
                     }
                     this.$store.dispatch('cancelCollectPhoto', ajaxdata)
                 } else {

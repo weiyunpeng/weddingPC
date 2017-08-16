@@ -58,7 +58,7 @@
                 <!-- <vueWaterfallEasy :imgsArr='getPhotoList'></vueWaterfallEasy> -->
             </div>
         </div>
-        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
+        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :order="orderNum">
         </com-photoModal>
     </div>
 </template>
@@ -98,7 +98,7 @@ export default {
             stores: null,
             show: false,
             photoModal: {},
-            index: null,
+            orderNum: null,
             uid: null,
             page: 1,
             grow: [2, 2, 2],
@@ -134,21 +134,19 @@ export default {
                 // this.$set(this.getPhotoList, flowNum, obj);
                 if (fav == 0) {
                     //说明未收藏，可以收藏
-                    // obj.fav_num++
                     let ajaxdata = {
                         id: id,
                         uid: this.uid,
-                        index:flowNum,
+                        order:flowNum,
                         is_fav:fav
                     }
                     this.$store.dispatch('collectPhoto', ajaxdata)
                 } else if (fav == 1) {
                     //说明已经收藏了,为取消收藏
-                    // obj.fav_num--
                     let ajaxdata = {
                         id: id,
                         uid: this.uid,
-                        index:flowNum,
+                        order:flowNum,
                         is_fav:fav
                     }
                     this.$store.dispatch('cancelCollectPhoto', ajaxdata)
@@ -168,7 +166,7 @@ export default {
         },
         showPhotoModal(item, index) {
             this.photoModal = item;
-            this.index = index;
+            this.orderNum = index;
             this.show = true;
             const ajaxdata = {
                 id: this.photoModal.id
