@@ -123,6 +123,7 @@ export default {
                 this.$set(this.getViewPhoto, flowNum, obj);
                 if (fav == 0) {
                     //说明未收藏，可以收藏
+                    obj.fav_num++
                     let ajaxdata = {
                         id: id,
                         uid: this.uid
@@ -130,6 +131,7 @@ export default {
                     this.$store.dispatch('collectPhoto', ajaxdata)
                 } else if (fav == 1) {
                     //说明已经收藏了,为取消收藏
+                    obj.fav_num--
                     let ajaxdata = {
                         id: id,
                         uid: this.uid

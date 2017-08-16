@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="user-water">
-                <waterfall :line="line" :watch="getPhotoList" :line-gap="300">
+                <waterfall :line="line" :watch="getPhotoList" :line-gap="280">
                     <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
@@ -51,18 +51,13 @@
                                     <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
                                 </ul>
                             </div>
-    
                         </div>
+    
                     </waterfall-slot>
                 </waterfall>
                 <!-- <vueWaterfallEasy :imgsArr='getPhotoList'></vueWaterfallEasy> -->
             </div>
         </div>
-        <!-- <div class="panel_msg">
-                                    <template v-if="getPhotoStatus == 0">加载更多</template>
-                                    <template v-if="getPhotoStatus == 1">加载中...</template>
-                                    <template v-if="getPhotoStatus == 2">没有更多照片啦</template>
-                                </div> -->
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
         </com-photoModal>
     </div>
@@ -139,6 +134,7 @@ export default {
                 this.$set(this.getPhotoList, flowNum, obj);
                 if (fav == 0) {
                     //说明未收藏，可以收藏
+                    obj.fav_num++
                     let ajaxdata = {
                         id: id,
                         uid: this.uid
@@ -146,6 +142,7 @@ export default {
                     this.$store.dispatch('collectPhoto', ajaxdata)
                 } else if (fav == 1) {
                     //说明已经收藏了,为取消收藏
+                    obj.fav_num--
                     let ajaxdata = {
                         id: id,
                         uid: this.uid
@@ -219,6 +216,7 @@ export default {
 
 .user-water {
     position: relative;
+    top: 5px;
     margin-bottom: 20px;
     left: 10px;
     overflow: hidden;

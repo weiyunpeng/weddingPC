@@ -1692,12 +1692,37 @@ fieldset[disabled] .btn-danger.focus {
     background: #fff;
     background-color: #fff;
     margin-right: 15px;
-    top: 5px;
     border-radius: 5px;
     cursor: zoom-in;
 }
 .photo_box:hover .photo_box_top{
     opacity: 1;
+}
+
+.photo_info {
+    position: relative;
+    height: 32px;
+    line-height: 32px;
+    margin-right: 15px;
+    color: #b3b3b3;
+    font-size: 14px;
+    text-align: left;
+}
+.photo_info .photo_like{
+    position: relative;
+    margin-left: 26px;
+}
+.photo_info ul {
+    float: right;
+}
+.photo_like{
+    cursor: pointer;
+}
+.photo_like i{
+    /* color: #ff5b7e; */
+}
+.photo_box > img{
+    width: 100%
 }
 .photo_box_top{
     opacity: 0;
@@ -1710,15 +1735,6 @@ fieldset[disabled] .btn-danger.focus {
     padding: 5px 10px;
     border-bottom-left-radius: 5px;
     cursor: pointer;
-}
-.photo_like{
-    cursor: pointer;
-}
-.photo_like i{
-    /* color: #ff5b7e; */
-}
-.photo_box > img{
-    width: 100%
 }
 /*photo end*/
 

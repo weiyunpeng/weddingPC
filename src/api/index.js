@@ -20,6 +20,7 @@ axios.interceptors.response.use(function (response) {
     if(code==-99){
         //说明登录失效
         window.location.href = 'http://dev.hunjia.qqdayu.com/login'
+        return false
     }
     if(code==-1){
         //说明服务端错误

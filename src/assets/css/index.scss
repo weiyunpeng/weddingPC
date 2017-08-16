@@ -160,24 +160,6 @@
     }
 }
 
-.photo_info {
-    position: relative;
-    text-align: left;
-    height: 32px;
-    line-height: 32px;
-    color: #b3b3b3;
-    font-size: 14px;
-    .photo_like {
-        position: relative;
-        left: 26px;
-    }
-    ul {
-        position: relative;
-        right: 8px;
-        float: right;
-    }
-}
-
 @mixin animation($animation) {
     animation: $animation;
     -webkit-animation: $animation;

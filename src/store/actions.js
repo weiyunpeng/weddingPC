@@ -26,7 +26,8 @@ export const hideModal = ({ commit }, data) => {
 //----------------------------------------获取用户信息------------------------------------------------------
 export const getUserInfo = ({ commit },data) => {
     api.getUserInfo(data).then(function (response) {
-        if(response.data.code == 404){
+        console.log(response.data)
+        if(response.data.code == 0){
             //说明未登录
             commit(types.AUTH_INFO_CLEAR)
         }else{
