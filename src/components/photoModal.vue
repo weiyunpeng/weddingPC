@@ -275,10 +275,13 @@ export default {
 }
 
 .modal-details {
+    padding: 10px 65px;
+    text-align: left;
     color: #808080;
     font-size: 14px;
     line-height: 27.28px;
     a{
+        display: block;
         color: #236dd3;
     }
     a:hover{

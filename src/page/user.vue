@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="user-water">
-                <waterfall :line="line" :grow="grow" :watch="getPhotoList" :line-gap="300">
+                <waterfall :line="line" :watch="getPhotoList" :line-gap="300">
                     <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh" style="text-align:center">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
@@ -203,6 +203,9 @@ export default {
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
+.user{
+    background: #fff;
+}
 .user-info {
     position: relative;
     top: 0;
