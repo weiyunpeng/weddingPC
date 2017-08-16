@@ -2,6 +2,45 @@ import axios from 'axios'
 const qs = require('querystring');
 
 axios.defaults.timeout = 50000;
+// http request interceptor
+axios.interceptors.request.use(function (config) {
+    // Do something before request is sent
+    return config;
+}, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+});
+axios.interceptors.response.use(function (response) {
+    // 通过状态码来识别服务器提示信息
+    switch (response.status) {
+        case 200:
+            break;
+    }
+    let code=response.data.code
+    if(code==-99){
+        //说明登录失效
+        window.location.href = 'http://dev.hunjia.qqdayu.com/login'
+    }
+    if(code==-1){
+        //说明服务端错误
+        alert('服务端异常：'+response.data.msg)
+    }
+    return response;
+}, function (error) {
+    // 非状态码错误  在此通过正则处理
+    console.log('捕获到一个错误，错误信息：' + error)
+    if (/Network Error/i.test(error)) {
+        alert('您当前无法上网，请检查你的移动数据开关或wifi是否正常')
+    }
+    if (/ms exceeded/i.test(error)) {
+        alert('您的网络连接不稳定，请检查你的移动数据开关或wifi是否正常')
+        $(".weui_loading_toast").hide()
+    }
+    if (/code 500/i.test(error)) {
+        alert('网络异常，请稍后重试')
+    }
+    return Promise.reject(error);
+});
 
 const ROOT = (process.env.NODE_ENV === 'production')
     ? 'http://dev.hunjia.qqdayu.com'

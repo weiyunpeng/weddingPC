@@ -233,10 +233,12 @@
         }
     }
     .package {
-        margin-top: 20px;
+        position: relative;
+        top: 20px;
         .tit {
             width: 1200px;
             height: 42px;
+            margin: 10px 0;
         }
         .more {
             margin-bottom: 12px;
@@ -289,11 +291,12 @@
     }
     .photographer,
     .dresser {
-        margin-top: 50px;
         position: relative;
+        top: 50px;
         .tit {
             width: 1200px;
             height: 42px;
+            margin: 20px 0;
         }
         .arrows {
             position: absolute;
@@ -354,10 +357,11 @@
         }
     }
     .business {
-        margin-top: 50px;
-        margin-bottom: 100px;
+        position: relative;
+        top: 50px;
+        margin-bottom: 80px;
         .tit {
-            margin-bottom: 40px;
+            margin: 40px 0;
             width: 1200px;
             height: 31px;
         }

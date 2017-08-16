@@ -127,6 +127,7 @@ export default {
 }
 .meal_list {
     margin-top: 10px;
+    padding-bottom: 20px;
     .list_con {
         display: inline-block;
         margin: {

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="background:#fff">
     <!--百度地图  start-->
     <div class="bm-view"  v-show="isMap">
         <div class="bm-bg" :class="{ zoomIn: isMap }">
@@ -74,7 +74,7 @@
             </ul>
         </div>
         <!-- case官方案例开始 -->
-        <div class="case" v-show="0 >= selected" v-if="caseInfo.details">
+        <div class="case" v-show="0 >= selected" v-if="caseInfo.details && caseInfo.details.length>0">
             <img class="tit" :src="caseInfo.nav_img"> 
             <div class="more clearfix" v-show="caseInfo.details && caseInfo.details.length>=6">
                 <router-link :to="{ name: 'busSample', query: {busName:mediaInfo.name, busSample: '官方案例' ,id:id}}" class="more_a fr" target="_blank">
@@ -101,7 +101,7 @@
         </div>
         <!-- case官方案例结束 -->
         <!-- 精选套餐开始 -->
-        <div class="package" v-show="1 >= selected" v-if="packageInfo.details">
+        <div class="package" v-show="1 >= selected" v-if="packageInfo.details && packageInfo.details.length>0">
             <img class="tit" :src="packageInfo.nav_img"> 
             <div class="more clearfix" v-show="packageInfo.details && packageInfo.details.length>=3">
                 <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name,busId:mediaInfo.id, thisMealName: '套餐列表'}}" class="more_a fr" target="_blank">
@@ -131,7 +131,7 @@
         </div>
         <!-- 精选套餐结束 -->
         <!-- 摄影团队开始  -->
-        <div class="photographer" v-show="2 >= selected" v-if="photographer.details">
+        <div class="photographer" v-show="2 >= selected" v-if="photographer.details && photographer.details.length>0">
             <img class="tit" :src="photographer.nav_img">
             <div class="arrows" v-show="photographer.details && photographer.details.length>=5">
                 <a class="prev arrow photographer_prev" href="javascrript:void(0)"></a>
@@ -162,7 +162,7 @@
         </div>
         <!-- 摄影团队结束  -->
         <!-- 化妆团队开始 -->
-        <div class="dresser" v-show="3 >= selected" v-if="dresser.details">
+        <div class="dresser" v-show="3 >= selected" v-if="dresser.details && dresser.details.length>0">
             <img class="tit" :src="dresser.nav_img">
             <div class="arrows" v-show="dresser.details && dresser.details.length>=5">
                 <a class="prev arrow dresser_prev" href="javascrript:void(0)"></a>
