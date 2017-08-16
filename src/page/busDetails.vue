@@ -359,10 +359,12 @@ export default {
             this.lat = this.busInfo.media_info.latitude;
         },
         busDetList(){
-            this.caseInfo = this.busDetList[0];
-            this.packageInfo = this.busDetList[1];
-            this.photographer = this.busDetList[2];
-            this.dresser = this.busDetList[3];
+            if(this.busDetList && this.busDetList.length>0){
+                this.caseInfo = this.busDetList[0];
+                this.packageInfo = this.busDetList[1];
+                this.photographer = this.busDetList[2];
+                this.dresser = this.busDetList[3];
+            }
         }
     },
     beforeDestroy() {
