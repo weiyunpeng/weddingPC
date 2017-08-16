@@ -110,6 +110,11 @@ export default {
         },
         changeTab(c) {
             this.isTag = c
+            let ajaxdata={
+                uid:this.uid,
+                type:this.isTag
+            }
+            this.$store.dispatch('qryMyCollectList', ajaxdata)
         },
         showAll(ln){
             let obj = this.list[ln]

@@ -106,13 +106,18 @@
             overflow: hidden;
         }
         span {
-            display: block;
+            display:-webkit-box;
+            -webkit-line-clamp:4;
+            -webkit-box-orient:vertical;
             height: 115px;
             color: #808080;
             font-size: 14px;
             line-height: 27.41px;
             text-overflow: ellipsis;
             overflow: hidden;
+        }
+        p:hover{
+            color: #ff4e6b;
         }
         .raid-num {
             color: #999999;

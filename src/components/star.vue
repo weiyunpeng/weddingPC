@@ -26,11 +26,13 @@
                 for(let i =0;i<integer;i++){
                     result.push(CLS_ON);
                 }
-                if(decimal<0.4){
+                if(decimal == 0){
+                    result.push(CLS_OFF);
+                }else if(decimal < 0.4){
                     result.push(CLS_LITTLE);
-                }else if(decimal<0.7){
+                }else if(decimal < 0.7){
                     result.push(CLS_HALF);
-                }else if(decimal<1){
+                }else if(decimal < 1){
                     result.push(CLS_MOST);
                 }
                 while(result.length<LENGTH){

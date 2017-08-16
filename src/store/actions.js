@@ -26,14 +26,19 @@ export const hideModal = ({ commit }, data) => {
 //----------------------------------------获取用户信息------------------------------------------------------
 export const getUserInfo = ({ commit },data) => {
     api.getUserInfo(data).then(function (response) {
-        console.log(response.data)
         if(response.data.code == 0){
-            //说明未登录
-            commit(types.AUTH_INFO_CLEAR)
+            //说明获取用户信息成功
+            if(!response.data.data || response.data.data==''){
+                //说明游客访问
+            }else{
+                //说明有用户信息，为用户登录
+                commit(types.AUTH_INFO, {
+                    token: response.data.data
+                })
+            }
         }else{
-            commit(types.AUTH_INFO, {
-                token: response.data.data
-            })
+            //获取用户信息失败
+            commit(types.AUTH_INFO_CLEAR)
         }
     })
         .catch(function (error) {
