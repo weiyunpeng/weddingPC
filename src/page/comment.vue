@@ -104,8 +104,12 @@
                             </li>
                         </ul>
                     </li>
+                    
                 </ul>
             </div>
+        </div>
+        <div v-if="!busList || busList.length == 0" class="no-data">
+            <img src="/static/images/icon-no-data-1.png">
         </div>
         <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
     </div>

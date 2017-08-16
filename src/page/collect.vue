@@ -57,6 +57,9 @@
                             </div>
                         </li>
                     </ul>
+                    <div v-if="list && list.length==0" class="no-data">
+                        <img src="/static/images/icon-no-data-2.png">
+                    </div>
                 </div>
             </div>
         </div>

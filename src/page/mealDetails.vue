@@ -132,11 +132,11 @@
                                 </dl>
                                 <dl class="clearfix">
                                     <dt class="fl">内景说明</dt>
-                                    <dd class="fl">{{mealDetails.scene_in_explain}}个</dd>
+                                    <dd class="fl">{{mealDetails.scene_in_explain}}</dd>
                                 </dl>
                                 <dl class="clearfix">
                                     <dt class="fl">外景说明</dt>
-                                    <dd class="fl">{{mealDetails.scene_out_explain}}个</dd>
+                                    <dd class="fl">{{mealDetails.scene_out_explain}}</dd>
                                 </dl>
                             </div>
                         </div>
@@ -264,7 +264,7 @@
                         <div class="cont">
                             <ul>
                                 <li v-for="(item,g) in graphic" :key="g">
-                                    <img v-lazy="item" width="640" height="426">
+                                    <img v-lazy="item" width="640">
                                 </li>
                             </ul>
                         </div>

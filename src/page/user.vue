@@ -36,7 +36,7 @@
             </div>
             <div class="user-water">
                 <waterfall :line="line" :watch="getPhotoList" :line-gap="280" :min-line-gap="250">
-                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height+10" :order="flowNum" :key="flowNum" move-class="photo_move">
+                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="280" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
                                 <img :src="item.img" :width="item.width">

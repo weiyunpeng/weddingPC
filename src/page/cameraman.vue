@@ -61,7 +61,7 @@
                     {{item.detail}}
                 </div>
                 <div class="caman_img" v-for="(img,g) in item.imgs" :key="g">
-                    <img v-lazy="img" width="640" height="420" style="margin-bottom:10px;">
+                    <img v-lazy="img" width="640" style="margin-bottom:10px;">
                 </div>
             </li>
         </transition-group>

@@ -96,7 +96,7 @@
                                 <p>{{store.store_name}}</p>
                             </router-link>
                             <div class="clearfix">
-                                <label class="fl">媒体评定分：</label>
+                                <label class="fl">总体评分：</label>
                                 <div class="media_rating fl">
                                     <star :score="store.star"></star>
                                 </div>
