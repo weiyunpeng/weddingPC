@@ -1688,7 +1688,7 @@ fieldset[disabled] .btn-danger.focus {
     -webkit-transition: all .5s ease;
 }
 .photo_box{
-    position: relative;
+    position: absolute;
     background: #fff;
     background-color: #fff;
     margin-right: 15px;

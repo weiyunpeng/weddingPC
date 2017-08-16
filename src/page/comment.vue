@@ -54,14 +54,14 @@
                                 <ul>
                                     <li v-for="(comment,i) in item.comments" :key="i" class="bus-comments">
                                         <div class="bus-comments-con">
-                                            <a :href="comment.url" target="_blank">"
-                                                <img class="circle fl" src="/static/images/15.png" width="56" height="56">
+                                            <a :href="comment.url" target="_blank">
+                                                <img class="circle fl" :src="comment.head" width="56" height="56">
                                                 <div class="bus-comments-user-info fl">
                                                     <span>{{comment.nike}}</span>
                                                     <label>{{comment.date}}</label>
                                                 </div>
                                                 <div class="bus-comments-user-con fl">
-                                                    <a :href="comment.url" target="_blank">"{{comment.title}}"</a>
+                                                    <a :href="comment.url" target="_blank">{{comment.title}}</a>
                                                     <p>{{comment.tag}}</p>
                                                 </div>
                                             </a>

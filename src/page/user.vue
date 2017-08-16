@@ -35,11 +35,11 @@
                 </div>
             </div>
             <div class="user-water">
-                <waterfall :line="line" :watch="getPhotoList" :line-gap="280">
-                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
+                <waterfall :line="line" :watch="getPhotoList" :line-gap="280" :min-line-gap="250">
+                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height+10" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
-                                <img :src="item.img">
+                                <img :src="item.img" :width="item.width">
                             </div>
                             <div class="photo_info">
                                 <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
@@ -129,23 +129,27 @@ export default {
     methods: {
         photoLikeBtn(id, fav, flowNum) {
             if (this.isAuth) {
-                let obj = this.getPhotoList[flowNum]
-                obj.is_fav = !obj.is_fav
-                this.$set(this.getPhotoList, flowNum, obj);
+                // let obj = this.getPhotoList[flowNum]
+                // obj.is_fav = !obj.is_fav
+                // this.$set(this.getPhotoList, flowNum, obj);
                 if (fav == 0) {
                     //说明未收藏，可以收藏
-                    obj.fav_num++
+                    // obj.fav_num++
                     let ajaxdata = {
                         id: id,
-                        uid: this.uid
+                        uid: this.uid,
+                        index:flowNum,
+                        is_fav:fav
                     }
                     this.$store.dispatch('collectPhoto', ajaxdata)
                 } else if (fav == 1) {
                     //说明已经收藏了,为取消收藏
-                    obj.fav_num--
+                    // obj.fav_num--
                     let ajaxdata = {
                         id: id,
-                        uid: this.uid
+                        uid: this.uid,
+                        index:flowNum,
+                        is_fav:fav
                     }
                     this.$store.dispatch('cancelCollectPhoto', ajaxdata)
                 } else {
@@ -181,7 +185,6 @@ export default {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             const allHeight = document.body.scrollHeight;
             const pageHeight = document.documentElement.clientHeight;
-            console.log(this.getPhotoStatus)
             if (scrollTop == allHeight - pageHeight && this.getPhotoStatus == 0) {
                 this.page++
                 this.loadPhoto();

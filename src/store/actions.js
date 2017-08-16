@@ -377,7 +377,7 @@ export const qryPhotoFlow = ({ commit },data) => {
             const tempImage = new Image();
             tempImage.onload = function() {
                 photoCount++;
-                response.data.data.photo[i].height = tempImage.height + 30;
+                response.data.data.photo[i].height = tempImage.height+85;
                 response.data.data.photo[i].width = tempImage.width;
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
@@ -424,8 +424,12 @@ export const qryGuideList = ({ commit },data) => {
 
 //----------------------------------------收藏图片------------------------------------------------------
 export const collectPhoto = ({ commit },data) => {
-    api.collectPhoto(data).then(function (response) {
-        console.log(response.data.msg)
+    const ajaxdata = {
+        id: data.id,
+        uid: data.uid
+    }
+    api.collectPhoto(ajaxdata).then(function (response) {
+        commit(types.PHOTO_LIKE_USER, data)
     })
         .catch(function (error) {
             console.log(error)
@@ -435,8 +439,12 @@ export const collectPhoto = ({ commit },data) => {
 
 //----------------------------------------取消收藏图片------------------------------------------------------
 export const cancelCollectPhoto = ({ commit },data) => {
-    api.cancelCollectPhoto(data).then(function (response) {
-        console.log(response.data.msg)
+    const ajaxdata = {
+        id: data.id,
+        uid: data.uid
+    }
+    api.cancelCollectPhoto(ajaxdata).then(function (response) {
+        commit(types.CANCEL_PHOTO_LIKE_USER, data)
     })
         .catch(function (error) {
             console.log(error)

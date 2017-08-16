@@ -222,13 +222,21 @@
 }
 .bus-comments-user-con{
     height: 56px;
+    width: 450px;
+    overflow: hidden;
     margin-left: 30px;
     a{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         color: #262626;
         font-size: 18px;
         line-height: 35px;
     }
     p{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
         color: #808080;
         font-size: 14px;
     }
