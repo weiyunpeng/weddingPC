@@ -5,8 +5,12 @@ import * as getters from './getters'
 
 import msg from './modules/msg'
 import modal from './modules/modal'
+
+import shopStore from './modules/shopStore'
+import shopStoreTag from './modules/shopStoreTag'
+
 import mealList from './modules/mealList'
-import busTag from './modules/busTag'
+
 import mealTag from './modules/mealTag'
 import mealDetails from './modules/mealDetails'
 import thisMealList from './modules/thisMealList'
@@ -21,7 +25,6 @@ import authInfo from './modules/auth'
 import user from './modules/user'
 import guide from './modules/guide'
 import collect from './modules/collect'
-import shopStore from './modules/shopStore'
 
 Vue.use(Vuex);
 
@@ -33,8 +36,9 @@ export default new Vuex.Store({
   modules: {
       msg,
       modal,
+      shopStore,
+      shopStoreTag,
       mealList,
-      busTag,
       mealTag,
       mealDetails,
       thisMealList,
@@ -49,7 +53,7 @@ export default new Vuex.Store({
       user,
       guide,
       collect,
-      shopStore
+      
   },
   strict: debug
 })

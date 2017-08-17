@@ -59,7 +59,7 @@
                     </div>
                     <div class="code">
                         <a v-on:click="erweima" href="javascript:void(0)">
-                            咨询豫姐
+                            咨询喜宝
                         </a>
                         <img class="erweima" :src="mediaInfo.erwei_img" v-show="isErwei">
                     </div>
@@ -368,11 +368,18 @@ export default {
                 this.packageInfo = this.shopDetails.package;
                 this.photographer = this.shopDetails.cameraman;
                 this.dresser = this.shopDetails.makeup;
-                this.shopNavList.push(this.caseInfo.nav)
-                this.shopNavList.push(this.packageInfo.nav)
-                this.shopNavList.push(this.photographer.nav)
-                this.shopNavList.push(this.dresser.nav)
-                console.log(this.shopNavList)
+                if(this.caseInfo.nav){
+                    this.shopNavList.push(this.caseInfo.nav)
+                }
+                if(this.packageInfo.nav){
+                    this.shopNavList.push(this.packageInfo.nav)
+                }
+                if(this.photographer.nav){
+                    this.shopNavList.push(this.photographer.nav)
+                }
+                if(this.dresser.nav){
+                    this.shopNavList.push(this.dresser.nav)
+                }
             }
         }
     },

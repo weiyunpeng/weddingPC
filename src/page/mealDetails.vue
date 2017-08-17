@@ -51,7 +51,7 @@
                         </div>
                         <div class="code">
                             <a v-on:click="erweima" href="javascript:void(0)">
-                                咨询豫姐
+                                咨询喜宝
                             </a>
                             <img class="erweima" :src="mealInfo.erwei_img" v-show="isErwei">
                         </div>

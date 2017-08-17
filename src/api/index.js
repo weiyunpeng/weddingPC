@@ -61,7 +61,7 @@ export default {
        return axios.post('/store/comments', qs.stringify(data), config())
     },
     //商家首页分类
-    qryBusTag:function(data){
+    qryStoreTag:function(data){
        return axios.post('/store/index', qs.stringify(data), config())
     },
     //商家详情

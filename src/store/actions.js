@@ -81,9 +81,9 @@ export const shopListClear = ({ commit }) => {
 //----------------------------------------------------------------------------------------------
 
 //---------------------------------商家首页分类-------------------------------------------------------------
-export const qrybusTag = ({ commit },data) => {
-    api.qryBusTag(data).then(function (response) {
-        commit(types.BUS_TAG_LIST, {
+export const qryStoreTag = ({ commit },data) => {
+    api.qryStoreTag(data).then(function (response) {
+        commit(types.SHOPSTORE_LIST_TAG, {
             list: response.data.data
         })
     })
@@ -93,11 +93,11 @@ export const qrybusTag = ({ commit },data) => {
 };
 
 export const busTagClear = ({ commit }) => {
-    commit(types.BUS_TAG_CLEAR)
+    commit(types.SHOPSTORE_LIST_TAG_CLEAR)
 };
 
 export const busTagChange = ({ commit },data) => {
-    commit(types.BUS_TAG_CHANGE,data)
+    commit(types.SHOPSTORE_LIST_TAG_CHANGE,data)
 };
 //----------------------------------------------------------------------------------------------
 

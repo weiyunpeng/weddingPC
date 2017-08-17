@@ -1,17 +1,17 @@
-import {BUS_TAG_LIST,BUS_TAG_CLEAR,BUS_TAG_CHANGE} from '../types'
+import {SHOPSTORE_LIST_TAG,SHOPSTORE_LIST_TAG_CLEAR,SHOPSTORE_LIST_TAG_CHANGE} from '../types'
 
 const state = {
     list: []
 };
 
 const mutations = {
-    [BUS_TAG_LIST](state, data){
+    [SHOPSTORE_LIST_TAG](state, data){
         state.list = data.list;
     },
-    [BUS_TAG_CLEAR](state, data){
+    [SHOPSTORE_LIST_TAG_CLEAR](state, data){
         state.list = [];
     },
-    [BUS_TAG_CHANGE](state, data){
+    [SHOPSTORE_LIST_TAG_CHANGE](state, data){
         state.list[data.number].selected = data.index;
     }
 };

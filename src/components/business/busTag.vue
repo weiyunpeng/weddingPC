@@ -33,7 +33,7 @@ export default {
         })
     },
     mounted() {
-        this.$store.dispatch('qrybusTag')
+        this.$store.dispatch('qryStoreTag')
     },
     methods: {
         tagBtn(number, index, name, id) {

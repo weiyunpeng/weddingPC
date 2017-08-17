@@ -8,7 +8,7 @@ export const getUser = state => state.user.data;
 
 export const shopList = state => state.shopStore.list;
 export const shopPage = state => state.shopStore.page;
-export const busTag = state => state.busTag.list;
+export const busTag = state => state.shopStoreTag.list;
 export const shopInfo = state => state.shopStore.shopInfo;
 export const shopDetails = state => state.shopStore.shopDetails;
 export const busSampleList = state => state.busSample.list;

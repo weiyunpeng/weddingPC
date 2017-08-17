@@ -61,8 +61,8 @@ export default {
 .vue-back-to-top {
   position: fixed;
   bottom: 40px;
-  right: 30px;
-  width: 160px;
+  right: 15px;
+  width: auto;
   border-radius: 3px;
   z-index: 1000;
   cursor: pointer;

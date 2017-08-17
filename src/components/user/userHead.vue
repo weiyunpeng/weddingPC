@@ -31,7 +31,7 @@
                         </a>
                     </div>
                     <a href="javascript:void(0)" class="nav_user" @click="userLogin">
-                        <img :src="header" class="circle" width="30" height="30">
+                        <img :src="header" class="circle" width="30" height="30" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                         <ul class="nav_user_ul" v-show="isLogin">
                             <li>
                                 <router-link :to="{ name: 'collect', query: {uid:uid,type:0}}" target="_blank">
@@ -80,7 +80,7 @@
                         </a>
                     </div>
                     <a href="javascript:void(0)" class="nav_user" @click="userLogin">
-                        <img :src="header" class="circle" width="30" height="30">
+                        <img :src="header" class="circle" width="30" height="30" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                         <ul class="nav_user_ul" v-show="isLogin">
                             <li>
                                 <router-link to="/collect" target="_blank">
@@ -112,7 +112,7 @@ export default {
             logoTop: '/static/images/logo-2.png',
             logo: '/static/images/logo-4.png',
             keyword: null,
-            header: '/static/images/user_icon.png',
+            header: '/static/images/icon-user.png',
             uid:null,
             isLogin:null,
         }
@@ -166,6 +166,16 @@ export default {
         userLogin(){
             if(!this.isLogin){
                 window.location.href = 'http://dev.hunjia.qqdayu.com/login'
+            }
+        },
+        showHeader(){
+            if(!this.isLogin){
+                this.header = '/static/images/icon-user-hover.png'
+            }
+        },
+        hideHeader(){
+            if(!this.isLogin){
+                this.header = '/static/images/icon-user.png'
             }
         }
     },
