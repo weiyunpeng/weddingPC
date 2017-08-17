@@ -1,7 +1,7 @@
 <template>
     <div>
         <com-header></com-header>
-        <div class="hot-raiders">
+        <div class="hot-raiders" style="margin-top:0">
             <div class="container">
                 <ul>
                     <li v-for="(item,guideNum) in getGuideList" :key="guideNum">

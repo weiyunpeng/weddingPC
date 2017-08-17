@@ -98,8 +98,12 @@
           left: 50%;
           margin-left: -86px;
           top: 50px;
-          width: 172px;
-          height: 186px;
+          width: 100%;
+          background: url("/static/images/bg-erwei.png");
+          background-size: 100%;
+          padding: 24px;
+          background-position: -1px -7px;
+          z-index: 9999;
         }
       }
     }

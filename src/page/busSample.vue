@@ -1,26 +1,28 @@
 <template>
     <div>
         <com-header></com-header>
-        <div class="container meal_introduction clearfix">
-            <div class="bus_name">
-                {{busSampleStore.store_name}}
-                <i class="icon icon-yes" v-if="busSampleStore.isYes"></i>
-                <i class="icon icon-vip" v-if="busSampleStore.isVip"></i>
-            </div>
-            <div class="second clearfix">
-                <div class="clearfix fl">
-                    <label class="fl">媒体评定分：</label>
-                    <div class="media_rating fl">
-                        <ul class="star1">
-                            <li v-for="n in 5" :key="n"></li>
-                        </ul>
-                        <ul class="star2">
-                            <li v-for="m in busSampleStore.star" class="red" :key="m"></li>
-                        </ul>
-                    </div>
+        <div class="store-sample">
+            <div class="container clearfix" style="border-bottom:1px solid #eee">
+                <div class="bus_name">
+                    {{busSampleStore.store_name}}
+                    <i class="icon icon-yes" v-if="busSampleStore.isYes"></i>
+                    <i class="icon icon-vip" v-if="busSampleStore.isVip"></i>
                 </div>
-                <div class="address fl">
-                    地址：{{busSampleStore.address}}
+                <div class="second clearfix">
+                    <div class="clearfix fl">
+                        <label class="fl">媒体评定分：</label>
+                        <div class="media_rating fl">
+                            <ul class="star1">
+                                <li v-for="n in 5" :key="n"></li>
+                            </ul>
+                            <ul class="star2">
+                                <li v-for="m in busSampleStore.star" class="red" :key="m"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="address fl">
+                        地址：{{busSampleStore.address}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,14 +99,20 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 @charset "UTF-8";
-.meal-con {
+.store-sample{
+    width: 100%;
+    background: #fff;
+    background-color: #fff;
+    padding-top: 20px;
+}
+.meal-con{
     width: 100%;
     background: #fff;
     background-color: #fff;
 }
 
 .meal_list {
-    margin-top: 10px;
+    border-top:1px solid #eee;
     .list_con {
         display: inline-block;
         margin: {

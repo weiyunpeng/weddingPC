@@ -36,15 +36,15 @@
                             <span>￥{{mealInfo.price}}</span>
                         </div>
                         <div class="others">
-                            <dl class="clearfix">
+                            <dl class="clearfix" v-if="mealInfo.clothes_num">
                                 <dt class="fl">服装造型：</dt>
                                 <dd class="fl">{{mealInfo.clothes_num}}套</dd>
                             </dl>
-                            <dl class="clearfix">
+                            <dl class="clearfix" v-if="mealInfo.ps_num">
                                 <dt class="fl">精修：</dt>
                                 <dd class="fl">{{mealInfo.ps_num}}张</dd>
                             </dl>
-                            <dl class="clearfix">
+                            <dl class="clearfix" v-if="mealInfo.scene">
                                 <dt class="fl">场景：</dt>
                                 <dd class="fl">{{mealInfo.scene}}</dd>
                             </dl>

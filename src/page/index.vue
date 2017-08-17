@@ -34,7 +34,7 @@
                     <waterfall-slot v-for="(item, index) in getIndexPhoto.list" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, index)">
-                                <img :src="item.img">
+                                <img :src="item.img" :width="300">
                             </div>
                             <div class="photo_info">
                                 <span class="photo_like" @click="photoLikeBtn(item.id,index)">
