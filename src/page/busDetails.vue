@@ -67,14 +67,14 @@
             </div>
         </div>
         <div class="nav">
-            <ul v-if="busDetList && busDetList >0 ">
-                <li v-for="(item,i) in busDetList" :key="i">
-                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item.nav}}</a>
+            <ul v-if="shopNavList && shopNavList.length >0 ">
+                <li v-for="(item,i) in shopNavList" :key="i">
+                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item}}</a>
                 </li>
             </ul>
         </div>
         <!-- case官方案例开始 -->
-        <div class="case" v-show="0 >= selected" v-if="caseInfo.details && caseInfo.details.length>0">
+        <div class="case" v-show="0 >= selected" v-if="caseInfo">
             <img class="tit" :src="caseInfo.nav_img"> 
             <div class="more clearfix" v-show="caseInfo.details && caseInfo.details.length>=6">
                 <router-link :to="{ name: 'busSample', query: {busName:mediaInfo.name, busSample: '官方案例' ,id:id}}" class="more_a fr" target="_blank">
@@ -101,7 +101,7 @@
         </div>
         <!-- case官方案例结束 -->
         <!-- 精选套餐开始 -->
-        <div class="package" v-show="1 >= selected" v-if="packageInfo.details && packageInfo.details.length>0">
+        <div class="package" v-show="1 >= selected" v-if="packageInfo">
             <img class="tit" :src="packageInfo.nav_img"> 
             <div class="more clearfix" v-show="packageInfo.details && packageInfo.details.length>=3">
                 <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name,busId:mediaInfo.id, thisMealName: '套餐列表'}}" class="more_a fr" target="_blank">
@@ -131,7 +131,7 @@
         </div>
         <!-- 精选套餐结束 -->
         <!-- 摄影团队开始  -->
-        <div class="photographer" v-show="2 >= selected" v-if="photographer.details && photographer.details.length>0">
+        <div class="photographer" v-show="2 >= selected" v-if="photographer">
             <img class="tit" :src="photographer.nav_img">
             <div class="arrows" v-show="photographer.details && photographer.details.length>=5">
                 <a class="prev arrow photographer_prev" href="javascrript:void(0)"></a>
@@ -162,7 +162,7 @@
         </div>
         <!-- 摄影团队结束  -->
         <!-- 化妆团队开始 -->
-        <div class="dresser" v-show="3 >= selected" v-if="dresser.details && dresser.details.length>0">
+        <div class="dresser" v-show="3 >= selected" v-if="dresser">
             <img class="tit" :src="dresser.nav_img">
             <div class="arrows" v-show="dresser.details && dresser.details.length>=5">
                 <a class="prev arrow dresser_prev" href="javascrript:void(0)"></a>
@@ -284,6 +284,7 @@ export default {
             lat:'',
             showSwiper:false,
             swiperImgs:[],
+            shopNavList:[],
             photographerOption: {
                 // autoplay: 3500,
                 setWrapperSize :false,
@@ -316,18 +317,18 @@ export default {
     },
     computed: {
         ...mapGetters({
-            busInfo:'busInfo',
-            busDetList:'busDetList'
+            shopInfo:'shopInfo',
+            shopDetails:'shopDetails'
         }),
         ...mapActions({
-            qryBusDetails:'qryBusDetails'
+            qryStoreDetails:'qryStoreDetails'
         })
     },
     mounted() {
         let data = {
             id:this.id
         }
-        this.$store.dispatch('qryBusDetails', data)
+        this.$store.dispatch('qryStoreDetails', data)
     },
     methods: {
         changeTab(i){
@@ -351,19 +352,27 @@ export default {
         }
     },
     watch:{
-        busInfo(){
-            this.imgs = this.busInfo.media_info.img;
-            this.mediaInfo = this.busInfo.media_info;
-            this.introInfo = this.busInfo.intro_info;
-            this.lng = this.busInfo.media_info.longitude;
-            this.lat = this.busInfo.media_info.latitude;
+        shopInfo(){
+            console.log(this.shopInfo)
+            if(this.shopInfo){
+                this.imgs = this.shopInfo.media_info.img;
+                this.mediaInfo = this.shopInfo.media_info;
+                this.introInfo = this.shopInfo.intro_info;
+                this.lng = this.shopInfo.media_info.longitude;
+                this.lat = this.shopInfo.media_info.latitude;
+            }
         },
-        busDetList(){
-            if(this.busDetList && this.busDetList.length>0){
-                this.caseInfo = this.busDetList[0];
-                this.packageInfo = this.busDetList[1];
-                this.photographer = this.busDetList[2];
-                this.dresser = this.busDetList[3];
+        shopDetails(){
+            if(this.shopDetails){
+                this.caseInfo = this.shopDetails.case;
+                this.packageInfo = this.shopDetails.package;
+                this.photographer = this.shopDetails.cameraman;
+                this.dresser = this.shopDetails.makeup;
+                this.shopNavList.push(this.caseInfo.nav)
+                this.shopNavList.push(this.packageInfo.nav)
+                this.shopNavList.push(this.photographer.nav)
+                this.shopNavList.push(this.dresser.nav)
+                console.log(this.shopNavList)
             }
         }
     },

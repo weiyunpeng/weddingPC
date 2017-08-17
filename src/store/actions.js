@@ -103,14 +103,11 @@ export const busTagChange = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------商家详情------------------------------------------------------------
-export const qryBusDetails = ({ commit },data) => {
-    api.qryBusDetails(data).then(function (response) {
-        commit(types.BUS_INFO, {
-            data: response.data.data.bus_info
-        })
-        commit(types.BUS_DETAILS_LIST, {
-            list: response.data.data.list
-        })
+export const qryStoreDetails = ({ commit },data) => {
+    api.qryStoreDetails(data).then(function (response) {
+        console.log(response.data.data)
+        commit(types.SHOPSTORE_INFO, response.data.data.bus_info)
+        commit(types.SHOPSTORE_DETAILS, response.data.data)
     })
         .catch(function (error) {
             console.log(error)

@@ -1,270 +1,264 @@
 {
-    "code": 200,
-    "msg": "success",
-    "data": {
-        "bus_info": {
-            "media_info": {
-                "id": "1ds34asd",
-                "name": "郑州凹凸视觉摄影",
-                "isYes": true,
-                "isVip": false,
-                "price": 4999,
-                "address": "经七路丰产路交叉口西北角二楼",
-                "longitude": 113.56925,
-                "latitude": 34.823837,
-                "tags": [
-                    "工作室",
-                    "写实风格",
-                    "韩式"
-                ],
-                "star": 3,
-                "comment": "进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。进入到7月，虽说是进入了结婚的淡季",
-                "comment_url": "http://crowd.qqdayu.com:3000/crowdMobi.html#/",
-                "erwei_img": "/static/images/erweima.png",
-                "img": [
-                    "/static/images/15.png",
-                    "/static/images/5.png",
-                    "/static/images/7.png",
-                    "/static/images/9.png",
-                    "/static/images/8.png"
-                ]
-            },
-            "intro_info": {
-                "nav_img": "/static/images/business.png",
-                "logo": "/static/images/10.png",
-                "bus_name": "郑州凹凸视觉摄影",
-                "star_time": "2000年9月",
-                "bus_time": "每周一至周日 8:00-20:00",
-                "payment": "刷卡、现金",
-                "features": [
-                    "7天选卡",
-                    "15天出精修",
-                    "一年保修",
-                    "不满意重拍"
-                ],
-                "brief": "炎炎夏日，街上尽是短袖，相比起人人都熟悉的白T恤，黑T恤反而显得没什么存在感，其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee，举着手枪吸烟的场景弥足经典，也只有黑Tee，能够这样轻松地勾勒出这种魅惑的性感。其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee。",
-                "environment": [
-                    "/static/images/9.png",
-                    "/static/images/9.png",
-                    "/static/images/9.png",
-                    "/static/images/9.png",
-                    "/static/images/9.png",
-                    "/static/images/9.png",
-                    "/static/images/9.png",
-                    "/static/images/9.png",
-                    "/static/images/9.png",
-                    "/static/images/9.png"
-                ]
-            }
-        },
-        "list": [
-            {
-                "nav": "官方案例",
-                "nav_img": "/static/images/case.png",
-                "details": [
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/11.png",
-                        "case_name": "浪漫唯美花海实景美照",
-                        "tags": [
-                            "小清新",
-                            "韩式"
-                        ]
-                    },
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/11.png",
-                        "case_name": "简约大气的中式秀禾服婚纱照",
-                        "tags": [
-                             "中式", 
-                             "秀禾服",
-                             "简约"
-                        ]
-                    },
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/11.png",
-                        "case_name": "绿色清新唯美的户外草地照",
-                        "tags": [
-                            "小清新",
-                            "韩式"
-                        ]
-                    },
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/11.png",
-                        "case_name": "皮皮照",
-                        "tags": [
-                            "小清新",
-                            "韩式"
-                        ]
-                    },
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/11.png",
-                        "case_name": "虾虾照",
-                        "tags": [
-                            "小清新",
-                            "韩式"
-                        ]
-                    },
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/11.png",
-                        "case_name": "骚猪照",
-                        "tags": [
-                            "小清新",
-                            "韩式"
-                        ]
-                    }
-                ]
-            },
-            {
-                "nav": "精选套餐",
-                "nav_img": "/static/images/package.png",
-                "details": [
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/12.png",
-                        "price": 8899,
-                        "package_name": "旅拍海滩外景LOMO风套系",
-                        "tags": [
-                            "摄影师一对一",
-                            "化妆师一对一"
-                        ]
-                    },
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/12.png",
-                        "price": 6999,
-                        "package_name": "皮皮虾套系",
-                        "tags": [
-                            "摄影师一对一",
-                            "化妆师一对一"
-                        ]
-                    },
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/12.png",
-                        "price": 6666,
-                        "package_name": "骚猪套系",
-                        "tags": [
-                            "摄影师一对一",
-                            "化妆师一对一"
-                        ]
-                    }
-                ]
-            },
-            {
-                "nav": "摄影师团队",
-                "nav_img": "/static/images/photographer.png",
-                "details": [
-                    {
-                        "id":"21231",
-                        "src": "/static/images/13.png",
-                        "name": "皮皮虾",
-                        "years": 2,
-                        "special": "欧美、小清新、韩式"
-                    },
-                    {
-                        "id":"21231s",
-                        "src": "/static/images/13.png",
-                        "name": "pdd",
-                        "years": 5,
-                        "special": "欧美、小清新"
-                    },
-                    {
-                        "id":"212as31",
-                        "src": "/static/images/13.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    },
-                    {
-                        "id":"21we231",
-                        "src": "/static/images/13.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    },
-                    {
-                        "id":"2qs1231",
-                        "src": "/static/images/13.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    },
-                    {
-                        "id":"2qweq1231",
-                        "src": "/static/images/12.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    }
-                ]
-            },
-            {
-                "nav": "化妆团队",
-                "nav_img": "/static/images/dresser.png",
-                "details": [
-                    {
-                        "id":"21231efd",
-                        "src": "/static/images/13.png",
-                        "name": "皮皮虾",
-                        "years": 2,
-                        "special": "欧美、小清新、韩式"
-                    },
-                    {
-                        "id":"212qwex31",
-                        "src": "/static/images/13.png",
-                        "name": "pdd",
-                        "years": 5,
-                        "special": "欧美、小清新"
-                    },
-                    {
-                        "id":"2qweed1231",
-                        "src": "/static/images/13.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    },
-                    {
-                        "id":"assd21231",
-                        "src": "/static/images/12.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    },
-                    {
-                        "id":"2sdvv1231",
-                        "src": "/static/images/13.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    },
-                    {
-                        "id":"2asxx1231",
-                        "src": "/static/images/13.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    },
-                    {
-                        "id":"21erfd231",
-                        "src": "/static/images/14.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    },
-                    {
-                        "id":"212jkh31",
-                        "src": "/static/images/15.png",
-                        "name": "骚猪",
-                        "years": 4,
-                        "special": "欧美"
-                    }
-                ]
-            }
+  "code": 200,
+  "msg": "success",
+  "data": {
+    "bus_info": {
+      "media_info": {
+        "id": "1ds34asd",
+        "name": "郑州凹凸视觉摄影",
+        "isYes": true,
+        "isVip": false,
+        "price": 4999,
+        "address": "经七路丰产路交叉口西北角二楼",
+        "longitude": 113.56925,
+        "latitude": 34.823837,
+        "tags": [
+          "工作室",
+          "写实风格",
+          "韩式"
+        ],
+        "star": 3,
+        "comment": "进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。进入到7月，虽说是进入了结婚的淡季",
+        "comment_url": "http://crowd.qqdayu.com:3000/crowdMobi.html#/",
+        "erwei_img": "/static/images/erweima.png",
+        "img": [
+          "/static/images/15.png",
+          "/static/images/5.png",
+          "/static/images/7.png",
+          "/static/images/9.png",
+          "/static/images/8.png"
         ]
+      },
+      "intro_info": {
+        "nav_img": "/static/images/business.png",
+        "logo": "/static/images/10.png",
+        "bus_name": "郑州凹凸视觉摄影",
+        "star_time": "2000年9月",
+        "bus_time": "每周一至周日 8:00-20:00",
+        "payment": "刷卡、现金",
+        "features": [
+          "7天选卡",
+          "15天出精修",
+          "一年保修",
+          "不满意重拍"
+        ],
+        "brief": "炎炎夏日，街上尽是短袖，相比起人人都熟悉的白T恤，黑T恤反而显得没什么存在感，其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee，举着手枪吸烟的场景弥足经典，也只有黑Tee，能够这样轻松地勾勒出这种魅惑的性感。其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee。",
+        "environment": [
+          "/static/images/9.png",
+          "/static/images/9.png",
+          "/static/images/9.png",
+          "/static/images/9.png",
+          "/static/images/9.png",
+          "/static/images/9.png",
+          "/static/images/9.png",
+          "/static/images/9.png",
+          "/static/images/9.png",
+          "/static/images/9.png"
+        ]
+      }
+    },
+    "case": {
+      "nav": "官方案例",
+      "nav_img": "/static/images/case.png",
+      "details": [{
+          "id": "21231efd",
+          "src": "/static/images/11.png",
+          "case_name": "浪漫唯美花海实景美照",
+          "tags": [
+            "小清新",
+            "韩式"
+          ]
+        },
+        {
+          "id": "21231efd",
+          "src": "/static/images/11.png",
+          "case_name": "简约大气的中式秀禾服婚纱照",
+          "tags": [
+            "中式",
+            "秀禾服",
+            "简约"
+          ]
+        },
+        {
+          "id": "21231efd",
+          "src": "/static/images/11.png",
+          "case_name": "绿色清新唯美的户外草地照",
+          "tags": [
+            "小清新",
+            "韩式"
+          ]
+        },
+        {
+          "id": "21231efd",
+          "src": "/static/images/11.png",
+          "case_name": "皮皮照",
+          "tags": [
+            "小清新",
+            "韩式"
+          ]
+        },
+        {
+          "id": "21231efd",
+          "src": "/static/images/11.png",
+          "case_name": "虾虾照",
+          "tags": [
+            "小清新",
+            "韩式"
+          ]
+        },
+        {
+          "id": "21231efd",
+          "src": "/static/images/11.png",
+          "case_name": "骚猪照",
+          "tags": [
+            "小清新",
+            "韩式"
+          ]
+        }
+      ]
+    },
+    "package":{
+      "nav": "精选套餐",
+      "nav_img": "/static/images/package.png",
+      "details": [{
+          "id": "21231efd",
+          "src": "/static/images/12.png",
+          "price": 8899,
+          "package_name": "旅拍海滩外景LOMO风套系",
+          "tags": [
+            "摄影师一对一",
+            "化妆师一对一"
+          ]
+        },
+        {
+          "id": "21231efd",
+          "src": "/static/images/12.png",
+          "price": 6999,
+          "package_name": "皮皮虾套系",
+          "tags": [
+            "摄影师一对一",
+            "化妆师一对一"
+          ]
+        },
+        {
+          "id": "21231efd",
+          "src": "/static/images/12.png",
+          "price": 6666,
+          "package_name": "骚猪套系",
+          "tags": [
+            "摄影师一对一",
+            "化妆师一对一"
+          ]
+        }
+      ]
+    },
+    "cameraman":{
+      "nav": "摄影师团队",
+      "nav_img": "/static/images/photographer.png",
+      "details": [{
+          "id": "21231",
+          "src": "/static/images/13.png",
+          "name": "皮皮虾",
+          "years": 2,
+          "special": "欧美、小清新、韩式"
+        },
+        {
+          "id": "21231s",
+          "src": "/static/images/13.png",
+          "name": "pdd",
+          "years": 5,
+          "special": "欧美、小清新"
+        },
+        {
+          "id": "212as31",
+          "src": "/static/images/13.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        },
+        {
+          "id": "21we231",
+          "src": "/static/images/13.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        },
+        {
+          "id": "2qs1231",
+          "src": "/static/images/13.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        },
+        {
+          "id": "2qweq1231",
+          "src": "/static/images/12.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        }
+      ]
+    },
+    "makeup":{
+      "nav": "化妆团队",
+      "nav_img": "/static/images/dresser.png",
+      "details": [{
+          "id": "21231efd",
+          "src": "/static/images/13.png",
+          "name": "皮皮虾",
+          "years": 2,
+          "special": "欧美、小清新、韩式"
+        },
+        {
+          "id": "212qwex31",
+          "src": "/static/images/13.png",
+          "name": "pdd",
+          "years": 5,
+          "special": "欧美、小清新"
+        },
+        {
+          "id": "2qweed1231",
+          "src": "/static/images/13.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        },
+        {
+          "id": "assd21231",
+          "src": "/static/images/12.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        },
+        {
+          "id": "2sdvv1231",
+          "src": "/static/images/13.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        },
+        {
+          "id": "2asxx1231",
+          "src": "/static/images/13.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        },
+        {
+          "id": "21erfd231",
+          "src": "/static/images/14.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        },
+        {
+          "id": "212jkh31",
+          "src": "/static/images/15.png",
+          "name": "骚猪",
+          "years": 4,
+          "special": "欧美"
+        }
+      ]
     }
+  }
 }

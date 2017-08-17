@@ -19,7 +19,8 @@ axios.interceptors.response.use(function (response) {
     let code=response.data.code
     if(code==-99){
         //说明登录失效
-        window.location.href = 'http://dev.hunjia.qqdayu.com/login'
+        localStorage.removeItem('user');
+        window.location.href = '/'
         return false
     }
     if(code==-1){
@@ -64,7 +65,7 @@ export default {
        return axios.post('/store/index', qs.stringify(data), config())
     },
     //商家详情
-    qryBusDetails:function(data){
+    qryStoreDetails:function(data){
         return axios.post('/store/detail', qs.stringify(data), config())
     },
     //查询商家的官方案例

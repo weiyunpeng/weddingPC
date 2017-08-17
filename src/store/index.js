@@ -9,7 +9,6 @@ import busList from './modules/busList'
 import mealList from './modules/mealList'
 import busTag from './modules/busTag'
 import mealTag from './modules/mealTag'
-import busDetails from './modules/busDetails'
 import mealDetails from './modules/mealDetails'
 import thisMealList from './modules/thisMealList'
 import camaraman from './modules/camaraman'
@@ -23,6 +22,7 @@ import authInfo from './modules/auth'
 import user from './modules/user'
 import guide from './modules/guide'
 import collect from './modules/collect'
+import shopStore from './modules/shopStore'
 
 Vue.use(Vuex);
 
@@ -38,7 +38,6 @@ export default new Vuex.Store({
       mealList,
       busTag,
       mealTag,
-      busDetails,
       mealDetails,
       thisMealList,
       camaraman,
@@ -51,7 +50,8 @@ export default new Vuex.Store({
       authInfo,
       user,
       guide,
-      collect
+      collect,
+      shopStore
   },
   strict: debug
 })
