@@ -56,28 +56,27 @@ export const loginOut = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //-------------------------------查询商家首页列表---------------------------------------------------------------
-export const qryBusList = ({ commit },data) => {
-    api.qryBusList(data).then(function (response) {
+export const qryStoreList = ({ commit },data) => {
+    api.qryStoreList(data).then(function (response) {
         for(var i = 0; i<response.data.data.list.length;i++){
             response.data.data.list[i].showAll = false
-            commit(types.BUS_LIST, {
+            commit(types.SHOPSTORE_LIST, {
                 list: response.data.data.list,
                 page: response.data.data.page
             })
         }
     })
         .catch(function (error) {
-            commit(types.BUS_LIST);
             console.log(error)
         });
 };
 
-export const busChange = ({ commit },data) => {
-    commit(types.BUS_CHANGE,data)
+export const shopListChange = ({ commit },data) => {
+    commit(types.SHOPSTORE_LIST_CHANGE,data)
 };
 
-export const busClear = ({ commit }) => {
-    commit(types.BUS_CLEAR)
+export const shopListClear = ({ commit }) => {
+    commit(types.SHOPSTORE_LIST_CLEAR)
 };
 //----------------------------------------------------------------------------------------------
 
@@ -130,7 +129,7 @@ export const qryBusSample = ({ commit },data) => {
 };
 
 export const busSampleClear = ({ commit }) => {
-    commit(types.BUS_CLEAR)
+    // commit(types.BUS_CLEAR)
 };
 //----------------------------------------------------------------------------------------------
 

@@ -26,7 +26,7 @@ function run(Request, Response)
  * @param {Object} Response
  */
 function comments(Params, Request, Response) {
-    var fileName = 'index/data/busList1.json';
+    var fileName = 'index/data/comments.json';
     MAIN.responseStub(Response,fileName);
 }
 

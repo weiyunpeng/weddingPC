@@ -57,7 +57,7 @@ function config() {
 
 export default {
     //查询商家首页列表
-    qryBusList:function (data) {
+    qryStoreList:function (data) {
        return axios.post('/store/comments', qs.stringify(data), config())
     },
     //商家首页分类

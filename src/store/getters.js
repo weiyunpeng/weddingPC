@@ -6,8 +6,8 @@ export const getModalConfirm = state => state.modal.confirm;
 export const getAuth = state => state.authInfo.token;
 export const getUser = state => state.user.data;
 
-export const busList = state => state.busList.list;
-export const busPage = state => state.busList.page;
+export const shopList = state => state.shopStore.list;
+export const shopPage = state => state.shopStore.page;
 export const busTag = state => state.busTag.list;
 export const shopInfo = state => state.shopStore.shopInfo;
 export const shopDetails = state => state.shopStore.shopDetails;

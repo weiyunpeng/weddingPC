@@ -17,7 +17,6 @@ import cameraman from '../page/cameraman.vue';
 import makeupman from '../page/makeupman.vue';
 import busSample from '../page/busSample.vue';
 import user from '../page/user.vue';
-import business from '../page/business.vue';
 import guide from '../page/guide.vue';
 import comment from '../page/comment.vue';
 import collect from '../page/collect.vue';
@@ -35,10 +34,6 @@ const routes = [{
     name:'user',
     component: user,
     meta: { auth: false }
-},{
-    path : '/business',
-    name:'business',
-    component : business
 },{
     path : '/meal',
     name:'meal',
@@ -80,6 +75,11 @@ const routes = [{
     name:'collect',
     component : collect,
     meta: { auth: false }
+},
+{
+    path: '*',
+    name: 'page404',
+    component: resolve => require(['./../page/index.vue'], resolve)
 }];
 
 const router = new VueRouter({

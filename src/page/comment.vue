@@ -6,7 +6,7 @@
         <div class="bus-commit">
             <div class="container">
                 <ul class="list">
-                    <li v-for="(item,busIndex) in busList" :key="busIndex">
+                    <li v-for="(item,busIndex) in shopList" :key="busIndex">
                         <ul class="list-con">
                             <li class="list-con-li">
                                 <div class="shop fl">
@@ -50,7 +50,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="list-con-li list-con-li-comments" v-bind:class="{h_auto:item.showAll}">
+                            <li v-if="item.comments && item.comments.length>0" v-bind:class="{h_auto:item.showAll}" class="list-con-li list-con-li-comments">
                                 <ul>
                                     <li v-for="(comment,i) in item.comments" :key="i" class="bus-comments">
                                         <div class="bus-comments-con">
@@ -91,7 +91,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="list-con-btn">
+                            <li class="list-con-btn" v-if="item.comments && item.comments.length>2">
                                  <div v-if="item.showAll"> 
                                      <i class="icon-angle-act"></i> 
                                     <a  href="javascript:void(0)" @click="showBtn(busIndex,false)">收 起</a>
@@ -108,7 +108,7 @@
                 </ul>
             </div>
         </div>
-        <div v-if="!busList || busList.length == 0" class="no-data">
+        <div v-if="!shopList || shopList.length == 0" class="no-data">
             <img src="/static/images/icon-no-data-1.png">
         </div>
         <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
@@ -130,12 +130,12 @@ export default {
     },
     computed: {
         ...mapGetters({
-            busList: 'busList',
-            busPage: 'busPage'
+            shopList: 'shopList',
+            shopPage: 'shopPage'
         }),
         ...mapActions({
-            qryBusList: 'qryBusList',
-            busClear: 'busClear',
+            qryStoreList: 'qryStoreList',
+            shopListClear: 'shopListClear',
         })
     },
     data() {
@@ -155,47 +155,44 @@ export default {
         }
     },
     mounted() {
-        this.$store.dispatch('qryBusList', this.ajaxdata)
+        this.$store.dispatch('qryStoreList', this.ajaxdata)
     },
     methods: {
         pagechange(current) {   // 页码改变传入新的页码，此处做回调
             this.ajaxdata.page = current
-            this.$store.dispatch('qryBusList', this.ajaxdata)
+            this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         skip(current) {
             this.ajaxdata.page = current
-            this.$store.dispatch('qryBusList', this.ajaxdata)
+            this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         ajaxTag(data) {
             this.ajaxdata = this.objExtend(this.ajaxdata, data, false);
-            this.$store.dispatch('qryBusList', this.ajaxdata)
+            this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         ajaxfilter(method, priceToSort) {
             this.ajaxdata.method = method;
             this.ajaxdata.priceToSort = priceToSort;
-            this.$store.dispatch('qryBusList', this.ajaxdata)
+            this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         ajaxPrice(minPrice, maxPrice) {
             this.ajaxdata.minPrice = minPrice
             this.ajaxdata.maxPrice = maxPrice
-            this.$store.dispatch('qryBusList', this.ajaxdata)
+            this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         showBtn(busIndex,showAll){
             let data={
                 index:busIndex,
                 showAll :showAll
             }
-            this.$store.dispatch('busChange', data)
-            console.log(this.busList[busIndex].showAll)
+            this.$store.dispatch('shopListChange', data)
         }
     },
     watch: {
-        busPage() {
-            this.pageInfo.current = this.busPage.currentPage
-            this.pageInfo.total = this.busPage.totalCount
-            this.pageInfo.pagenum = this.busPage.pageSize
-        },
-        busList(){
+        shopPage() {
+            this.pageInfo.current = this.shopPage.currentPage
+            this.pageInfo.total = this.shopPage.totalCount
+            this.pageInfo.pagenum = this.shopPage.pageSize
         }
     },
     beforeDestroy() {
@@ -205,5 +202,5 @@ export default {
 
 
 <style rel="stylesheet/scss" lang="scss">
-@import "./../assets/css/list.scss";
+@import "./../assets/css/comment.scss";
 </style>

@@ -44,8 +44,8 @@ export default {
         ...mapGetters({
         }),
         ...mapActions({
-            qryBusList:'qryBusList',
-            busClear:'busClear'
+            qryStoreList:'qryStoreList',
+            shopListClear:'shopListClear'
         })
     },
     mounted(){
@@ -59,8 +59,8 @@ export default {
             let data = {
                 keyword:this.keyword
             }
-            // this.$store.dispatch('busClear')
-            this.$store.dispatch('qryBusList', data)
+            // this.$store.dispatch('shopListClear')
+            this.$store.dispatch('qryStoreList', data)
         }
     },
 }

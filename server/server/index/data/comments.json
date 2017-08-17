@@ -18,43 +18,7 @@
         "quality": 3.2,
         "cost": 2.2,
         "service": 5.0,
-        "comments": [{
-            "id": 3,
-            "head": "/static/images/13.png",
-            "nike": "张女士",
-            "title": "时间紧任务重 依旧选到了心仪婚纱照",
-            "tag": "更换摄影师 | 服务好 | 婚纱比较少 | 有轻度二消",
-            "date": "2017-08-06",
-            "quality": 3,
-            "cost": 2.5,
-            "service": 3,
-            "url": ""
-          },
-          {
-            "id": 4,
-            "head": "/static/images/14.png",
-            "nike": "是豆腐干风格",
-            "title": "时间紧任务重 依旧选到了心仪婚纱照",
-            "tag": "更换摄影师 | 服务好 | 婚纱比较少 | 有轻度二消",
-            "date": "2017-08-11",
-            "quality": 4.2,
-            "cost": 2.2,
-            "service": 5,
-            "url": ""
-          },
-          {
-            "id": 5,
-            "head": "/static/images/13.png",
-            "nike": "阿斯蒂芬",
-            "title": "时间紧任务重 依旧选到了心仪婚纱照",
-            "tag": "更换摄影师 | 服务好 | 婚纱比较少 | 有轻度二消",
-            "date": "2017-08-06",
-            "quality": 3,
-            "cost": 3,
-            "service": 4,
-            "url": ""
-          }
-        ]
+        "comments": []
       },
       {
         "id": 9,
@@ -82,30 +46,6 @@
             "quality": 2,
             "cost": 2,
             "service": 2,
-            "url": ""
-          },
-          {
-            "id": 5,
-            "head": "/static/images/13.png",
-            "nike": "阿斯蒂芬",
-            "title": "时间紧任务重 依旧选到了心仪婚纱照",
-            "tag": "更换摄影师 | 服务好 | 婚纱比较少 | 有轻度二消",
-            "date": "2017-08-06",
-            "quality": 3,
-            "cost": 3,
-            "service": 4,
-            "url": ""
-          },
-          {
-            "id": 5,
-            "head": "/static/images/13.png",
-            "nike": "阿斯蒂芬",
-            "title": "时间紧任务重 依旧选到了心仪婚纱照",
-            "tag": "更换摄影师 | 服务好 | 婚纱比较少 | 有轻度二消",
-            "date": "2017-08-06",
-            "quality": 3,
-            "cost": 3,
-            "service": 4,
             "url": ""
           }
         ]
