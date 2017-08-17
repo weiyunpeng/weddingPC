@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <span>拍摄特点</span>
-                    <label style="line-height:28px;height: 58px;">{{camaraman.specialty}}</label>
+                    <label style="line-height:28px;height: 58px;">{{camaraman.tags}}</label>
                 </li>
             </ul>
         </div>
@@ -46,7 +46,7 @@
     <div class="fr caman_info">
         <div class="subnav">
             <ul>
-                <li v-for="(item,i) in ['摄影师简介','拍摄特点','作品展示']" :key="i" class="subnav_li">
+                <li v-for="(item,i) in ['摄影师简介','专业特长','作品展示']" :key="i" class="subnav_li">
                     <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item}}</a>
                 </li>
             </ul>

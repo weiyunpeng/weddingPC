@@ -160,24 +160,29 @@ export default {
     methods: {
         pagechange(current) {   // 页码改变传入新的页码，此处做回调
             this.ajaxdata.page = current
+            this.$store.dispatch('shopListClear')
             this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         skip(current) {
             this.ajaxdata.page = current
+            this.$store.dispatch('shopListClear')
             this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         ajaxTag(data) {
             this.ajaxdata = this.objExtend(this.ajaxdata, data, false);
+            this.$store.dispatch('shopListClear')
             this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         ajaxfilter(method, priceToSort) {
             this.ajaxdata.method = method;
             this.ajaxdata.priceToSort = priceToSort;
+            this.$store.dispatch('shopListClear')
             this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         ajaxPrice(minPrice, maxPrice) {
             this.ajaxdata.minPrice = minPrice
             this.ajaxdata.maxPrice = maxPrice
+            this.$store.dispatch('shopListClear')
             this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
         showBtn(busIndex,showAll){

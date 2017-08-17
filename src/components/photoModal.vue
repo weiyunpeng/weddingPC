@@ -19,7 +19,7 @@
                     <div class="modal-details">
                         <span>{{photoInfo.time}}</span>
                         <label>{{photoInfo.desc}}</label>
-                        <a v-if="photoInfo.comment_url" :href="photoInfo.comment_url" target="_blank">TA的拍摄历程>>></a>
+                        <label>你也可以联系  喜宝 （微信号：jiehun5259）来分享你的结婚故事<a v-if="photoInfo.comment_url" :href="photoInfo.comment_url" target="_blank">TA的拍摄历程>>></a></label>
                     </div>
                 </div>
     
@@ -273,8 +273,8 @@ export default {
 
 .pg_like {
     position: absolute;
-    right: 16px;
-    bottom: 2px;
+    right: 0px;
+    bottom: -6px;
     color: #999999;
     font-size: 14px;
     line-height: 28px;
@@ -300,7 +300,7 @@ export default {
     font-size: 14px;
     line-height: 27.28px;
     a{
-        display: block;
+        margin-left: 5px;
         color: #236dd3;
     }
     a:hover{

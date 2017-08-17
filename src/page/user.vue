@@ -219,7 +219,7 @@ export default {
     position: relative;
     top: 5px;
     margin-bottom: 20px;
-    left: 10px;
+    left: 54px;
     overflow: hidden;
 }
 

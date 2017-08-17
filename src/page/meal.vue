@@ -10,7 +10,7 @@
                         <div class="shop">
                             <router-link :to="{ name: 'packageDetails', query: {busId:item.store_id,mealId:item.id}}" target="_blank">
                                 <div class="img">
-                                    <img class="shop_logo" v-lazy="item.logo" width="372" height="209">
+                                    <img class="shop_logo" v-lazy="item.logo" width="374" height="250">
                                 </div>
                                 <ul class="shop_details">
                                     <li class="price">
@@ -30,6 +30,9 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+            <div v-if="!mealList || mealList.length == 0" class="no-data">
+                <img src="/static/images/icon-no-data-1.png">
             </div>
             <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
         </div>
@@ -86,24 +89,29 @@ export default {
     methods: {
         pagechange(current) {   // 页码改变传入新的页码，此处做回调
             this.ajaxdata.page = current
+            this.$store.dispatch('mealClear')
             this.$store.dispatch('qryMealList', this.ajaxdata)
         },
         skip(current) {
             this.ajaxdata.page = current
+            this.$store.dispatch('mealClear')
             this.$store.dispatch('qryMealList', this.ajaxdata)
         },
         ajaxTag(data) {
             this.ajaxdata = this.objExtend(this.ajaxdata, data, false);
+            this.$store.dispatch('mealClear')
             this.$store.dispatch('qryMealList', this.ajaxdata)
         },
         ajaxfilter(method, priceToSort) {
             this.ajaxdata.method = method;
             this.ajaxdata.priceToSort = priceToSort;
+            this.$store.dispatch('mealClear')
             this.$store.dispatch('qryMealList', this.ajaxdata)
         },
         ajaxPrice(minPrice, maxPrice) {
             this.ajaxdata.minPrice = minPrice
             this.ajaxdata.maxPrice = maxPrice
+            this.$store.dispatch('mealClear')
             this.$store.dispatch('qryMealList', this.ajaxdata)
         }
     },

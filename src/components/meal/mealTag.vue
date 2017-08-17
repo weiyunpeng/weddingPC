@@ -44,7 +44,7 @@ export default {
             this.$store.dispatch('mealTagChange', changeData)
             const ajaxdata = {}
             for (var i = 0; i < this.mealTag.length; i++) {
-                ajaxdata[this.busTag[i].name] = this.busTag[i].con[this.busTag[i].selected].id
+                ajaxdata[this.mealTag[i].name] = this.mealTag[i].con[this.mealTag[i].selected].id
             }
             this.$emit('ajaxTag', ajaxdata);
         }
