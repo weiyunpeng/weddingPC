@@ -27,7 +27,7 @@
                 <ul class="meal_list container">
                     <li class="list_con" v-for="item in thisMealList" :key="item.id">
                         <div class="shop">
-                            <router-link :to="{ name: 'mealDeatils', query: {busName:thisMealStore.store_name,busId:thisMealStore.id,mealName:item.meal_name,mealId:item.id}}" target="_blank">
+                            <router-link :to="{ name: 'packageDetails', query: {busId:thisMealStore.id,mealId:item.id}}" target="_blank">
                                 <div class="img">
                                     <img class="shop_logo" v-lazy="item.logo" width="372" height="248">
                                 </div>
@@ -76,7 +76,7 @@ export default {
         return {
             id: this.$route.query.busId,
             ajaxdata: {
-                storeId: this.$route.query.id
+                storeId: this.$route.query.busId
             },
         }
     },

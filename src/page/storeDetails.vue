@@ -67,17 +67,17 @@
             </div>
         </div>
         <div class="nav">
-            <ul v-if="shopNavList && shopNavList.length >0 ">
-                <li v-for="(item,i) in shopNavList" :key="i">
-                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item}}</a>
+            <ul>
+                <li v-for="(item,i) in nav" :key="i">
+                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i,item)">{{item}}</a>
                 </li>
             </ul>
         </div>
         <!-- case官方案例开始 -->
         <div class="case" v-show="0 >= selected" v-if="caseInfo">
-            <img class="tit" :src="caseInfo.nav_img"> 
+            <img class="tit" :src="caseInfo.nav_img">
             <div class="more clearfix" v-show="caseInfo.details && caseInfo.details.length>=6">
-                <router-link :to="{ name: 'busSample', query: {busName:mediaInfo.name, busSample: '官方案例' ,id:id}}" class="more_a fr" target="_blank">
+                <router-link :to="{ name: 'busSample', query: {busId:mediaInfo.id,sampleId:id}}" class="more_a fr" target="_blank">
                     更多 >
                 </router-link>
             </div>
@@ -104,14 +104,14 @@
         <div class="package" v-show="1 >= selected" v-if="packageInfo">
             <img class="tit" :src="packageInfo.nav_img"> 
             <div class="more clearfix" v-show="packageInfo.details && packageInfo.details.length>=3">
-                <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name,busId:mediaInfo.id, thisMealName: '套餐列表'}}" class="more_a fr" target="_blank">
+                <router-link :to="{ name: 'storeList', query: {busId:mediaInfo.id, storeList: 'storeList'}}" class="more_a fr" target="_blank">
                     更多 >
                 </router-link>
             </div>
             <div class="list">
                 <ul>
                     <li v-for="(item,pIndex) in packageInfo.details" v-bind:key="pIndex">
-                        <router-link :to="{ name: 'mealDeatils', query: {busName:mediaInfo.name,busId:mediaInfo.id,mealName:item.package_name,mealId:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'packageDetails', query: {busId:mediaInfo.id,mealId:item.id}}" target="_blank">
                             <img v-lazy="item.src" width="374" height="250">
                             <div class="top clearfix">
                                 <div class="price fl">￥{{item.price}}</div>
@@ -140,7 +140,7 @@
             <div class="list">
                  <swiper :options="photographerOption">
                     <swiper-slide class="mr25" v-for="(item,index) in photographer.details" v-bind:key="index">
-                        <router-link :to="{ name: 'cameraman', query: {busName:mediaInfo.name,busId:mediaInfo.id,cameraman: '摄影师',id:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'cameraman', query: {busId:mediaInfo.id,cameramanId:item.id}}" target="_blank">
                             <img v-lazy="item.src" width="220" height="220">
                             <div class="top clearfix">
                                 <div class="name fl">{{item.name}}</div>
@@ -171,7 +171,7 @@
             <div class="list">
                 <swiper :options="dresserOption">
                     <swiper-slide class="mr25" v-for="(item,index) in dresser.details" v-bind:key="index">
-                        <router-link :to="{ name: 'makeupman', query: {busName:mediaInfo.name,busId:mediaInfo.id,makeupman: '化妆师',id:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'makeupman', query: {busId:mediaInfo.id,makeupId:item.id}}" target="_blank">
                         <img v-lazy="item.src" width="220" height="220">
                         <div class="top clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -270,7 +270,6 @@ export default {
         return {
             id:this.$route.query.busId,
             selected:0,
-            busName:this.$route.query.busName,
             isErwei:false,
             isMap:false,
             imgs:[],
@@ -285,6 +284,7 @@ export default {
             showSwiper:false,
             swiperImgs:[],
             shopNavList:[],
+            nav:['官方案例','精选套餐','摄影师团队','化妆团队'],
             photographerOption: {
                 // autoplay: 3500,
                 setWrapperSize :false,
@@ -331,8 +331,9 @@ export default {
         this.$store.dispatch('qryStoreDetails', data)
     },
     methods: {
-        changeTab(i){
+        changeTab(i,item){
             this.selected = i;
+            this.navIndex = item
         },
         erweima () {
             this.isErwei = !this.isErwei;
@@ -367,18 +368,6 @@ export default {
                 this.packageInfo = this.shopDetails.package;
                 this.photographer = this.shopDetails.cameraman;
                 this.dresser = this.shopDetails.makeup;
-                if(this.caseInfo.nav){
-                    this.shopNavList.push(this.caseInfo.nav)
-                }
-                if(this.packageInfo.nav){
-                    this.shopNavList.push(this.packageInfo.nav)
-                }
-                if(this.photographer.nav){
-                    this.shopNavList.push(this.photographer.nav)
-                }
-                if(this.dresser.nav){
-                    this.shopNavList.push(this.dresser.nav)
-                }
             }
         }
     },

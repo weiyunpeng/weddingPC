@@ -32,7 +32,7 @@
             </p>
             <ul>
                 <li v-for="(item,s) in makeupmanPackages" :key="s">
-                    <router-link :to="{ name: 'mealDeatils',query: {busName:makeupmanBusinfo.store_name,busId:makeupmanBusinfo.id, mealName: item.name,mealId:item.id}}" target="_blank">
+                    <router-link :to="{ name: 'packageDetails',query: {busId:makeupmanBusinfo.id, mealId:item.id}}" target="_blank">
                         <img v-lazy="item.cover" width="300" height="200">
                         <div class="p_info clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -83,7 +83,7 @@ import storeInfo from './../components/storeInfo'
         },
         data(){
             return {
-                id:this.$route.query.id,
+                id:this.$route.query.makeupId,
                 selected:0,
                 infoDetails: []
             }

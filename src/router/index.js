@@ -10,9 +10,9 @@ import store from '../store/index';
 //页面控制
 import index from '../page/index';
 import meal from '../page/meal.vue';
-import busDeatils from '../page/busDetails.vue';
-import mealDeatils from '../page/mealDetails.vue';
-import mealList from '../page/mealList.vue';
+import storeDetails from '../page/storeDetails.vue';
+import packageDetails from '../page/packageDetails.vue';
+import storeList from '../page/storeList.vue';
 import cameraman from '../page/cameraman.vue';
 import makeupman from '../page/makeupman.vue';
 import busSample from '../page/busSample.vue';
@@ -39,17 +39,17 @@ const routes = [{
     name:'meal',
     component : meal
 },{
-    path : '/busDeatils',
-    name:'busDeatils',
-    component : busDeatils
+    path : '/storeDetails',
+    name:'storeDetails',
+    component : storeDetails
 },{
-    path : '/mealDeatils',
-    name:'mealDeatils',
-    component : mealDeatils
+    path : '/packageDetails',
+    name:'packageDetails',
+    component : packageDetails
 },{
-    path : '/mealList',
-    name:'mealList',
-    component : mealList
+    path : '/storeList',
+    name:'storeList',
+    component : storeList
 },{
     path : '/busSample',
     name:'busSample',

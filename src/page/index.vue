@@ -88,11 +88,11 @@
                 </router-link>
                 <ul>
                     <li v-for="(store,storeNum) in getIndexPhoto.store" :key="storeNum">
-                        <router-link :to="{ name: 'busDeatils', query: {busId:store.id,busName:store.store_name}}" target="_blank">
+                        <router-link :to="{ name: 'storeDetails', query: {busId:store.id}}" target="_blank">
                             <img v-lazy="store.img" height="210" width="295">
                         </router-link>
                         <div class="com-con">
-                            <router-link :to="{ name: 'busDeatils', query: {busId:store.id,busName:store.store_name}}" target="_blank">
+                            <router-link :to="{ name: 'storeDetails', query: {busId:store.id}}" target="_blank">
                                 <p>{{store.store_name}}</p>
                             </router-link>
                             <div class="clearfix">

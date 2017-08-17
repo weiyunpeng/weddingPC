@@ -18,7 +18,7 @@
                     </swiper>
                     <div class="modal-details">
                         <span>{{photoInfo.time}}</span>
-                        <label>{{photoInfo.comment}}</label>
+                        <label>{{photoInfo.desc}}</label>
                         <a v-if="photoInfo.comment_url" :href="photoInfo.comment_url" target="_blank">TA的拍摄历程>>></a>
                     </div>
                 </div>

@@ -273,12 +273,12 @@
                 <div class="fr see">
                     <div class="tit clearfix">
                         看了又看
-                        <router-link :to="{ name: 'mealList',query: {busName:mealInfo.store_name,busId:mealInfo.store_id, thisMealName: '套餐列表'}}" class="more fr" target="_blank">查看全部</router-link>
+                        <router-link :to="{ name: 'storeList',query: {busId:mealInfo.store_id, storeList: 'storeList'}}" class="more fr" target="_blank">查看全部</router-link>
                     </div>
                     <div class="list">
                         <ul>
                             <li v-for="(item,s) in see_and_see" :key="s">
-                                <router-link :to="{ name: 'mealDeatils',query: {busName:mealInfo.store_name,busId:mealInfo.store_id, mealName: item.name,mealId:item.id}}" target="_blank">
+                                <router-link :to="{ name: 'packageDetails',query: {busId:mealInfo.store_id,mealId:item.id}}" target="_blank">
                                     <img v-lazy="item.src" width="300" height="200">
                                     <div class="name_price clearfix">
                                         <div class="name fl">{{item.name}}</div>
