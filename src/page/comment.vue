@@ -50,7 +50,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li v-if="item.comments && item.comments.length>0" v-bind:class="{h_auto:item.showAll}" class="list-con-li list-con-li-comments">
+                            <li v-if="item.comments && item.comments.length>0" v-bind:class="{h_auto:item.showAll,h_80:item.comments.length==1}" class="list-con-li list-con-li-comments">
                                 <ul>
                                     <li v-for="(comment,i) in item.comments" :key="i" class="bus-comments">
                                         <div class="bus-comments-con">

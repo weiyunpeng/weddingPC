@@ -2,7 +2,7 @@
     <transition name="photo_modal">
         <div class="photo_modal text-center" v-show="value && loading">
             <div class="photo_modal_dialog panel text-left">
-                <img @click="close" class="close_btn" src="/static/images/icon-no-btn.png">
+                <img @click="close" class="close_btn" src="/static/images/icon-close-hover.png">
                 <div class="photo_fl fl">
                     <swiper :options="swiperOption" ref="mySwiper">
                         <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">
@@ -62,9 +62,7 @@ export default {
                 observeParents: true,
                 prevButton: '.swiper-button-prev',
                 nextButton: '.swiper-button-next',
-                // Disable preloading of all images
                 preloadImages: false,
-                // Enable lazy loading
                 lazyLoading: true,
                 onTransitionStart(swiper) {
                     this.index = swiper.realIndex
@@ -199,6 +197,8 @@ export default {
 
 .photo_modal_dialog {
     position: relative;
+    top: 8%;
+    padding: 15px;
     background: #fff;
     width: 1200px;
     height: auto;
@@ -206,8 +206,6 @@ export default {
     max-width: 1200px;
     min-width: 400px;
     display: inline-block;
-    top: 15%;
-    padding: 15px;
     transition: all .3s ease;
 }
 
@@ -247,8 +245,24 @@ export default {
 
 .close_btn {
     position: absolute;
-    top: -63px;
-    right: 0;
+    top: 7px;
+    right: 35px;
+    cursor: pointer;
+    filter: alpha(Opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+.close_btn:hover{
+    transform:rotate(390deg);
+    -ms-transform:rotate(390deg); 	/* IE 9 */
+    -moz-transform:rotate(390deg); 	/* Firefox */
+    -webkit-transform:rotate(390deg); /* Safari 和 Chrome */
+    -o-transform:rotate(390deg); 	/* Opera */
+    filter: alpha(Opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+    transition: all .6s ease;
+    -webkit-transition: all .6s ease;
 }
 
 .photo_fl {
