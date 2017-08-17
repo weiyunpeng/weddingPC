@@ -353,7 +353,6 @@ export default {
     },
     watch:{
         shopInfo(){
-            console.log(this.shopInfo)
             if(this.shopInfo){
                 this.imgs = this.shopInfo.media_info.img;
                 this.mediaInfo = this.shopInfo.media_info;

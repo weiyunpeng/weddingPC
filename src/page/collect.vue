@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <com-photoModal v-model="show" :value="show" :photoModal="photoModal">
+        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
         </com-photoModal>
     </div>
 </template>
@@ -97,7 +97,8 @@ export default {
             photoModal: {},
             userInfo:{},
             category:{},
-            list:[]
+            list:[],
+            index:0
         }
     },
     mounted() {
@@ -126,6 +127,7 @@ export default {
         },
         showPhotoModal(img, m) {
             this.photoModal = img;
+            this.index=m
             this.show = true;
             const ajaxdata = {
                 id: this.photoModal.id
