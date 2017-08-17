@@ -1,17 +1,21 @@
 @charset "UTF-8";
+.shopDetails{
+background: #fff;
+background-color: #fff;
 .bus_introduction {
     margin: {
         top: 40px;
     }
     .right_introduction {
         float: right;
-        width: 595px;
+        width: 594px;
         .top {
             height: auto;
             background-color: #f2f2f2;
             padding: {
                 top: 0px;
                 left: 50px;
+                bottom: 40px;
             }
             margin: {
                 bottom: 0px;
@@ -46,9 +50,6 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
                 }
                 .map {
                     position: relative;
@@ -68,6 +69,8 @@
                 }
             }
             .tags {
+                position: relative;
+                top: 20px;
                 height: 34px;
                 width: 100%;
                 overflow: hidden;
@@ -200,15 +203,17 @@
         .list {
             margin-right: -42px;
             >ul>li {
-                margin-right: 42px;
+                margin-right: 40px;
                 margin-bottom: 30px;
                 h3 {
-                    overflow: hidden;
                     width: 365px;
                     height: 30px;
                     font-size: 20px;
                     color: #333;
                     margin-top: 5px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 .tags {
                     height: 34px;
@@ -250,7 +255,7 @@
         .list {
             margin-right: -42px;
             >ul>li {
-                margin-right: 42px;
+                margin-right: 40px;
             }
             .top {
                 margin-top: 5px;
@@ -261,12 +266,14 @@
                 font-weight: bold;
             }
             h3 {
-                overflow: hidden;
                 width: 365px;
                 height: 20px;
                 font-size: 16px;
                 color: #333;
                 margin-top: 5px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             .tags {
                 height: 34px;
@@ -347,6 +354,10 @@
                 font-size: 14px;
                 color: #808080;
                 padding-top: 10px;
+                width: 218px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }
@@ -385,6 +396,10 @@
                     color: #333;
                     font-size: 16px;
                     line-height: 2;
+                    display:-webkit-box;
+                    -webkit-line-clamp:6;
+                     -webkit-box-orient:vertical;
+                     overflow: hidden;
                 }
             }
             .right {
@@ -497,7 +512,7 @@
     right: 0;
     top: -82px;
 }
-
+}
 @mixin animation($animation) {
     animation: $animation;
     -webkit-animation: $animation;

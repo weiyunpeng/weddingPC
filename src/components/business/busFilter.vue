@@ -47,7 +47,6 @@ export default {
             self.method = index;
             if(index == 2){
                 //需要价格箭头的切换
-                console.log(this.isHigh)
                 if(this.isHigh){
                     this.isHigh = 0
                 }else{

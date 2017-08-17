@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="packageDetails">
         <com-header></com-header>
         <div class="container" id="mealDetails">
             <div class="meal_introduction clearfix">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="bottom clearfix">
-                    <com-pic :imgs='imgs'></com-pic>
+                    <com-pic :imgs='imgs' :width='720' :height='480' :paginaWidth='138' :paginaHeight='92'></com-pic>
                     <div class="right_introduction fr">
                         <div class="meal_name">
                             {{mealInfo.package_name}}
@@ -264,7 +264,7 @@
                         <div class="cont">
                             <ul>
                                 <li v-for="(item,g) in graphic" :key="g">
-                                    <img v-lazy="item" width="640">
+                                    <img v-lazy="item" width="800">
                                 </li>
                             </ul>
                         </div>
@@ -279,7 +279,7 @@
                         <ul>
                             <li v-for="(item,s) in see_and_see" :key="s">
                                 <router-link :to="{ name: 'mealDeatils',query: {busName:mealInfo.store_name,busId:mealInfo.store_id, mealName: item.name,mealId:item.id}}" target="_blank">
-                                    <img v-lazy="item.src">
+                                    <img v-lazy="item.src" width="300" height="200">
                                     <div class="name_price clearfix">
                                         <div class="name fl">{{item.name}}</div>
                                         <div class="price fr">￥{{item.price}}</div>
@@ -353,7 +353,6 @@ export default {
             this.imgs = this.mealInfo.img
         },
         mealDetails() {
-            console.log(this.mealDetails)
             this.graphic = this.mealDetails.graphic
             this.see_and_see = this.mealDetails.see_and_see
         }

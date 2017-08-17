@@ -1,5 +1,5 @@
 <template>
-<div style="background:#fff">
+<div class="shopDetails">
     <!--百度地图  start-->
     <div class="bm-view"  v-show="isMap">
         <div class="bm-bg" :class="{ zoomIn: isMap }">
@@ -85,7 +85,7 @@
                 <ul>
                     <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
                         <div class="img-hover">
-                            <img v-lazy="item.src" width="372" height="248" @click="showSwiperModal([item.src])">
+                            <img v-lazy="item.src" width="374" height="250" @click="showSwiperModal([item.src])">
                         </div>
                         <h3>{{item.case_name}}</h3>
                         <div class="tags">
@@ -112,7 +112,7 @@
                 <ul>
                     <li v-for="(item,pIndex) in packageInfo.details" v-bind:key="pIndex">
                         <router-link :to="{ name: 'mealDeatils', query: {busName:mediaInfo.name,busId:mediaInfo.id,mealName:item.package_name,mealId:item.id}}" target="_blank">
-                            <img v-lazy="item.src" width="372" height="248">
+                            <img v-lazy="item.src" width="374" height="250">
                             <div class="top clearfix">
                                 <div class="price fl">￥{{item.price}}</div>
                                 <div class="tags fr">
@@ -234,7 +234,7 @@
                 <div class="subtit">门店环境</div>
                 <swiper :options="environmentOption">
                     <swiper-slide class="mr25 fl" v-for="(item,index) in introInfo.environment" v-bind:key="index">
-                        <img v-lazy="item" width="216" height="144" @click="showSwiperModal(introInfo.environment)">
+                        <img v-lazy="item" width="218" height="145" @click="showSwiperModal(introInfo.environment)">
                     </swiper-slide>
                 </swiper>
                 <div class="arrows" v-show="introInfo.environment && introInfo.environment.length>=5">

@@ -154,7 +154,6 @@ export default {
             }
         },
         swiper(a){
-            console.log(a)
         }
     },
     watch: {

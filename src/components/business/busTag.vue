@@ -51,7 +51,6 @@ export default {
     },
     watch: {
         busTag: function () {
-            // console.log(this.busTag)
         }
     }
 }

@@ -1,15 +1,15 @@
 <template>
-    <div class="left_zoom">
+    <div class="left_zoom" :style="{width:width+'px'}">
         <div class="big_img" @click="bigBtn">
-            <img v-lazy="imgs[currentIndex]" width="605" height="400">
+            <img v-lazy="imgs[currentIndex]" :width="width" :height="height">
         </div>
         <div class="small_img">
             <transition-group tag="ul" name="list">
                 <li v-for="(item,index) in imgs" :key="index" v-show="currentIndex-index<4" :class="{'active':index===currentIndex}" @click="currentShow(index)">
-                    <img v-lazy="item" width="144" height="96">
+                    <img v-lazy="item" :width="paginaWidth" :height="paginaHeight">
                 </li>
                 <li v-for="(item,index) in imgs" :key="index" v-show="currentIndex-index>1" :class="{'active':index===currentIndex}" @click="currentShow(index)">
-                    <img v-lazy="item" width="144" height="96">
+                    <img v-lazy="item" :width="paginaWidth" :height="paginaHeight">
                 </li>
             </transition-group>
             <div class="arrow">
@@ -35,6 +35,22 @@ export default {
         imgs:{
             type:Array,
             default:[]
+        },
+        width:{
+            type:Number,
+            default:606
+        },
+        height:{
+            type:Number,
+            default:404
+        },
+        paginaWidth:{
+            type:Number,
+            default:144
+        },
+        paginaHeight:{
+            type:Number,
+            default:96
         }
     },
     mounted(){
@@ -80,7 +96,6 @@ export default {
 }
 .left_zoom {
     float: left;
-    width: 605px;
     .small_img {
       position: relative;
       margin: {

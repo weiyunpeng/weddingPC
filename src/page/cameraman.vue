@@ -111,14 +111,11 @@ import storeInfo from './../components/storeInfo'
         },
         watch:{
             camaraman(){
-                // console.log(this.camaraman)
                 this.infoDetails = this.camaraman.info_details
             },
             camaramanBusinfo(){
-                // console.log(this.camaramanBusinfo)
             },
             camaramanPackages(){
-                // console.log(this.camaramanPackages)
             }
         },
         beforeDestroy () {
