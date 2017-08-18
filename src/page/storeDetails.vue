@@ -365,7 +365,8 @@ export default {
             this.orderNum = index;
             this.show = true;
             const ajaxdata = {
-                id: this.photoModal.id
+                id: this.photoModal.id,
+                type: 1
             }
             this.$store.dispatch('qryViewPhoto', ajaxdata)
         },

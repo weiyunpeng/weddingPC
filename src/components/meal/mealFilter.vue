@@ -27,7 +27,7 @@ export default {
             isHigh:0,
             minPrice:'',
             maxPrice:'',
-            flag:/^[0-9]*[1-9][0-9]*$/
+            flag:/^\d+$/
         }
     },
     computed: {

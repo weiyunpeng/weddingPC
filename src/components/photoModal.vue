@@ -7,7 +7,7 @@
                     <swiper :options="swiperOption" ref="mySwiper">
                         <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">
                             <img :src="item.img" height="475">
-                            <span class="pg_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
+                            <span v-if="isCase" class="pg_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
                                 <i v-if="item.is_fav" class="icon_like_act"></i>
                                 <i v-if="!item.is_fav" class="icon_like"></i>
                                 {{item.fav_num}}
@@ -53,6 +53,7 @@ export default {
             selected: 0,
             loading: false,
             photoInfo:{},
+            isCase:true,
             swiperOption: {
                 notNextTick: true,
                 setWrapperSize: false,
@@ -175,6 +176,11 @@ export default {
         },
         getViewPhotoInfo() {
             this.photoInfo = this.getViewPhotoInfo
+        },
+        photoModal(){
+            if(this.photoModal.src){
+                this.isCase = false
+            }
         }
     }
 }

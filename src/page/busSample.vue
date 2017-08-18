@@ -33,7 +33,7 @@
                     <div class="shop">
                         <router-link :to="{ name: 'packageDetails', query: {busId:busSampleStore.id,mealId:item.id}}" target="_blank">
                             <div class="img">
-                                <img class="shop_logo" v-lazy="item.logo" width="372" height="248">
+                                <img class="shop_logo" v-lazy="item.logo" width="374" height="250">
                             </div>
                             <p class="meal_name">
                                 {{item.name}}
@@ -117,7 +117,7 @@ export default {
     .list_con {
         display: inline-block;
         width: 374px;
-        height: 319px;
+        height: 325px;
         overflow: hidden;
         margin: {
             right: 28px;
@@ -133,14 +133,14 @@ export default {
         }
         .tag {
             display: inline-block;
-            width: 102px;
-            height: 24px;
+            width: auto;
+            height: auto;
             border: 1px solid #ff4e6b;
             border-radius: 12px;
             color: #ff4e6b;
-            line-height: 24px;
             text-align: center;
             margin-right: 8px;
+            padding: 5px;
             font: {
                 size: 14px;
                 weight: normal;
