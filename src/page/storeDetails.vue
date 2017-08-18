@@ -193,7 +193,7 @@
         </div>
         <!-- 化妆团队结束 -->
         <!-- 商家简介开始 -->
-        <div class="business">
+        <div class="business" v-show="4 >= selected" v-if="introInfo">
             <img class="tit" :src="introInfo.nav_img">
             <div class="cont clearfix">
                 <div class="left fl">
@@ -284,7 +284,7 @@ export default {
             showSwiper:false,
             swiperImgs:[],
             shopNavList:[],
-            nav:['官方案例','精选套餐','摄影师团队','化妆团队'],
+            nav:['官方案例','精选套餐','摄影师团队','化妆团队','商家简介'],
             photographerOption: {
                 // autoplay: 3500,
                 setWrapperSize :false,
