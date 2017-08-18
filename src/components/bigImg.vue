@@ -1,6 +1,6 @@
 <template>
     <div class="left_zoom" :style="{width:width+'px'}">
-        <div class="big_img" @click="bigBtn">
+        <div class="big_img">
             <img v-lazy="imgs[currentIndex]" :width="width" :height="height">
         </div>
         <div class="small_img">

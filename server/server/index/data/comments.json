@@ -1,12 +1,12 @@
 {
-  "code": 200,
+  "code": 0,
   "msg": "success",
   "data": {
     "list": [{
         "id": 1,
         "logo": "/static/images/1.png",
         "name": "郑州艾维美婚纱摄影(高新区翠竹街360店)",
-        "position": "山西省长治市郊区",
+        "position": "山西省长治市郊区1",
         "price": 3999,
         "isYes": 1,
         "isVip": 1,

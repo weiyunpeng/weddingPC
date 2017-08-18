@@ -172,7 +172,6 @@ export default {
         },
         getViewPhotoInfo() {
             this.photoInfo = this.getViewPhotoInfo
-            console.log(this.photoInfo)
         }
     }
 }

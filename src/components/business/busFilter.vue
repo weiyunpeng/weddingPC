@@ -26,9 +26,9 @@ export default {
         return {
             method:0,
             isHigh:0,
-            minPrice:'',
-            maxPrice:'',
-            flag:/^[0-9]*[1-9][0-9]*$/
+            minPrice:null,
+            maxPrice:null,
+            flag:/^\d+$/
         }
     },
     computed: {
@@ -56,9 +56,10 @@ export default {
             this.$emit('ajaxfilter',index,this.isHigh);
         },
         qryPrice(){
-            if(!this.minPrice || !this.maxPrice || !this.flag.test(this.minPrice) || !this.flag.test(this.maxPrice)){
+            console.log(this.flag.test(this.minPrice))
+            if(!this.minPrice || !this.maxPrice || !this.flag.test(this.minPrice) || !this.flag.test(this.maxPrice) || this.minPrice >= this.maxPrice){
                 const data = {
-                    name: 'delPhoto',
+                    name: '提示',
                     info: {
                         text: '请输入正确的价格'
                     }

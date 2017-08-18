@@ -23,15 +23,17 @@
                     </ul>
                     <ul class="user_category user_category_store">
                         <li v-for="(item,s) in stores" :key="s">
-                            <div class="show_img">
-                                <img :src="item.logo" width="64" height="64">
-                                <span class="show_name">{{item.name}}</span>
-                            </div>
-    
-                            <div class="line line-store">
-                                <div class="bar" v-bind:style="{ width: item.value}"></div>
-                            </div>
-                            <span class="percent">{{item.value}}</span>
+                            <router-link :to="{ name: 'storeDetails', query: {busId:item.id}}" target="_blank">
+                                <div class="show_img">
+                                    <img :src="item.logo" width="64" height="64">
+                                    <span class="show_name">{{item.name}}</span>
+                                </div>
+        
+                                <div class="line line-store">
+                                    <div class="bar" v-bind:style="{ width: item.value}"></div>
+                                </div>
+                                <span class="percent">{{item.value}}</span>
+                            </router-link>
                         </li>
                     </ul>
                 </div>

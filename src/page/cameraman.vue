@@ -46,8 +46,8 @@
     <div class="fr caman_info">
         <div class="subnav">
             <ul>
-                <li v-for="(item,i) in ['摄影师简介','专业特长','作品展示']" :key="i" class="subnav_li">
-                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item}}</a>
+                <li v-for="(item,i) in infoDetails" :key="i" class="subnav_li">
+                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item.tag}}</a>
                 </li>
             </ul>
         </div>

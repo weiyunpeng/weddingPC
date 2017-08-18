@@ -5,7 +5,7 @@
                 <img @click="close" class="close_btn2" src="/static/images/icon-no-btn.png">
                 <swiper :options="swiperOption" ref="mySwiper">
                     <swiper-slide class="photo_fl fl" v-for="(img,index) in swiperImgs" v-bind:key="index">
-                        <img :src="img" width="900" height="475">
+                        <img :src="img" height="475">
                     </swiper-slide>
                     <div class="swiper-pagination" slot="pagination"></div>
                     <div class="swiper-button-prev" slot="button-prev"></div>

@@ -85,7 +85,7 @@
                 <ul>
                     <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
                         <div class="img-hover">
-                            <img v-lazy="item.src" width="374" height="250" @click="showSwiperModal([item.src])">
+                            <img v-lazy="item.src" width="374" height="250" @click="showPhotoModal(item, index)">
                         </div>
                         <h3>{{item.case_name}}</h3>
                         <div class="tags">
@@ -245,6 +245,7 @@
         </div>
         <!-- 商家简介结束 -->
     </div>
+    <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :order="orderNum"></com-photoModal>
     <com-swiper @closeSwiper="closeSwiper" v-show="showSwiper" :swiperImgs='swiperImgs'></com-swiper>
     </div>
 </template>
@@ -256,6 +257,7 @@ import bigImg from './../components/bigImg'
 import swiperModel from './../components/swiper'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import star from './../components/star'
+import photoModal from './../components/photoModal'
 export default {
     name: 'carrousel',
     components: {
@@ -264,7 +266,8 @@ export default {
         comSwiper:swiperModel,
         swiper,
         swiperSlide,
-        'star':star
+        'star':star,
+        'comPhotoModal': photoModal,
     },
     data() {
         return {
@@ -285,6 +288,9 @@ export default {
             swiperImgs:[],
             shopNavList:[],
             nav:['官方案例','精选套餐','摄影师团队','化妆团队','商家简介'],
+            show: false,
+            photoModal: {},
+            orderNum: null,
             photographerOption: {
                 // autoplay: 3500,
                 setWrapperSize :false,
@@ -350,7 +356,19 @@ export default {
         },
         closeSwiper(){
             this.showSwiper = false
-        }
+        },
+        showPhotoModal(item, index) {
+            this.photoModal = item;
+            if(!this.photoModal.img){
+                this.photoModal.img = item.src;
+            }
+            this.orderNum = index;
+            this.show = true;
+            const ajaxdata = {
+                id: this.photoModal.id
+            }
+            this.$store.dispatch('qryViewPhoto', ajaxdata)
+        },
     },
     watch:{
         shopInfo(){

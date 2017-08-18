@@ -56,7 +56,6 @@ export default {
     methods: {
         clickCurrent: function(idx) {
             if( this.pageInfo.current != idx && idx > 0 && idx <= this.page) {
-                console.log(idx)
                 this.pageInfo.current = idx;
                 this.$emit('change',this.pageInfo.current);
             }

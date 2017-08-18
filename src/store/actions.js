@@ -58,8 +58,15 @@ export const loginOut = ({ commit },data) => {
 //-------------------------------查询商家首页列表---------------------------------------------------------------
 export const qryStoreList = ({ commit },data) => {
     api.qryStoreList(data).then(function (response) {
-        for(var i = 0; i<response.data.data.list.length;i++){
-            response.data.data.list[i].showAll = false
+        if(response.data.data.list && response.data.data.list.length>0){
+            for(var i = 0; i<response.data.data.list.length;i++){
+                response.data.data.list[i].showAll = false
+                commit(types.SHOPSTORE_LIST, {
+                    list: response.data.data.list,
+                    page: response.data.data.page
+                })
+            }
+        }else{
             commit(types.SHOPSTORE_LIST, {
                 list: response.data.data.list,
                 page: response.data.data.page
