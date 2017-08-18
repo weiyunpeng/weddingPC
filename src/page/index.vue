@@ -6,7 +6,7 @@
             <img class="logo zoomIn" v-lazy="getIndexPhoto.logo || logo">
             <div class="header-con">
                 <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
-                    <img class="user" src="/static/images/user_icon.png">
+                    <img class="user" :src="header" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                 </a>
                 <ul class="zoomIn">
                     <li class="flipInY" v-for="(nav,navNum) in getIndexPhoto.nav" :key="navNum">
@@ -150,7 +150,8 @@ export default {
             index: null,
             banner: '/static/images/unlogin_bg.jpg',
             skinBorder: '2px solid #f2f2f2',
-            logo: '/static/images/logo-3.png'
+            logo: '/static/images/logo-3.png',
+            header: '/static/images/icon-user.png'
         }
     },
     mounted() {
@@ -175,6 +176,16 @@ export default {
                 id: this.photoModal.id
             }
             this.$store.dispatch('qryViewPhoto', ajaxdata)
+        },
+        showHeader(){
+            if(!this.isLogin){
+                this.header = '/static/images/icon-user-hover.png'
+            }
+        },
+        hideHeader(){
+            if(!this.isLogin){
+                this.header = '/static/images/icon-user.png'
+            }
         }
     },
     watch: {
