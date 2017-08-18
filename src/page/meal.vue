@@ -138,6 +138,9 @@ export default {
     padding-bottom: 20px;
     .list_con {
         display: inline-block;
+        width: 374px;
+        height: 319px;
+        overflow: hidden;
         margin: {
             right: 28px;
             top: 20px;
@@ -181,6 +184,7 @@ export default {
                 size: 16px;
             }
             color:#333;
+            width: 372px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;

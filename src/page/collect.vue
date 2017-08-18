@@ -108,6 +108,12 @@ export default {
         }
         this.$store.dispatch('qryMyCollectList', ajaxdata)
     },
+    updated(){
+        let ajaxdata = {
+            type: this.type
+        }
+        this.$store.dispatch('qryMyCollectList', ajaxdata)
+    },
     methods: {
         toggleDD() {
             this.isDd = !this.isDd

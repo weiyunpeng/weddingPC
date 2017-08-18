@@ -56,8 +56,7 @@ export default {
             this.$emit('ajaxfilter',index,this.isHigh);
         },
         qryPrice(){
-            console.log(this.flag.test(this.minPrice))
-            if(!this.minPrice || !this.maxPrice || !this.flag.test(this.minPrice) || !this.flag.test(this.maxPrice) || this.minPrice >= this.maxPrice){
+            if(!this.flag.test(this.minPrice) || !this.flag.test(this.maxPrice) || this.minPrice >= this.maxPrice){
                 const data = {
                     name: '提示',
                     info: {

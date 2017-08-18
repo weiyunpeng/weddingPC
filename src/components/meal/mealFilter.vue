@@ -55,7 +55,7 @@ export default {
             this.$emit('ajaxfilter',index,this.isHigh);
         },
         qryPrice(){
-            if(!this.minPrice || !this.maxPrice || !this.flag.test(this.minPrice) || !this.flag.test(this.maxPrice)){
+            if(!this.flag.test(this.minPrice) || !this.flag.test(this.maxPrice) || this.minPrice >= this.maxPrice){
                 const data = {
                     name: 'delPhoto',
                     info: {

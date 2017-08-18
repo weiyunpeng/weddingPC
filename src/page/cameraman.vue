@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <span>拍摄特点</span>
-                    <label style="line-height:28px;height: 58px;">{{camaraman.tags}}</label>
+                    <label class="camera-spec">{{camaraman.tags}}</label>
                 </li>
             </ul>
         </div>

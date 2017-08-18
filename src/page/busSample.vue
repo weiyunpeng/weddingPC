@@ -112,9 +112,13 @@ export default {
 }
 
 .meal_list {
+    padding-bottom: 20px;
     border-top:1px solid #eee;
     .list_con {
         display: inline-block;
+        width: 374px;
+        height: 319px;
+        overflow: hidden;
         margin: {
             right: 28px;
             top: 20px;

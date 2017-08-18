@@ -140,7 +140,10 @@ export default {
             .tags {
                 position: absolute;
                 top: 0;
-                right: 0
+                right: -80px;
+                width: 300px;
+                height: 50px;
+                overflow: hidden;
             }
             .tag {
                 display: inline-block;
@@ -159,6 +162,10 @@ export default {
             }
         }
         .meal_name {
+            width: 372px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
             margin: {
                 bottom: 6px;
             }
