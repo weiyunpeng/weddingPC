@@ -92,19 +92,24 @@
                                 </ul>
                             </li>
                             <li class="list-con-btn" v-if="item.comments && item.comments.length>2">
-                                 <div v-if="item.showAll"> 
-                                     <i class="icon-angle-act"></i> 
-                                    <a  href="javascript:void(0)" @click="showBtn(busIndex,false)">收 起</a>
-                                 </div> 
-                                 <div v-else-if="!item.showAll"> 
-                                     <i class="icon-angle"></i> 
-                                    <a  href="javascript:void(0)" @click="showBtn(busIndex,true)">展示全部</a>
-                                 </div> 
-                                
+                                <div v-if="item.showAll">
+                                    <a href="javascript:void(0)" @click="showBtn(busIndex,false)">
+                                        <i class="icon-angle-act"></i>
+                                        <span>收 起</span>
+                                    </a>
+    
+                                </div>
+                                <div v-else-if="!item.showAll">
+                                    <a href="javascript:void(0)" @click="showBtn(busIndex,true)">
+                                        <i class="icon-angle"></i>
+                                        <span>展示全部</span>
+                                    </a>
+                                </div>
+    
                             </li>
                         </ul>
                     </li>
-                    
+    
                 </ul>
             </div>
         </div>
@@ -182,10 +187,10 @@ export default {
             this.ajaxdata.maxPrice = maxPrice
             this.$store.dispatch('qryStoreList', this.ajaxdata)
         },
-        showBtn(busIndex,showAll){
-            let data={
-                index:busIndex,
-                showAll :showAll
+        showBtn(busIndex, showAll) {
+            let data = {
+                index: busIndex,
+                showAll: showAll
             }
             this.$store.dispatch('shopListChange', data)
         }

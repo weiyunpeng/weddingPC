@@ -7,7 +7,9 @@
                     <div class="user-nike">
                         <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
                         <p>{{getUser.nike}}</p>
-                        <label v-if="style&&style.length>0">我的收藏</label>
+                        <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
+                            <label class="col-name" v-if="style&&style.length>0">我的收藏</label>
+                        </router-link>
                     </div>
                     <ul class="user_category user_category_style">
                         <li v-for="(item,s) in style" :key="s">
@@ -234,7 +236,7 @@ export default {
         font-size: 22px;
         line-height: 27.28px;
     }
-    label {
+    .col-name {
         position: relative;
         left: 18px;
         top: 10px;
@@ -242,6 +244,11 @@ export default {
         color: #b2b2b2;
         font-size: 14px;
         line-height: 27.28px;
+    }
+    .col-name:hover{
+        color: #ff4e6b;
+        -webkit-transition: all .1s ease;
+        transition: all .1s ease;
     }
 }
 

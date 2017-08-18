@@ -278,7 +278,7 @@ export default {
     bottom: -6px;
     color: #999999;
     font-size: 14px;
-    line-height: 28px;
+    line-height: 24px;
 }
 
 .water_img {
