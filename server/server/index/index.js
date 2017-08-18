@@ -26,7 +26,13 @@ function run(Request, Response)
  * @param {Object} Response
  */
 function comments(Params, Request, Response) {
-    var fileName = 'index/data/comments.json';
+    var page = Params.page;
+    if(page == 1){
+        var fileName = 'index/data/comments.json';
+    }else{
+        var fileName = 'index/data/comments2.json';
+    }
+    
     MAIN.responseStub(Response,fileName);
 }
 

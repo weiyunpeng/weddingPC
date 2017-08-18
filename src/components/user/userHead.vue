@@ -145,7 +145,6 @@ export default {
             }
         }
         window.onscroll = catchScroll
-        // this.onscroll(window, 'scroll', catchHeadScroll);
     },
     methods: {
         /**
@@ -153,6 +152,11 @@ export default {
          */
         seaBtn() {
             this.$router.push({ name: 'comment' ,query:{keyword:this.keyword}})
+            let data = {
+                keyword: this.keyword
+            }
+            this.$store.dispatch('shopListClear')
+            this.$store.dispatch('qryStoreList', data)
         },
         logout() {
             this.$store.dispatch('loginOut')

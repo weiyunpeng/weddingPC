@@ -55,13 +55,14 @@ export default {
     },
     methods: {
         clickCurrent: function(idx) {
-            if( this.pageInfo.current != idx && idx > 0 && idx < this.page) {
+            if( this.pageInfo.current != idx && idx > 0 && idx <= this.page) {
+                console.log(idx)
                 this.pageInfo.current = idx;
                 this.$emit('change',this.pageInfo.current);
             }
         },
         clickSkip:function(){
-            if( this.pageInfo.current != this.skipPage && this.skipPage > 0 && this.skipPage < this.page) {
+            if( this.pageInfo.current != this.skipPage && this.skipPage > 0 && this.skipPage <= this.page) {
                 this.pageInfo.current = this.skipPage;
                 this.$emit('skip',this.skipPage);
             }

@@ -117,7 +117,7 @@ export default {
     },
     watch: {
         mealPage() {
-            this.pageInfo.current = this.mealPage.currentPage + 1
+            this.pageInfo.current = this.mealPage.currentPage
             this.pageInfo.total = this.mealPage.totalCount
             this.pageInfo.pagenum = this.mealPage.pageSize
         }

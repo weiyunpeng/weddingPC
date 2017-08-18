@@ -3,6 +3,7 @@
     "msg": "success",
     "data": {
         "bus_info": {
+            "id":1,
             "store_name": "郑州艾维美婚纱摄影(国贸360店)",
             "isYes": true,
             "isVip": true,

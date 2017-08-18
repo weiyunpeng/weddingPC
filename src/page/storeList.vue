@@ -48,6 +48,9 @@
                 </ul>
             </div>
         </div>
+        <div v-if="!thisMealList || thisMealList.length == 0" class="no-data">
+            <img src="/static/images/icon-no-data-1.png">
+        </div>
     </div>
 </template>
 
