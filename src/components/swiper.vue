@@ -2,7 +2,7 @@
     <transition name="swiper_modal">
         <div class="swiper_modal text-center">
             <div class="swiper_modal_dialog panel">
-                <img @click="close" class="close_btn2" src="/static/images/icon-no-btn.png">
+                <img @click="close" class="close_btn" src="/static/images/icon-close-hover.png">
                 <swiper :options="swiperOption" ref="mySwiper">
                     <swiper-slide class="photo_fl fl" v-for="(img,index) in swiperImgs" v-bind:key="index">
                         <img :src="img" height="475">

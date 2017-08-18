@@ -164,7 +164,7 @@ export default {
         },
         userLogin(){
             if(!this.isLogin){
-                window.location.href = 'http://dev.hunjia.qqdayu.com/login'
+                window.location.href = '/login'
             }
         },
         showHeader(){
@@ -198,7 +198,7 @@ export default {
     }
     .nav {
         position: relative;
-        top: 80px;
+        top: 75px;
         height: auto;
         width: 100%;
         li {

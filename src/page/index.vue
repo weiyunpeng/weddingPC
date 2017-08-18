@@ -5,7 +5,7 @@
             <div class="i-header" :style="{borderBottom:skinBorder}">
             <img class="logo zoomIn" v-lazy="logo">
             <div class="header-con">
-                <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
+                <a href="/login" target="_blank">
                     <img class="user" :src="header" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                 </a>
                 <ul class="zoomIn">

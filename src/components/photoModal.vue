@@ -13,8 +13,8 @@
                                 {{item.fav_num}}
                             </span>
                         </swiper-slide>
-                        <div class="swiper-button-prev" slot="button-prev" @click="changeWaterfall()"></div>
-                        <div class="swiper-button-next" slot="button-next" @click="changeWaterfall()"></div>
+                        <div class="swiper-button-prev" slot="button-prev" @click="changeWaterPrev()"></div>
+                        <div class="swiper-button-next" slot="button-next" @click="changeWaterNext()"></div>
                     </swiper>
                     <div class="modal-details">
                         <span>{{photoInfo.time}}</span>
@@ -109,7 +109,10 @@ export default {
             this.selected = index
             this.swiper.slideTo(index, 1000, false)
         },
-        changeWaterfall(){
+        changeWaterPrev(){
+            this.selected = this.swiper.realIndex-1
+        },
+        changeWaterNext(){
             this.selected = this.swiper.realIndex+1
         },
         photoLikeBtn(id, fav, flowNum) {
@@ -244,6 +247,7 @@ export default {
 
 .close_btn {
     position: absolute;
+    z-index: 9999;
     top: 7px;
     right: 35px;
     cursor: pointer;
