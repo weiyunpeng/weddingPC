@@ -36,7 +36,7 @@ export default {
         return {
             skin:'#fff',
             skinBorder:'2px solid #e4e4e4',
-            logo:'/static/images/logo-2.png',
+            logo:'/static/images/icon-logo-1.png',
             keyword:'皮皮虾，我们走'
         }
     },

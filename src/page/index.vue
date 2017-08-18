@@ -3,7 +3,7 @@
         <!-- <div class="i-header" :style="{
                 background:'url('+ getIndexPhoto.banner +' ) left center no-repeat', borderBottom:skinBorder}"> -->
             <div class="i-header" :style="{borderBottom:skinBorder}">
-            <img class="logo zoomIn" v-lazy="getIndexPhoto.logo || logo">
+            <img class="logo zoomIn" v-lazy="logo">
             <div class="header-con">
                 <a href="http://dev.hunjia.qqdayu.com/login" target="_blank">
                     <img class="user" :src="header" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
@@ -150,7 +150,7 @@ export default {
             index: null,
             banner: '/static/images/unlogin_bg.jpg',
             skinBorder: '2px solid #f2f2f2',
-            logo: '/static/images/logo-3.png',
+            logo: '/static/images/icon-logo-2.png',
             header: '/static/images/icon-user.png'
         }
     },

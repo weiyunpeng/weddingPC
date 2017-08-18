@@ -109,8 +109,8 @@ export default {
             HNavOffset: 300,
             skin: '#fff',
             skinBorder: '3px solid #e4e4e4',
-            logoTop: '/static/images/logo-2.png',
-            logo: '/static/images/logo-4.png',
+            logoTop: '/static/images/icon-logo-1.png',
+            logo: '/static/images/icon-logo-3.png',
             keyword: null || this.$route.query.keyword,
             header: '/static/images/icon-user.png',
             uid:null,
@@ -375,18 +375,20 @@ export default {
 
 .user-header {
     width: 100%;
-    height: 68px;
+    height: 78px;
     border-bottom: 2px solid #ff4e6b;
     position: fixed;
     top: 0;
     z-index: 9999;
     .logo {
         position: relative;
+        top: 10px;
         height: auto;
         float: left;
     }
     .nav {
         position: relative;
+        top: 10px;
         line-height: 68px;
         height: auto;
         text-align: center;
