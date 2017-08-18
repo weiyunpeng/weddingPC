@@ -144,6 +144,7 @@ export default {
                 page: 1,
                 method: 0,
                 priceToSort: 0,
+                keyword: null || this.$route.query.keyword,
             },
             pageInfo: {
                 total: 0,  // 记录总条数
@@ -155,6 +156,7 @@ export default {
         }
     },
     mounted() {
+        this.$store.dispatch('shopListClear')
         this.$store.dispatch('qryStoreList', this.ajaxdata)
     },
     methods: {

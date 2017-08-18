@@ -19,7 +19,7 @@
                     <div class="modal-details">
                         <span>{{photoInfo.time}}</span>
                         <label>{{photoInfo.desc}}</label>
-                        <label>你也可以联系  喜宝 （微信号：jiehun5259）来分享你的结婚故事<a v-if="photoInfo.comment_url" :href="photoInfo.comment_url" target="_blank">TA的拍摄历程>>></a></label>
+                        <label style="display:block">你也可以联系  喜宝 （微信号：jiehun5259）来分享你的结婚故事<a v-if="photoInfo.comment_url" :href="photoInfo.comment_url" target="_blank">TA的拍摄历程>>></a></label>
                     </div>
                 </div>
     
@@ -172,6 +172,7 @@ export default {
         },
         getViewPhotoInfo() {
             this.photoInfo = this.getViewPhotoInfo
+            console.log(this.photoInfo)
         }
     }
 }
@@ -307,5 +308,11 @@ export default {
         text-decoration: underline;
         color: #ff506d;
     }
+}
+.swiper-button-prev{
+    background-image: url("/static/images/icon-arrow-prev.png") !important
+}
+.swiper-button-next{
+    background-image: url("/static/images/icon-arrow-next.png") !important
 }
 </style>

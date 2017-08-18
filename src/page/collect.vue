@@ -14,7 +14,8 @@
                         </dd>
                     </dt>
                     <dt @click="logout()">
-                        <a href="javascript:void(0)"><i class="icon_logout"></i>退出登录</a>
+                        <a href="javascript:void(0)">
+                            <i class="icon_logout"></i>退出登录</a>
                     </dt>
                 </dl>
             </div>
@@ -80,31 +81,30 @@ export default {
     },
     computed: {
         ...mapGetters({
-            getCollectList:'getCollectList',
-            getCollectUserInfo:'getCollectUserInfo'
+            getCollectList: 'getCollectList',
+            getCollectUserInfo: 'getCollectUserInfo'
         }),
         ...mapActions({
-            qryMyCollectList:'qryMyCollectList'
+            qryMyCollectList: 'qryMyCollectList'
         })
     },
     data() {
         return {
-            uid:this.$route.query.uid,
-            type:this.$route.query.type,
+            uid: this.$route.query.uid,
+            type: this.$route.query.type,
             show: false,
             isDd: true,
             isTag: 0,
             photoModal: {},
-            userInfo:{},
-            category:{},
-            list:[],
-            index:0
+            userInfo: {},
+            category: {},
+            list: [],
+            index: 0
         }
     },
     mounted() {
-        let ajaxdata={
-            uid:this.uid,
-            type:this.type
+        let ajaxdata = {
+            type: this.type
         }
         this.$store.dispatch('qryMyCollectList', ajaxdata)
     },
@@ -114,20 +114,21 @@ export default {
         },
         changeTab(c) {
             this.isTag = c
-            let ajaxdata={
-                uid:this.uid,
-                type:this.isTag
+            let ajaxdata = {
+                uid: this.uid,
+                type: this.isTag
             }
             this.$store.dispatch('qryMyCollectList', ajaxdata)
         },
-        showAll(ln){
-            let obj = this.list[ln]
-            obj.showall = !obj.showall
-            this.$set(this.list, ln, obj);
+        showAll(ln) {
+            this.$store.dispatch('collectListChange', ln)
+            // let obj = this.list[ln]
+            // obj.showall = !obj.showall
+            // this.$set(this.list, ln, obj);
         },
         showPhotoModal(img, m) {
             this.photoModal = img;
-            this.index=m
+            this.index = m
             this.show = true;
             const ajaxdata = {
                 id: this.photoModal.id
@@ -140,11 +141,11 @@ export default {
         }
     },
     watch: {
-        getCollectUserInfo(){
+        getCollectUserInfo() {
             this.userInfo = this.getCollectUserInfo
             this.category = this.getCollectUserInfo.category
         },
-        getCollectList(){
+        getCollectList() {
             this.list = this.getCollectList
         }
     },
@@ -153,184 +154,187 @@ export default {
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-.c-user {
-    position: relative;
-    top: 20px;
-    width: 185px;
-    height: 600px;
-    background: #fff;
-    text-align: center;
-    dl {
+.collect {
+    margin-bottom: 65px;
+
+    .c-user {
         position: relative;
-        top: 5px;
-        dt {
-            position: relative;
-            font-size: 14px;
-            color: #262626;
-            line-height: 27.28px;
-            .icon_collage {
-                left: 39px;
-                top: 1px;
-            }
-            .icon_logout {
-                left: 39px;
-                top: 1px;
-            }
-            dd {
-                background: #ff4e6b;
-                border-radius: 5px;
-                font-size: 14px;
-                color: #ffffff;
-                margin: 5px 0;
-                height: 36px;
-                line-height: 36px;
-            }
-        }
-    }
-}
-
-.c-user-head {
-    margin-top: 20px;
-}
-
-.c-user-name {
-    font-size: 20px;
-    color: #ff4e6b;
-    line-height: 27.28px;
-    margin: 10px 0;
-}
-
-.c-type-tag {
-    position: relative;
-    top: 20px;
-    width: 1000px;
-    margin-left: 15px;
-    li {
-        display: inline-block;
-        color: #4c4c4c;
-        font-size: 14px;
-        height: 28px;
-        line-height: 27.28px;
-        border-radius: 15px;
-        width: 91px;
-        text-align: center;
-        margin-right: 15px;
-        border: 1px solid #f2f2f2;
-        -webkit-transition: all .3s ease;
-        transition: all .3s ease;
-    }
-    li:hover {
-        border: 1px solid #b3b3b3;
-    }
-    .cur {
-        border: 1px solid #b3b3b3;
-    }
-}
-
-.c-type-list {
-    position: relative;
-    top: 40px;
-    width: 1000px;
-    height: auto;
-    margin-left: 15px;
-    li {
-        width: 100%;
-        padding: 10px;
-        overflow: hidden;
+        top: 20px;
+        width: 185px;
+        height: 600px;
         background: #fff;
-        margin-top: 10px;
-        .c-type-header {
-            width: 100%;
-            display: inline-block;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #e6e6e6;
-            .c-type-header-name {
-                color: #262626;
-                font-size: 18px;
-                line-height: 27.28px;
-            }
-            .c-type-router {
-                color: #b2b2b2;
-                font-size: 12px;
-                line-height: 27.28px;
-            }
-            .line {
-                float: left;
-                width: 150px;
-                border: 1px solid #ffa9b7;
-                height: 10px;
-                border-radius: 10px;
-                background: #ffffff;
-                margin: 8px 7px 0 20px;
-            }
-            .line-store {
-                margin-top: 40px;
-            }
-            .percent {
-                float: left;
-                color: #808080;
+        text-align: center;
+        dl {
+            position: relative;
+            top: 5px;
+            dt {
+                position: relative;
                 font-size: 14px;
+                color: #262626;
                 line-height: 27.28px;
-            }
-
-            .bar {
-                background: #ffa9b7;
-                float: left;
-                height: 100%;
-                border-radius: 10px;
-            }
-
-            .bar {
-                animation: animate-positive 2s;
+                .icon_collage {
+                    left: 39px;
+                    top: 1px;
+                }
+                .icon_logout {
+                    left: 39px;
+                    top: 1px;
+                }
+                dd {
+                    background: #ff4e6b;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    color: #ffffff;
+                    margin: 5px 0;
+                    height: 36px;
+                    line-height: 36px;
+                }
             }
         }
     }
-    .c-type-photo {
+
+    .c-user-head {
+        margin-top: 20px;
+    }
+
+    .c-user-name {
+        font-size: 20px;
+        color: #ff4e6b;
+        line-height: 27.28px;
+        margin: 10px 0;
+    }
+
+    .c-type-tag {
         position: relative;
-        width: 100%;
-        ul {
-            overflow: hidden;
-            width: 100%;
-            height: 270px;
-        }
-        .active{
-            height: auto;
-            padding-bottom: 50px;
-        }
+        top: 20px;
+        width: 1000px;
+        margin-left: 15px;
         li {
-            width: auto;
-            float: left;
-            padding: 8px 5px 0 0;
-            .img-hover {
-                width: 320px;
-                height: 200px;
-                overflow: hidden;
-            }
-            img {
-                cursor: zoom-in;
-                transition: all 0.6s;
-            }
-            img:hover {
-                transform: scale(1.4);
+            display: inline-block;
+            color: #4c4c4c;
+            font-size: 14px;
+            height: 28px;
+            line-height: 27.28px;
+            border-radius: 15px;
+            width: 91px;
+            text-align: center;
+            margin-right: 15px;
+            border: 1px solid #f2f2f2;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+        li:hover {
+            border: 1px solid #b3b3b3;
+        }
+        .cur {
+            border: 1px solid #b3b3b3;
+        }
+    }
+
+    .c-type-list {
+        position: relative;
+        top: 40px;
+        width: 1000px;
+        height: auto;
+        margin-left: 15px;
+        li {
+            width: 100%;
+            padding: 10px;
+            overflow: hidden;
+            background: #fff;
+            margin-top: 10px;
+            .c-type-header {
+                width: 100%;
+                display: inline-block;
+                padding-bottom: 12px;
+                border-bottom: 1px solid #e6e6e6;
+                .c-type-header-name {
+                    color: #262626;
+                    font-size: 18px;
+                    line-height: 27.28px;
+                }
+                .c-type-router {
+                    color: #b2b2b2;
+                    font-size: 12px;
+                    line-height: 27.28px;
+                }
+                .line {
+                    float: left;
+                    width: 150px;
+                    border: 1px solid #ffa9b7;
+                    height: 10px;
+                    border-radius: 10px;
+                    background: #ffffff;
+                    margin: 8px 7px 0 20px;
+                }
+                .line-store {
+                    margin-top: 40px;
+                }
+                .percent {
+                    float: left;
+                    color: #808080;
+                    font-size: 14px;
+                    line-height: 27.28px;
+                }
+
+                .bar {
+                    background: #ffa9b7;
+                    float: left;
+                    height: 100%;
+                    border-radius: 10px;
+                }
+
+                .bar {
+                    animation: animate-positive 2s;
+                }
             }
         }
-        li:last-child {
-            position: absolute;
-            bottom: 0;
+        .c-type-photo {
+            position: relative;
             width: 100%;
-            text-align: center;
-            margin-top: 10px;
-            // filter:alpha(Opacity=90);
-            // -moz-opacity:0.9;
-            // opacity: 0.9;
-            a {
-                display: block;
-                font-size: 12px;
-                height: 28px;
-                line-height: 28px;
-                border-top: 1px solid #e6e6e6;
-                width: 156px;
-                margin: 0 auto;
+            ul {
+                overflow: hidden;
+                width: 100%;
+                height: 270px;
+            }
+            .active {
+                height: auto;
+                padding-bottom: 50px;
+            }
+            li {
+                width: auto;
+                float: left;
+                padding: 8px 5px 0 0;
+                .img-hover {
+                    width: 320px;
+                    height: 200px;
+                    overflow: hidden;
+                }
+                img {
+                    cursor: zoom-in;
+                    transition: all 0.6s;
+                }
+                img:hover {
+                    transform: scale(1.4);
+                }
+            }
+            li:last-child {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                margin-top: 10px; // filter:alpha(Opacity=90);
+                // -moz-opacity:0.9;
+                // opacity: 0.9;
+                a {
+                    display: block;
+                    font-size: 12px;
+                    height: 28px;
+                    line-height: 28px;
+                    border-top: 1px solid #e6e6e6;
+                    width: 156px;
+                    margin: 0 auto;
+                }
             }
         }
     }

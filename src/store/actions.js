@@ -458,4 +458,7 @@ export const qryMyCollectList = ({ commit },data) => {
             console.log(error)
         });
 };
+export const collectListChange = ({ commit },data) => {
+    commit(types.COLLECT_LIST_CHANGE,data)
+};
 //----------------------------------------------------------------------------------------------

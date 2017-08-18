@@ -34,7 +34,7 @@
                         <img :src="header" class="circle" width="30" height="30" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                         <ul class="nav_user_ul" v-show="isLogin">
                             <li>
-                                <router-link :to="{ name: 'collect', query: {uid:uid,type:0}}" target="_blank">
+                                <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
                                     <i class="icon_collage"></i>我的收藏
                                 </router-link>
                             </li>
@@ -83,7 +83,7 @@
                         <img :src="header" class="circle" width="30" height="30" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                         <ul class="nav_user_ul" v-show="isLogin">
                             <li>
-                                <router-link to="/collect" target="_blank">
+                                <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
                                     <i class="icon_collage"></i>我的收藏
                                 </router-link>
                             </li>
@@ -111,7 +111,7 @@ export default {
             skinBorder: '3px solid #e4e4e4',
             logoTop: '/static/images/logo-2.png',
             logo: '/static/images/logo-4.png',
-            keyword: null,
+            keyword: null || this.$route.query.keyword,
             header: '/static/images/icon-user.png',
             uid:null,
             isLogin:null,
@@ -152,12 +152,7 @@ export default {
          * 搜商家按钮事件
          */
         seaBtn() {
-            this.$router.push({ name: 'comment' })
-            let data = {
-                keyword: this.keyword
-            }
-            this.$store.dispatch('shopListClear')
-            this.$store.dispatch('qryStoreList', data)
+            this.$router.push({ name: 'comment' ,query:{keyword:this.keyword}})
         },
         logout() {
             this.$store.dispatch('loginOut')
