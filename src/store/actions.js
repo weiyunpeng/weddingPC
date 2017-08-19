@@ -349,7 +349,10 @@ export const qryViewPhoto = ({ commit },data) => {
         }
     })
         .catch(function (error) {
-            console.log(error)
+            showMsg({commit}, {
+                content: error.response.data.errorMsg,
+                type: 'danger'
+            })
         });
 };
 //----------------------------------------------------------------------------------------------

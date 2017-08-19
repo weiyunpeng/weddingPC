@@ -40,11 +40,11 @@
                 <waterfall :line="line" :watch="getPhotoListFill" :line-gap="300" style="margin-top:60px">
                     <waterfall-slot v-for="(item, flowNum) in getPhotoListFill" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
-                            <div class="img-hover" @click="showPhotoModal(item, flowNum)">
+                            <div class="img-hover" @click="showPhotoModal(item, flowNum,true)">
                                 <img :src="item.img" :width="300">
                             </div>
                             <div class="photo_info">
-                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
+                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum,true)">
                                     <i v-if="item.is_fav" class="icon_like_act"></i>
                                     <i v-if="!item.is_fav" class="icon_like"></i>
                                     {{item.fav_num}}
@@ -152,7 +152,7 @@ export default {
         }
     },
     methods: {
-        photoLikeBtn(id, fav, flowNum) {
+        photoLikeBtn(id, fav, flowNum,isFill) {
             if (this.isAuth) {
                 // let obj = this.getPhotoList[flowNum]
                 // obj.is_fav = !obj.is_fav
@@ -163,7 +163,8 @@ export default {
                         id: id,
                         uid: this.uid,
                         order:flowNum,
-                        is_fav:fav
+                        is_fav:fav,
+                        isFill:isFill
                     }
                     this.$store.dispatch('collectPhoto', ajaxdata)
                 } else if (fav == 1) {
@@ -172,7 +173,8 @@ export default {
                         id: id,
                         uid: this.uid,
                         order:flowNum,
-                        is_fav:fav
+                        is_fav:fav,
+                        isFill:isFill
                     }
                     this.$store.dispatch('cancelCollectPhoto', ajaxdata)
                 } else {
@@ -189,8 +191,11 @@ export default {
                 this.$store.dispatch('showModal', data);
             }
         },
-        showPhotoModal(item, index) {
+        showPhotoModal(item, index,isFill) {
             this.photoModal = item;
+            if(isFill){
+                this.photoModal.isFill = isFill;
+            }
             this.orderNum = index;
             this.show = true;
             const ajaxdata = {

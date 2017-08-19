@@ -31,11 +31,19 @@ const mutations = {
     },
     [PHOTO_LIKE_USER](state, data){
         if(state.photoList[data.order]){
-            const obj = state.photoList[data.order]
-            obj.is_fav = !obj.is_fav
-            state.photoList[data.order].is_fav = obj.is_fav
-            state.photoList[data.order].fav_num++
-            state.photoList.splice(data.order, 1, obj)
+            if(data.isFill){
+                const obj = state.photoListFill[data.order]
+                obj.is_fav = !obj.is_fav
+                state.photoListFill[data.order].is_fav = obj.is_fav
+                state.photoListFill[data.order].fav_num++
+                state.photoListFill.splice(data.order, 1, obj)
+            }else{
+                const obj = state.photoList[data.order]
+                obj.is_fav = !obj.is_fav
+                state.photoList[data.order].is_fav = obj.is_fav
+                state.photoList[data.order].fav_num++
+                state.photoList.splice(data.order, 1, obj)
+            }
         }
 
         if(state.list[data.index]){
@@ -48,11 +56,19 @@ const mutations = {
     },
     [CANCEL_PHOTO_LIKE_USER](state, data){
         if(state.photoList[data.order]){
-            const obj = state.photoList[data.order]
-            obj.is_fav = !obj.is_fav
-            state.photoList[data.order].is_fav = obj.is_fav
-            state.photoList[data.order].fav_num--
-            state.photoList.splice(data.order, 1, obj)
+            if(data.isFill){
+                const obj = state.photoListFill[data.order]
+                obj.is_fav = !obj.is_fav
+                state.photoListFill[data.order].is_fav = obj.is_fav
+                state.photoListFill[data.order].fav_num--
+                state.photoListFill.splice(data.order, 1, obj)
+            }else{
+                const obj = state.photoList[data.order]
+                obj.is_fav = !obj.is_fav
+                state.photoList[data.order].is_fav = obj.is_fav
+                state.photoList[data.order].fav_num--
+                state.photoList.splice(data.order, 1, obj)
+            }
         }
 
         if(state.list[data.index]){

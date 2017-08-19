@@ -130,7 +130,8 @@ export default {
                         uid: token.uid,
                         index:flowNum,
                         order:this.order,
-                        is_fav:fav
+                        is_fav:fav,
+                        isFill:this.photoModal.isFill
                     }
                     this.$store.dispatch('collectPhoto', ajaxdata)
                 } else if (fav == 1) {
@@ -140,7 +141,8 @@ export default {
                         uid: token.uid,
                         index:flowNum,
                         order:this.order,
-                        is_fav:fav
+                        is_fav:fav,
+                        isFill:this.photoModal.isFill
                     }
                     this.$store.dispatch('cancelCollectPhoto', ajaxdata)
                 } else {
