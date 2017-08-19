@@ -93,6 +93,9 @@ export default {
 }
 .left_zoom {
     float: left;
+    .big_img{
+        text-align: center;
+    }
     .small_img {
       position: relative;
       margin: {
