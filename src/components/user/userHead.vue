@@ -74,7 +74,7 @@
                 </div>
                 <div class="user-search clearfix">
                     <div class="nav_search">
-                        <input type="text" v-model.trim="keyword" placeholder="" class="nav_form" @keyup.enter="seaBtn">
+                        <input type="text" v-model.trim="keyword" placeholder="搜商家" class="nav_form" @keyup.enter="seaBtn">
                         <a href="javascript:void(0)" class="focus-search" @click="seaBtn">
                             <img src="/static/images/icon_search.png">
                         </a>

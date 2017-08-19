@@ -38,6 +38,7 @@ export const getIndexPhoto = state => state.index;
 export const getViewPhoto = state => state.viewPhoto.list;
 export const getViewPhotoInfo = state => state.viewPhoto.photoInfo;
 export const getPhotoList = state => state.viewPhoto.photoList;
+export const getPhotoListFill = state => state.viewPhoto.photoListFill;
 export const getPhotoStatus = state => state.viewPhoto.status;
 
 export const getGuideList = state => state.guide.list;

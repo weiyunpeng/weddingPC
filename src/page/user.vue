@@ -37,13 +37,33 @@
                         </li>
                     </ul>
                 </div>
+                <waterfall :line="line" :watch="getPhotoListFill" :line-gap="300">
+                    <waterfall-slot v-for="(item, fillNum) in getPhotoListFill" :width="item.width" :height="item.height" :order="flowNum" :key="fillNum" move-class="photo_move">
+                        <div class="panel photo_box hover_sh">
+                            <div class="img-hover" @click="showPhotoModal(item, fillNum)">
+                                <img :src="item.img" :width="300">
+                            </div>
+                            <div class="photo_info">
+                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,fillNum)">
+                                    <i v-if="item.is_fav" class="icon_like_act"></i>
+                                    <i v-if="!item.is_fav" class="icon_like"></i>
+                                    {{item.fav_num}}
+                                </span>
+                                <ul>
+                                    <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                    </waterfall-slot>
+                </waterfall>
             </div>
             <div class="user-water">
-                <waterfall :line="line" :watch="getPhotoList" :line-gap="280" :min-line-gap="250">
+                <waterfall :line="line" :watch="getPhotoList" :line-gap="290">
                     <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
-                                <img :src="item.img" :width="280">
+                                <img :src="item.img" :width="290">
                             </div>
                             <div class="photo_info">
                                 <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
@@ -86,6 +106,7 @@ export default {
         ...mapGetters({
             getUser: 'getUser',
             getPhotoList: 'getPhotoList',
+            getPhotoListFill: 'getPhotoListFill',
             getPhotoStatus: 'getPhotoStatus',
         }),
         ...mapActions({
@@ -223,7 +244,7 @@ export default {
     position: relative;
     top: 5px;
     margin-bottom: 20px;
-    left: 54px;
+    left: 20px;
     overflow: hidden;
 }
 
