@@ -37,14 +37,14 @@
                         </li>
                     </ul>
                 </div>
-                <waterfall :line="line" :watch="getPhotoListFill" :line-gap="300">
-                    <waterfall-slot v-for="(item, fillNum) in getPhotoListFill" :width="item.width" :height="item.height" :order="flowNum" :key="fillNum" move-class="photo_move">
+                <waterfall :line="line" :watch="getPhotoListFill" :line-gap="300" style="margin-top:60px">
+                    <waterfall-slot v-for="(item, flowNum) in getPhotoListFill" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
-                            <div class="img-hover" @click="showPhotoModal(item, fillNum)">
+                            <div class="img-hover" @click="showPhotoModal(item, flowNum)">
                                 <img :src="item.img" :width="300">
                             </div>
                             <div class="photo_info">
-                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,fillNum)">
+                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
                                     <i v-if="item.is_fav" class="icon_like_act"></i>
                                     <i v-if="!item.is_fav" class="icon_like"></i>
                                     {{item.fav_num}}

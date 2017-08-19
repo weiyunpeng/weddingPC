@@ -29,7 +29,7 @@
                 </div>
                 <div class="clearfix c-type-list">
                     <ul>
-                        <li v-for="(item,ln) in list" :key="ln">
+                        <li v-for="(item,ln) in getCollectList" :key="ln">
                             <div class="c-type-header">
                                 <div class="fl c-type-header-name">{{item.name}}</div>
                                 <div class="line fl">
@@ -58,7 +58,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div v-if="list && list.length==0" class="no-data">
+                    <div v-if="getCollectList && getCollectList.length==0" class="no-data">
                         <img src="/static/images/icon-no-data-2.png">
                     </div>
                 </div>
@@ -98,17 +98,10 @@ export default {
             photoModal: {},
             userInfo: {},
             category: {},
-            list: [],
             index: 0
         }
     },
     mounted() {
-        let ajaxdata = {
-            type: this.type
-        }
-        this.$store.dispatch('qryMyCollectList', ajaxdata)
-    },
-    updated(){
         let ajaxdata = {
             type: this.type
         }
@@ -150,9 +143,6 @@ export default {
         getCollectUserInfo() {
             this.userInfo = this.getCollectUserInfo
             this.category = this.getCollectUserInfo.category
-        },
-        getCollectList() {
-            this.list = this.getCollectList
         }
     },
     beforeDestroy() {
