@@ -54,7 +54,6 @@
                                 </ul>
                             </div>
                         </div>
-    
                     </waterfall-slot>
                 </waterfall>
             </div>
@@ -126,7 +125,7 @@ export default {
             orderNum: null,
             uid: null,
             page: 1,
-            grow: [2, 2, 2],
+            grow: [2, 2, 3],
             line: 'v'
         }
     },

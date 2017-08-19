@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from './../store/index'
 const qs = require('querystring');
 
 axios.defaults.timeout = 50000;
@@ -25,7 +26,12 @@ axios.interceptors.response.use(function (response) {
     }
     if(code==-1){
         //说明服务端错误
-        alert('服务端异常：'+response.data.msg)
+        const data = {
+            content: response.data.msg,
+            type: 'info'
+        };
+        store.dispatch('showMsg',data);
+        return false
     }
     return response;
 }, function (error) {
