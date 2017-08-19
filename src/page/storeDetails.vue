@@ -54,7 +54,7 @@
                         <label class="fl">媒体评定语：</label>
                         <div class="media_comment fl">
                             {{mediaInfo.comment}}
-                            <a :href="mediaInfo.comment_url" class="comment_url" target="_blank">[查看详情]</a>
+                            <a :href="mediaInfo.comment_url" class="comment_url" v-if="mediaInfo.comment_url" target="_blank">[查看详情]</a>
                         </div>
                     </div>
                     <div class="code">
