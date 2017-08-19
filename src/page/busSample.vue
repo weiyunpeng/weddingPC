@@ -29,25 +29,24 @@
         <com-tag @ajaxTag="ajaxTag"></com-tag>
         <div class="meal-con">
             <ul class="meal_list container">
-                <li class="list_con" v-for="item in busSampleList" :key="item.id">
+                <li class="list_con" v-for="(item,index) in busSampleList" :key="item.id">
                     <div class="shop">
-                        <router-link :to="{ name: 'packageDetails', query: {busId:busSampleStore.id,mealId:item.id}}" target="_blank">
-                            <div class="img">
-                                <img class="shop_logo" v-lazy="item.logo" width="374" height="250">
-                            </div>
-                            <p class="meal_name">
-                                {{item.name}}
-                            </p>
-                            <div class="tags">
-                                <ul>
-                                    <li v-for="(tag,index) in item.tags" :key="index" class="tag">{{tag}}</li>
-                                </ul>
-                            </div>
-                        </router-link>
+                        <div class="img-hover">
+                            <img class="shop_logo" v-lazy="item.logo" width="374" height="250" @click="showPhotoModal(item, index)">
+                        </div>
+                        <p class="meal_name">
+                            {{item.name}}
+                        </p>
+                        <div class="tags">
+                            <ul>
+                                <li v-for="(tag,index) in item.tags" :key="index" class="tag">{{tag}}</li>
+                            </ul>
+                        </div>
                     </div>
                 </li>
             </ul>
         </div>
+        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :order="orderNum"></com-photoModal>
     </div>
 </template>
 
@@ -55,11 +54,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import header from './../components/headerDetails'
 import tag from "./../components/business/sampleTag"
+import photoModal from './../components/photoModal'
 
 export default {
     components: {
         comHeader: header,
-        comTag: tag
+        comTag: tag,
+        'comPhotoModal': photoModal,
     },
     computed: {
         ...mapGetters({
@@ -76,6 +77,9 @@ export default {
             ajaxdata: {
                 id: this.$route.query.sampleId
             },
+            show: false,
+            photoModal: {},
+            orderNum: null,
         }
     },
     mounted() {
@@ -89,7 +93,20 @@ export default {
         ajaxTag(data) {
             this.ajaxdata = this.objExtend(this.ajaxdata, data, false);
             this.$store.dispatch('qryBusSample', this.ajaxdata)
-        }
+        },
+        showPhotoModal(item, index) {
+            this.photoModal = item;
+            if(!this.photoModal.img){
+                this.photoModal.img = item.logo;
+            }
+            this.orderNum = index;
+            this.show = true;
+            const ajaxdata = {
+                id: this.photoModal.id,
+                type: 1
+            }
+            this.$store.dispatch('qryViewPhoto', ajaxdata)
+        },
     },
     watch: {
     },

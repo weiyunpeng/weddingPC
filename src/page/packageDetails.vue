@@ -100,7 +100,7 @@
                                 </dl>
                                 <dl class="clearfix">
                                     <dt class="fl">服装说明</dt>
-                                    <dd class="fl">{{mealDetails.clothes_explain}}套服装</dd>
+                                    <dd class="fl">{{mealDetails.clothes_explain}}</dd>
                                 </dl>
                                 <dl class="clearfix">
                                     <dt class="fl">造型数量</dt>
