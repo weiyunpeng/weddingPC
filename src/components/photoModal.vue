@@ -59,7 +59,7 @@ export default {
                 setWrapperSize: false,
                 slidesPerView: 1,
                 paginationClickable: false,
-                mousewheelControl: true,
+                mousewheelControl: false,
                 observeParents: true,
                 prevButton: '.swiper-button-prev',
                 nextButton: '.swiper-button-next',
@@ -205,7 +205,7 @@ export default {
 
 .photo_modal_dialog {
     position: relative;
-    top: 8%;
+    top: 14%;
     padding: 15px;
     background: #fff;
     width: 1200px;
@@ -255,7 +255,7 @@ export default {
     position: absolute;
     z-index: 9999;
     top: 7px;
-    right: 35px;
+    right: 7px;
     cursor: pointer;
     filter: alpha(Opacity=50);
     -moz-opacity: 0.5;

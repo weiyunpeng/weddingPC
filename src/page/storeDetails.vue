@@ -3,7 +3,7 @@
     <!--百度地图  start-->
     <div class="bm-view"  v-show="isMap">
         <div class="bm-bg" :class="{ zoomIn: isMap }">
-            <img class="map_btn" src="/static/images/icon-no-btn.png" @click="closeMap">
+            <img class="close_btn" src="/static/images/icon-close-hover.png" @click="closeMap">
             <h3>{{mediaInfo.name}}</h3>
             <p>地址：{{mediaInfo.address}}</p>
             <baidu-map class="map" :center="{lng: lng, lat: lat}" :zoom="15">

@@ -8,10 +8,10 @@
                         <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
                         <p>{{getUser.nike}}</p>
                         <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
-                            <label class="col-name" v-if="style&&style.length>0">我的收藏</label>
+                            <label class="col-name">我的收藏</label>
                         </router-link>
                     </div>
-                    <ul class="user_category user_category_style">
+                    <ul class="user_category user_category_style" v-if="style&&style.length>0">
                         <li v-for="(item,s) in style" :key="s">
                             <span class="show_list">{{item.name}}</span>
                             <div class="line">
