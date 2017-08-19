@@ -50,7 +50,7 @@
                             <star :score="mediaInfo.star"></star> 
                         </div>
                     </div>
-                    <div class="clearfix">
+                    <div class="clearfix" v-if="mediaInfo.comment">
                         <label class="fl">媒体评定语：</label>
                         <div class="media_comment fl">
                             {{mediaInfo.comment}}

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="filter-con">
                 <a href="javascript:void(0)" v-bind:class="{tag_active:method == 0}" @click="tagChange(0)">默认</a>
-                <a href="javascript:void(0)" v-bind:class="{tag_active:method == 1}" @click="tagChange(1)">媒体评分</a>
+                <a href="javascript:void(0)" v-bind:class="{tag_active:method == 1}" @click="tagChange(1)">总体评分</a>
                 <a href="javascript:void(0)" v-bind:class="{tag_active:method == 2}" @click="tagChange(2)">价格<i class="price_icon" v-bind:class="{price_position:isHigh}"></i></a>
                 <div class="fil_input">
                     <span>¥</span>

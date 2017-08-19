@@ -26,7 +26,7 @@
                 </li>
             </ul>
         </div>
-        <div class="fl about_package">
+        <div class="fl about_package" v-if="camaramanPackages && camaramanPackages.length>0">
             <p class="p_tit clearfix">
                 相关套餐
             </p>
