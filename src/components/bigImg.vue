@@ -1,14 +1,11 @@
 <template>
     <div class="left_zoom" :style="{width:width+'px'}">
         <div class="big_img">
-            <img v-lazy="imgs[currentIndex]" :width="width" :height="height">
+            <img v-lazy="imgs[currentIndex]" :height="height">
         </div>
         <div class="small_img">
             <transition-group tag="ul" name="list">
-                <li v-for="(item,index) in imgs" :key="index" v-show="currentIndex-index<4" :class="{'active':index===currentIndex}" @click="currentShow(index)">
-                    <img v-lazy="item" :width="paginaWidth" :height="paginaHeight">
-                </li>
-                <li v-for="(item,index) in imgs" :key="index" v-show="currentIndex-index>1" :class="{'active':index===currentIndex}" @click="currentShow(index)">
+                <li v-for="(item,index) in imgs" :key="index" v-if="currentIndex-index<4" :class="{'active':index===currentIndex}" @click="currentShow(index)">
                     <img v-lazy="item" :width="paginaWidth" :height="paginaHeight">
                 </li>
             </transition-group>

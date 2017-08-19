@@ -46,6 +46,9 @@
                 </li>
             </ul>
         </div>
+        <div v-if="!busSampleList || busSampleList.length == 0" class="no-data">
+                <img src="/static/images/icon-no-data-1.png">
+            </div>
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :order="orderNum"></com-photoModal>
     </div>
 </template>
