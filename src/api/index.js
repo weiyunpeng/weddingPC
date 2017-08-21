@@ -31,7 +31,6 @@ axios.interceptors.response.use(function (response) {
             type: 'info'
         };
         store.dispatch('showMsg',data);
-        return false
     }
     return response;
 }, function (error) {

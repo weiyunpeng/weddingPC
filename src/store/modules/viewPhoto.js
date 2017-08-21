@@ -1,17 +1,21 @@
-import { PHOTO_LIST,VIEW_PHOTO_MODAL,PHOTO_STATUS,PHOTO_CLEAR,PHOTO_LIKE_USER,CANCEL_PHOTO_LIKE_USER} from '../types'
+import { PHOTO_LIST,VIEW_PHOTO_MODAL,HIDE_PHOTO_MODAL,PHOTO_STATUS,PHOTO_CLEAR,PHOTO_LIKE_USER,CANCEL_PHOTO_LIKE_USER} from '../types'
 
 const state = {
     list: [],
     photoInfo:null,
     photoList: [],
     photoListFill: [],
-    status: 0
+    status: 0,
+    photoModelStatus:0
 };
 
 const mutations = {
     [VIEW_PHOTO_MODAL](state, data) {
         state.list = data.data.list;
         state.photoInfo = data.data;
+    },
+    [HIDE_PHOTO_MODAL](state, data) {
+        state.photoModelStatus = -1;
     },
     [PHOTO_LIST](state, data) {
         for(var i=0;i<Math.floor(data.list.length/4);i++){

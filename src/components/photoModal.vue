@@ -87,7 +87,8 @@ export default {
     computed: {
         ...mapGetters({
             getViewPhoto: 'getViewPhoto',
-            getViewPhotoInfo: 'getViewPhotoInfo'
+            getViewPhotoInfo: 'getViewPhotoInfo',
+            getViewPhotoStatus: 'getViewPhotoStatus'
         }),
         ...mapActions({
             showModal: 'showModal',
@@ -177,9 +178,18 @@ export default {
             }
         },
         getViewPhotoInfo() {
-            this.photoInfo = this.getViewPhotoInfo
+            if(this.getViewPhotoInfo){
+                self.photoInfo = this.getViewPhotoInfo
+            }
+        },
+        getViewPhotoStatus(){
+            const self = this;
+            if(this.getViewPhotoStatus == -1){
+                setTimeout(() => self.close(), 2000)
+            }
         },
         photoModal(){
+            console.log(this.photoModal)
             if(this.photoModal.src){
                 this.isCase = false
             }

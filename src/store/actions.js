@@ -323,6 +323,10 @@ export const qryIndex = ({ commit },data) => {
 //----------------------------------------查看图组详情------------------------------------------------------
 export const qryViewPhoto = ({ commit },data) => {
     api.qryViewPhoto(data).then(function (response) {
+        if(response.data.code == -1){
+            commit(types.HIDE_PHOTO_MODAL)
+            return false
+        }
         let photoCount = 0;
         for(let i=0;i < response.data.data.list.length;i++){
             const tempImage = new Image();
@@ -349,11 +353,11 @@ export const qryViewPhoto = ({ commit },data) => {
         }
     })
         .catch(function (error) {
-            showMsg({commit}, {
-                content: error.response.data.errorMsg,
-                type: 'danger'
-            })
+            console.log(error)
         });
+};
+export const hidePhotoModal = ({ commit }) => {
+    commit(types.HIDE_MSG)
 };
 //----------------------------------------------------------------------------------------------
 

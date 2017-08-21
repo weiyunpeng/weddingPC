@@ -39,7 +39,7 @@
 
 <style>
     .message {
-        position: absolute;
+        position: fixed;
         width: 350px;;
         z-index: 9999;
     }
