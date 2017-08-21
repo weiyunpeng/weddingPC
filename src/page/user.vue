@@ -38,7 +38,7 @@
                     </ul>
                 </div>
                 <waterfall :line="line" :watch="getPhotoListFill" :line-gap="300" style="margin-top:60px">
-                    <waterfall-slot v-for="(item, flowNum) in getPhotoListFill" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
+                    <waterfall-slot v-for="(item, flowNum) in getPhotoListFill" :width="300" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum,true)">
                                 <img :src="item.img" :width="300">
@@ -59,11 +59,11 @@
                 </waterfall>
             </div>
             <div class="user-water">
-                <waterfall :line="line" :watch="getPhotoList" :line-gap="290">
-                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
+                <waterfall :line="line" :watch="getPhotoList" :line-gap="300">
+                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="300" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
-                                <img :src="item.img" :width="290">
+                                <img :src="item.img" :width="300">
                             </div>
                             <div class="photo_info">
                                 <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">

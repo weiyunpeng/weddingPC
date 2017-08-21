@@ -377,13 +377,14 @@ export const qryPhotoFlow = ({ commit },data) => {
         if(response.data.data.photo.length == 0){
             return commit(types.PHOTO_STATUS, {status: 2});
         }
+        const status = response.data.data.photo.length == 20 ? 0 : 2;
         let photoCount = 0;
         for(let i=0;i < response.data.data.photo.length;i++){
             const tempImage = new Image();
             tempImage.onload = function() {
                 photoCount++;
-                response.data.data.photo[i].height = tempImage.height+30;
-                response.data.data.photo[i].width = tempImage.width;
+                response.data.data.photo[i].height = tempImage.height/2+45;
+                response.data.data.photo[i].width = tempImage.width/2;
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
                         list: response.data.data.photo,
@@ -405,7 +406,7 @@ export const qryPhotoFlow = ({ commit },data) => {
         }
     })
         .catch(function (error) {
-            commit(types.PHOTO_STATUS, {status: 0});
+            commit(types.PHOTO_STATUS, {status: 0})
             console.log(error)
         });
 };

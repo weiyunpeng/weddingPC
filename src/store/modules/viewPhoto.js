@@ -14,10 +14,10 @@ const mutations = {
         state.photoInfo = data.data;
     },
     [PHOTO_LIST](state, data) {
-        for(var i=0;i<5;i++){
+        for(var i=0;i<Math.floor(data.list.length/4);i++){
             state.photoListFill = state.photoListFill.concat(data.list[i]);
         }
-        for(var j=5;j<data.list.length;j++){
+        for(var j=Math.floor(data.list.length/4);j<data.list.length;j++){
             state.photoList = state.photoList.concat(data.list[j]);
         }
         state.status = data.status;

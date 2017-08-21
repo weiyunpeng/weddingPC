@@ -100,6 +100,7 @@
                                 <div class="media_rating fl">
                                     <star :score="store.star"></star>
                                 </div>
+                                <span class="score">{{store.star}}</span>
                             </div>
                             <a :href="store.url" target="_blank">
                                 <div class="clearfix">

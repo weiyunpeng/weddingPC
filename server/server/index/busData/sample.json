@@ -1,123 +1,76 @@
 {
-  "code": 200,
-  "msg": "success",
+  "code": 0,
+  "msg": "成功",
   "data": {
-    "list": [{
-        "id": 1,
-        "logo": "/static/images/meal-list.png",
+    "list": [
+      {
+        "id": 84,
+        "logo": "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997d771bc537317809642.jpg?imageMogr2/scrop/561x374",
         "tags": [
-          "摄影师",
-          "摄影师",
-          "摄影师",
-          "摄影师一对一",
-          "摄影师一对一",
-          "摄影师一对一",
-          "化妆师一对一"
+          "简约",
+          "自然纪实"
         ],
-        "name": "旅拍海滩外景LOMO风套系旅拍海滩外景LOMO风套系旅拍海滩外景LOMO风套系旅拍海滩外景LOMO风套系"
+        "name": "纯色"
       },
       {
-        "id": 2,
-        "name": "旅拍海滩外景LOMO风套系旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
+        "id": 87,
+        "logo": "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997d7f018283130331592.jpg?imageMogr2/scrop/561x374",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
+          "时尚",
+          "街拍"
+        ],
+        "name": "都市"
       },
       {
-        "id": 3,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
+        "id": 88,
+        "logo": "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997d85b6b99a537461639.jpg?imageMogr2/scrop/561x374",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
+          "唯美",
+          "梦幻"
+        ],
+        "name": "悬浮"
       },
       {
-        "id": 4,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
+        "id": 92,
+        "logo": "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997d8db81957830375037.jpg?imageMogr2/scrop/561x374",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
+          "唯美",
+          "浪漫",
+          "个性定制"
+        ],
+        "name": "高级定制"
       },
       {
-        "id": 5,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
+        "id": 102,
+        "logo": "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997e10c9d97a982704612.jpg?imageMogr2/scrop/561x374",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
+          "清新"
+        ],
+        "name": "【喜宝特约】拍得够丰富"
       },
       {
-        "id": 6,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
+        "id": 103,
+        "logo": "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997e1783a9e9428766815.jpg?imageMogr2/scrop/561x374",
         "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
-      },
-      {
-        "id": 6,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
-        "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
-      },
-      {
-        "id": 6,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
-        "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
-      },
-      {
-        "id": 6,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
-        "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
-      },
-      {
-        "id": 6,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
-        "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
-      },
-      {
-        "id": 6,
-        "name": "旅拍海滩外景LOMO风套系",
-        "logo": "/static/images/meal-list.png",
-        "tags": [
-          "摄影师一对一",
-          "化妆师一对一"
-        ]
+          "唯美",
+          "中国风",
+          "自然纪实"
+        ],
+        "name": "【喜宝特约】简单且文艺"
       }
     ],
     "store": {
-      "store_name": "郑州艾维美婚纱摄影(国贸360店)",
-      "isYes": "0",
-      "isVip": "0",
-      "address": "经七路丰产路交叉口西北角二楼",
-      "star": 3
+      "id": 15,
+      "store_name": "乐可婚纱摄影工作室",
+      "isYes": 0,
+      "isVip": 0,
+      "address": "郑州市金水区二七路97号-1号商铺",
+      "star": 3.8
     },
     "page": {
-      "totalCount": "5",
-      "pageSize": "20",
-      "currentPage": "1"
+      "totalCount": 6,
+      "pageSize": 500,
+      "currentPage": 1
     }
   }
 }
