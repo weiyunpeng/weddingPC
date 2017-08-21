@@ -5,7 +5,7 @@
             <div class="container">
                 <ul>
                     <li v-for="(item,guideNum) in getGuideList" :key="guideNum">
-                        <a :href="item.url" target="_blank" :alt="item.title">
+                        <a :href="item.url" target="_blank">
                             <div class="img-hover fl">
                                 <img v-lazy="item.img" width="195" height="195">
                             </div>
