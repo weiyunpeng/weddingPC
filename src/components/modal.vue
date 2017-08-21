@@ -38,9 +38,11 @@
         },
         methods: {
             confirm(){
+                this.$emit('modalCallback',true);
                 this.$store.dispatch('hideModal',true);
             },
             close(){
+                this.$emit('modalCallback');
                 this.$store.dispatch('hideModal');
             }
         }

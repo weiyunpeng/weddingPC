@@ -184,7 +184,7 @@
                             </div>
                         </div>
                         <div class="special">
-                            拍摄特点：{{item.special}}
+                            化妆特点：{{item.special}}
                         </div>
                         </router-link>
                     </swiper-slide>

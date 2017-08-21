@@ -15,6 +15,8 @@ const mutations = {
         state.photoInfo = data.data;
     },
     [HIDE_PHOTO_MODAL](state, data) {
+        state.list = null;
+        state.photoInfo = null;
         state.photoModelStatus = -1;
     },
     [PHOTO_LIST](state, data) {

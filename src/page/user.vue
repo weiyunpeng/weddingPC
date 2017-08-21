@@ -79,17 +79,17 @@
     
                     </waterfall-slot>
                 </waterfall>
-                <!-- <vueWaterfallEasy :imgsArr='getPhotoList'></vueWaterfallEasy> -->
             </div>
         </div>
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :order="orderNum">
         </com-photoModal>
+        <com-modal @modalCallback="modalCallback"></com-modal>
     </div>
 </template>
 
 <script>
 import header from './../components/user/userHead'
-// import vueWaterfallEasy from './../components/waterfall'
+import modal from './../components/modal'
 import { waterfall, waterfallSlot } from 'vue-waterfall'
 import photoModal from './../components/photoModal'
 import { mapGetters, mapActions } from 'vuex'
@@ -100,7 +100,7 @@ export default {
         'waterfall': waterfall,
         'waterfallSlot': waterfallSlot,
         'comPhotoModal': photoModal,
-        // 'vueWaterfallEasy':vueWaterfallEasy
+        'comModal': modal,
     },
     computed: {
         ...mapGetters({
@@ -189,6 +189,12 @@ export default {
                     }
                 };
                 this.$store.dispatch('showModal', data);
+            }
+        },
+        modalCallback(val){
+            if(val){
+                //说明点击确认
+                window.location.href = '/login'
             }
         },
         showPhotoModal(item, index,isFill) {

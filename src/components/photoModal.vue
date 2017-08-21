@@ -189,7 +189,6 @@ export default {
             }
         },
         photoModal(){
-            console.log(this.photoModal)
             if(this.photoModal.src){
                 this.isCase = false
             }

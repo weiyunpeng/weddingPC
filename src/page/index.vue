@@ -118,10 +118,12 @@
         </div>
         <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
         </com-photoModal>
+        <com-modal @modalCallback="modalCallback"></com-modal>
     </div>
 </template>
 
 <script>
+import modal from './../components/modal'
 import star from './../components/star'
 import { waterfall, waterfallSlot } from 'vue-waterfall'
 import photoModal from './../components/photoModal'
@@ -131,7 +133,8 @@ export default {
         'waterfall': waterfall,
         'waterfallSlot': waterfallSlot,
         'comPhotoModal': photoModal,
-        'star':star
+        'star':star,
+        'comModal': modal,
     },
     computed: {
         ...mapGetters({
@@ -168,6 +171,12 @@ export default {
                 }
             };
             this.$store.dispatch('showModal', data);
+        },
+        modalCallback(val){
+            if(val){
+                //说明点击确认
+                window.location.href = '/login'
+            }
         },
         showPhotoModal(item, index) {
             this.photoModal = item;
