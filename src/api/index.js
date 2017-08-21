@@ -37,14 +37,25 @@ axios.interceptors.response.use(function (response) {
     // 非状态码错误  在此通过正则处理
     console.log('捕获到一个错误，错误信息：' + error)
     if (/Network Error/i.test(error)) {
-        alert('您当前无法上网，请检查你的移动数据开关或wifi是否正常')
+        const data = {
+            content: '网络异常，请稍后重试',
+            type: 'info'
+        };
+        store.dispatch('showMsg',data);
     }
     if (/ms exceeded/i.test(error)) {
-        alert('您的网络连接不稳定，请检查你的移动数据开关或wifi是否正常')
-        $(".weui_loading_toast").hide()
+        const data = {
+            content: '网络异常，请稍后重试',
+            type: 'info'
+        };
+        store.dispatch('showMsg',data);
     }
     if (/code 500/i.test(error)) {
-        alert('网络异常，请稍后重试')
+        const data = {
+            content: '网络异常，请稍后重试',
+            type: 'info'
+        };
+        store.dispatch('showMsg',data);
     }
     return Promise.reject(error);
 });

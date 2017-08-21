@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="user-header-top" :style="{background:skin, borderBottom:skinBorder}" v-show="!visHNav">
+        <div class="user-header-top" :style="{borderBottom:skinBorder}" v-show="!visHNav">
             <div class="container">
                 <div class="logo">
                     <router-link to="/">
@@ -49,7 +49,7 @@
         </div>
     
         <!--向上滑动后展示小的头部菜单  -->
-        <div class="user-header" :style="{background:skin, borderBottom:skinBorder}" v-show="visHNav">
+        <div class="user-header" :style="{borderBottom:skinBorder}" v-show="visHNav">
             <div class="container">
                 <div class="logo">
                     <router-link to="/">
@@ -107,9 +107,8 @@ export default {
         return {
             visHNav: false,
             HNavOffset: 300,
-            skin: '#fff',
             skinBorder: '3px solid #e4e4e4',
-            logoTop: '/static/images/icon-logo-1.png',
+            logoTop: 'http://marriage-1251225286.file.myqcloud.com/static/images/logo.png',
             logo: '/static/images/icon-logo-3.png',
             keyword: null || this.$route.query.keyword,
             header: '/static/images/icon-user.png',
@@ -185,6 +184,7 @@ export default {
 {
     width: 100%;
     height: 250px;
+    background: #fff url(http://marriage-1251225286.file.myqcloud.com/static/images/20170821173307.gif)top  center no-repeat;
     border-bottom: 2px solid #ff4e6b;
     position: relative;
     top: 0;
@@ -376,6 +376,7 @@ export default {
 .user-header {
     width: 100%;
     height: 78px;
+    background: #fff url(http://marriage-1251225286.file.myqcloud.com/static/images/20170821173307.gif)top  center no-repeat;
     border-bottom: 2px solid #ff4e6b;
     position: fixed;
     top: 0;
