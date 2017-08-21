@@ -148,6 +148,11 @@ background-color: #fff;
                     color: #fff;
                     font-size: 18px;
                 }
+                a:hover{
+                    background-color: #d9344f;
+                    -webkit-transition: all .3s ease;
+                    transition: all .3s ease;
+                }
                 .erweima {
                     position: absolute;
                     left: 50%;
@@ -193,19 +198,25 @@ background-color: #fff;
           color: #ff506d;
         }
     }
+    .more {
+        margin-bottom: 12px;
+        .more_a {
+            font-size: 16px;
+            color: #808080;
+        }
+        .more_a:hover {
+            color: #fd4040;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+    }
     .case {
         .tit {
             width: 1200px;
             height: 42px;
             margin-top: 50px;
         }
-        .more {
-            margin-bottom: 12px;
-            .more_a {
-                font-size: 16px;
-                color: #808080;
-            }
-        }
+        
         .list {
             margin-right: -42px;
             >ul>li {
@@ -254,13 +265,6 @@ background-color: #fff;
             width: 1200px;
             height: 42px;
             margin: 10px 0;
-        }
-        .more {
-            margin-bottom: 12px;
-            .more_a {
-                font-size: 16px;
-                color: #808080;
-            }
         }
         .list {
             margin-right: -42px;
@@ -323,13 +327,21 @@ background-color: #fff;
                 display: inline-block;
                 width: 46px;
                 height: 20px;
-                background: url("/static/images/arrow.png");
+                background: url("/static/images/arrow.png") no-repeat;
             }
             .prev {
                 background-position: left top;
             }
+            .prev:hover {
+                background: url("/static/images/arrow-hover.png") no-repeat;
+                background-position: -6px -6px;
+            }
             .next {
                 background-position: right top;
+            }
+            .next:hover {
+                background: url("/static/images/arrow-hover.png") no-repeat;
+                background-position: -58px -6px;
             }
         }
         .list {
@@ -461,8 +473,16 @@ background-color: #fff;
                 .prev {
                     background-position: left top;
                 }
+                .prev:hover {
+                    background: url("/static/images/arrow-hover.png") no-repeat;
+                    background-position: -6px -6px;
+                }
                 .next {
                     background-position: right top;
+                }
+                .next:hover {
+                    background: url("/static/images/arrow-hover.png") no-repeat;
+                    background-position: -58px -6px;
                 }
             }
             ul {

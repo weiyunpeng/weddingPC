@@ -92,15 +92,14 @@
                                 </ul>
                             </li>
                             <li class="list-con-btn" v-if="item.comments && item.comments.length>2">
-                                <div v-if="item.showAll">
-                                    <a href="javascript:void(0)" @click="showBtn(busIndex,false)">
+                                <div v-if="item.showAll" @click="showBtn(busIndex,false)">
+                                    <a href="javascript:void(0)" >
                                         <i class="icon-angle-act"></i>
                                         <span>收 起</span>
                                     </a>
-    
                                 </div>
-                                <div v-else-if="!item.showAll">
-                                    <a href="javascript:void(0)" @click="showBtn(busIndex,true)">
+                                <div v-else-if="!item.showAll" @click="showBtn(busIndex,true)">
+                                    <a href="javascript:void(0)" >
                                         <i class="icon-angle"></i>
                                         <span>展示全部</span>
                                     </a>

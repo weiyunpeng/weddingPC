@@ -11,11 +11,12 @@ const state = {
 
 const mutations = {
     [VIEW_PHOTO_MODAL](state, data) {
+        state.photoModelStatus = 0;
         state.list = data.data.list;
         state.photoInfo = data.data;
     },
     [HIDE_PHOTO_MODAL](state, data) {
-        state.list = null;
+        state.list = [];
         state.photoInfo = null;
         state.photoModelStatus = -1;
     },

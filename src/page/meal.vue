@@ -139,7 +139,7 @@ export default {
     .list_con {
         display: inline-block;
         width: 374px;
-        height: 319px;
+        height: 346px;
         overflow: hidden;
         margin: {
             right: 28px;

@@ -7,7 +7,7 @@ export const showMsg = ({ commit }, data) => {
     const id = new Date().getTime();
     data.id = id;
     commit(types.SHOW_MSG, data);
-    setTimeout(() => commit(types.HIDE_MSG, id), 2000)
+    setTimeout(() => commit(types.HIDE_MSG, id), 1000)
 };
 
 export const hideMsg = ({ commit }, id) => {

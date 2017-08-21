@@ -103,7 +103,7 @@ export default {
         top: 8px;
       }
       ul{
-          width: 100%;
+          width: 99%;
           height: 100%;
           white-space: nowrap;
           overflow: hidden;
@@ -125,10 +125,30 @@ export default {
         .prev {
           background-position: top left;
           left: 0;
+          filter: alpha(Opacity=60);
+            -moz-opacity: 0.6;
+            opacity: 0.6;
+        }
+        .prev:hover{
+            filter: alpha(Opacity=100);
+            -moz-opacity: 1;
+            opacity: 1;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
         }
         .next {
           right: 8px;
           background-position: top right;
+          filter: alpha(Opacity=60);
+            -moz-opacity: 0.6;
+            opacity: 0.6;
+        }
+        .next:hover{
+            filter: alpha(Opacity=100);
+            -moz-opacity: 1;
+            opacity: 1;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
         }
       }
     }

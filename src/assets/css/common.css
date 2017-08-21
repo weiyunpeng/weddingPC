@@ -1838,3 +1838,8 @@ fieldset[disabled] .btn-danger.focus {
     top:80px;
     text-align: center;
 }
+.u-index-nav:hover {
+    color: #fd4040;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}

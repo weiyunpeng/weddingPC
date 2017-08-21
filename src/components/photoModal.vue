@@ -23,8 +23,10 @@
                     </div>
                 </div>
     
+                <p class="pg_name">TA的套系</p>
+                
                 <div class="photo_fr fr">
-                    <p class="pg_name">TA的套系</p>
+                    
                     <waterfall :line-gap="200" :min-line-gap="140" :max-line-gap="140" :single-max-width="140" :watch="getViewPhoto">
                         <waterfall-slot v-for="(item, index) in getViewPhoto" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
                             <img :src="item.img" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
@@ -182,12 +184,6 @@ export default {
                 self.photoInfo = this.getViewPhotoInfo
             }
         },
-        getViewPhotoStatus(){
-            const self = this;
-            if(this.getViewPhotoStatus == -1){
-                setTimeout(() => self.close(), 2000)
-            }
-        },
         photoModal(){
             if(this.photoModal.src){
                 this.isCase = false
@@ -260,6 +256,8 @@ export default {
     font-size: 16px;
     color: #4c4c4c;
     line-height: 28px;
+    position: relative;
+    left: 50px;
 }
 
 .close_btn {

@@ -411,7 +411,6 @@ export default {
             margin-right: 0;
         }
         .nav_a:hover {
-            border-bottom: 3px solid #ff4e6b;
             color: #ff4e6b;
         }
         .nav_active {
