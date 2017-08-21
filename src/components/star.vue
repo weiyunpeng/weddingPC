@@ -27,7 +27,7 @@
                     result.push(CLS_ON);
                 }
                 if(decimal == 0){
-                    result.push(CLS_OFF);
+                    // result.push(CLS_OFF);
                 }else if(decimal < 0.4){
                     result.push(CLS_LITTLE);
                 }else if(decimal < 0.7){
