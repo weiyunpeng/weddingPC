@@ -50,8 +50,8 @@
                                             <img v-lazy="img.img" width="320" height="200">
                                         </div>
                                     </li>
-                                    <li>
-                                        <a v-if="!item.showall" href="javascript:void(0)" style="color:#4c4c4c" @click="showAll(ln)">展示全部</a>
+                                    <li v-show="item.photo.length>3">
+                                        <a  v-if="!item.showall" href="javascript:void(0)" style="color:#4c4c4c" @click="showAll(ln)">展示全部</a>
                                         <a v-else-if="item.showall" href="javascript:void(0)" style="color:#b2b2b2" @click="showAll(ln)">收 起</a>
                                     </li>
                                 </ul>

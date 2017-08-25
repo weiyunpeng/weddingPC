@@ -3,7 +3,7 @@
         <com-header></com-header>
         <div class="container">
             <div class="user-info fl" v-show="isAuth">
-                <div class="Profile">
+                <div class="Profile"  >
                     <div class="user-nike">
                         <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
                         <p>{{getUser.nike}}</p>
@@ -198,6 +198,7 @@ export default {
             }
         },
         showPhotoModal(item, index,isFill) {
+            document.querySelector(".photo_modal").style.display = 'block';
             this.photoModal = item;
             if(isFill){
                 this.photoModal.isFill = isFill;
@@ -240,7 +241,10 @@ export default {
 .user-info {
     position: relative;
     top: 0;
-    left: 0;
+    left: 10px;
+    width: 300px;
+    min-height: 300px;
+    .vue-waterfall{ }
     .Profile {
         position: relative;
         top: 50px;
@@ -255,7 +259,7 @@ export default {
     position: relative;
     top: 5px;
     margin-bottom: 20px;
-    left: 20px;
+    left: 10px;
     overflow: hidden;
 }
 

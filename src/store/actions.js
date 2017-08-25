@@ -294,8 +294,17 @@ export const qryIndex = ({ commit },data) => {
             const tempImage = new Image();
             tempImage.onload = function() {
                 photoCount++;
-                response.data.data.photo[i].height = tempImage.height + 30;
-                response.data.data.photo[i].width = tempImage.width;
+             /*   response.data.data.photo[i].width = tempImage.width;
+                response.data.data.photo[i].height = tempImage.height + 30;*/
+                // 解决bug: 图片修改为580宽度后，部分以前图片不兼容问题
+                if (tempImage.width < 580) {
+                    response.data.data.photo[i].width = 580 / 2;
+                    var rate = tempImage.width / tempImage.height;
+                    response.data.data.photo[i].height = response.data.data.photo[i].width / rate + 45;
+                } else {
+                    response.data.data.photo[i].width = tempImage.width / 2;
+                    response.data.data.photo[i].height = tempImage.height / 2 + 45;
+                }
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.INDEX_LIST, {
                         list: response.data.data,
@@ -324,6 +333,7 @@ export const qryIndex = ({ commit },data) => {
 export const qryViewPhoto = ({ commit },data) => {
     api.qryViewPhoto(data).then(function (response) {
         if(response.data.code == -1){
+          document.querySelector(".photo_modal").style.display='none' ;
             commit(types.HIDE_PHOTO_MODAL)
             return false
         }
@@ -338,6 +348,7 @@ export const qryViewPhoto = ({ commit },data) => {
                     commit(types.VIEW_PHOTO_MODAL, {
                         data: response.data.data,
                     })
+                   // console.log(response.data.data)
                 }
             };
             tempImage.onerror = function(){
@@ -387,8 +398,18 @@ export const qryPhotoFlow = ({ commit },data) => {
             const tempImage = new Image();
             tempImage.onload = function() {
                 photoCount++;
-                response.data.data.photo[i].height = tempImage.height/2+45;
-                response.data.data.photo[i].width = tempImage.width/2;
+             /*   response.data.data.photo[i].height = tempImage.height/2+45;
+                response.data.data.photo[i].width = tempImage.width/2;*/
+             // 解决bug: 图片修改为580宽度后，部分以前图片不兼容问题
+             if(tempImage.width<580){
+                 response.data.data.photo[i].width = 580/2;
+                 var rate= tempImage.width/ tempImage.height;
+                 response.data.data.photo[i].height = response.data.data.photo[i].width/rate+ 45;
+             }else {
+                 response.data.data.photo[i].width = tempImage.width / 2;
+                 response.data.data.photo[i].height = tempImage.height / 2 + 45;
+             }
+
                 if( photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
                         list: response.data.data.photo,

@@ -5,7 +5,7 @@
         </div>
         <div class="small_img">
             <transition-group tag="ul" name="list">
-                <li v-for="(item,index) in imgs" :key="index" v-if="currentIndex-index<4" :class="{'active':index===currentIndex}" @click="currentShow(index)">
+                <li v-for="(item,index) in imgs" :key="index" v-if="currentIndex-index<imgnum" :class="{'active':index===currentIndex}" @click="currentShow(index)">
                     <img v-lazy="item" :width="paginaWidth" :height="paginaHeight">
                 </li>
             </transition-group>
@@ -25,7 +25,8 @@ export default {
     data() {
         return {
             currentIndex: 0,
-            isBig:false
+            isBig:false,
+            imglen:5
         }
     },
     props:{
@@ -48,9 +49,14 @@ export default {
         paginaHeight:{
             type:Number,
             default:96
+        } ,
+        imgnum:{
+            type:Number,
+            default:5
         }
     },
     mounted(){
+        
     },
     methods: {
         prevBtn(){

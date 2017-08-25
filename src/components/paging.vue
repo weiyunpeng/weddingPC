@@ -10,7 +10,7 @@
             <input class="inputPage" type="text" v-model.number="skipPage">
             <li><a href="javascript:;" @click="clickSkip()">跳转</a></li>
             <span class="page_total">共{{pageInfo.total}}条</span>
-        </ul>
+        </ul>      
     </section>
 </template>
 <script>
@@ -58,12 +58,18 @@ export default {
             if( this.pageInfo.current != idx && idx > 0 && idx <= this.page) {
                 this.pageInfo.current = idx;
                 this.$emit('change',this.pageInfo.current);
+              setTimeout(function () {
+                  document.body.scrollTop = 0
+              },150)
             }
         },
         clickSkip:function(){
             if( this.pageInfo.current != this.skipPage && this.skipPage > 0 && this.skipPage <= this.page) {
                 this.pageInfo.current = this.skipPage;
                 this.$emit('skip',this.skipPage);
+                setTimeout(function () {
+                    document.body.scrollTop = 0
+                }, 150)
             }
         }
     }

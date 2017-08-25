@@ -3,7 +3,7 @@
     <!--百度地图  start-->
     <div class="bm-view"  v-show="isMap">
         <div class="bm-bg" :class="{ zoomIn: isMap }">
-            <img class="close_btn" src="/static/images/icon-close-hover.png" @click="closeMap">
+            <img class="map_btn" src="/static/images/icon-no-btn.png" @click="closeMap">
             <h3>{{mediaInfo.name}}</h3>
             <p>地址：{{mediaInfo.address}}</p>
             <baidu-map class="map" :center="{lng: lng, lat: lat}" :zoom="15">
@@ -17,9 +17,7 @@
     <com-header></com-header>
     <div class="container" id="busDetails">
         <div class="bus_introduction clearfix">
-
-            
-            <com-pic :imgs='imgs' :imgnum=4></com-pic>
+            <com-pic :imgs='imgs'></com-pic>
             <div class="right_introduction">
                 <div class="top">
                     <h2>
@@ -52,11 +50,11 @@
                             <star :score="mediaInfo.star"></star> 
                         </div>
                     </div>
-                    <div class="clearfix" v-if="mediaInfo.comment">
+                    <div class="clearfix">
                         <label class="fl">媒体评定语：</label>
                         <div class="media_comment fl">
                             {{mediaInfo.comment}}
-                            <a :href="mediaInfo.comment_url" class="comment_url" v-if="mediaInfo.comment_url" target="_blank">[查看详情]</a>
+                            <a :href="mediaInfo.comment_url" class="comment_url" target="_blank">[查看详情]</a>
                         </div>
                     </div>
                     <div class="code">
@@ -69,20 +67,17 @@
             </div>
         </div>
         <div class="nav">
-            <ul>
-                <li v-for="(item,i) in nav" :key="i">
-                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i,item)">{{item}}</a>
-                </li>
-                <li>
-                    <a v-show="mediaInfo.comment_list_url" :href="mediaInfo.comment_list_url" target="_blank">深度点评</a>
+            <ul v-if="shopNavList && shopNavList.length >0 ">
+                <li v-for="(item,i) in shopNavList" :key="i">
+                    <a href="javascript:void(0)" v-bind:class="{cur: selected == i}" @click="changeTab(i)">{{item}}</a>
                 </li>
             </ul>
         </div>
         <!-- case官方案例开始 -->
         <div class="case" v-show="0 >= selected" v-if="caseInfo">
-            <img class="tit" :src="caseInfo.nav_img">
+            <img class="tit" :src="caseInfo.nav_img"> 
             <div class="more clearfix" v-show="caseInfo.details && caseInfo.details.length>=6">
-                <router-link :to="{ name: 'busSample', query: {busId:mediaInfo.id,sampleId:id}}" class="more_a fr" target="_blank">
+                <router-link :to="{ name: 'busSample', query: {busName:mediaInfo.name, busSample: '官方案例' ,id:id}}" class="more_a fr" target="_blank">
                     更多 >
                 </router-link>
             </div>
@@ -90,7 +85,7 @@
                 <ul>
                     <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
                         <div class="img-hover">
-                            <img v-lazy="item.src" width="374" height="250" @click="showPhotoModal(item, index)">
+                            <img v-lazy="item.src" width="374" height="250" @click="showSwiperModal([item.src])">
                         </div>
                         <h3>{{item.case_name}}</h3>
                         <div class="tags">
@@ -109,14 +104,14 @@
         <div class="package" v-show="1 >= selected" v-if="packageInfo">
             <img class="tit" :src="packageInfo.nav_img"> 
             <div class="more clearfix" v-show="packageInfo.details && packageInfo.details.length>=3">
-                <router-link :to="{ name: 'storeList', query: {busId:mediaInfo.id, storeList: 'storeList'}}" class="more_a fr" target="_blank">
+                <router-link :to="{ name: 'mealList', query: {busName:mediaInfo.name,busId:mediaInfo.id, thisMealName: '套餐列表'}}" class="more_a fr" target="_blank">
                     更多 >
                 </router-link>
             </div>
             <div class="list">
                 <ul>
                     <li v-for="(item,pIndex) in packageInfo.details" v-bind:key="pIndex">
-                        <router-link :to="{ name: 'packageDetails', query: {busId:mediaInfo.id,mealId:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'mealDeatils', query: {busName:mediaInfo.name,busId:mediaInfo.id,mealName:item.package_name,mealId:item.id}}" target="_blank">
                             <img v-lazy="item.src" width="374" height="250">
                             <div class="top clearfix">
                                 <div class="price fl">￥{{item.price}}</div>
@@ -145,7 +140,7 @@
             <div class="list">
                  <swiper :options="photographerOption">
                     <swiper-slide class="mr25" v-for="(item,index) in photographer.details" v-bind:key="index">
-                        <router-link :to="{ name: 'cameraman', query: {busId:mediaInfo.id,cameramanId:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'cameraman', query: {busName:mediaInfo.name,busId:mediaInfo.id,cameraman: '摄影师',id:item.id}}" target="_blank">
                             <img v-lazy="item.src" width="220" height="220">
                             <div class="top clearfix">
                                 <div class="name fl">{{item.name}}</div>
@@ -176,7 +171,7 @@
             <div class="list">
                 <swiper :options="dresserOption">
                     <swiper-slide class="mr25" v-for="(item,index) in dresser.details" v-bind:key="index">
-                        <router-link :to="{ name: 'makeupman', query: {busId:mediaInfo.id,makeupId:item.id}}" target="_blank">
+                        <router-link :to="{ name: 'makeupman', query: {busName:mediaInfo.name,busId:mediaInfo.id,makeupman: '化妆师',id:item.id}}" target="_blank">
                         <img v-lazy="item.src" width="220" height="220">
                         <div class="top clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -189,7 +184,7 @@
                             </div>
                         </div>
                         <div class="special">
-                            化妆特点：{{item.special}}
+                            拍摄特点：{{item.special}}
                         </div>
                         </router-link>
                     </swiper-slide>
@@ -198,7 +193,7 @@
         </div>
         <!-- 化妆团队结束 -->
         <!-- 商家简介开始 -->
-        <div class="business" v-show="4 >= selected" v-if="introInfo">
+        <div class="business">
             <img class="tit" :src="introInfo.nav_img">
             <div class="cont clearfix">
                 <div class="left fl">
@@ -250,7 +245,6 @@
         </div>
         <!-- 商家简介结束 -->
     </div>
-    <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :order="orderNum"></com-photoModal>
     <com-swiper @closeSwiper="closeSwiper" v-show="showSwiper" :swiperImgs='swiperImgs'></com-swiper>
     </div>
 </template>
@@ -262,7 +256,6 @@ import bigImg from './../components/bigImg'
 import swiperModel from './../components/swiper'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import star from './../components/star'
-import photoModal from './../components/photoModal'
 export default {
     name: 'carrousel',
     components: {
@@ -271,13 +264,13 @@ export default {
         comSwiper:swiperModel,
         swiper,
         swiperSlide,
-        'star':star,
-        'comPhotoModal': photoModal,
+        'star':star
     },
     data() {
         return {
             id:this.$route.query.busId,
             selected:0,
+            busName:this.$route.query.busName,
             isErwei:false,
             isMap:false,
             imgs:[],
@@ -292,10 +285,6 @@ export default {
             showSwiper:false,
             swiperImgs:[],
             shopNavList:[],
-            nav:['官方案例','精选套餐','摄影师团队','化妆团队','商家简介'],
-            show: false,
-            photoModal: {},
-            orderNum: null,
             photographerOption: {
                 // autoplay: 3500,
                 setWrapperSize :false,
@@ -342,9 +331,8 @@ export default {
         this.$store.dispatch('qryStoreDetails', data)
     },
     methods: {
-        changeTab(i,item){
+        changeTab(i){
             this.selected = i;
-            this.navIndex = item
         },
         erweima () {
             this.isErwei = !this.isErwei;
@@ -361,20 +349,7 @@ export default {
         },
         closeSwiper(){
             this.showSwiper = false
-        },
-        showPhotoModal(item, index) {
-            this.photoModal = item;
-            if(!this.photoModal.img){
-                this.photoModal.img = item.src;
-            }
-            this.orderNum = index;
-            this.show = true;
-            const ajaxdata = {
-                id: this.photoModal.id,
-                type: 1
-            }
-            this.$store.dispatch('qryViewPhoto', ajaxdata)
-        },
+        }
     },
     watch:{
         shopInfo(){
@@ -392,6 +367,18 @@ export default {
                 this.packageInfo = this.shopDetails.package;
                 this.photographer = this.shopDetails.cameraman;
                 this.dresser = this.shopDetails.makeup;
+                if(this.caseInfo.nav){
+                    this.shopNavList.push(this.caseInfo.nav)
+                }
+                if(this.packageInfo.nav){
+                    this.shopNavList.push(this.packageInfo.nav)
+                }
+                if(this.photographer.nav){
+                    this.shopNavList.push(this.photographer.nav)
+                }
+                if(this.dresser.nav){
+                    this.shopNavList.push(this.dresser.nav)
+                }
             }
         }
     },

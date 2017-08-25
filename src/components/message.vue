@@ -41,7 +41,7 @@
     .message {
         position: fixed;
         width: 350px;;
-        z-index: 9999;
+        z-index: 123456789;
     }
     .message_div {
         position: relative;

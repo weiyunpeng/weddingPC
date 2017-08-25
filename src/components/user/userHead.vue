@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="user-header-top" :style="{borderBottom:skinBorder}" v-show="!visHNav">
+        <div class="user-header-top" :style="{borderBottom:skinBorder}" >
             <div class="container">
                 <div class="logo">
                     <router-link to="/">
@@ -25,13 +25,15 @@
                 </div>
                 <div class="user-search clearfix">
                     <div class="nav_search">
-                        <input type="text" v-model.trim="keyword" placeholder="搜商家" class="nav_form" @keyup.enter="seaBtn">
+                        <input type="text" v-model.trim="keyword" placeholder="搜商家" class="nav_form"
+                               @keyup.enter="seaBtn">
                         <a href="javascript:void(0)" class="focus-search" @click="seaBtn">
                             <img src="/static/images/icon_search.png">
                         </a>
                     </div>
                     <a href="javascript:void(0)" class="nav_user" @click="userLogin">
-                        <img :src="header" class="circle" width="30" height="30" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
+                        <img :src="header" class="circle" width="30" height="30"
+                             v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                         <ul class="nav_user_ul" v-show="isLogin">
                             <li>
                                 <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
@@ -47,7 +49,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!--向上滑动后展示小的头部菜单  -->
         <div class="user-header" :style="{borderBottom:skinBorder}" v-show="visHNav">
             <div class="container">
@@ -74,13 +76,15 @@
                 </div>
                 <div class="user-search clearfix">
                     <div class="nav_search">
-                        <input type="text" v-model.trim="keyword" placeholder="搜商家" class="nav_form" @keyup.enter="seaBtn">
+                        <input type="text" v-model.trim="keyword" placeholder="搜商家" class="nav_form"
+                               @keyup.enter="seaBtn">
                         <a href="javascript:void(0)" class="focus-search" @click="seaBtn">
                             <img src="/static/images/icon_search.png">
                         </a>
                     </div>
                     <a href="javascript:void(0)" class="nav_user" @click="userLogin">
-                        <img :src="header" class="circle" width="30" height="30" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
+                        <img :src="header" class="circle" width="30" height="30"
+                             v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                         <ul class="nav_user_ul" v-show="isLogin">
                             <li>
                                 <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
@@ -99,325 +103,318 @@
     </div>
 </template>
 
-<script>
-import { mapGetters, mapActions } from 'vuex'
+<script type="es6">
+    import {mapGetters, mapActions} from 'vuex'
 
-export default {
-    data() {
-        return {
-            visHNav: false,
-            HNavOffset: 300,
-            skinBorder: '3px solid #e4e4e4',
-            logoTop: 'http://marriage-1251225286.file.myqcloud.com/static/images/logo.png',
-            logo: '/static/images/icon-logo-3.png',
-            keyword: null || this.$route.query.keyword,
-            header: '/static/images/icon-user.png',
-            uid:null,
-            isLogin:null,
-        }
-    },
-    computed: {
-        ...mapGetters({
-        }),
-        ...mapActions({
-            qryStoreList: 'qryStoreList',
-            shopListClear: 'shopListClear'
-        })
-    },
-    mounted() {
-        try{
-            let token = JSON.parse(localStorage.getItem('user'));
-            this.isLogin = Boolean(token);
-            if(this.isLogin){
-                this.header = token.headimgurl
-                this.uid = token.uid
-            }else{
-            }
-        }catch(e){
-            console.log(e)
-        }
-        let catchScroll = () => {
-            if (window.pageYOffset >= parseInt(this.HNavOffset)) {
-                this.visHNav = true
-            } else if (window.pageYOffset < 50) {
-                this.visHNav = false
-            }
-        }
-        window.onscroll = catchScroll
-    },
-    methods: {
-        /**
-         * 搜商家按钮事件
-         */
-        seaBtn() {
-            this.$router.push({ name: 'comment' ,query:{keyword:this.keyword}})
-            let data = {
-                keyword: this.keyword
-            }
-            this.$store.dispatch('shopListClear')
-            this.$store.dispatch('qryStoreList', data)
-        },
-        logout() {
-            this.$store.dispatch('loginOut')
-            this.$router.push({ name: 'index' })
-        },
-        userLogin(){
-            if(!this.isLogin){
-                window.location.href = '/login'
+    export default {
+        data() {
+            return {
+                visHNav: false,
+                HNavOffset: 300,
+                skinBorder: '3px solid #e4e4e4',
+                logoTop: 'http://marriage-1251225286.file.myqcloud.com/static/images/logo.png',
+                logo: '/static/images/icon-logo-3.png',
+                keyword: null || this.$route.query.keyword,
+                header: '/static/images/icon-user.png',
+                uid: null,
+                isLogin: null,
             }
         },
-        showHeader(){
-            if(!this.isLogin){
-                this.header = '/static/images/icon-user-hover.png'
+        computed: {
+            ...mapGetters({}),
+            ...mapActions({
+                qryStoreList: 'qryStoreList',
+                shopListClear: 'shopListClear'
+            })
+        },
+        mounted() {
+            try {
+                let token = JSON.parse(localStorage.getItem('user'));
+                this.isLogin = Boolean(token);
+                if (this.isLogin) {
+                    this.header = token.headimgurl
+                    this.uid = token.uid
+                } else {
+                }
+            } catch (e) {
+                console.log(e)
+            }
+            var self=this;
+            var catchScroll =function () {
+                    if (window.pageYOffset >=254) {
+                      self.visHNav = true;
+                    }
+                    if (window.pageYOffset < 230) {
+                        self.visHNav = false  ;
+                    }
+            }
+            window.onscroll = catchScroll
+        },
+        methods: {
+            /**
+             * 搜商家按钮事件
+             */
+            seaBtn() {
+                this.$router.push({name: 'comment', query: {keyword: this.keyword}})
+                let data = {
+                    keyword: this.keyword
+                }
+                this.$store.dispatch('shopListClear')
+                this.$store.dispatch('qryStoreList', data)
+            },
+            logout() {
+                this.$store.dispatch('loginOut')
+                this.$router.push({name: 'index'})
+            },
+            userLogin(){
+                if (!this.isLogin) {
+                    window.location.href = '/login'
+                }
+            },
+            showHeader(){
+                if (!this.isLogin) {
+                    this.header = '/static/images/icon-user-hover.png'
+                }
+            },
+            hideHeader(){
+                if (!this.isLogin) {
+                    this.header = '/static/images/icon-user.png'
+                }
             }
         },
-        hideHeader(){
-            if(!this.isLogin){
-                this.header = '/static/images/icon-user.png'
-            }
-        }
-    },
-}
+    }
 </script>
 <style rel="stylesheet/scss" lang="scss">
-.user-header-top,
-{
-    width: 100%;
-    height: 250px;
-    background: #fff url(http://marriage-1251225286.file.myqcloud.com/static/images/20170821173307.gif)top  center no-repeat;
-    border-bottom: 2px solid #ff4e6b;
-    position: relative;
-    top: 0;
-    z-index: 3;
-    text-align: center;
-    .logo {
-        position: relative;
-        top: 60px;
-        height: auto;
+    .user-header-top
+    {
         width: 100%;
-    }
-    .nav {
+        height: 250px;
+        // background: #fff url(http://marriage-1251225286.file.myqcloud.com/static/images/20170821173307.gif)top  center no-repeat;
+        background: #fff;
+        border-bottom: 2px solid #ff4e6b;
         position: relative;
-        top: 75px;
-        height: auto;
-        width: 100%;
-        li {
-            display: inline-block;
-            white-space: nowrap;
-            margin-right: 84px;
-            a {
-                line-height: 40px;
-                text-align: center;
-                font-size: 18px;
-                font-weight: bold;
-                color: #363637;
-                padding-bottom: 10px;
-                -webkit-transition: all .6s ease;
-                transition: all .3s ease;
-            }
-        }
-        li:last-child {
-            margin-right: 0;
-        }
-        .nav_a:hover {
-            color: #ff4e6b;
-        }
-        .nav_active {
-            color: #ff4e6b;
-            border-bottom: 3px solid #ff4e6b;
-        }
-    }
-}
-
-.user-search {
-    position: absolute;
-    bottom: 11px;
-    right: 0;
-    .nav_search {
-        width: 0%;
-        min-width: 60px;
-        height: 30px;
-        position: relative;
-        top: 12px;
-        display: inline-block;
-        border-right: 1px solid #d9d9d9;
-    }
-    .focus-search {
-        position: absolute;
-        right: 8px;
-        top: 0px;
-    }
-    .nav_form {
-        position: absolute;
         top: 0;
-        outline: none;
-        height: 30px;
-        line-height: 30px;
-        z-index: 10;
-        padding-left: 10px;
-        color: #808080;
-        font-size: 12px;
-        line-height: 40px;
-        border: 1px solid #d9d9d9;
-        width: 150px;
-        border-radius: 15px;
-        background: #f2f2f2;
-        right: 50px;
-        filter: alpha(Opacity=100);
-        -moz-opacity: 1;
-        opacity: 1;
-        -webkit-transition: width 0.3s;
-        -moz-transition: width 0.3s;
-        transition: width 0.3s;
-    }
-    // .nav_form {
-    //     position: absolute;
-    //     top: 0;
-    //     right: 0;
-    //     border: none;
-    //     outline: none;
-    //     width: 98%;
-    //     height: 30px;
-    //     line-height: 30px;
-    //     z-index: 10;
-    //     padding-left: 10px;
-    //     background: transparent;
-    //     color: #808080;
-    //     font-size: 12px;
-    //     line-height: 40px;
-    //     filter: alpha(Opacity=0);
-    //     -moz-opacity: 0;
-    //     opacity: 0;
-    //     -webkit-transition: width 0.3s;
-    //     -moz-transition: width 0.3s;
-    //     transition: width 0.3s;
-    // }
-    // .nav_form:focus {
-    //     border: 1px solid #d9d9d9;
-    //     width: 150px;
-    //     border-radius: 15px;
-    //     background: #f2f2f2;
-    //     right: 50px;
-    //     filter: alpha(Opacity=100);
-    //     -moz-opacity: 1;
-    //     opacity: 1;
-    // }
-}
-
-
-.nav_user {
-    padding: 20px 0 20px 7px;
-}
-
-.nav_user:hover .nav_user_ul {
-    display: block;
-}
-
-.nav_user_ul {
-    position: absolute;
-    width: 117px;
-    top: 45px;
-    right: -20px;
-    z-index: 3;
-    font-size: 12px;
-    background: #fff;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    padding: 2px;
-    box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.2);
-    -webkit-transition: all .2s;
-    transition: all .2s;
-    display: none;
-}
-
-.nav_user_line {
-    padding: 0;
-    height: 3px;
-    position: relative;
-    top: -1px;
-    display: block;
-    margin: 0 -2px;
-    border-bottom: 1px solid #d9d9d9;
-}
-
-// .nav_user_ul:before {
-//     content: "";
-//     width: 0;
-//     height: 0;
-//     position: absolute;
-//     top: -10px;
-//     left: 50%;
-//     border-bottom: 10px solid #ccc;
-//     border-left: 10px solid transparent;
-//     border-right: 10px solid transparent;
-// }
-// .nav_user_ul:after {
-//     content: "";
-//     width: 0;
-//     height: 0;
-//     position: absolute;
-//     top: -9px;
-//     left: 50%;
-//     border-bottom: 10px solid #fff;
-//     border-left: 10px solid transparent;
-//     border-right: 10px solid transparent;
-//     z-index: 1;
-// }
-.nav_user_ul a {
-    display: block;
-    padding: 9px 30px;
-}
-
-.nav_user_ul a:hover {
-    background: #f1efef;
-}
-
-.user-header {
-    width: 100%;
-    height: 78px;
-    background: #fff url(http://marriage-1251225286.file.myqcloud.com/static/images/20170821173307.gif)top  center no-repeat;
-    border-bottom: 2px solid #ff4e6b;
-    position: fixed;
-    top: 0;
-    z-index: 9999;
-    .logo {
-        position: relative;
-        top: 10px;
-        height: auto;
-        float: left;
-    }
-    .nav {
-        position: relative;
-        top: 10px;
-        line-height: 68px;
-        height: auto;
+        z-index: 3;
         text-align: center;
-        li {
-            display: inline-block;
-            white-space: nowrap;
-            margin-right: 84px;
-            a {
-                line-height: 40px;
-                text-align: center;
-                font-size: 18px;
-                font-weight: bold;
-                color: #363637;
-                padding-bottom: 10px;
-                -webkit-transition: all .6s ease;
-                transition: all .3s ease;
+        .logo {
+            position: relative;
+            top: 60px;
+            height: auto;
+            width: 100%;
+        }
+        .nav {
+            position: relative;
+            top: 75px;
+            height: auto;
+            width: 100%;
+            li {
+                display: inline-block;
+                white-space: nowrap;
+                margin-right: 84px;
+                a {
+                    line-height: 40px;
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #363637;
+                    padding-bottom: 10px;
+                    -webkit-transition: all .6s ease;
+                    transition: all .3s ease;
+                }
+            }
+            li:last-child {
+                margin-right: 0;
+            }
+            .nav_a:hover {
+                color: #ff4e6b;
+            }
+            .nav_active {
+                color: #ff4e6b;
+                border-bottom: 3px solid #ff4e6b;
             }
         }
-        li:last-child {
-            margin-right: 0;
+    }
+    .user-search {
+        position: absolute;
+        bottom: 11px;
+        right: 0;
+        .nav_search {
+            width: 0%;
+            min-width: 60px;
+            height: 30px;
+            position: relative;
+            top: 12px;
+            display: inline-block;
+            border-right: 1px solid #d9d9d9;
         }
-        .nav_a:hover {
-            color: #ff4e6b;
+        .focus-search {
+            position: absolute;
+            right: 8px;
+            top: 0px;
         }
-        .nav_active {
-            color: #ff4e6b;
-            border-bottom: 3px solid #ff4e6b;
+        .nav_form {
+            position: absolute;
+            top: 0;
+            outline: none;
+            height: 30px;
+            line-height: 30px;
+            z-index: 10;
+            padding-left: 10px;
+            color: #808080;
+            font-size: 12px;
+            border: 1px solid #d9d9d9;
+            width: 150px;
+            border-radius: 15px;
+            background: #f2f2f2;
+            right: 50px;
+            filter: alpha(Opacity=100);
+            -moz-opacity: 1;
+            opacity: 1;
+            -webkit-transition: width 0.3s;
+            -moz-transition: width 0.3s;
+            transition: width 0.3s;
+        }
+        // .nav_form {
+        //     position: absolute;
+        //     top: 0;
+        //     right: 0;
+        //     border: none;
+        //     outline: none;
+        //     width: 98%;
+        //     height: 30px;
+        //     line-height: 30px;
+        //     z-index: 10;
+        //     padding-left: 10px;
+        //     background: transparent;
+        //     color: #808080;
+        //     font-size: 12px;
+        //     line-height: 40px;
+        //     filter: alpha(Opacity=0);
+        //     -moz-opacity: 0;
+        //     opacity: 0;
+        //     -webkit-transition: width 0.3s;
+        //     -moz-transition: width 0.3s;
+        //     transition: width 0.3s;
+        // }
+        // .nav_form:focus {
+        //     border: 1px solid #d9d9d9;
+        //     width: 150px;
+        //     border-radius: 15px;
+        //     background: #f2f2f2;
+        //     right: 50px;
+        //     filter: alpha(Opacity=100);
+        //     -moz-opacity: 1;
+        //     opacity: 1;
+        // }
+    }
+    .nav_user {
+        padding: 20px 0 20px 7px;
+    }
+    .nav_user:hover .nav_user_ul {
+        display: block;
+    }
+    .nav_user_ul {
+        position: absolute;
+        width: 117px;
+        top: 45px;
+        right: -20px;
+        z-index: 3;
+        font-size: 12px;
+        background: #fff;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        padding: 2px;
+        box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.2);
+        -webkit-transition: all .2s;
+        transition: all .2s;
+        display: none;
+    }
+    .nav_user_line {
+        padding: 0;
+        height: 3px;
+        position: relative;
+        top: -1px;
+        display: block;
+        margin: 0 -2px;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    // .nav_user_ul:before {
+    //     content: "";
+    //     width: 0;
+    //     height: 0;
+    //     position: absolute;
+    //     top: -10px;
+    //     left: 50%;
+    //     border-bottom: 10px solid #ccc;
+    //     border-left: 10px solid transparent;
+    //     border-right: 10px solid transparent;
+    // }
+    // .nav_user_ul:after {
+    //     content: "";
+    //     width: 0;
+    //     height: 0;
+    //     position: absolute;
+    //     top: -9px;
+    //     left: 50%;
+    //     border-bottom: 10px solid #fff;
+    //     border-left: 10px solid transparent;
+    //     border-right: 10px solid transparent;
+    //     z-index: 1;
+    // }
+    .nav_user_ul a {
+        display: block;
+        padding: 9px 30px;
+    }
+    .nav_user_ul a:hover {
+        background: #f1efef;
+    }
+    .user-header {
+        width: 100%;
+        height: 78px;
+        background: #fff;
+        // background: #fff url(http://marriage-1251225286.file.myqcloud.com/static/images/20170821173307.gif)top  center no-repeat;
+        border-bottom: 2px solid #ff4e6b;
+        position: fixed;
+        top: 0;
+        z-index: 9999;
+        .logo {
+            position: relative;
+            top: 10px;
+            height: auto;
+            float: left;
+        }
+        .nav {
+            position: relative;
+            top: 10px;
+            line-height: 68px;
+            height: auto;
+            text-align: center;
+            li {
+                display: inline-block;
+                white-space: nowrap;
+                margin-right: 84px;
+                a {
+                    line-height: 40px;
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #363637;
+                    padding-bottom: 10px;
+                    -webkit-transition: all .6s ease;
+                    transition: all .3s ease;
+                }
+            }
+            li:last-child {
+                margin-right: 0;
+            }
+            .nav_a:hover {
+                color: #ff4e6b;
+            }
+            .nav_active {
+                color: #ff4e6b;
+                border-bottom: 3px solid #ff4e6b;
+            }
         }
     }
-}
 </style>

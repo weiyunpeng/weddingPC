@@ -2,7 +2,6 @@
 @import './main';
 .bus-commit {
     width: 100%;
-    padding-bottom: 20px;
     background: #fff;
     background-color: #fff;
 }
@@ -210,7 +209,6 @@
     margin-left: 8px;
     height: 56px;
     span{
-        width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
         display: block;
         color: #262626;
         font-size: 18px;
@@ -228,7 +226,6 @@
     overflow: hidden;
     margin-left: 30px;
     a{
-        display: block;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -286,9 +283,6 @@
 }
 .h_auto{
     height: auto !important;
-}
-.h_80{
-    height: 80px !important;
 }
 div.bus-commit > div > ul > li:nth-child(1) > ul{
     margin-top: 0px;

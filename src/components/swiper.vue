@@ -101,7 +101,7 @@ export default {
     transition: opacity .3s ease;
 }
 
-.swiper_modal_dialog {
+/*.swiper_modal_dialog {
     position: relative;
     background: transparent;
     width: 1200px;
@@ -112,8 +112,21 @@ export default {
     padding: 15px;
     background: #fff;
     transition: all .3s ease;
-}
+}*/
 
+.swiper_modal_dialog {
+    position: fixed;
+    background: transparent;
+    width: 1200px;
+    height: 480px;
+    border-radius: 15px;
+    display: inline-block;
+    top: 50%;  margin-top: -240px;
+    left: 50%; margin-left: -600px;
+    padding: 15px;
+    background: #fff;
+    transition: all .3s ease;
+}
 .swiper_modal_dialog .panel_body {
     cursor: zoom-out;
 }

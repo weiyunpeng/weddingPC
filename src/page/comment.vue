@@ -11,7 +11,7 @@
                             <li class="list-con-li">
                                 <div class="shop fl">
                                     <router-link :to="{ name: 'storeDetails', query: {busId:item.id}}" target="_blank">
-                                        <img class="fl shop_logo" v-lazy="item.logo" width="124" height="109">
+                                        <img class="fl shop_logo" v-lazy="item.logo" width="120" height="120">
                                         <ul class="shop_details">
                                             <li>
                                                 <span class="meal_name">{{item.name}}</span>
