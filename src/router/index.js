@@ -4,6 +4,41 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
+const isMobile = /(iphone|android|mobile|micromessenger)/i.test(navigator.userAgent.toLowerCase())
+const isWeixin = /micromessenger/.test(navigator.userAgent.toLowerCase())
+
+let curVisitUrl = window.location.href
+let pcOrigin = /m.dev.hunjia.qqdayu.com/.test(curVisitUrl) ? 'http://dev.hunjia.qqdayu.com' : 'http://xnb.qqdayu.com'
+let moOrigin = /dev.hunjia.qqdayu.com/.test(curVisitUrl) ? 'http://m.dev.hunjia.qqdayu.com' : 'http://m.xnb.qqdayu.com'
+
+let curVisitUrlPath = window.location.pathname
+
+// PC端和移动端链接对应
+let matchUrl = {
+	'/': '/', 				// 首页
+	'/user': '/vp',		// 看照片
+	'/comment': '/search',		// 找商家
+	'/packageDetails': '/detail', // 套餐详情
+	'/storeList': '/detail', // 套餐列表
+	'/storeDetails': '/detail', // 商家详情页
+	'/busSample': '/detail', // 案例列表
+	'/makeupman': '/detail', // 化妆师详情页
+	'/cameraman': '/detail', // 摄影师详情页
+	'/meal': '/search', // 套餐搜索列表页
+	'/guide': '/guide',		// 攻略
+	'/collect': '/uc'			// 个人中心
+}
+
+if(curVisitUrl.indexOf('?busId=') > -1){
+    let pathArr = curVisitUrl.split('?busId=')
+    let idArr = pathArr[pathArr.length - 1]
+    let storeId = idArr.split("&",1)
+    curVisitUrlPath = '/detail/' + storeId
+}else{
+    curVisitUrlPath = matchUrl[curVisitUrlPath]
+}
+
+
 //状态控制
 import store from '../store/index';
 
@@ -89,6 +124,11 @@ const router = new VueRouter({
 });
 
 router.beforeEach(({meta, path}, from, next) => {
+    if (isMobile) { 
+        //说明是移动端
+        window.location.href = moOrigin + curVisitUrlPath
+        return false
+    }
     var { auth = true } = meta;
     const token = localStorage.getItem('user');
     var isLogin = Boolean(token);

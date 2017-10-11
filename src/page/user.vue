@@ -131,6 +131,9 @@ export default {
         }
     },
     mounted() {
+        this.getPhotoListFill.splice(0);
+         //document.querySelector('.user-info').innerHTML = '';
+       //document.querySelector('.user-water').innerHTML = '';
         this.$store.dispatch('photoClear');
         this.loadPhoto();
         window.addEventListener('scroll', this.loadMore);
