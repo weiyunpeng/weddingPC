@@ -63,7 +63,6 @@ axios.interceptors.response.use(function (response) {
 const ROOT = (process.env.NODE_ENV === 'production')
     ? ''
     :'http://localhost:1300';
-//http://10.97.204.142:81
 function config() {
     const base = {
         baseURL: ROOT

@@ -1,7 +1,7 @@
 <template>
     <div class="user">
         <com-header></com-header>
-        <div class="container">
+        <div class="">
             <div class="user-info fl" v-show="isAuth">
                 <div class="Profile"  >
                     <div class="user-nike">
@@ -37,26 +37,6 @@
                         </li>
                     </ul>
                 </div>
-                <waterfall :line="line" :watch="getPhotoListFill" :line-gap="300" style="margin-top:60px">
-                    <waterfall-slot v-for="(item, flowNum) in getPhotoListFill" :width="300" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
-                        <div class="panel photo_box hover_sh">
-                            <div class="img-hover" @click="showPhotoModal(item, flowNum,true)">
-                                <img :src="item.img" :width="300">
-                            </div>
-                            <div class="photo_info">
-                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum,true)">
-                                    <i v-if="item.is_fav" class="icon_like_act"></i>
-                                    <i v-if="!item.is_fav" class="icon_like"></i>
-                                    {{item.fav_num}}
-                                </span>
-                                <ul>
-                                    <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
-                                </ul>
-                            </div>
-                        </div>
-    
-                    </waterfall-slot>
-                </waterfall>
             </div>
             <div class="user-water">
                 <waterfall :line="line" :watch="getPhotoList" :line-gap="300">
@@ -132,8 +112,6 @@ export default {
     },
     mounted() {
         this.getPhotoListFill.splice(0);
-         //document.querySelector('.user-info').innerHTML = '';
-       //document.querySelector('.user-water').innerHTML = '';
         this.$store.dispatch('photoClear');
         this.loadPhoto();
         window.addEventListener('scroll', this.loadMore);
@@ -262,7 +240,7 @@ export default {
     position: relative;
     top: 5px;
     margin-bottom: 20px;
-    left: 10px;
+    left: 68px;
     overflow: hidden;
 }
 
