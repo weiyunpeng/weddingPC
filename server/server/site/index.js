@@ -7,6 +7,7 @@ function run(Request, Response)
             'index':index,
             'view_photo':view_photo,
             'index_login':index_login,
+            'comment':comment,
             'photo_flow':photo_flow,
         }
         funs[Request.params.name](Params, Request, Response);
@@ -25,6 +26,16 @@ function index(Params, Request, Response) {
 }
 
 /**
+ * 首页(已登录)
+ * @param {Object} Request
+ * @param {Object} Response
+ */
+function index_login(Params, Request, Response) {
+    var fileName = 'site/data/index_login.json';
+    MAIN.responseStub(Response,fileName);
+}
+
+/**
  * 查看图组详情
  * @param {Object} Request
  * @param {Object} Response
@@ -35,12 +46,12 @@ function view_photo(Params, Request, Response) {
 }
 
 /**
- * 首页(已登录)
+ * 深度点评
  * @param {Object} Request
  * @param {Object} Response
  */
-function index_login(Params, Request, Response) {
-    var fileName = 'site/data/index_login.json';
+function comment(Params, Request, Response) {
+    var fileName = 'site/data/comment.json';
     MAIN.responseStub(Response,fileName);
 }
 
@@ -61,4 +72,5 @@ function photo_flow(Params, Request, Response) {
     }
     MAIN.responseStub(Response,fileName);
 }
+
 exports.index = run;

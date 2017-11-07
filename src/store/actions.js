@@ -24,19 +24,19 @@ export const hideModal = ({ commit }, data) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------获取用户信息------------------------------------------------------
-export const getUserInfo = ({ commit },data) => {
+export const getUserInfo = ({ commit }, data) => {
     api.getUserInfo(data).then(function (response) {
-        if(response.data.code == 0){
+        if (response.data.code == 0) {
             //说明获取用户信息成功
-            if(!response.data.data || response.data.data==''){
+            if (!response.data.data || response.data.data == '') {
                 //说明游客访问
-            }else{
+            } else {
                 //说明有用户信息，为用户登录
                 commit(types.AUTH_INFO, {
                     token: response.data.data
                 })
             }
-        }else{
+        } else {
             //获取用户信息失败
             commit(types.AUTH_INFO_CLEAR)
         }
@@ -45,28 +45,28 @@ export const getUserInfo = ({ commit },data) => {
             console.log(error)
         });
 };
-export const loginOut = ({ commit },data) => {
-    api.loginOut(data).then(function(response){
+export const loginOut = ({ commit }, data) => {
+    api.loginOut(data).then(function (response) {
         commit(types.USER_LOGOUT)
     })
-    .catch(function (error) {
+        .catch(function (error) {
             console.log(error)
         });
 };
 //----------------------------------------------------------------------------------------------
 
 //-------------------------------查询商家首页列表---------------------------------------------------------------
-export const qryStoreList = ({ commit },data) => {
+export const qryStoreList = ({ commit }, data) => {
     api.qryStoreList(data).then(function (response) {
-        if(response.data.data.list && response.data.data.list.length>0){
-            for(var i = 0; i<response.data.data.list.length;i++){
+        if (response.data.data.list && response.data.data.list.length > 0) {
+            for (var i = 0; i < response.data.data.list.length; i++) {
                 response.data.data.list[i].showAll = false
                 commit(types.SHOPSTORE_LIST, {
                     list: response.data.data.list,
                     page: response.data.data.page
                 })
             }
-        }else{
+        } else {
             commit(types.SHOPSTORE_LIST, {
                 list: response.data.data.list,
                 page: response.data.data.page
@@ -78,8 +78,8 @@ export const qryStoreList = ({ commit },data) => {
         });
 };
 
-export const shopListChange = ({ commit },data) => {
-    commit(types.SHOPSTORE_LIST_CHANGE,data)
+export const shopListChange = ({ commit }, data) => {
+    commit(types.SHOPSTORE_LIST_CHANGE, data)
 };
 
 export const shopListClear = ({ commit }) => {
@@ -88,7 +88,7 @@ export const shopListClear = ({ commit }) => {
 //----------------------------------------------------------------------------------------------
 
 //---------------------------------商家首页分类-------------------------------------------------------------
-export const qryStoreTag = ({ commit },data) => {
+export const qryStoreTag = ({ commit }, data) => {
     api.qryStoreTag(data).then(function (response) {
         commit(types.SHOPSTORE_LIST_TAG, {
             list: response.data.data
@@ -103,13 +103,13 @@ export const busTagClear = ({ commit }) => {
     commit(types.SHOPSTORE_LIST_TAG_CLEAR)
 };
 
-export const busTagChange = ({ commit },data) => {
-    commit(types.SHOPSTORE_LIST_TAG_CHANGE,data)
+export const busTagChange = ({ commit }, data) => {
+    commit(types.SHOPSTORE_LIST_TAG_CHANGE, data)
 };
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------商家详情------------------------------------------------------------
-export const qryStoreDetails = ({ commit },data) => {
+export const qryStoreDetails = ({ commit }, data) => {
     api.qryStoreDetails(data).then(function (response) {
         commit(types.SHOPSTORE_INFO, response.data.data.bus_info)
         commit(types.SHOPSTORE_DETAILS, response.data.data)
@@ -121,7 +121,7 @@ export const qryStoreDetails = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //-------------------------------查询商家的官方案例---------------------------------------------------------------
-export const qryBusSample = ({ commit },data) => {
+export const qryBusSample = ({ commit }, data) => {
     api.qryBusSample(data).then(function (response) {
         commit(types.BUS_SAMPLE, {
             list: response.data.data.list,
@@ -140,7 +140,7 @@ export const busSampleClear = ({ commit }) => {
 //----------------------------------------------------------------------------------------------
 
 //---------------------------------商家官方案例分类-------------------------------------------------------------
-export const qryBusSampleTag = ({ commit },data) => {
+export const qryBusSampleTag = ({ commit }, data) => {
     api.qryBusSampleTag(data).then(function (response) {
         commit(types.BUS_SAMPLE_TAG, {
             list: response.data.data
@@ -155,15 +155,15 @@ export const busSampleTagClear = ({ commit }) => {
     commit(types.BUS_SAMPLE_TAG_CLEAR)
 };
 
-export const busSampleTagChange = ({ commit },data) => {
-    commit(types.BUS_SAMPLE_TAG_CHANGE,data)
+export const busSampleTagChange = ({ commit }, data) => {
+    commit(types.BUS_SAMPLE_TAG_CHANGE, data)
 };
 //----------------------------------------------------------------------------------------------
 
 
 
 //------------------------------------查询套餐首页列表----------------------------------------------------------
-export const qryMealList = ({ commit },data) => {
+export const qryMealList = ({ commit }, data) => {
     api.qryMealList(data).then(function (response) {
         commit(types.MEAL_LIST, {
             list: response.data.data.list,
@@ -180,7 +180,7 @@ export const mealClear = ({ commit }) => {
 //----------------------------------------------------------------------------------------------
 
 //---------------------------------------套餐首页分类-------------------------------------------------------
-export const qryMealTag = ({ commit },data) => {
+export const qryMealTag = ({ commit }, data) => {
     api.qryMealTag(data).then(function (response) {
         commit(types.MEAL_TAG_LIST, {
             list: response.data.data
@@ -195,13 +195,13 @@ export const mealTagClear = ({ commit }) => {
     commit(types.MEAL_TAG_CLEAR)
 };
 
-export const mealTagChange = ({ commit },data) => {
-    commit(types.MEAL_TAG_CHANGE,data)
+export const mealTagChange = ({ commit }, data) => {
+    commit(types.MEAL_TAG_CHANGE, data)
 };
 //----------------------------------------------------------------------------------------------
 
 //-----------------------------------------套餐详情-----------------------------------------------------
-export const qryMealDetails = ({ commit },data) => {
+export const qryMealDetails = ({ commit }, data) => {
     api.qryMealDetails(data).then(function (response) {
         commit(types.MEAL_INFO, {
             info: response.data.data.package_info
@@ -217,7 +217,7 @@ export const qryMealDetails = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //--------------------------------------查询商家的套餐列表--------------------------------------------------------
-export const qryThisMealList = ({ commit },data) => {
+export const qryThisMealList = ({ commit }, data) => {
     api.qryThisMealList(data).then(function (response) {
         commit(types.THIS_MEAL_LIST, {
             list: response.data.data.list,
@@ -234,7 +234,7 @@ export const qryThisMealList = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //---------------------------------商家的套餐列表分类-------------------------------------------------------------
-export const qryThisMealTag = ({ commit },data) => {
+export const qryThisMealTag = ({ commit }, data) => {
     api.qryThisMealTag(data).then(function (response) {
         commit(types.THIS_MEAL_TAG, {
             list: response.data.data
@@ -249,13 +249,13 @@ export const busThisMealTagClear = ({ commit }) => {
     commit(types.THIS_MEAL_TAG_CLEAR)
 };
 
-export const busThisMealTagChange = ({ commit },data) => {
-    commit(types.THIS_MEAL_TAG_CHANGE,data)
+export const busThisMealTagChange = ({ commit }, data) => {
+    commit(types.THIS_MEAL_TAG_CHANGE, data)
 };
 //----------------------------------------------------------------------------------------------
 
 //--------------------------------------摄影师详情--------------------------------------------------------
-export const qryCamaramanDetails = ({ commit },data) => {
+export const qryCamaramanDetails = ({ commit }, data) => {
     api.qryCamaramanDetails(data).then(function (response) {
         commit(types.CAMARAMAN_DETAILS, {
             data: response.data.data
@@ -268,7 +268,7 @@ export const qryCamaramanDetails = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------化妆师详情------------------------------------------------------
-export const qryMakeupDetails = ({ commit },data) => {
+export const qryMakeupDetails = ({ commit }, data) => {
     api.qryMakeupDetails(data).then(function (response) {
         commit(types.MAKEUP_DETAILS, {
             data: response.data.data
@@ -281,47 +281,11 @@ export const qryMakeupDetails = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------首页未登录状态------------------------------------------------------
-export const qryIndex = ({ commit },data) => {
+export const qryIndex = ({ commit }, data) => {
     api.qryIndex(data).then(function (response) {
-        let photoCount = 0;
-        if(response.data.data.photo.length<=0){
-            commit(types.INDEX_LIST, {
-                list: response.data.data,
-            })
-            return false
-        }
-        for(let i=0;i < response.data.data.photo.length;i++){
-            const tempImage = new Image();
-            tempImage.onload = function() {
-                photoCount++;
-             /*   response.data.data.photo[i].width = tempImage.width;
-                response.data.data.photo[i].height = tempImage.height + 30;*/
-                // 解决bug: 图片修改为580宽度后，部分以前图片不兼容问题
-                if (tempImage.width < 580) {
-                    response.data.data.photo[i].width = 580 / 2;
-                    var rate = tempImage.width / tempImage.height;
-                    response.data.data.photo[i].height = response.data.data.photo[i].width / rate + 45;
-                } else {
-                    response.data.data.photo[i].width = tempImage.width / 2;
-                    response.data.data.photo[i].height = tempImage.height / 2 + 45;
-                }
-                if( photoCount == response.data.data.photo.length) {
-                    commit(types.INDEX_LIST, {
-                        list: response.data.data,
-                    })
-                }
-            };
-            tempImage.onerror = function(){
-                photoCount++;
-                response.data.data.photo[i].height = 0;
-                if( photoCount == response.data.data.photo.length) {
-                    commit(types.INDEX_LIST, {
-                        list: response.data.data,
-                    })
-                }
-            };
-            tempImage.src = response.data.data.photo[i].img;
-        }
+        commit(types.INDEX_LIST, {
+            list: response.data.data,
+        })
     })
         .catch(function (error) {
             console.log(error)
@@ -330,31 +294,31 @@ export const qryIndex = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------查看图组详情------------------------------------------------------
-export const qryViewPhoto = ({ commit },data) => {
+export const qryViewPhoto = ({ commit }, data) => {
     api.qryViewPhoto(data).then(function (response) {
-        if(response.data.code == -1){
-          document.querySelector(".photo_modal").style.display='none' ;
+        if (response.data.code == -1) {
+            document.querySelector(".photo_modal").style.display = 'none';
             commit(types.HIDE_PHOTO_MODAL)
             return false
         }
         let photoCount = 0;
-        for(let i=0;i < response.data.data.list.length;i++){
+        for (let i = 0; i < response.data.data.list.length; i++) {
             const tempImage = new Image();
-            tempImage.onload = function() {
+            tempImage.onload = function () {
                 photoCount++;
-                response.data.data.list[i].height = tempImage.height /2 + 15;
-                response.data.data.list[i].width = tempImage.width/2;
-                if( photoCount == response.data.data.list.length) {
+                response.data.data.list[i].height = tempImage.height / 2 + 15;
+                response.data.data.list[i].width = tempImage.width / 2;
+                if (photoCount == response.data.data.list.length) {
                     commit(types.VIEW_PHOTO_MODAL, {
                         data: response.data.data,
                     })
-                   // console.log(response.data.data)
+                    // console.log(response.data.data)
                 }
             };
-            tempImage.onerror = function(){
+            tempImage.onerror = function () {
                 photoCount++;
                 response.data.data.list[i].height = 0;
-                if( photoCount == response.data.data.list.length) {
+                if (photoCount == response.data.data.list.length) {
                     commit(types.VIEW_PHOTO_MODAL, {
                         list: response.data.data.list,
                     })
@@ -373,7 +337,7 @@ export const hidePhotoModal = ({ commit }) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------首页已登录状态------------------------------------------------------
-export const qryLoginIndex = ({ commit },data) => {
+export const qryLoginIndex = ({ commit }, data) => {
     api.qryLoginIndex(data).then(function (response) {
         commit(types.USER_INFO, {
             data: response.data.data.user,
@@ -385,42 +349,54 @@ export const qryLoginIndex = ({ commit },data) => {
 };
 //----------------------------------------------------------------------------------------------
 
+
+//----------------------------------------首页已登录状态------------------------------------------------------
+export const qryComment = ({ commit }, data) => {
+    api.qryComment(data).then(function (response) {
+        console.log(response)
+        commit(types.COMMENT_LIST, {
+            data: response.data.data,
+        })
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------
+
+
 //----------------------------------------首页图片瀑布流------------------------------------------------------
-export const qryPhotoFlow = ({ commit },data) => {
-    commit(types.PHOTO_STATUS, {status: 1});
+export const qryPhotoFlow = ({ commit }, data) => {
+    commit(types.PHOTO_STATUS, { status: 1 });
     api.qryPhotoFlow(data).then(function (response) {
-        if(response.data.data.photo.length == 0){
-            return commit(types.PHOTO_STATUS, {status: 2});
+        if (response.data.data.photo.length == 0) {
+            return commit(types.PHOTO_STATUS, { status: 2 });
         }
         const status = response.data.data.photo.length == 20 ? 0 : 2;
         let photoCount = 0;
-        for(let i=0;i < response.data.data.photo.length;i++){
+        for (let i = 0; i < response.data.data.photo.length; i++) {
             const tempImage = new Image();
-            tempImage.onload = function() {
+            tempImage.onload = function () {
                 photoCount++;
-             /*   response.data.data.photo[i].height = tempImage.height/2+45;
-                response.data.data.photo[i].width = tempImage.width/2;*/
-             // 解决bug: 图片修改为580宽度后，部分以前图片不兼容问题
-             if(tempImage.width<580){
-                 response.data.data.photo[i].width = 580/2;
-                 var rate= tempImage.width/ tempImage.height;
-                 response.data.data.photo[i].height = response.data.data.photo[i].width/rate+ 45;
-             }else {
-                 response.data.data.photo[i].width = tempImage.width / 2;
-                 response.data.data.photo[i].height = tempImage.height / 2 + 45;
-             }
+                var rate = tempImage.width / tempImage.height;
+                response.data.data.photo[i].width = tempImage.width / 2;
+                if (tempImage.height < 640) {
+                    response.data.data.photo[i].height = response.data.data.photo[i].width / rate + 65;
+                } else {
+                    response.data.data.photo[i].height = response.data.data.photo[i].width / rate + 55;
+                }
 
-                if( photoCount == response.data.data.photo.length) {
+                if (photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
                         list: response.data.data.photo,
                         status: status
                     })
                 }
             };
-            tempImage.onerror = function(){
+            tempImage.onerror = function () {
                 photoCount++;
                 response.data.data.photo[i].height = 0;
-                if( photoCount == response.data.data.photo.length) {
+                if (photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
                         list: response.data.data.photo,
                         status: status
@@ -431,7 +407,7 @@ export const qryPhotoFlow = ({ commit },data) => {
         }
     })
         .catch(function (error) {
-            commit(types.PHOTO_STATUS, {status: 0})
+            commit(types.PHOTO_STATUS, { status: 0 })
             console.log(error)
         });
 };
@@ -441,7 +417,7 @@ export const photoClear = ({ commit }) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------攻略------------------------------------------------------
-export const qryGuideList = ({ commit },data) => {
+export const qryGuideList = ({ commit }, data) => {
     api.qryGuideList(data).then(function (response) {
         commit(types.GUIDE_LIST, {
             list: response.data.data,
@@ -454,7 +430,7 @@ export const qryGuideList = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------收藏图片------------------------------------------------------
-export const collectPhoto = ({ commit },data) => {
+export const collectPhoto = ({ commit }, data) => {
     const ajaxdata = {
         id: data.id,
         uid: data.uid
@@ -469,7 +445,7 @@ export const collectPhoto = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------取消收藏图片------------------------------------------------------
-export const cancelCollectPhoto = ({ commit },data) => {
+export const cancelCollectPhoto = ({ commit }, data) => {
     const ajaxdata = {
         id: data.id,
         uid: data.uid
@@ -484,7 +460,7 @@ export const cancelCollectPhoto = ({ commit },data) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------我的收藏------------------------------------------------------
-export const qryMyCollectList = ({ commit },data) => {
+export const qryMyCollectList = ({ commit }, data) => {
     api.qryMyCollectList(data).then(function (response) {
         commit(types.COLLECT_LIST, {
             data: response.data.data,
@@ -494,7 +470,7 @@ export const qryMyCollectList = ({ commit },data) => {
             console.log(error)
         });
 };
-export const collectListChange = ({ commit },data) => {
-    commit(types.COLLECT_LIST_CHANGE,data)
+export const collectListChange = ({ commit }, data) => {
+    commit(types.COLLECT_LIST_CHANGE, data)
 };
 //----------------------------------------------------------------------------------------------

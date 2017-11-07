@@ -1,7 +1,7 @@
 import { INDEX_LIST,PHOTO_CLEAR } from '../types'
 
 const state = {
-    banner:'',
+    bannner:[],
     logo:'',
     nav:[],
     guide:[],
@@ -15,7 +15,7 @@ const mutations = {
         state.guide = data.list.guide;
         state.store = data.list.store;
         state.list = data.list.photo;
-        state.banner = data.list.banner;
+        state.bannner = data.list.bannner;
         state.logo = data.list.logo;
     },
     [PHOTO_CLEAR](state){

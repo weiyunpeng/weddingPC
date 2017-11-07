@@ -45,303 +45,317 @@
 </template>
 
 <script>
-    import {waterfall, waterfallSlot} from 'vue-waterfall'
-    import {swiper, swiperSlide} from 'vue-awesome-swiper'
-    import {mapGetters, mapActions} from 'vuex'
+import { waterfall, waterfallSlot } from 'vue-waterfall';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
+import { mapGetters, mapActions } from 'vuex';
 
-    export default {
-        components: {
-            'waterfall': waterfall,
-            'waterfallSlot': waterfallSlot,
-            swiper,
-            swiperSlide
-        },
-        data() {
-            return {
-                loadshow: true,
-                selected: 0,
-                loading: false,
-                photoInfo: {},
-                isCase: true,
-                swiperOption: {
-                    notNextTick: true,
-                    setWrapperSize: false,
-                    slidesPerView: 1,
-                    paginationClickable: false,
-                    mousewheelControl: false,
-                    observeParents: true,
-                    prevButton: '.swiper-button-prev',
-                    nextButton: '.swiper-button-next',
-                    preloadImages: false,
-                    lazyLoading: true,
-                    onTransitionStart(swiper) {
-                        this.index = swiper.realIndex
-                    }
-                },
+export default {
+    components: {
+        waterfall: waterfall,
+        waterfallSlot: waterfallSlot,
+        swiper: swiper,
+        swiperSlide: swiperSlide
+    },
+    data() {
+        return {
+            loadshow: true,
+            selected: 0,
+            loading: false,
+            photoInfo: {},
+            isCase: true,
+            swiperOption: {
+                notNextTick: true,
+                setWrapperSize: false,
+                slidesPerView: 1,
+                paginationClickable: false,
+                mousewheelControl: false,
+                observeParents: true,
+                prevButton: '.swiper-button-prev',
+                nextButton: '.swiper-button-next',
+                preloadImages: false,
+                lazyLoading: true,
+                onTransitionStart(swiper) {
+                    this.index = swiper.realIndex;
+                }
             }
+        };
+    },
+    props: {
+        value: {
+            default: true
         },
-        props: {
-            value: {
-                'default': true
-            },
-            photoModal: {
-                type: Object,
-                'default': null
-            },
-            order: {
-                type: Number,
-                'default': null
-            }
+        photoModal: {
+            type: Object,
+            default: null
         },
-        computed: {
-            ...mapGetters({
-                getViewPhoto: 'getViewPhoto',
-                getViewPhotoInfo: 'getViewPhotoInfo',
-                getViewPhotoStatus: 'getViewPhotoStatus'
-            }),
-            ...mapActions({
-                showModal: 'showModal',
-            }),
-            swiper() {
-                return this.$refs.mySwiper.swiper
-            }
+        order: {
+            type: Number,
+            default: null
+        }
+    },
+    computed: {
+        ...mapGetters({
+            getViewPhoto: 'getViewPhoto',
+            getViewPhotoInfo: 'getViewPhotoInfo',
+            getViewPhotoStatus: 'getViewPhotoStatus'
+        }),
+        ...mapActions({
+            showModal: 'showModal'
+        }),
+        swiper: {
+            get: function () {
+                return this.$refs.mySwiper.swiper;
+            },
+            set: function () {}
+        }
+    },
+    mounted() {
+        this.swiper.slideTo(0, 1000, false);
+    },
+    methods: {
+        close() {
+            setTimeout(function() {
+                document.getElementById('loadmask').style.display = 'block';
+            }, 500);
+            this.loading = false;
+            this.swiper.slideTo(0, 1000, false);
+            this.selected = 0;
+            this.$emit('input', false);
         },
-        mounted() {
-            this.swiper.slideTo(0, 1000, false)
+        changeSwiper(item, index) {
+            this.selected = index;
+            this.swiper.slideTo(index, 1000, false);
         },
-        methods: {
-            close() {
-                setTimeout(function () {
-                    document.getElementById("loadmask").style.display = 'block';
-                },500)
-                this.loading = false;
-                this.swiper.slideTo(0, 1000, false)
-                this.selected = 0
-                this.$emit('input', false);
-            },
-            changeSwiper(item, index) {
-                this.selected = index
-                this.swiper.slideTo(index, 1000, false)
-            },
-            changeWaterPrev(){
-                this.selected = this.swiper.realIndex - 1
-            },
-            changeWaterNext(){
-                this.selected = this.swiper.realIndex + 1
-            },
-            photoLikeBtn(id, fav, flowNum) {
-                let token = JSON.parse(localStorage.getItem('user'));
-                let isLogin = Boolean(token);
-                if (isLogin) {
-                    // let obj = this.getViewPhoto[flowNum]
-                    // obj.is_fav = !obj.is_fav
-                    // this.$set(this.getViewPhoto, flowNum, obj);
-                    if (fav == 0) {
-                        //说明未收藏，可以收藏
-                        let ajaxdata = {
-                            id: id,
-                            uid: token.uid,
-                            index: flowNum,
-                            order: this.order,
-                            is_fav: fav,
-                            isFill: this.photoModal.isFill
-                        }
-                        this.$store.dispatch('collectPhoto', ajaxdata)
-                    } else if (fav == 1) {
-                        //说明已经收藏了,为取消收藏
-                        let ajaxdata = {
-                            id: id,
-                            uid: token.uid,
-                            index: flowNum,
-                            order: this.order,
-                            is_fav: fav,
-                            isFill: this.photoModal.isFill
-                        }
-                        this.$store.dispatch('cancelCollectPhoto', ajaxdata)
-                    } else {
-                        //未知异常
-                        console.log('collect 接口异常')
-                    }
+        changeWaterPrev() {
+            this.selected = this.swiper.realIndex - 1;
+        },
+        changeWaterNext() {
+            this.selected = this.swiper.realIndex + 1;
+        },
+        photoLikeBtn(id, fav, flowNum) {
+            let token = JSON.parse(localStorage.getItem('user'));
+            let isLogin = Boolean(token);
+            if (isLogin) {
+                // let obj = this.getViewPhoto[flowNum]
+                // obj.is_fav = !obj.is_fav
+                // this.$set(this.getViewPhoto, flowNum, obj);
+                if (fav == 0) {
+                    //说明未收藏，可以收藏
+                    let ajaxdata = {
+                        id: id,
+                        uid: token.uid,
+                        index: flowNum,
+                        order: this.order,
+                        is_fav: fav,
+                        isFill: this.photoModal.isFill
+                    };
+                    this.$store.dispatch('collectPhoto', ajaxdata);
+                } else if (fav == 1) {
+                    //说明已经收藏了,为取消收藏
+                    let ajaxdata = {
+                        id: id,
+                        uid: token.uid,
+                        index: flowNum,
+                        order: this.order,
+                        is_fav: fav,
+                        isFill: this.photoModal.isFill
+                    };
+                    this.$store.dispatch('cancelCollectPhoto', ajaxdata);
                 } else {
-                    const data = {
-                        name: 'delPhoto',
-                        info: {
-                            text: '登录后才能收藏哦~'
-                        }
-                    };
-                    this.$store.dispatch('showModal', data);
+                    //未知异常
+                    console.log('collect 接口异常');
                 }
-            },
-            swiper(a){
+            } else {
+                const data = {
+                    name: 'delPhoto',
+                    info: {
+                        text: '登录后才能收藏哦~'
+                    }
+                };
+                this.$store.dispatch('showModal', data);
             }
         },
-        watch: {
-            value() {
-                if (this.value) {
-                    const self = this;
-                    const tempImage = new Image();
-                    tempImage.onload = function () {
-                        self.loading = true;
-                    };
-                    tempImage.onerror = function () {
-                        self.close();
-                    };
-                    tempImage.src = self.photoModal.img;
-                }
-            },
-            getViewPhotoInfo() {
-                console.log('图集加载完成')
-                document.getElementById("loadmask").style.display = 'none';
-                setTimeout(function () {
-                    document.getElementById("loadmask").style.display = 'none';
-                },1500)
-                if (this.getViewPhotoInfo) {
-                    this.photoInfo = this.getViewPhotoInfo
-                }
-            },
-            getViewPhotoStatus(){
+        swiper(a) {}
+    },
+    watch: {
+        value() {
+            if (this.value) {
                 const self = this;
-                if (this.getViewPhotoStatus == -1) {
-                    setTimeout(() => self.close(), 2000)
-                }
-            },
-            photoModal(){
-                if (this.photoModal.src) {
-                    this.isCase = false
-                }
+                const tempImage = new Image();
+                tempImage.onload = function() {
+                    self.loading = true;
+                };
+                tempImage.onerror = function() {
+                    self.close();
+                };
+                tempImage.src = self.photoModal.img;
+            }
+        },
+        getViewPhotoInfo() {
+            console.log('图集加载完成');
+            document.getElementById('loadmask').style.display = 'none';
+            setTimeout(function() {
+                document.getElementById('loadmask').style.display = 'none';
+            }, 1500);
+            if (this.getViewPhotoInfo) {
+                this.photoInfo = this.getViewPhotoInfo;
+            }
+        },
+        getViewPhotoStatus() {
+            const self = this;
+            if (this.getViewPhotoStatus == -1) {
+                setTimeout(() => self.close(), 2000);
+            }
+        },
+        photoModal() {
+            if (this.photoModal.src) {
+                this.isCase = false;
             }
         }
     }
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-    .photo_modal {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 123456;
-        overflow: hidden;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(0, 0, 0, .5);
-        -webkit-overflow-scrolling: touch;
-        outline: 0;
-        transition: opacity .3s ease;
+.photo_modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 123456;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    transition: opacity 0.3s ease;
+}
+.imgcrop {
+    width: 690px;
+    overflow: hidden;
+    margin: auto;
+}
+.loadingmask {
+    position: absolute;
+    width: 1170px;
+    height: 550px;
+    left: 0;
+    top: 10px;
+    z-index: 12345;
+    background: url(/static/images/loading.gif) center center no-repeat
+        rgba(255, 255, 255, 0);
+}
+.photo_modal_dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -600px;
+    margin-top: -295px;
+    padding: 15px;
+    background: #fff;
+    width: 1200px;
+    height: 590px;
+    border-radius: 15px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+.photo_modal_dialog .panel_body {
+    cursor: zoom-out;
+}
+.photo_modal_dialog img {
+    max-height: 450px;
+}
+.photo_modal-enter {
+    opacity: 0;
+}
+.photo_modal-leave-active {
+    opacity: 0;
+}
+.photo_modal-enter .photo_modal_dialog,
+.photo_modal-leave-active .photo_modal_dialog {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.photo_fr {
+    width: 320px;
+    height: 500px;
+    overflow-x: hidden;
+}
+.pg_name {
+    font-size: 16px;
+    color: #4c4c4c;
+    line-height: 28px;
+    position: relative;
+    left: 50px;
+}
+.close_btn {
+    position: absolute;
+    z-index: 9999;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+    filter: alpha(Opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+.close_btn:hover {
+    transform: rotate(390deg);
+    -ms-transform: rotate(390deg); /* IE 9 */
+    -moz-transform: rotate(390deg); /* Firefox */
+    -webkit-transform: rotate(390deg); /* Safari 和 Chrome */
+    -o-transform: rotate(390deg); /* Opera */
+    filter: alpha(Opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+    transition: all 0.6s ease;
+    -webkit-transition: all 0.6s ease;
+}
+.photo_fl {
+    width: 800px;
+    height: auto;
+    position: relative;
+    text-align: center;
+}
+.pg_like {
+    position: absolute;
+    right: 0px;
+    bottom: -6px;
+    color: #999999;
+    font-size: 14px;
+    line-height: 24px;
+}
+.water_img {
+    padding-right: 10px;
+    filter: alpha(Opacity=80);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+.cur {
+    filter: alpha(Opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+}
+.modal-details {
+    padding: 10px 65px;
+    text-align: left;
+    color: #808080;
+    font-size: 14px;
+    line-height: 27.28px;
+    a {
+        margin-left: 5px;
+        color: #236dd3;
     }
-    .imgcrop{ width: 690px; overflow: hidden; margin: auto}
-    .loadingmask { position: absolute; width: 1170px; height: 550px; left: 0; top: 10px; z-index: 12345;
-        background: url(/static/images/loading.gif) center center no-repeat rgba(255, 255, 255, 0) }
-    .photo_modal_dialog {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        margin-left: -600px;
-        margin-top: -295px;
-        padding: 15px;
-        background: #fff;
-        width: 1200px;
-        height: 590px;
-        border-radius: 15px;
-        display: inline-block;
-        transition: all .3s ease;
+    a:hover {
+        text-decoration: underline;
+        color: #ff506d;
     }
-    .photo_modal_dialog .panel_body {
-        cursor: zoom-out;
-    }
-    .photo_modal_dialog img {
-        max-height: 450px;
-    }
-    .photo_modal-enter {
-        opacity: 0;
-    }
-    .photo_modal-leave-active {
-        opacity: 0;
-    }
-    .photo_modal-enter .photo_modal_dialog,
-    .photo_modal-leave-active .photo_modal_dialog {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    .photo_fr {
-        width: 320px;
-        height: 500px;
-        overflow-x: hidden;
-    }
-    .pg_name {
-        font-size: 16px;
-        color: #4c4c4c;
-        line-height: 28px;
-        position: relative;
-        left: 50px;
-    }
-    .close_btn {
-        position: absolute;
-        z-index: 9999;
-        top: 7px;
-        right: 7px;
-        cursor: pointer;
-        filter: alpha(Opacity=50);
-        -moz-opacity: 0.5;
-        opacity: 0.5;
-    }
-    .close_btn:hover {
-        transform: rotate(390deg);
-        -ms-transform: rotate(390deg); /* IE 9 */
-        -moz-transform: rotate(390deg); /* Firefox */
-        -webkit-transform: rotate(390deg); /* Safari 和 Chrome */
-        -o-transform: rotate(390deg); /* Opera */
-        filter: alpha(Opacity=100);
-        -moz-opacity: 1;
-        opacity: 1;
-        transition: all .6s ease;
-        -webkit-transition: all .6s ease;
-    }
-    .photo_fl {
-        width: 800px;
-        height: auto;
-        position: relative;
-        text-align: center;
-    }
-    .pg_like {
-        position: absolute;
-        right: 0px;
-        bottom: -6px;
-        color: #999999;
-        font-size: 14px;
-        line-height: 24px;
-    }
-    .water_img {
-        padding-right: 10px;
-        filter: alpha(Opacity=80);
-        -moz-opacity: 0.5;
-        opacity: 0.5;
-    }
-    .cur {
-        filter: alpha(Opacity=100);
-        -moz-opacity: 1;
-        opacity: 1;
-    }
-    .modal-details {
-        padding: 10px 65px;
-        text-align: left;
-        color: #808080;
-        font-size: 14px;
-        line-height: 27.28px;
-        a {
-            margin-left: 5px;
-            color: #236dd3;
-        }
-        a:hover {
-            text-decoration: underline;
-            color: #ff506d;
-        }
-    }
-    .swiper-button-prev {
-        background-image: url("/static/images/icon-arrow-prev.png") !important
-    }
-    .swiper-button-next {
-        background-image: url("/static/images/icon-arrow-next.png") !important
-    }
+}
+.swiper-button-prev {
+    background-image: url('/static/images/icon-arrow-prev.png') !important;
+}
+.swiper-button-next {
+    background-image: url('/static/images/icon-arrow-next.png') !important;
+}
 </style>

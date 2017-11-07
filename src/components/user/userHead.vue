@@ -1,57 +1,6 @@
 <template>
     <div>
-        <div class="user-header-top" :style="{borderBottom:skinBorder}" >
-            <div class="container">
-                <div class="logo">
-                    <router-link to="/">
-                        <img :src="logoTop" alt="大豫新娘帮">
-                    </router-link>
-                </div>
-                <div class="nav clearfix">
-                    <ul>
-                        <li>
-                            <router-link to="/user" class="nav_a" active-class="nav_active" exact>首页</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/guide" class="nav_a" active-class="nav_active">攻略</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/comment" class="nav_a" active-class="nav_active">点评</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/meal" class="nav_a" active-class="nav_active">套餐</router-link>
-                        </li>
-                    </ul>
-                </div>
-                <div class="user-search clearfix">
-                    <div class="nav_search">
-                        <input type="text" v-model.trim="keyword" placeholder="搜商家" class="nav_form"
-                               @keyup.enter="seaBtn">
-                        <a href="javascript:void(0)" class="focus-search" @click="seaBtn">
-                            <img src="/static/images/icon_search.png">
-                        </a>
-                    </div>
-                    <a href="javascript:void(0)" class="nav_user" @click="userLogin">
-                        <img :src="header" class="circle" width="30" height="30"
-                             v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
-                        <ul class="nav_user_ul" v-show="isLogin">
-                            <li>
-                                <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
-                                    <i class="icon_collage"></i>我的收藏
-                                </router-link>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="text-center" @click="logout()">
-                                    <i class="icon_logout"></i>退出登录</a>
-                            </li>
-                        </ul>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!--向上滑动后展示小的头部菜单  -->
-        <div class="user-header" :style="{borderBottom:skinBorder}" v-show="visHNav">
+        <div class="user-header" :style="{borderBottom:skinBorder}">
             <div class="container">
                 <div class="logo">
                     <router-link to="/">
@@ -61,21 +10,21 @@
                 <div class="nav clearfix">
                     <ul>
                         <li>
-                            <router-link to="/user" class="nav_a" active-class="nav_active" exact>首页</router-link>
+                            <router-link to="/index" class="nav_a" active-class="nav_active" exact>首页</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/user" class="nav_a" active-class="nav_active">婚纱照</router-link>
                         </li>
                         <li>
                             <router-link to="/guide" class="nav_a" active-class="nav_active">攻略</router-link>
                         </li>
                         <li>
-                            <router-link to="/comment" class="nav_a" active-class="nav_active">点评</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/meal" class="nav_a" active-class="nav_active">套餐</router-link>
+                            <router-link :to="{ name: 'comment', query: { bus: 1 }}" class="nav_a" active-class="nav_active">商家</router-link>
                         </li>
                     </ul>
                 </div>
                 <div class="user-search clearfix">
-                    <div class="nav_search">
+                    <div class="nav_search" v-if="bus">
                         <input type="text" v-model.trim="keyword" placeholder="搜商家" class="nav_form"
                                @keyup.enter="seaBtn">
                         <a href="javascript:void(0)" class="focus-search" @click="seaBtn">
@@ -109,8 +58,6 @@
     export default {
         data() {
             return {
-                visHNav: false,
-                HNavOffset: 300,
                 skinBorder: '3px solid #e4e4e4',
                 logoTop: 'http://marriage-1251225286.file.myqcloud.com/static/images/logo.png',
                 logo: '/static/images/icon-logo-3.png',
@@ -118,6 +65,7 @@
                 header: '/static/images/icon-user.png',
                 uid: null,
                 isLogin: null,
+                bus:this.$route.query.bus
             }
         },
         computed: {
@@ -139,16 +87,6 @@
             } catch (e) {
                 console.log(e)
             }
-            var self=this;
-            var catchScroll =function () {
-                    if (window.pageYOffset >=254) {
-                      self.visHNav = true;
-                    }
-                    if (window.pageYOffset < 230) {
-                        self.visHNav = false  ;
-                    }
-            }
-            window.onscroll = catchScroll
         },
         methods: {
             /**
@@ -181,7 +119,7 @@
                     this.header = '/static/images/icon-user.png'
                 }
             }
-        },
+        }
     }
 </script>
 <style rel="stylesheet/scss" lang="scss">
@@ -189,7 +127,6 @@
     {
         width: 100%;
         height: 250px;
-        // background: #fff url(http://marriage-1251225286.file.myqcloud.com/static/images/20170821173307.gif)top  center no-repeat;
         background: #fff;
         border-bottom: 2px solid #ff4e6b;
         position: relative;
@@ -375,7 +312,7 @@
         background: #fff;
         // background: #fff url(http://marriage-1251225286.file.myqcloud.com/static/images/20170821173307.gif)top  center no-repeat;
         border-bottom: 2px solid #ff4e6b;
-        position: fixed;
+        position: relative;
         top: 0;
         z-index: 9999;
         .logo {

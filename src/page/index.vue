@@ -1,216 +1,277 @@
 <template>
     <div>
-        <!-- <div class="i-header" :style="{
-                background:'url('+ getIndexPhoto.banner +' ) left center no-repeat', borderBottom:skinBorder}"> -->
-            <div class="i-header" :style="{borderBottom:skinBorder}">
-            <img class="logo zoomIn" v-lazy="logo">
-            <div class="header-con">
-                <a href="/login" target="_blank">
-                    <img class="user" :src="header" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
+        <com-header></com-header>
+        <div class="banner">
+            <swiper :options="swiperOption" ref="mySwiper">
+                    <swiper-slide class="photo_fl fl" v-for="(item,index) in getIndexPhoto.bannner" v-bind:key="index">
+                        <img :src="item.img" height="530">
+                        <div class="p-wrapper"><p><span>{{item.style}}</span>{{item.nickname}}拍摄于{{item.storeName}}</p></div>
+                    </swiper-slide>
+                    <div class="swiper-pagination" slot="pagination">
+                        <ul>
+                            <li  v-for="(item,index) in getIndexPhoto.bannner">
+                                <img :src="item.thumbnail" width="110" height="80">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-button-prev" slot="button-prev"></div>
+                    <div class="swiper-button-next" slot="button-next"></div>
+            </swiper>
+        </div>
+        <div class="tips">
+            <h2>
+                婚纱照筹备小贴士
+                <span></span>
+            </h2>
+            <ul>
+               <a href="" target="_blank"> 
+                   <li class="li-big">
+                        <dl>
+                            <dt class="dt-fg"></dt>
+                            <dd>
+                                <h4>选址婚纱照风格</h4>
+                                <p>找你喜欢</p>
+                            </dd>
+                        </dl>
+                    </li>
                 </a>
-                <ul class="zoomIn">
-                    <li class="flipInY" v-for="(nav,navNum) in getIndexPhoto.nav" :key="navNum">
-                        <router-link :to="{ name: 'user'}" target="_blank" v-if="navNum == 0">
-                            <img :src="nav.img || '/static/images/demo_01.jpg'" width="390" height="390">
-                        </router-link>
-                        <router-link :to="{ name: 'guide'}" target="_blank" v-if="navNum == 1">
-                            <img :src="nav.img || '/static/images/demo_02.jpg'" width="390" height="390">
-                        </router-link>
-                        <router-link :to="{ name: 'comment'}" target="_blank" v-if="navNum == 2">
-                            <img :src="nav.img || '/static/images/demo_03.jpg'" width="390" height="390">
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
+                <li class="li-small"></li>
+                <a href="" target="_blank"> 
+                <li class="li-big">
+                    <dl>
+                        <dt class="dt-gl"></dt>
+                        <dd>
+                            <h4>学攻略看门道</h4>
+                            <p>去学习</p>
+                        </dd>
+                    </dl>
+                </li>
+                </a>
+                <li class="li-small"></li>
+                <a href="" target="_blank"> 
+                <li class="li-big">
+                    <dl>
+                        <dt class="dt-sj"></dt>
+                        <dd>
+                            <h4>选择靠谱商家</h4>
+                            <p>去选择</p>
+                        </dd>
+                    </dl>
+                </li>
+                </a>
+            </ul>
         </div>
-        <!--热门婚纱照  -->
-        <div class="hot-wedding" v-if="getIndexPhoto.list.length>0">
-            <div class="container">
-                <img class="tit" src="/static/images/hot_hs_head.png">
-                <router-link :to="{ name: 'user', query: {}}" class="more_a fr u-index-nav" target="_blank">
-                    查看更多>
-                </router-link>
-                <waterfall :line-gap="291" :min-line-gap="320" :max-line-gap="640" :single-max-width="640" :watch="getIndexPhoto.list">
-                    <waterfall-slot v-for="(item, index) in getIndexPhoto.list" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
-                        <div class="panel photo_box hover_sh">
-                            <div class="img-hover" @click="showPhotoModal(item, index)">
-                                <img :src="item.img" :width="300">
-                            </div>
-                            <div class="photo_info">
-                                <span class="photo_like" @click="photoLikeBtn(item.id,index)">
-                                    <!-- <i class="icon_like_act"></i>  -->
-                                    <i class="icon_like"></i> {{item.fav_num}}
-                                </span>
-                                <ul>
-                                    <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
-                                </ul>
-                            </div>
-    
+        <div class="wrapper" style="overflow:hidden;">
+            <div class="wrapper_left fl">
+                <div class="wrapper-tit">婚纱照拍摄点评 篇 <span></span></div>
+                <div class="section" v-for="(item,index) in getCommentList" v-bind:key="index">
+                    {{getCommentList}}
+                    <div class="section-tit"></div>
+                    <p></p>
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <div class="section-bottom">
+                        <div class="business fl">
+                            拍摄商家： &nbsp;拍摄时间：
                         </div>
-                    </waterfall-slot>
-                </waterfall>
-            </div>
-        </div>
-    
-        <!--热门攻略  -->
-        <div class="hot-raiders" v-if="getIndexPhoto.guide.length>0">
-            <div class="container">
-                <img class="tit" src="/static/images/hot_gl_head.png">
-                <router-link :to="{ name: 'guide', query: {}}" class="more_a fr u-index-nav" target="_blank">
-                    查看更多>
-                </router-link>
-                <ul>
-                    <li v-for="(raiders,raiNum) in getIndexPhoto.guide" :key="raiNum">
-                        <a :href="raiders.url" target="_blank">
-                            <div class="img-hover fl">
-                                <img v-lazy="raiders.img" width="195" height="192">
-                            </div>
-    
-                            <div class="fr raid-con">
-                                <p>{{raiders.title}}</p>
-                                <span>{{raiders.con}}</span>
-                                <div class="raid-num fr">
-                                    浏览{{raiders.view}} 评论{{raiders.comment}}
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    
-        <!--商家评论  -->
-        <div class="store-comment" v-if="getIndexPhoto.store.length>0">
-            <div class="container">
-                <img class="tit" src="/static/images/bus_dp_head.png">
-                <router-link :to="{ name: 'comment', query: {}}" class="more_a fr u-index-nav" target="_blank">
-                    查看更多>
-                </router-link>
-                <ul>
-                    <li v-for="(store,storeNum) in getIndexPhoto.store" :key="storeNum">
-                        <router-link :to="{ name: 'storeDetails', query: {busId:store.id}}" target="_blank">
-                            <img v-lazy="store.img" height="210" width="295">
-                        </router-link>
-                        <div class="com-con">
-                            <router-link :to="{ name: 'storeDetails', query: {busId:store.id}}" target="_blank">
-                                <p>{{store.store_name}}</p>
-                            </router-link>
-                            <div class="clearfix">
-                                <label class="fl">总体评分：</label>
-                                <div class="media_rating fl">
-                                    <star :score="store.star"></star>
-                                </div>
-                                <span class="score">{{store.star}}</span>
-                            </div>
-                            <a :href="store.url" target="_blank">
-                                <div class="clearfix">
-                                    <label>拍客评价：</label>
-                                    <span class="blog">
-                                        {{store.desc}}
-                                    </span>
-                                </div>
-                            </a>
+                        <div class="seenumber">
+                            看过 &nbsp;<i class=""></i>
                         </div>
-    
-                    </li>
-                </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper_right fr">
             </div>
         </div>
-        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
-        </com-photoModal>
-        <com-modal @modalCallback="modalCallback"></com-modal>
     </div>
 </template>
 
 <script>
-import modal from './../components/modal'
-import star from './../components/star'
-import { waterfall, waterfallSlot } from 'vue-waterfall'
-import photoModal from './../components/photoModal'
-import { mapGetters, mapActions } from 'vuex'
+import header from "./../components/user/userHead";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+import { mapGetters, mapActions } from "vuex";
 export default {
-    components: {
-        'waterfall': waterfall,
-        'waterfallSlot': waterfallSlot,
-        'comPhotoModal': photoModal,
-        'star':star,
-        'comModal': modal,
-    },
-    computed: {
-        ...mapGetters({
-            getIndexPhoto: 'getIndexPhoto',
-            getAuth: 'getAuth'
-        }),
-        ...mapActions({
-            qryIndex: 'qryIndex',
-            qryViewPhoto: 'qryViewPhoto',
-            showModal: 'showModal',
-        })
-    },
-    data() {
-        return {
-            show: false,
-            photoModal: {},
-            index: null,
-            banner: '/static/images/unlogin_bg.jpg',
-            skinBorder: '2px solid #f2f2f2',
-            logo: '/static/images/icon-logo-2.png',
-            header: '/static/images/icon-user.png'
-        }
-    },
-    mounted() {
-        this.$store.dispatch('getUserInfo');
-        this.$store.dispatch('qryIndex')
-    },
-    methods: {
-        photoLikeBtn() {
-            const data = {
-                name: 'delPhoto',
-                info: {
-                    text: '登录后才能收藏哦~'
-                }
-            };
-            this.$store.dispatch('showModal', data);
-        },
-        modalCallback(val){
-            if(val){
-                //说明点击确认
-                window.location.href = '/login'
-            }
-        },
-        showPhotoModal(item, index) {
-            this.photoModal = item;
-            this.index = index;
-            this.show = true;
-            const ajaxdata = {
-                id: this.photoModal.id
-            }
-            this.$store.dispatch('qryViewPhoto', ajaxdata)
-        },
-        showHeader(){
-            if(!this.isLogin){
-                this.header = '/static/images/icon-user-hover.png'
-            }
-        },
-        hideHeader(){
-            if(!this.isLogin){
-                this.header = '/static/images/icon-user.png'
-            }
-        }
-    },
-    watch: {
-        getAuth() {
-            if (this.getAuth) {
-                this.$router.push({ name: 'user' })
-            }
-        }
-    },
-    beforeDestroy() {
+  computed: {
+    ...mapGetters({
+      getIndexPhoto: "getIndexPhoto",
+      getAuth: "getAuth",
+      getCommentList: "getCommentList",
+    }),
+    ...mapActions({
+      qryIndex: "qryIndex",
+      qryComment: "qryComment",
+    })
+  },
+  components: {
+    comHeader: header,
+    swiper: swiper,
+    swiperSlide: swiperSlide
+  },
+  data() {
+    return {
+      loadshow: true,
+      swiperOption: {
+        notNextTick: true,
+        setWrapperSize: true,
+        slidesPerView: 1,
+        mousewheelControl: false,
+        observeParents: true,
+        prevButton: ".swiper-button-prev",
+        nextButton: ".swiper-button-next",
+        pagination: ".swiper-pagination",
+        paginationType: "custom",
+        // autoplayDisableOnInteraction : false,
+        paginationElement: "li",
+        preloadImages: false,
+        lazyLoading: true,
+        autoplay: 3000,
+        speed: 300,
+        loop: true,
+        effects: "slide"
+        // paginationCustomRender:function(){
+
+        // }
+        // onTransitionStart(swiper) {
+        //   this.index = swiper.realIndex;
+        // }
+      }
+    };
+  },
+  mounted() {
+      this.$store.dispatch("qryComment")
+      this.$store.dispatch("qryIndex")
+  },
+
+  watch: {
+    getAuth() {
+      if (this.getAuth) {
+        this.$router.push({ name: "user" });
+      }
     }
-}
+  },
+  beforeDestroy() {}
+};
 </script>
 
 
 <style rel="stylesheet/scss" lang="scss">
-@import "./../assets/css/index.scss";
+.banner {
+  height: 530px;
+  position: relative;
+  width: 100%;
+  // overflow:hidden;
+  .swiper-container {
+    width: 100%;
+    height: 530px;
+    .swiper-slide {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-pagination {
+      overflow: hidden;
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      margin-left: 488px;
+      z-index: 666;
+      ul li {
+        cursor: pointer;
+      }
+    }
+  }
+  .photo_fl {
+    position: relative;
+  }
+  .p-wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 32px;
+    left: 0;
+  }
+  .photo_fl p {
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  }
+  .photo_fl p span {
+    margin-right: 15px;
+  }
+}
+
+.tips {
+  width: 1070px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-bottom:50px;
+  h2 {
+    width: 100%;
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    font-weight: normal;
+    position: relative;
+    padding-bottom: 10px;
+    margin: 40px 0;
+    span {
+      display: block;
+      width: 40px;
+      height: 2px;
+      background-color: #fe84b9;
+      position: absolute;
+      left: 50%;
+      margin-left: -20px;
+      bottom: 0;
+    }
+  }
+  ul li {
+    float: left;
+
+    box-shadow: 0 1.5px 4px 0 rgba(0, 0, 0, 0.06);
+    text-align:center;
+  }
+  ul li.li-big {
+    width: 320px;
+    border-radius: 8px;
+    dl{display:inline-block;padding:45px 0;}
+    dt{float:left;width:80px;height:80px;}
+    dt.dt-fg{background:url(../../static/images/all1.png) 0 0 no-repeat;}
+    dt.dt-gl{background:url(../../static/images/all1.png) -80px 0 no-repeat;}
+    dt.dt-sj{background:url(../../static/images/all1.png) -160px 0 no-repeat;}
+    dd{float:left;margin-left:20px;text-align:left;
+    h4{
+        font-size: 18px;color:#333;
+        margin:16px 0 3px 0;
+    }
+    p{font-size: 16px;color:#9a9a9a;}
+    }
+  }
+  ul li.li-big:hover{
+      box-shadow: 0 6px 5px 1px rgba(0, 0, 0, 0.08);
+      transition:all 0.5s ease;
+  }
+  ul li.li-small {
+    width: 55px;
+    height: 170px;
+    background-color: red;
+  }
+}
+
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

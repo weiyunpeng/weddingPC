@@ -25,6 +25,7 @@ import authInfo from './modules/auth'
 import user from './modules/user'
 import guide from './modules/guide'
 import collect from './modules/collect'
+import comment from './modules/comment'
 
 Vue.use(Vuex);
 
@@ -53,7 +54,7 @@ export default new Vuex.Store({
       user,
       guide,
       collect,
-      
+      comment,
   },
   strict: debug
 })

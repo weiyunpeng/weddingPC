@@ -141,10 +141,13 @@ export default {
     qryPhotoFlow:function(data){
         return axios.post('/api/site/photo_flow',qs.stringify(data), config())
     },
-
+    //深度点评
+    qryComment:function(data){
+        return axios.post('/api/site/comment',qs.stringify(data), config())
+    },
     //攻略
     qryGuideList:function(){
-        return axios.get('/api/guide/index', config())
+        return axios.get('api/guide/index', config())
     },
 
     //收藏图片

@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import message from './components/message'
-import backtotop from './components/backToTop'
+import message from './components/message';
+import backtotop from './components/backToTop';
 
 export default {
     components: {
         comMessage: message,
-        comBacktotop:backtotop
+        comBacktotop: backtotop
     }
-}
+};
 </script>

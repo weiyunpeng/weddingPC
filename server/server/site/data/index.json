@@ -1,168 +1,85 @@
 {
-    "code": 200,
-    "msg": "success",
+    "code": 0,
+    "msg": "成功",
     "data": {
-        "banner":"/static/images/unlogin_bg.jpg",
-        "logo":"/static/images/logo-3.png",
-        "nav": [
+        "bannner": [
             {
-                "img": "/static/images/demo_01.jpg"
+                "img": "http://marriage-1252045209.image.myqcloud.com/static/image/20171018/59e70441a8dc2973557027.jpeg/ys?imageView2/2/w/1920/h/530",
+                "thumbnail": "http://marriage-1252045209.image.myqcloud.com/static/image/20171018/59e70441a8dc2973557027.jpeg/ys?imageView2/2/w/73/h/55",
+                "url": "http://www.baidu.com",
+                "sampleId": 3,
+                "style": "asdf",
+                "storeId": 1,
+                "storeName": "郑州艾维美婚纱摄影(国贸360店)",
+                "shootTime": null,
+                "nickname": "阿斯蒂芬"
             },
             {
-                "img": "/static/images/demo_02.jpg"
+                "img": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/1920/h/530",
+                "thumbnail": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/73/h/55",
+                "url": "http://www.baidu.com",
+                "sampleId": 3,
+                "style": "呵呵",
+                "storeId": 1,
+                "storeName": "郑州艾维美婚纱摄影(国贸360店)",
+                "shootTime": null,
+                "nickname": "阿斯蒂芬"
             },
             {
-                "img": "/static/images/demo_03.jpg"
-            }
-        ],
-        "photo": [
-            {
-                "id": "111",
-                "img": "http://localhost:1300/images/1.jpg",
-                "fav_num": 121,
-                "tag": [
-                    "古风"
-                ]
+                "img": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/1920/h/530",
+                "thumbnail": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/73/h/55",
+                "url": "http://www.baidu.com",
+                "sampleId": 3,
+                "style": "呵呵",
+                "storeId": 1,
+                "storeName": "郑州艾维美婚纱摄影(国贸360店)",
+                "shootTime": null,
+                "nickname": "阿斯蒂芬"
             },
             {
-                "id": "222",
-                "img": "http://localhost:1300/images/2.jpg",
-                "fav_num": 212,
-                "tag": [
-                    "古风"
-                ]
+                "img": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/1920/h/530",
+                "thumbnail": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/73/h/55",
+                "url": "http://www.baidu.com",
+                "sampleId": 3,
+                "style": "呵呵",
+                "storeId": 1,
+                "storeName": "郑州艾维美婚纱摄影(国贸360店)",
+                "shootTime": null,
+                "nickname": "阿斯蒂芬"
             },
             {
-                "id": "333",
-                "img": "http://localhost:1300/images/3.jpg",
-                "fav_num": 321,
-                "tag": [
-                    "古风"
-                ]
-            },
-            {
-                "id": "444",
-                "img": "http://localhost:1300/images/4.jpg",
-                "fav_num": 231,
-                "tag": [
-                    "古风"
-                ]
-            },
-            {
-                "id": "555",
-                "img": "http://localhost:1300/images/5.jpg",
-                "fav_num": 1112,
-                "tag": [
-                    "古风"
-                ]
-            },
-            {
-                "id": "666",
-                "img": "http://localhost:1300/images/6.jpg",
-                "fav_num": 22221,
-                "tag": [
-                    "古风"
-                ]
-            },
-            {
-                "id": "777",
-                "img": "http://localhost:1300/images/7.jpg",
-                "fav_num": 321321,
-                "tag": [
-                    "古风"
-                ]
-            },
-            {
-                "id": "888",
-                "img": "http://localhost:1300/images/8.jpg",
-                "fav_num": 43321,
-                "tag": [
-                    "古风"
-                ]
+                "img": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/1920/h/530",
+                "thumbnail": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/73/h/55",
+                "url": "http://www.baidu.com",
+                "sampleId": 3,
+                "style": "呵呵",
+                "storeId": 1,
+                "storeName": "郑州艾维美婚纱摄影(国贸360店)",
+                "shootTime": null,
+                "nickname": "阿斯蒂芬"
             }
         ],
         "guide": [
             {
-                "img": "/static/images/demo04.png",
-                "title": "拍的照片我不满意怎么办",
-                "con": "我在活动当中，看上一个女孩子，能否帮忙联系一下？“小姑娘，下次我能不能帮我儿子去相亲？”......面对这样的强需求，我们在7月策划的百人相亲活动终于开始招募了...",
-                "view": 2,
-                "comment": 2,
-                "url": "http://www.baidu.com"
+                "title": "爱的色放",
+                "con": "阿斯蒂芬",
+                "views": 3,
+                "replies": 3,
+                "url": "http://www.wed114.cn/jiehun/hunpaigonglue/201706188185.html"
             },
             {
-                "img": "/static/images/demo04.png",
-                "title": "拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办",
-                "con": "拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办拍的照片我不满意怎么办",
-                "view": 2,
-                "comment": 2,
-                "url": ""
-            },
-            {
-                "img": "/static/images/demo04.png",
                 "title": "asdfasd",
                 "con": "fasdf",
-                "view": 2,
-                "comment": 2,
-                "url": ""
+                "views": 631,
+                "replies": 7,
+                "url": "http://panda.qq.com/henan/thread/1036562130421156?src=8"
             },
             {
-                "img": "/static/images/demo04.png",
-                "title": "asdfasd",
-                "con": "fasdf",
-                "view": 2,
-                "comment": 2,
-                "url": ""
-            },
-            {
-                "img": "/static/images/demo04.png",
-                "title": "asdfasd",
-                "con": "fasdf",
-                "view": 2,
-                "comment": 2,
-                "url": ""
-            },
-            {
-                "img": "/static/images/demo04.png",
-                "title": "asdfasd",
-                "con": "fasdf",
-                "view": 2,
-                "comment": 2,
-                "url": ""
-            }
-        ],
-        "store": [
-            {
-                "id": 1,
-                "img": "/static/images/demo05.png",
-                "store_name": "郑州艾维美婚纱摄影(国贸360店)",
-                "star": 0,
-                "url": "http://www.baidu.com",
-                "desc": "是豆腐干德首发个"
-            },
-            {
-                "id": 2,
-                "img": "/static/images/demo05.png",
-                "store_name": "新奕映像摄影机构",
-                "star": 1.6,
-                "url": "http://www.baidu.com",
-                "desc": "拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的."
-            },
-            {
-                "id": 3,
-                "img": "http://marriage-1252045209.image.myqcloud.com/2017072520170725144950.jpg?imageView2/0/w//h/",
-                "store_name": "郑州艾维美婚纱摄影(高新区店)",
-                "star": 5.0,
-                "url": "http://www.baidu.com",
-                "desc": "拍婚照对于大多数人来说，人生也就一次，我们花了钱就一定是想有好的拍摄体验和成片效果的... ..."
-            },
-            {
-                "id": 7,
-                "img": "/static/images/demo05.png",
-                "store_name": "sdfgsfffffffffffffffffffff",
-                "star": 3.3,
-                "url": "http://www.baidu.com",
-                "desc": "影楼：整体实力强、拍摄影棚大、主题多、风格全、衣服款式多，服务赞，整体拍摄水平有保障；缺点在于成本高、有二消风险，多数影楼偏流水式作业，出来的照片容易撞场景撞衫撞造型撞姿势。工作室：有一个灵魂摄影师，有明确的拍摄风格，拍摄模式自由，拍摄品质也有保障，这才能叫做工作室，缺乏这四要素的夫妻店小店不算；价格便宜绝不是工作室的标签，好的工作室比影楼还贵。工作室整体二消风险较低。缺点在于，硬件配套弱、服"
+                "title": "sdfsdfgdfsgsdfg",
+                "con": "asdf ",
+                "views": 3,
+                "replies": 3,
+                "url": "http://www.wed114.cn/jiehun/hunpaigonglue/201706188014.html"
             }
         ]
     }

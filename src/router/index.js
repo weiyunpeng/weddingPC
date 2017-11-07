@@ -132,12 +132,12 @@ router.beforeEach(({meta, path}, from, next) => {
     var { auth = true } = meta;
     const token = localStorage.getItem('user');
     var isLogin = Boolean(token);
-    if(auth && isLogin && (path == '/user' || path == '/')){
-        return next({ path: '/user' })
-    }
-    if(!isLogin && (path == '/index' || path == '/collect')){
-        return next({ path: '/' })
-    }
+    // if(auth && isLogin && (path == '/user' || path == '/')){
+    //     return next({ path: '/user' })
+    // }
+    // if(!isLogin && (path == '/index' || path == '/collect')){
+    //     return next({ path: '/' })
+    // }
     next()
 });
 

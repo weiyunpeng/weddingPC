@@ -41,6 +41,8 @@ export const getViewPhotoStatus = state => state.viewPhoto.photoModelStatus;
 export const getPhotoList = state => state.viewPhoto.photoList;
 export const getPhotoListFill = state => state.viewPhoto.photoListFill;
 export const getPhotoStatus = state => state.viewPhoto.status;
+export const getCommentList = state => state.comment;
+
 
 export const getGuideList = state => state.guide.list;
 

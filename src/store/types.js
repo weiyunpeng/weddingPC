@@ -57,3 +57,4 @@ export const GUIDE_LIST = 'GUIDE_LIST'
 
 export const COLLECT_LIST = 'COLLECT_LIST'
 export const COLLECT_LIST_CHANGE = 'COLLECT_LIST_CHANGE'
+export const COMMENT_LIST = 'COMMENT_LIST'

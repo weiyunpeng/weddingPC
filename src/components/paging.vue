@@ -59,7 +59,7 @@ export default {
                 this.pageInfo.current = idx;
                 this.$emit('change',this.pageInfo.current);
               setTimeout(function () {
-                  document.body.scrollTop = 0
+                  window.smoothscroll()
               },150)
             }
         },
@@ -68,7 +68,7 @@ export default {
                 this.pageInfo.current = this.skipPage;
                 this.$emit('skip',this.skipPage);
                 setTimeout(function () {
-                    document.body.scrollTop = 0
+                    window.smoothscroll()
                 }, 150)
             }
         }

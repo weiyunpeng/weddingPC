@@ -112,7 +112,7 @@
                 </ul>
             </div>
         </div>
-        <div v-if="!shopList || shopList.length == 0" class="no-data">
+        <div v-show="showNo" v-if="!shopList || shopList.length == 0" class="no-data">
             <img src="/static/images/icon-no-data-1.png">
         </div>
         <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
@@ -156,12 +156,16 @@ export default {
                 pagenum: 20, // 每页显示条数
                 pagegroup: 6,    // 分页器每次展示出的条数
                 skin: '#ff4e6b'  // 选中页码的颜色主题
-            }
+            },
+            showNo:false
         }
     },
     mounted() {
         this.$store.dispatch('shopListClear')
         this.$store.dispatch('qryStoreList', this.ajaxdata)
+    },
+    activated(){
+        this.showNo = true
     },
     methods: {
         pagechange(current) {   // 页码改变传入新的页码，此处做回调

@@ -1,15 +1,18 @@
 <template>
     <div class="user">
         <com-header></com-header>
-        <div class="">
-            <div class="user-info fl" v-show="isAuth">
+        <div class="" style="position:relative">
+            <div class="user-info fl"  v-show="userShow">
                 <div class="Profile"  >
                     <div class="user-nike">
-                        <img class="user-head fl" v-lazy="getUser.head" width="124" height="124">
+                        <img class="user-head fl"  width="80" height="80" v-lazy="getUser.head">
+                        <div class="user-nike-ct fl"> 
                         <p>{{getUser.nike}}</p>
                         <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
-                            <label class="col-name">我的收藏</label>
+                            <label class="col-name">收藏的图片</label>
                         </router-link>
+                        </div> 
+                        <span class="close-btn-new" @click="CloseClick"></span>
                     </div>
                     <ul class="user_category user_category_style" v-if="style&&style.length>0">
                         <li v-for="(item,s) in style" :key="s">
@@ -37,24 +40,32 @@
                         </li>
                     </ul>
                 </div>
+    
             </div>
             <div class="user-water">
-                <waterfall :line="line" :watch="getPhotoList" :line-gap="300">
-                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="300" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
+                <waterfall :line="line" :watch="getPhotoList" :line-gap="290" :min-line-gap="320" :max-line-gap="640" :single-max-width="640">
+                    <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
                         <div class="panel photo_box hover_sh">
                             <div class="img-hover" @click="showPhotoModal(item, flowNum)">
-                                <img :src="item.img" :width="300">
+                                <img v-lazy="item.img" :width="300">
                             </div>
                             <div class="photo_info">
+                                <div class="photo_info_top">
+                                 <ul>
+                                    <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
+                                </ul>
                                 <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
                                     <i v-if="item.is_fav" class="icon_like_act"></i>
                                     <i v-if="!item.is_fav" class="icon_like"></i>
                                     {{item.fav_num}}
                                 </span>
-                                <ul>
-                                    <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
-                                </ul>
+                                </div>
+                                <div class="photo_info_bottom">
+                                    <img class="person_img" :src="item.head" width="25" height="25">
+                                    <span>{{item.nickname}}</span>
+                                </div>
                             </div>
+                            
                         </div>
     
                     </waterfall-slot>
@@ -68,338 +79,374 @@
 </template>
 
 <script>
-import header from './../components/user/userHead'
-import modal from './../components/modal'
-import { waterfall, waterfallSlot } from 'vue-waterfall'
-import photoModal from './../components/photoModal'
-import { mapGetters, mapActions } from 'vuex'
+import header from "./../components/user/userHead";
+import modal from "./../components/modal";
+import { waterfall, waterfallSlot } from "vue-waterfall";
+import photoModal from "./../components/photoModal";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-    components: {
-        'comHeader': header,
-        'waterfall': waterfall,
-        'waterfallSlot': waterfallSlot,
-        'comPhotoModal': photoModal,
-        'comModal': modal,
-    },
-    computed: {
-        ...mapGetters({
-            getUser: 'getUser',
-            getPhotoList: 'getPhotoList',
-            getPhotoListFill: 'getPhotoListFill',
-            getPhotoStatus: 'getPhotoStatus',
-        }),
-        ...mapActions({
-            qryPhotoFlow: 'qryPhotoFlow',
-            qryLoginIndex: 'qryLoginIndex',
-            photoClear: 'photoClear',
-            showModal: 'showModal',
-        })
-    },
-    data() {
-        return {
-            isAuth: false,
-            style: null,
-            stores: null,
-            show: false,
-            photoModal: {},
-            orderNum: null,
-            uid: null,
-            page: 1,
-            grow: [2, 2, 2],
-            line: 'v'
-        }
-    },
-    mounted() {
-        this.getPhotoListFill.splice(0);
-        this.$store.dispatch('photoClear');
-        this.loadPhoto();
-        window.addEventListener('scroll', this.loadMore);
-        try {
-            let token = JSON.parse(localStorage.getItem('user'));
-            let isLogin = Boolean(token);
-            if (isLogin) {
-                this.isAuth = true
-                this.uid = token.uid
-                let data = {
-                    uid: this.uid
-                }
-                this.$store.dispatch('qryLoginIndex', data)
-            } else {
-                this.isAuth = false
-            }
-        } catch (e) {
-            console.log(e)
-        }
-    },
-    methods: {
-        photoLikeBtn(id, fav, flowNum,isFill) {
-            if (this.isAuth) {
-                // let obj = this.getPhotoList[flowNum]
-                // obj.is_fav = !obj.is_fav
-                // this.$set(this.getPhotoList, flowNum, obj);
-                if (fav == 0) {
-                    //说明未收藏，可以收藏
-                    let ajaxdata = {
-                        id: id,
-                        uid: this.uid,
-                        order:flowNum,
-                        is_fav:fav,
-                        isFill:isFill
-                    }
-                    this.$store.dispatch('collectPhoto', ajaxdata)
-                } else if (fav == 1) {
-                    //说明已经收藏了,为取消收藏
-                    let ajaxdata = {
-                        id: id,
-                        uid: this.uid,
-                        order:flowNum,
-                        is_fav:fav,
-                        isFill:isFill
-                    }
-                    this.$store.dispatch('cancelCollectPhoto', ajaxdata)
-                } else {
-                    //未知异常
-                    console.log('collect 接口异常')
-                }
-            } else {
-                const data = {
-                    name: 'delPhoto',
-                    info: {
-                        text: '登录后才能收藏哦~'
-                    }
-                };
-                this.$store.dispatch('showModal', data);
-            }
-        },
-        modalCallback(val){
-            if(val){
-                //说明点击确认
-                window.location.href = '/login'
-            }
-        },
-        showPhotoModal(item, index,isFill) {
-            document.querySelector(".photo_modal").style.display = 'block';
-            this.photoModal = item;
-            if(isFill){
-                this.photoModal.isFill = isFill;
-            }
-            this.orderNum = index;
-            this.show = true;
-            const ajaxdata = {
-                id: this.photoModal.id
-            }
-            this.$store.dispatch('qryViewPhoto', ajaxdata)
-        },
-        loadPhoto() {
-            let data = {
-                page: this.page
-            }
-            this.$store.dispatch('qryPhotoFlow', data)
-        },
-        loadMore() {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const allHeight = document.body.scrollHeight;
-            const pageHeight = document.documentElement.clientHeight;
-            if (scrollTop == allHeight - pageHeight && this.getPhotoStatus == 0) {
-                this.page++
-                this.loadPhoto();
-            }
-        }
-    },
-    watch: {
-        getUser() {
-            this.style = this.getUser.category.style
-            this.stores = this.getUser.category.stores
-        }
-    },
-    beforeDestroy() {
-        window.removeEventListener('scroll', this.loadMore);
+  components: {
+    comHeader: header,
+    waterfall: waterfall,
+    waterfallSlot: waterfallSlot,
+    comPhotoModal: photoModal,
+    comModal: modal
+  },
+  computed: {
+    ...mapGetters({
+      getUser: "getUser",
+      getPhotoList: "getPhotoList",
+      getPhotoListFill: "getPhotoListFill",
+      getPhotoStatus: "getPhotoStatus"
+    }),
+    ...mapActions({
+      qryPhotoFlow: "qryPhotoFlow",
+      qryLoginIndex: "qryLoginIndex",
+      photoClear: "photoClear",
+      showModal: "showModal"
+    })
+  },
+  data() {
+    return {
+      isAuth: false,
+      style: null,
+      stores: null,
+      show: false,
+      photoModal: {},
+      orderNum: null,
+      uid: null,
+      page: 1,
+      grow: [2, 2, 2],
+      line: "v",
+      userShow: true
+    };
+  },
+  mounted() {
+    this.$store.dispatch("qryLoginIndex");
+    this.getPhotoListFill.splice(0);
+    this.$store.dispatch("photoClear");
+    this.loadPhoto();
+    window.addEventListener("scroll", this.loadMore);
+    try {
+      let token = JSON.parse(localStorage.getItem("user"));
+      let isLogin = Boolean(token);
+      if (isLogin) {
+        this.isAuth = true;
+        this.uid = token.uid;
+        let data = {
+          uid: this.uid
+        };
+        this.$store.dispatch("qryLoginIndex", data);
+      } else {
+        this.isAuth = false;
+      }
+    } catch (e) {
+      console.log(e);
     }
-}
+  },
+  methods: {
+    photoLikeBtn(id, fav, flowNum, isFill) {
+      if (this.isAuth) {
+        if (fav == 0) {
+          //说明未收藏，可以收藏
+          let ajaxdata = {
+            id: id,
+            uid: this.uid,
+            order: flowNum,
+            is_fav: fav,
+            isFill: isFill
+          };
+          this.$store.dispatch("collectPhoto", ajaxdata);
+        } else if (fav == 1) {
+          //说明已经收藏了,为取消收藏
+          let ajaxdata = {
+            id: id,
+            uid: this.uid,
+            order: flowNum,
+            is_fav: fav,
+            isFill: isFill
+          };
+          this.$store.dispatch("cancelCollectPhoto", ajaxdata);
+        } else {
+          //未知异常
+          console.log("collect 接口异常");
+        }
+      } else {
+        const data = {
+          name: "delPhoto",
+          info: {
+            text: "登录后才能收藏哦~"
+          }
+        };
+        this.$store.dispatch("showModal", data);
+      }
+    },
+    modalCallback(val) {
+      if (val) {
+        //说明点击确认
+        window.location.href = "/login";
+      }
+    },
+    showPhotoModal(item, index, isFill) {
+      document.querySelector(".photo_modal").style.display = "block";
+      this.photoModal = item;
+      if (isFill) {
+        this.photoModal.isFill = isFill;
+      }
+      this.orderNum = index;
+      this.show = true;
+      const ajaxdata = {
+        id: this.photoModal.id
+      };
+      this.$store.dispatch("qryViewPhoto", ajaxdata);
+    },
+    loadPhoto() {
+      let data = {
+        page: this.page
+      };
+      this.$store.dispatch("qryPhotoFlow", data);
+    },
+    loadMore() {
+      const scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      const allHeight = document.body.scrollHeight;
+      const pageHeight = document.documentElement.clientHeight;
+      if (scrollTop == allHeight - pageHeight && this.getPhotoStatus == 0) {
+        this.page++;
+        this.loadPhoto();
+      }
+    },
+    CloseClick() {
+      this.userShow = false;
+    }
+  },
+  watch: {
+    getUser() {
+      this.style = this.getUser.category.style;
+      this.stores = this.getUser.category.stores;
+    }
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.loadMore);
+  }
+};
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .user-info {
+  width: 290px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  .Profile {
     position: relative;
-    top: 0;
-    left: 10px;
-    width: 300px;
-    min-height: 300px;
-    .vue-waterfall{ }
-    .Profile {
-        position: relative;
-        top: 50px;
-        width: 290px;
-        height: auto;
-        background: #ffffff;
-        z-index: 9;
-    }
+    width: 290px;
+    height: auto;
+    background: #ffffff;
+    z-index: 9;
+  }
 }
 
 .user-water {
-    position: relative;
-    top: 5px;
-    margin-bottom: 20px;
-    left: 68px;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 800px;
+  top: 5px;
+  margin-bottom: 20px;
+  left: 20px;
+  overflow: hidden;
 }
-
+.user-nike-ct {
+  position: absolute;
+  left: 93px;
+  bottom: 0;
+}
 .user-nike {
-    position: relative;
-    background: #fff;
-    p {
-        position: relative;
-        left: 18px;
-        top: 10px;
-        color: #4c4c4c;
-        font-size: 22px;
-        line-height: 27.28px;
-    }
-    .col-name {
-        position: relative;
-        left: 18px;
-        top: 10px;
-        display: block;
-        color: #b2b2b2;
-        font-size: 14px;
-        line-height: 27.28px;
-    }
-    .col-name:hover{
-        color: #ff4e6b;
-        -webkit-transition: all .1s ease;
-        transition: all .1s ease;
-    }
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  p {
+    color: #4c4c4c;
+    font-size: 22px;
+    margin-bottom: 0px;
+  }
+  .col-name {
+    display: block;
+    color: #b2b2b2;
+    font-size: 14px;
+  }
+  .col-name:hover {
+    color: #ff4e6b;
+    -webkit-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+  }
 }
 
 .user-head {
-    position: relative;
-    top: -45px;
-    left: 5px;
-    z-index: 9;
+  float: left;
+  z-index: 9;
 }
 
 .user_category {
-    position: relative;
-    left: 0;
-    width: 290px;
-    padding: 0 15px;
-    background: #ffffff;
-    height: auto;
-    overflow: hidden;
-    li {
-        width: 100%;
-        height: 28.06px;
-        margin-top: 10px;
-        line-height: 28.06px;
-    }
+  position: relative;
+  left: 0;
+  width: 290px;
+  padding: 0 15px;
+  background: #ffffff;
+  height: auto;
+  overflow: hidden;
+  li {
+    width: 100%;
+    height: 28.06px;
+    margin-top: 10px;
+    line-height: 28.06px;
+  }
 }
 
 .user_category_style {
-    li:nth-child(3) {
-        margin-bottom: 20px;
-    }
+  li:nth-child(3) {
+    margin-bottom: 20px;
+  }
 }
 
 .show_list {
-    float: left;
-    width: 70px;
-    font-size: 16px;
-    color: #4c4c4c;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  float: left;
+  width: 70px;
+  font-size: 16px;
+  color: #4c4c4c;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .user_category_store {
-    li {
-        margin-top: 20px;
-        height: 60px;
-        margin-bottom: 20px;
-        width: 100%;
-        overflow: hidden;
-        line-height: 88.06px;
-    }
-    li:nth-child(3) {
-        margin-bottom: 50px;
-    }
+  li {
+    margin-top: 20px;
+    height: 60px;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+    line-height: 88.06px;
+  }
+  li:nth-child(3) {
+    margin-bottom: 50px;
+  }
 }
 
 .show_img {
-    position: relative;
-    width: 70px;
-    line-height: 38.06px;
-    float: left;
-    .show_name {
-        font-size: 14px;
-        color: #4c4c4c;
-        line-height: 28.06px;
-        position: absolute;
-        top: 0px;
-        left: 76px;
-        width: 140px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
+  position: relative;
+  width: 70px;
+  line-height: 38.06px;
+  float: left;
+  .show_name {
+    font-size: 14px;
+    color: #4c4c4c;
+    line-height: 28.06px;
+    position: absolute;
+    top: 0px;
+    left: 76px;
+    width: 140px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 
 .line {
-    float: left;
-    width: 55%;
-    border: 1px solid #ffa9b7;
-    height: 8px;
-    border-radius: 10px;
-    background: #ffffff;
-    margin-right: 7px;
-    margin-top: 10px;
+  float: left;
+  width: 55%;
+  border: 1px solid #ffa9b7;
+  height: 8px;
+  border-radius: 10px;
+  background: #ffffff;
+  margin-right: 7px;
+  margin-top: 10px;
 }
 
 .line-store {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .percent {
-    float: left;
-    color: #808080;
-    font-size: 14px;
+  float: left;
+  color: #808080;
+  font-size: 14px;
 }
 
 .bar {
-    background: #ffa9b7;
-    float: left;
-    height: 100%;
-    border-radius: 10px;
+  background: #ffa9b7;
+  float: left;
+  height: 100%;
+  border-radius: 10px;
 }
 
 .bar {
-    animation: animate-positive 2s;
+  animation: animate-positive 2s;
 }
 
 @-webkit-keyframes animate-positive {
-    0% {
-        width: 0;
-    }
+  0% {
+    width: 0;
+  }
 }
 
 @keyframes animate-positive {
-    0% {
-        width: 0;
-    }
+  0% {
+    width: 0;
+  }
 }
 
 @-moz-keyframes animate-positive {
-    0% {
-        width: 0;
-    }
+  0% {
+    width: 0;
+  }
 }
 
 .panel_msg {
-    background: #fff;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    border-right: solid 1px #dededf;
-    border-bottom: solid 1px #d9d9da;
-    line-height: 45px;
-    text-align: center;
+  background: #fff;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border-right: solid 1px #dededf;
+  border-bottom: solid 1px #d9d9da;
+  line-height: 45px;
+  text-align: center;
+}
+.photo_info {
+  height: 70px;
+  line-height: 20px;
+  .photo_info_bottom {
+    background-color: #fff;
+    color: #b2b2b2;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    img {
+      border-radius: 50%;
+      float: left;
+      margin: 0 10px 0;
+    }
+  }
+  .photo_info_top {
+    overflow: hidden;
+    padding: 8px 0;
+    span {
+      float: right;
+    }
+    ul {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+.close-btn-new {
+  display: block;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  background: url(../../static/images/close.png) no-repeat;
+  position: absolute;
+  right: 7px;
+  top: 7px;
 }
 </style>
