@@ -74,7 +74,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from './../components/headerDetails'
+import header from "./../components/user/userHead";
 import storeInfo from './../components/storeInfo'
     export default {
         components: {

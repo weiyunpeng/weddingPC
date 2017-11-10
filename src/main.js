@@ -11,9 +11,12 @@ import './assets/css/common.css'
 import './assets/css/animate.css'
 import './assets/css/iconfont.css'
 
-Vue.use(VueLazyload, {　　 
+Vue.use(VueLazyload, {
     // 设置默认显示的图片
-  loading: require('./../static/images/logo-3.png')
+    preLoad: 1.3,
+    error: 'http://static-1251225286.cossh.myqcloud.com/hunjia/logo%403x.png',
+    loading: 'http://static-1251225286.cossh.myqcloud.com/hunjia/logo%403x.png',
+    attempt: 1
 })
 
 Vue.use(BaiduMap, {

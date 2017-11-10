@@ -251,7 +251,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from './../components/headerDetails'
+import header from "./../components/user/userHead";
 import bigImg from './../components/bigImg'
 import swiperModel from './../components/swiper'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'

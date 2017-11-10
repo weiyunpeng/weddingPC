@@ -55,6 +55,7 @@ import user from '../page/user.vue';
 import guide from '../page/guide.vue';
 import comment from '../page/comment.vue';
 import collect from '../page/collect.vue';
+import bottompage from '../page/bottompage.vue';
 
 
 const routes = [{
@@ -67,8 +68,7 @@ const routes = [{
 },{
     path: '/user',
     name:'user',
-    component: user,
-    meta: { auth: false }
+    component: user
 },{
     path : '/meal',
     name:'meal',
@@ -112,6 +112,11 @@ const routes = [{
     meta: { auth: false }
 },
 {
+    path : '/bottompage',
+    name:'bottompage',
+    component : bottompage,
+},
+{
     path: '*',
     name: 'page404',
     component: resolve => require(['./../page/index.vue'], resolve)
@@ -130,14 +135,6 @@ router.beforeEach(({meta, path}, from, next) => {
         return false
     }
     var { auth = true } = meta;
-    const token = localStorage.getItem('user');
-    var isLogin = Boolean(token);
-    // if(auth && isLogin && (path == '/user' || path == '/')){
-    //     return next({ path: '/user' })
-    // }
-    // if(!isLogin && (path == '/index' || path == '/collect')){
-    //     return next({ path: '/' })
-    // }
     next()
 });
 

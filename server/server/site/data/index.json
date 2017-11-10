@@ -4,21 +4,10 @@
     "data": {
         "bannner": [
             {
-                "img": "http://marriage-1252045209.image.myqcloud.com/static/image/20171018/59e70441a8dc2973557027.jpeg/ys?imageView2/2/w/1920/h/530",
-                "thumbnail": "http://marriage-1252045209.image.myqcloud.com/static/image/20171018/59e70441a8dc2973557027.jpeg/ys?imageView2/2/w/73/h/55",
+                "img": "http://marriage-1252045209.image.myqcloud.com/static/image/20171018/59e70441a8dc2973557027.jpeg/ys?imageMogr2/scrop/1920x530/crop/1920x530",
+                "thumbnail": "http://marriage-1252045209.image.myqcloud.com/static/image/20171018/59e70441a8dc2973557027.jpeg/ys?imageMogr2/scrop/108x80/crop/108x80",
                 "url": "http://www.baidu.com",
-                "sampleId": 3,
-                "style": "asdf",
-                "storeId": 1,
-                "storeName": "郑州艾维美婚纱摄影(国贸360店)",
-                "shootTime": null,
-                "nickname": "阿斯蒂芬"
-            },
-            {
-                "img": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/1920/h/530",
-                "thumbnail": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/73/h/55",
-                "url": "http://www.baidu.com",
-                "sampleId": 3,
+                "id": 3,
                 "style": "呵呵",
                 "storeId": 1,
                 "storeName": "郑州艾维美婚纱摄影(国贸360店)",
@@ -26,10 +15,10 @@
                 "nickname": "阿斯蒂芬"
             },
             {
-                "img": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/1920/h/530",
-                "thumbnail": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/73/h/55",
+                "img": "http://img1.gtimg.com/henan/pics/hv1/173/125/2246/146078198.jpg",
+                "thumbnail": "http://img1.gtimg.com/henan/pics/hv1/173/125/2246/146078198.jpg",
                 "url": "http://www.baidu.com",
-                "sampleId": 3,
+                "id": 3,
                 "style": "呵呵",
                 "storeId": 1,
                 "storeName": "郑州艾维美婚纱摄影(国贸360店)",
@@ -37,21 +26,10 @@
                 "nickname": "阿斯蒂芬"
             },
             {
-                "img": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/1920/h/530",
-                "thumbnail": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/73/h/55",
+                "img": "http://img1.gtimg.com/henan/pics/hv1/90/64/2241/145737435.jpg",
+                "thumbnail": "http://img1.gtimg.com/henan/pics/hv1/90/64/2241/145737435.jpg",
                 "url": "http://www.baidu.com",
-                "sampleId": 3,
-                "style": "呵呵",
-                "storeId": 1,
-                "storeName": "郑州艾维美婚纱摄影(国贸360店)",
-                "shootTime": null,
-                "nickname": "阿斯蒂芬"
-            },
-            {
-                "img": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/1920/h/530",
-                "thumbnail": "http://marriage-1251225286.image.myqcloud.com/static/image/20171019/59e8471454e42901707882.jpeg/ys?imageView2/2/w/73/h/55",
-                "url": "http://www.baidu.com",
-                "sampleId": 3,
+                "id": 3,
                 "style": "呵呵",
                 "storeId": 1,
                 "storeName": "郑州艾维美婚纱摄影(国贸360店)",
@@ -81,6 +59,7 @@
                 "replies": 3,
                 "url": "http://www.wed114.cn/jiehun/hunpaigonglue/201706188014.html"
             }
-        ]
+        ],
+        "guide_count": "3"
     }
 }

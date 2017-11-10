@@ -4,19 +4,19 @@
             <div class="container">
                 <div class="logo">
                     <router-link to="/">
-                        <img :src="logo" alt="大豫新娘帮">
+                        <img :src="logo" alt="大豫新娘帮" style="position: relative;top: 7px;">
                     </router-link>
                 </div>
                 <div class="nav clearfix">
                     <ul>
                         <li>
-                            <router-link to="/index" class="nav_a" active-class="nav_active" exact>首页</router-link>
+                            <router-link to="/index" class="nav_a base-color" active-class="nav_active" exact>首页</router-link>
                         </li>
                         <li>
-                            <router-link to="/user" class="nav_a" active-class="nav_active">婚纱照</router-link>
+                            <router-link to="/user" class="nav_a base-color" active-class="nav_active">婚纱照</router-link>
                         </li>
                         <li>
-                            <router-link to="/guide" class="nav_a" active-class="nav_active">攻略</router-link>
+                            <router-link to="/guide" class="nav_a base-color" active-class="nav_active">攻略</router-link>
                         </li>
                         <li>
                             <router-link :to="{ name: 'comment', query: { bus: 1 }}" class="nav_a" active-class="nav_active">商家</router-link>
@@ -31,9 +31,9 @@
                             <img src="/static/images/icon_search.png">
                         </a>
                     </div>
-                    <a href="javascript:void(0)" class="nav_user" @click="userLogin">
+                    <a href="javascript:void(0)" class="nav_user">
                         <img :src="header" class="circle" width="30" height="30"
-                             v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
+                             v-on="{ mouseover: showHeader ,mouseout:hideHeader}" @click="userLogin">
                         <ul class="nav_user_ul" v-show="isLogin">
                             <li>
                                 <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
@@ -60,7 +60,7 @@
             return {
                 skinBorder: '3px solid #e4e4e4',
                 logoTop: 'http://marriage-1251225286.file.myqcloud.com/static/images/logo.png',
-                logo: '/static/images/icon-logo-3.png',
+                logo: 'http://static-1251225286.cossh.myqcloud.com/hunjia/logo%402x.png',
                 keyword: null || this.$route.query.keyword,
                 header: '/static/images/icon-user.png',
                 uid: null,
@@ -102,7 +102,8 @@
             },
             logout() {
                 this.$store.dispatch('loginOut')
-                this.$router.push({name: 'index'})
+                this.isLogin = false
+                this.header = '/static/images/icon-user-hover.png'
             },
             userLogin(){
                 if (!this.isLogin) {
@@ -163,11 +164,11 @@
                 margin-right: 0;
             }
             .nav_a:hover {
-                color: #ff4e6b;
+                color: #ee639f;
             }
             .nav_active {
-                color: #ff4e6b;
-                border-bottom: 3px solid #ff4e6b;
+                color: #ee639f;
+                border-bottom: 3px solid #ee639f;
             }
         }
     }
@@ -346,11 +347,11 @@
                 margin-right: 0;
             }
             .nav_a:hover {
-                color: #ff4e6b;
+                color: #ee639f;
             }
             .nav_active {
-                color: #ff4e6b;
-                border-bottom: 3px solid #ff4e6b;
+                color: #ee639f;
+                border-bottom: 3px solid #ee639f;
             }
         }
     }

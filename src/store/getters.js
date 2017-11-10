@@ -34,14 +34,15 @@ export const makeupman = state => state.makeupman.makeup;
 export const makeupmanBusinfo = state => state.makeupman.bus_info;
 export const makeupmanPackages = state => state.makeupman.packages;
 
-export const getIndexPhoto = state => state.index;
+export const getIndexPhoto = state => state.index.list;
 export const getViewPhoto = state => state.viewPhoto.list;
 export const getViewPhotoInfo = state => state.viewPhoto.photoInfo;
 export const getViewPhotoStatus = state => state.viewPhoto.photoModelStatus;
 export const getPhotoList = state => state.viewPhoto.photoList;
 export const getPhotoListFill = state => state.viewPhoto.photoListFill;
 export const getPhotoStatus = state => state.viewPhoto.status;
-export const getCommentList = state => state.comment;
+export const getCommentList = state => state.comment.list;
+export const getCommentPage = state => state.comment.page;
 
 
 export const getGuideList = state => state.guide.list;

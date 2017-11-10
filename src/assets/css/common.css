@@ -1621,9 +1621,13 @@ fieldset[disabled] .btn-danger.focus {
     display: block !important;
 }
 .link{
-    color:#ff4e6b;
+    color:#ee639f;
 }
 /*class*/
+
+.base-color{
+    color: #ee639f;
+}
 
 .center-block {
     float: none;
@@ -1772,6 +1776,18 @@ fieldset[disabled] .btn-danger.focus {
     background-position: -39px 0;
     width: 20px;
     height: 20px;
+}
+.icon_like2{
+    background: url(/static/images/ic_shoucang.png) no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+.icon_like_act2{
+    background: url(/static/images/ic_shoucang_press.png) no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
 }
 .icon-angle{
     position: absolute;

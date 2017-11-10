@@ -19,7 +19,7 @@
                 </ul>
                 <div class="new-evaluation fr">
                     <div class="eval-tit">
-                        <a href="">最新拍客评价<span>{{comments.count}}篇</span></a>
+                        <a href="">最新拍客评价<span>{{count}}篇</span></a>
                     </div>
                     <ul>
                         <li v-for="(item,index) in comments" :key="index">
@@ -56,17 +56,20 @@ export default {
   data() {
     return {
       guides:[],
-      comments:[]
+      comments:[],
+      count:0
     };
   },
   mounted() {
     this.$store.dispatch("qryGuideList");
+    window.smoothscroll()
   },
   methods: {},
   watch: {
     getGuideList(){
       this.guides = this.getGuideList.guides.list
       this.comments = this.getGuideList.comments.list
+      this.count = this.getGuideList.comments.count
     }
   },
   beforeDestroy() {}

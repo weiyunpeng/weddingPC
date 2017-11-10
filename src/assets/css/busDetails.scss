@@ -501,6 +501,28 @@ background-color: #fff;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    .close_btn {
+        position: absolute;
+        z-index: 9999;
+        top: 7px;
+        right: 7px;
+        cursor: pointer;
+        filter: alpha(Opacity=50);
+        -moz-opacity: 0.5;
+        opacity: 0.5;
+    }
+    .close_btn:hover {
+        transform: rotate(390deg);
+        -ms-transform: rotate(390deg); /* IE 9 */
+        -moz-transform: rotate(390deg); /* Firefox */
+        -webkit-transform: rotate(390deg); /* Safari 和 Chrome */
+        -o-transform: rotate(390deg); /* Opera */
+        filter: alpha(Opacity=100);
+        -moz-opacity: 1;
+        opacity: 1;
+        transition: all 0.6s ease;
+        -webkit-transition: all 0.6s ease;
+    }
 }
 
 .bm-bg {

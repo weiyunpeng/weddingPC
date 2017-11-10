@@ -9,6 +9,7 @@ function router_reg(app){
     app.all('/api/site/:name', require('./site/index').index);
     app.all('/api/user/:name', require('./user/index').index);
     app.all('/api/guide/:name', require('./guide/index').index);
+    app.all('/api/comment/:name', require('./site/index').index);
 }
 
 

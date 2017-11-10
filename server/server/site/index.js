@@ -7,7 +7,7 @@ function run(Request, Response)
             'index':index,
             'view_photo':view_photo,
             'index_login':index_login,
-            'comment':comment,
+            'get_list':comment,
             'photo_flow':photo_flow,
         }
         funs[Request.params.name](Params, Request, Response);

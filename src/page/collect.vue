@@ -64,20 +64,16 @@
                 </div>
             </div>
         </div>
-        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :index="index">
-        </com-photoModal>
     </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import photoModal from './../components/photoModal'
-import header from './../components/user/userHead'
+import { mapGetters, mapActions } from 'vuex';
+import header from './../components/user/userHead';
 
 export default {
     components: {
-        comHeader: header,
-        comPhotoModal: photoModal
+        comHeader: header
     },
     computed: {
         ...mapGetters({
@@ -92,62 +88,58 @@ export default {
         return {
             uid: this.$route.query.uid,
             type: this.$route.query.type,
-            show: false,
             isDd: true,
             isTag: 0,
-            photoModal: {},
             userInfo: {},
             category: {},
             index: 0
-        }
+        };
     },
     mounted() {
         let ajaxdata = {
             type: this.type
-        }
-        this.$store.dispatch('qryMyCollectList', ajaxdata)
+        };
+        this.$store.dispatch('qryMyCollectList', ajaxdata);
     },
     methods: {
         toggleDD() {
-            this.isDd = !this.isDd
+            this.isDd = !this.isDd;
         },
         changeTab(c) {
-            this.isTag = c
+            this.isTag = c;
             let ajaxdata = {
                 uid: this.uid,
                 type: this.isTag
-            }
-            this.$store.dispatch('qryMyCollectList', ajaxdata)
+            };
+            this.$store.dispatch('qryMyCollectList', ajaxdata);
         },
         showAll(ln) {
-            this.$store.dispatch('collectListChange', ln)
+            this.$store.dispatch('collectListChange', ln);
             // let obj = this.list[ln]
             // obj.showall = !obj.showall
             // this.$set(this.list, ln, obj);
         },
         showPhotoModal(img, m) {
             this.photoModal = img;
-            this.index = m
-            this.show = true;
-            const ajaxdata = {
-                id: this.photoModal.id
-            }
-            this.$store.dispatch('qryViewPhoto', ajaxdata)
+            this.index = m;
+            this.$router.push({
+                name: 'bottompage',
+                query: { id: this.photoModal.id }
+            });
         },
         logout() {
-            this.$store.dispatch('loginOut')
-            this.$router.push({ name: 'index' })
+            this.$store.dispatch('loginOut');
+            this.$router.push({ name: 'index' });
         }
     },
     watch: {
         getCollectUserInfo() {
-            this.userInfo = this.getCollectUserInfo
-            this.category = this.getCollectUserInfo.category
+            this.userInfo = this.getCollectUserInfo;
+            this.category = this.getCollectUserInfo.category;
         }
     },
-    beforeDestroy() {
-    }
-}
+    beforeDestroy() {}
+};
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .collect {
@@ -216,8 +208,8 @@ export default {
             text-align: center;
             margin-right: 15px;
             border: 1px solid #f2f2f2;
-            -webkit-transition: all .3s ease;
-            transition: all .3s ease;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
         }
         li:hover {
             border: 1px solid #b3b3b3;

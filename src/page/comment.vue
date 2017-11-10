@@ -121,7 +121,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from './../components/user/userHead'
+import header from "./../components/user/userHead";
 import tag from "./../components/business/busTag"
 import busFilter from "./../components/business/busFilter"
 import paging from "./../components/paging"
@@ -155,7 +155,7 @@ export default {
                 current: 1,  // 当前页数，
                 pagenum: 20, // 每页显示条数
                 pagegroup: 6,    // 分页器每次展示出的条数
-                skin: '#ff4e6b'  // 选中页码的颜色主题
+                skin: '#ee639f'  // 选中页码的颜色主题
             },
             showNo:false
         }
@@ -163,6 +163,7 @@ export default {
     mounted() {
         this.$store.dispatch('shopListClear')
         this.$store.dispatch('qryStoreList', this.ajaxdata)
+        window.smoothscroll()
     },
     activated(){
         this.showNo = true

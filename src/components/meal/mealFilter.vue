@@ -6,10 +6,10 @@
                 <a href="javascript:void(0)" v-bind:class="{tag_active:method == 2}" @click="tagChange(2)">价格<i class="price_icon" v-bind:class="{price_position:isHigh}"></i></a>
                 <div class="fil_input">
                     <span>¥</span>
-                    <input type="number" class="input_price" v-model.number="minPrice">
+                    <input type="number" class="input_price base-color" v-model.number="minPrice">
                     <label>-</label>
                     <span>¥</span>
-                    <input type="number" class="input_price" v-model.number="maxPrice">
+                    <input type="number" class="input_price base-color" v-model.number="maxPrice">
                     <a href="javascript:void(0)" class="queryPrice" @click="qryPrice">确定</a>
                 </div>
             </div>

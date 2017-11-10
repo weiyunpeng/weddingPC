@@ -295,7 +295,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from './../components/headerDetails'
+import header from "./../components/user/userHead";
 import bigImg from './../components/bigImg'
 import star from './../components/star'
 export default {

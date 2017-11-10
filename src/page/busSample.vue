@@ -44,23 +44,20 @@
         <div v-if="!busSampleList || busSampleList.length == 0" class="no-data">
                 <img src="/static/images/icon-no-data-1.png">
             </div>
-        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :order="orderNum"></com-photoModal>
     </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import header from './../components/headerDetails'
-import tag from "./../components/business/sampleTag"
-import photoModal from './../components/photoModal'
-import star from './../components/star'
+import { mapGetters, mapActions } from 'vuex';
+import header from './../components/user/userHead';
+import tag from './../components/business/sampleTag';
+import star from './../components/star';
 
 export default {
     components: {
         comHeader: header,
         comTag: tag,
-        'comPhotoModal': photoModal,
-        'star':star
+        star: star
     },
     computed: {
         ...mapGetters({
@@ -77,51 +74,47 @@ export default {
                 id: this.$route.query.sampleId
             },
             show: false,
-            photoModal: {},
-            orderNum: null,
-        }
+            orderNum: null
+        };
     },
     mounted() {
         // this.$store.dispatch('mealClear')
-        this.$store.dispatch('qryBusSample', this.ajaxdata)
+        this.$store.dispatch('qryBusSample', this.ajaxdata);
     },
     methods: {
         ajaxTag(data) {
             this.ajaxdata = this.objExtend(this.ajaxdata, data, false);
-            this.$store.dispatch('qryBusSample', this.ajaxdata)
+            this.$store.dispatch('qryBusSample', this.ajaxdata);
         },
         showPhotoModal(item, index) {
             this.photoModal = item;
-            if(!this.photoModal.img){
+            if (!this.photoModal.img) {
                 this.photoModal.img = item.logo;
             }
             this.orderNum = index;
-            this.show = true;
-            const ajaxdata = {
-                id: this.photoModal.id,
-                type: 1
-            }
-            this.$store.dispatch('qryViewPhoto', ajaxdata)
-        },
-    },
-    watch: {
-        busSampleStore(){
-            console.log(this.busSampleStore)
+            this.$router.push({
+                name: 'bottompage',
+                query: { id: this.photoModal.id }
+            });
         }
     },
-    beforeDestroy() {
-    }
-}
+    watch: {
+        busSampleStore() {
+            console.log(this.busSampleStore);
+        }
+    },
+    beforeDestroy() {}
+};
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 @charset "UTF-8";
-.store-sample{
+.store-sample {
     width: 100%;
     background: #fff;
     background-color: #fff;
     padding-top: 20px;
 }
-.meal-con{
+.meal-con {
     width: 100%;
     background: #fff;
     background-color: #fff;
@@ -129,7 +122,7 @@ export default {
 
 .meal_list {
     padding-bottom: 20px;
-    border-top:1px solid #eee;
+    border-top: 1px solid #eee;
     .list_con {
         display: inline-block;
         width: 374px;
@@ -139,13 +132,13 @@ export default {
             right: 28px;
             top: 20px;
         }
-        width:372px;
+        width: 372px;
         .tags {
             font: {
                 size: 24px;
                 weight: bold;
             }
-            color:#ff4e6b;
+            color: #ff4e6b;
         }
         .tag {
             display: inline-block;
@@ -177,7 +170,7 @@ export default {
             font: {
                 size: 14px;
             }
-            color:#808080;
+            color: #808080;
         }
     }
 }

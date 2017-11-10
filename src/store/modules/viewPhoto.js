@@ -64,22 +64,17 @@ const mutations = {
     },
     [PHOTO_LIKE_USER](state, data){
         if(state.photoList[data.order]){
-            if(data.isFill){
-                const obj = state.photoListFill[data.order]
-                obj.is_fav = !obj.is_fav
-                state.photoListFill[data.order].is_fav = obj.is_fav
-                state.photoListFill[data.order].fav_num++
-                state.photoListFill.splice(data.order, 1, obj)
-            }else{
-                const obj = state.photoList[data.order]
-                obj.is_fav = !obj.is_fav
-                state.photoList[data.order].is_fav = obj.is_fav
-                state.photoList[data.order].fav_num++
-                state.photoList.splice(data.order, 1, obj)
-            }
+            //看婚纱瀑布流
+            const obj = state.photoList[data.order]
+            console.log(obj)
+            obj.is_fav = !obj.is_fav
+            state.photoList[data.order].is_fav = obj.is_fav
+            state.photoList[data.order].fav_num++
+            state.photoList.splice(data.order, 1, obj)
         }
 
         if(state.list[data.index]){
+            //底层也瀑布流
             const objModal = state.list[data.index]
             objModal.is_fav = !objModal.is_fav
             state.list[data.index].is_fav = objModal.is_fav
@@ -89,19 +84,11 @@ const mutations = {
     },
     [CANCEL_PHOTO_LIKE_USER](state, data){
         if(state.photoList[data.order]){
-            if(data.isFill){
-                const obj = state.photoListFill[data.order]
-                obj.is_fav = !obj.is_fav
-                state.photoListFill[data.order].is_fav = obj.is_fav
-                state.photoListFill[data.order].fav_num--
-                state.photoListFill.splice(data.order, 1, obj)
-            }else{
-                const obj = state.photoList[data.order]
-                obj.is_fav = !obj.is_fav
-                state.photoList[data.order].is_fav = obj.is_fav
-                state.photoList[data.order].fav_num--
-                state.photoList.splice(data.order, 1, obj)
-            }
+            const obj = state.photoList[data.order]
+            obj.is_fav = !obj.is_fav
+            state.photoList[data.order].is_fav = obj.is_fav
+            state.photoList[data.order].fav_num--
+            state.photoList.splice(data.order, 1, obj)
         }
 
         if(state.list[data.index]){

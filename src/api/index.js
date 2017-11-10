@@ -133,7 +133,7 @@ export default {
         return axios.post('/api/site/view_photo',qs.stringify(data), config())
     },
     //首页已登录状态
-    qryLoginIndex:function(data){
+    qryUserInfo:function(data){
         return axios.post('/api/site/index_login',qs.stringify(data), config())
     },
 
@@ -143,11 +143,11 @@ export default {
     },
     //深度点评
     qryComment:function(data){
-        return axios.post('/api/site/comment',qs.stringify(data), config())
+        return axios.get(`/api/comment/get_list?page=${data}`, config())
     },
     //攻略
     qryGuideList:function(){
-        return axios.get('api/guide/index', config())
+        return axios.get('/api/guide/index', config())
     },
 
     //收藏图片

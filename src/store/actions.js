@@ -337,8 +337,8 @@ export const hidePhotoModal = ({ commit }) => {
 //----------------------------------------------------------------------------------------------
 
 //----------------------------------------首页已登录状态------------------------------------------------------
-export const qryLoginIndex = ({ commit }, data) => {
-    api.qryLoginIndex(data).then(function (response) {
+export const qryUserInfo = ({ commit }, data) => {
+    api.qryUserInfo(data).then(function (response) {
         commit(types.USER_INFO, {
             data: response.data.data.user,
         })
@@ -350,12 +350,12 @@ export const qryLoginIndex = ({ commit }, data) => {
 //----------------------------------------------------------------------------------------------
 
 
-//----------------------------------------首页已登录状态------------------------------------------------------
+//----------------------------------------首页深度点评------------------------------------------------------
 export const qryComment = ({ commit }, data) => {
     api.qryComment(data).then(function (response) {
-        console.log(response)
         commit(types.COMMENT_LIST, {
-            data: response.data.data,
+            list: response.data.data.list,
+            page: response.data.data.page
         })
     })
         .catch(function (error) {

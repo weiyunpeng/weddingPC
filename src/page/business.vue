@@ -55,7 +55,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from './../components/header'
+import header from "./../components/user/userHead";
 import tag from "./../components/business/busTag"
 import busFilter from "./../components/business/busFilter"
 import paging from "./../components/paging"

@@ -2,7 +2,7 @@
     <div class="user">
         <com-header></com-header>
         <div class="" style="position:relative">
-            <div class="user-info fl"  v-show="userShow">
+            <div class="user-info fl"  v-show="userShow && isAuth">
                 <div class="Profile"  >
                     <div class="user-nike">
                         <img class="user-head fl"  width="80" height="80" v-lazy="getUser.head">
@@ -72,8 +72,7 @@
                 </waterfall>
             </div>
         </div>
-        <com-photoModal v-model="show" :value="show" :photoModal="photoModal" :order="orderNum">
-        </com-photoModal>
+        
         <com-modal @modalCallback="modalCallback"></com-modal>
     </div>
 </template>
@@ -82,7 +81,6 @@
 import header from "./../components/user/userHead";
 import modal from "./../components/modal";
 import { waterfall, waterfallSlot } from "vue-waterfall";
-import photoModal from "./../components/photoModal";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -90,7 +88,6 @@ export default {
     comHeader: header,
     waterfall: waterfall,
     waterfallSlot: waterfallSlot,
-    comPhotoModal: photoModal,
     comModal: modal
   },
   computed: {
@@ -102,7 +99,7 @@ export default {
     }),
     ...mapActions({
       qryPhotoFlow: "qryPhotoFlow",
-      qryLoginIndex: "qryLoginIndex",
+      qryUserInfo: "qryUserInfo",
       photoClear: "photoClear",
       showModal: "showModal"
     })
@@ -123,12 +120,11 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("qryLoginIndex");
-    this.getPhotoListFill.splice(0);
-    this.$store.dispatch("photoClear");
-    this.loadPhoto();
-    window.addEventListener("scroll", this.loadMore);
+    // this.$store.dispatch("photoClear");
     try {
+      this.loadPhoto();
+      window.smoothscroll()
+      window.addEventListener("scroll", this.loadMore);
       let token = JSON.parse(localStorage.getItem("user"));
       let isLogin = Boolean(token);
       if (isLogin) {
@@ -137,7 +133,7 @@ export default {
         let data = {
           uid: this.uid
         };
-        this.$store.dispatch("qryLoginIndex", data);
+        this.$store.dispatch("qryUserInfo", data);
       } else {
         this.isAuth = false;
       }
@@ -146,7 +142,7 @@ export default {
     }
   },
   methods: {
-    photoLikeBtn(id, fav, flowNum, isFill) {
+    photoLikeBtn(id, fav, flowNum) {
       if (this.isAuth) {
         if (fav == 0) {
           //说明未收藏，可以收藏
@@ -154,8 +150,7 @@ export default {
             id: id,
             uid: this.uid,
             order: flowNum,
-            is_fav: fav,
-            isFill: isFill
+            is_fav: fav
           };
           this.$store.dispatch("collectPhoto", ajaxdata);
         } else if (fav == 1) {
@@ -164,8 +159,7 @@ export default {
             id: id,
             uid: this.uid,
             order: flowNum,
-            is_fav: fav,
-            isFill: isFill
+            is_fav: fav
           };
           this.$store.dispatch("cancelCollectPhoto", ajaxdata);
         } else {
@@ -189,17 +183,12 @@ export default {
       }
     },
     showPhotoModal(item, index, isFill) {
-      document.querySelector(".photo_modal").style.display = "block";
       this.photoModal = item;
       if (isFill) {
         this.photoModal.isFill = isFill;
       }
       this.orderNum = index;
-      this.show = true;
-      const ajaxdata = {
-        id: this.photoModal.id
-      };
-      this.$store.dispatch("qryViewPhoto", ajaxdata);
+      this.$router.push({ name: 'bottompage',query:{id:this.photoModal.id}})
     },
     loadPhoto() {
       let data = {
@@ -245,6 +234,7 @@ export default {
     height: auto;
     background: #ffffff;
     z-index: 9;
+    padding-bottom: 20px;
   }
 }
 
