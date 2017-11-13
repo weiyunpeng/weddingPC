@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <span>化妆特点</span>
-                    <label style="line-height:28px;height: 58px;">{{makeupman.specialty}}</label>
+                    <label class="camera-spec"><a href="javascript:void(0)" v-bind:title="makeupman.specialty">{{makeupman.specialty}}</a></label>
                 </li>
             </ul>
         </div>

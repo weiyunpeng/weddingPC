@@ -15,7 +15,7 @@
           <swiper :options="swiperOption" ref="mySwiper">
             <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">
               <div class="imgcrop">
-                <img :src="item.img" height="475">
+                <img v-lazy="item.img" height="475">
               </div>
               
               <div class="modal-details">
@@ -49,7 +49,7 @@
             <waterfall :line-gap="200" :min-line-gap="140" :max-line-gap="140" :single-max-width="140" :watch="getViewPhoto">
               <waterfall-slot v-for="(item, index) in getViewPhoto" :width="item.width" :height="item.height" :order="index" :key="item.index"
                 move-class="photo_move">
-                <img :src="item.img" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
+                <img v-lazy="item.img" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
               </waterfall-slot>
             </waterfall>
           </div>
@@ -80,6 +80,7 @@ export default {
     data() {
         return {
             id: this.$route.query.id,
+            type: this.$route.query.type,
             loadshow: true,
             selected: 0,
             loading: false,
@@ -119,11 +120,15 @@ export default {
         }
     },
     mounted() {
-        const ajaxdata = {
-            id: this.id
-        };
-        this.$store.dispatch('qryViewPhoto', ajaxdata);
-        this.swiper.slideTo(0, 1000, false);
+        this.$store.dispatch('hidePhotoModal');
+        this.$nextTick(function() {
+            const ajaxdata = {
+                id: this.id,
+                type: this.type
+            };
+            this.$store.dispatch('qryViewPhoto', ajaxdata);
+            this.swiper.slideTo(0, 1000, false);
+        });
     },
     methods: {
         changeSwiper(item, index) {
@@ -144,7 +149,7 @@ export default {
         },
         photoLikeBtn(id, fav, flowNum) {
             try {
-                let token = JSON.parse(localStorage.getItem("user"));
+                let token = JSON.parse(localStorage.getItem('user'));
                 let isLogin = Boolean(token);
                 if (isLogin) {
                     if (fav == 0) {
@@ -191,9 +196,7 @@ export default {
                 tempImage.onload = function() {
                     self.loading = true;
                 };
-                tempImage.onerror = function() {
-                    self.close();
-                };
+                tempImage.onerror = function() {};
                 tempImage.src = self.photoModal.img;
             }
         },
@@ -204,9 +207,6 @@ export default {
         },
         getViewPhotoStatus() {
             const self = this;
-            if (this.getViewPhotoStatus == -1) {
-                setTimeout(() => self.close(), 2000);
-            }
         },
         photoModal() {
             if (this.photoModal.src) {
@@ -271,6 +271,21 @@ export default {
         overflow-x: hidden;
         background-color: #fff;
         padding: 10px 0 0 15px;
+        ::-webkit-scrollbar-track {
+            border-radius: 2px;
+            background-color: #ffffff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 2px;
+            background-color: #b0b0b0;
+        }
     }
     .photo_fr_ct {
         width: 310px;

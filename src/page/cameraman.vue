@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <span>拍摄特点</span>
-                    <label class="camera-spec"><a href="javascript:void(0)">{{camaraman.tags}}</a></label>
+                    <label class="camera-spec"><a href="javascript:void(0)" v-bind:title="camaraman.tags">{{camaraman.tags}}</a></label>
                 </li>
             </ul>
         </div>

@@ -4,7 +4,7 @@
         <div class="banner">
             <swiper :options="swiperOption" ref="mySwiper">
                     <swiper-slide class="photo_fl fl" v-for="(item,index) in getIndexPhoto.bannner" v-bind:key="index">
-                      <div :style="{backgroundImage: 'url(' + item.img + ')'}" class="imgdiv" @click="showPhotoModal(item)"></div>
+                      <div :style="{backgroundImage: 'url(' + item.img + ')'}" class="imgdiv" @click="showPhotoModal(item.id)"></div>
                         <div class="p-wrapper"><p><span>{{item.style}}</span>{{item.nickname}}拍摄于
                         <router-link :to="{ name: 'storeDetails', query: {busId:item.storeId}}" target="_blank">
                             {{item.storeName}}
@@ -72,14 +72,14 @@
         <div class="wrapper">
         <div class="wrapper-con" style="overflow:hidden;">
             <div class="wrapper_left fl">
-                <div class="wrapper-tit"><a href="">婚纱照拍摄点评 <span class="span-text">{{getPage.totalCount}}篇</span></a><span class="span-bt"></span></div>
+                <div class="wrapper-tit">婚纱照拍摄点评 <span class="span-text">{{getPage.totalCount}}篇</span><span class="span-bt"></span></div>
                 <ul class="wrapper-details">
                     <li  class="section" v-for="(item,index) in getCommentList" v-bind:key="index">
-                    <div class="section-tit"><a :href="item.url">{{item.title}}</a></div>
+                    <div class="section-tit"><a :href="item.url" target="_blank">{{item.title}}</a></div>
                     <p>{{item.comment}}</p>
                     <ul class="thisimg-ct" v-show="item.imgs!=0">
                         <li v-for="img in item.imgs">
-                          <img :src="img" @click="showPhotoModal(item)">
+                          <img :src="img" @click="showPhotoModal(item.sampleId)">
                         </li>
                     </ul>
                     <div class="section-bottom">
@@ -99,10 +99,10 @@
                 <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
             </div>
             <div class="wrapper_right fr">
-              <div class="wrapper-tit"><a href="">拍摄攻略 <span class="span-text">{{getIndexPhoto.guide_count}}篇</span></a><span class="span-bt"></span></div>
+              <div class="wrapper-tit">拍摄攻略 <span class="span-text">{{getIndexPhoto.guide_count}}篇</span><span class="span-bt"></span></div>
               <ul>
                 <li v-for="(item,index) in getIndexPhoto.guide" v-bind:key="index">
-                  <h4><a :href="item.url">{{item.title}}</a></h4>
+                  <h4><a :href="item.url" target="_blank">{{item.title}}</a></h4>
                   <div class="guide-bottom">
                     <span class="fr"> {{item.views}}看过 &nbsp;{{item.replies}} <i class="pl-icon"></i></span>
                   </div>
@@ -183,7 +183,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('getUserInfo');
-        this.$store.dispatch('qryComment',1);
+        this.$store.dispatch('qryComment', 1);
         this.$store.dispatch('qryIndex');
     },
     methods: {
@@ -200,8 +200,11 @@ export default {
             this.selected = index;
             this.swiper.slideTo(index + 1, 1000, false);
         },
-        showPhotoModal(item) {
-            this.$router.push({ name: 'bottompage', query: { id: item.id } });
+        showPhotoModal(id) {
+            this.$router.push({
+                name: 'bottompage',
+                query: { id: id, type: 1 }
+            });
         }
     },
 
@@ -242,7 +245,7 @@ export default {
                 z-index: 666;
                 ul li {
                     width: 110px;
-                    height: 80px;
+                    height: 82px;
                     cursor: pointer;
                     box-sizing: border-box;
                     margin-bottom: 8px;
@@ -317,7 +320,7 @@ export default {
                 height: 80px;
             }
             dt.dt-fg {
-                background: url(../../static/images/all1.png) 0 0 no-repeat;
+                background: url(../../static/images/ic-1.png) 0 0 no-repeat;
             }
             dt.dt-gl {
                 background: url(../../static/images/all1.png) -80px 0 no-repeat;
@@ -376,7 +379,7 @@ export default {
                     color: #b0b0b0;
                 }
             }
-            .wrapper-details{
+            .wrapper-details {
                 margin-bottom: 30px;
             }
             .wrapper_left {

@@ -332,7 +332,7 @@ export const qryViewPhoto = ({ commit }, data) => {
         });
 };
 export const hidePhotoModal = ({ commit }) => {
-    commit(types.HIDE_MSG)
+    commit(types.HIDE_PHOTO_MODAL)
 };
 //----------------------------------------------------------------------------------------------
 

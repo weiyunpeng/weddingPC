@@ -94,7 +94,7 @@ export default {
             this.orderNum = index;
             this.$router.push({
                 name: 'bottompage',
-                query: { id: this.photoModal.id }
+                query: { id: this.photoModal.id, type: 1 }
             });
         }
     },
