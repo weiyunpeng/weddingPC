@@ -1,7 +1,7 @@
 <template>
     <div class="left_zoom" :style="{width:width+'px'}">
         <div class="big_img">
-            <img v-lazy="imgs[currentIndex]" :height="height">
+            <img :src="imgs[currentIndex]" :height="height">
         </div>
         <div class="small_img">
             <transition-group tag="ul" name="list">
@@ -126,7 +126,7 @@ export default {
           margin-top: -23px;
           width: 26px;
           height: 46px;
-          background: url("/static/images/icon1.png");
+          background: url("/static/images/icon2.png");
         }
         .prev {
           background-position: top left;

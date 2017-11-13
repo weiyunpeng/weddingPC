@@ -50,7 +50,7 @@
     background-repeat: no-repeat;
     width: 20px;
     height: 19px;
-    background: url("/static/images/icon_star.png");
+    background: url("/static/images/icon_star1.png");
     background-position: 212px -2px;
 }
 .on{

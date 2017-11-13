@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="page-busample">
         <com-header></com-header>
         <div class="store-sample">
             <div class="container clearfix" style="border-bottom:1px solid #eee">
@@ -107,70 +107,72 @@ export default {
 };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-@charset "UTF-8";
-.store-sample {
-    width: 100%;
-    background: #fff;
-    background-color: #fff;
-    padding-top: 20px;
-}
-.meal-con {
-    width: 100%;
-    background: #fff;
-    background-color: #fff;
-}
+@import './../assets/css/base.scss';
+.page-busample {
+    .store-sample {
+        width: 100%;
+        background: #fff;
+        background-color: #fff;
+        padding-top: 20px;
+    }
+    .meal-con {
+        width: 100%;
+        background: #fff;
+        background-color: #fff;
+    }
 
-.meal_list {
-    padding-bottom: 20px;
-    border-top: 1px solid #eee;
-    .list_con {
-        display: inline-block;
-        width: 374px;
-        height: 325px;
-        overflow: hidden;
-        margin: {
-            right: 28px;
-            top: 20px;
-        }
-        width: 372px;
-        .tags {
-            font: {
-                size: 24px;
-                weight: bold;
-            }
-            color: #ff4e6b;
-        }
-        .tag {
+    .meal_list {
+        padding-bottom: 20px;
+        border-top: 1px solid #eee;
+        .list_con {
             display: inline-block;
-            width: auto;
-            height: auto;
-            border: 1px solid #ff4e6b;
-            border-radius: 12px;
-            color: #ff4e6b;
-            text-align: center;
-            margin-right: 8px;
-            padding: 5px;
-            font: {
-                size: 14px;
-                weight: normal;
-            }
-        }
-        .meal_name {
-            margin: {
-                bottom: 6px;
-            }
-            font-size: 20px;
-            color: #333;
-            margin-top: 5px;
+            width: 374px;
+            height: 325px;
             overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .business_name {
-            font: {
-                size: 14px;
+            margin: {
+                right: 28px;
+                top: 20px;
             }
-            color: #808080;
+            width: 372px;
+            .tags {
+                font: {
+                    size: 24px;
+                    weight: bold;
+                }
+                color: $color-normal;
+            }
+            .tag {
+                display: inline-block;
+                width: auto;
+                height: auto;
+                border: 1px solid $color-normal;
+                border-radius: 12px;
+                color: $color-normal;
+                text-align: center;
+                margin-right: 8px;
+                padding: 5px;
+                font: {
+                    size: 14px;
+                    weight: normal;
+                }
+            }
+            .meal_name {
+                margin: {
+                    bottom: 6px;
+                }
+                font-size: 20px;
+                color: #333;
+                margin-top: 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .business_name {
+                font: {
+                    size: 14px;
+                }
+                color: #808080;
+            }
         }
     }
 }

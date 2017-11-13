@@ -93,8 +93,8 @@ export default {
     z-index: 3;
     color: #fff;
     cursor: default;
-    background-color: #337ab7;
-    border-color: #337ab7;
+    background-color: #fc82b8;
+    border-color: #fc82b8;
     border-radius: 50%;
 }
 .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:hover {
@@ -109,8 +109,8 @@ export default {
 .pagination>li>a:hover,.pagination>li>span:hover {
     z-index: 2;
     color: #fff;
-    background: #ff4e6b;
-    border-color: #ddd;
+    background: #f06aa6;
+    border-color: #f06aa6;
  }
  .pagination>li>a, .pagination>li>span {
     position: relative;

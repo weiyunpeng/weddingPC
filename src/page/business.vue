@@ -88,7 +88,7 @@ import paging from "./../components/paging"
                     current:1,  // 当前页数，
                     pagenum:20, // 每页显示条数
                     pagegroup:6,    // 分页器每次展示出的条数
-                    skin:'#ff4e6b'  // 选中页码的颜色主题
+                    skin:'#fc82b8'  // 选中页码的颜色主题
                 }
             }
         },

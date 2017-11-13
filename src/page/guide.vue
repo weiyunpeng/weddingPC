@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="page-guide">
         <com-header></com-header>
         <div class="hot-raiders" style="margin-top:0">
             <div class="container">
@@ -80,104 +80,110 @@ export default {
 };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-@import './../assets/css/index.scss';
-.hot-raiders {
-    i.pl-icon {
-        display: inline-block;
-        width: 16px;
-        height: 12px;
-        background: url(../../static/images/pl-icon.png) no-repeat;
-    }
-    .new-imgwrap {
-        width: 800px;
-        min-height: 800px;
-        li {
+@import './../assets/css/base.scss';
+.page-guide {
+    background-color: #ffffff;
+    .hot-raiders {
+        i.pl-icon {
+            display: inline-block;
+            width: 16px;
+            height: 12px;
+            background: url(../../static/images/pl-icon.png) no-repeat;
+        }
+        .new-imgwrap {
             width: 800px;
-            text-align: left;
-            height: auto;
-            min-height: 160px;
-            overflow: auto;
-            margin-top: 25px;
-            margin-bottom: 0;
-            .img-hover {
-                width: 240px !important;
-                height: 160px !important;
+            min-height: 800px;
+            li {
+                width: 800px;
+                text-align: left;
+                height: auto;
+                min-height: 160px;
+                overflow: auto;
+                margin-top: 25px;
+                margin-bottom: 0;
+                .img-hover {
+                    width: 240px !important;
+                    height: 160px !important;
+                }
             }
         }
-    }
-    .img-ct {
-        width: 546px;
-        h3 {
-            font-size: 20px;
-            color: #333;
-            font-weight: normal;
-            margin-bottom: 16px;
-        }
-        a {
-            color: #333;
-        }
-        p {
-            color: #b2b2b2;
-            font-size: 14px;
-            line-height: 20px;
-        }
-        .read-ct {
-            color: #b0b0b0;
-            font-size: 14px;
-        }
-    }
-    .new-evaluation {
-        width: 340px;
-        margin-top: 25px;
-        .eval-tit {
-            font-size: 24px;
-            color: #1a1a1a;
-            background: url(../../static/images/tit-bg1.png) left bottom
-                no-repeat;
-            padding-bottom: 6px;
-            text-align: left;
-            margin-bottom: 20px;
-            span {
-                color: #b2b2b2;
-                font-size: 14px;
-                margin-left: 8px;
-            }
-        }
-        ul li {
-            width: 340px;
-            height: auto;
-            padding-bottom: 10px;
-            margin-top: 15px;
-            margin-bottom: 0;
-            border-bottom: 1px solid #e6e6e6;
-            h4 {
+        .img-ct {
+            width: 546px;
+            h3 {
+                font-size: 20px;
                 color: #333;
                 font-weight: normal;
+                margin-bottom: 16px;
+            }
+            a {
+                color: #333;
+            }
+            p {
+                color: #b2b2b2;
+                font-size: 14px;
+                line-height: 20px;
+            }
+            .read-ct {
+                color: #b0b0b0;
+                font-size: 14px;
+            }
+        }
+        .new-evaluation {
+            width: 340px;
+            margin-top: 25px;
+            .eval-tit {
+                font-size: 24px;
+                color: #1a1a1a;
+                background: url(../../static/images/tit-bg1.png) left bottom
+                    no-repeat;
+                padding-bottom: 6px;
                 text-align: left;
-                margin-bottom: 14px;
-                a {
-                    color: #333;
-                    font-size: 16px;
+                margin-bottom: 20px;
+                span {
+                    color: #b2b2b2;
+                    font-size: 14px;
+                    margin-left: 8px;
                 }
             }
-            .li-ct {
-                font-size: 14px;
-                height: 16px;
-                line-height: 16px;
-                .sj {
-                    display: inline-block;
-                    color: #fc70ae;
-                    background: url(../../static/images/sj-icon.png) left center
-                        no-repeat;
-                    padding-left: 20px;
-                    width: 230px;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow: hidden;
+            ul li {
+                width: 340px;
+                height: auto;
+                padding-bottom: 10px;
+                margin-top: 15px;
+                margin-bottom: 0;
+                border-bottom: 1px solid #e6e6e6;
+                h4 {
+                    color: #333;
+                    font-weight: normal;
                     text-align: left;
+                    margin-bottom: 14px;
+                    a {
+                        color: #333;
+                        font-size: 16px;
+                    }
                 }
-                .read-ct {
-                    color: #b0b0b0;
+                .li-ct {
+                    font-size: 14px;
+                    height: 16px;
+                    line-height: 16px;
+                    .sj {
+                        display: inline-block;
+                        color: $color-normal;
+                        background: url(../../static/images/sj-icon.png) left
+                            center no-repeat;
+                        padding-left: 20px;
+                        width: 230px;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-align: left;
+                        :hover {
+                            color: $color-hover;
+                        }
+                    }
+                    .read-ct {
+                        color: #b0b0b0;
+                    }
                 }
             }
         }

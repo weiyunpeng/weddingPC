@@ -1,5 +1,5 @@
 <template>
-    <div class="page-index" style="background-color:#fcfcfc">
+    <div class="page-index">
         <com-header></com-header>
         <div class="banner">
             <swiper :options="swiperOption" ref="mySwiper">
@@ -102,7 +102,7 @@
               <div class="wrapper-tit">拍摄攻略 <span class="span-text">{{getIndexPhoto.guide_count}}篇</span><span class="span-bt"></span></div>
               <ul>
                 <li v-for="(item,index) in getIndexPhoto.guide" v-bind:key="index">
-                  <h4><a :href="item.url" target="_blank">{{item.title}}</a></h4>
+                  <h4><a class="golve" :href="item.url" target="_blank">{{item.title}}</a></h4>
                   <div class="guide-bottom">
                     <span class="fr"> {{item.views}}看过 &nbsp;{{item.replies}} <i class="pl-icon"></i></span>
                   </div>
@@ -176,7 +176,7 @@ export default {
                 current: 1, // 当前页数，
                 pagenum: 20, // 每页显示条数
                 pagegroup: 6, // 分页器每次展示出的条数
-                skin: '#ee639f' // 选中页码的颜色主题
+                skin: '#fc82b8' // 选中页码的颜色主题
             },
             page: 1
         };
@@ -222,7 +222,9 @@ export default {
 
 
 <style rel="stylesheet/scss" lang="scss">
+@import './../assets/css/base.scss';
 .page-index {
+    background-color:#fcfcfc;
     .banner {
         height: 530px;
         position: relative;
@@ -388,6 +390,9 @@ export default {
                     font-size: 20px;
                     color: #333;
                     margin: 30px 0 0 0;
+                    :hover{
+                        color: $color-hover;
+                    }
                 }
                 p {
                     font-size: 16px;
@@ -437,6 +442,9 @@ export default {
                     h4 {
                         color: #333;
                         font-size: 16px;
+                    }
+                    .golve:hover{
+                        color: $color-hover;
                     }
                     .guide-bottom {
                         color: #b0b0b0;
