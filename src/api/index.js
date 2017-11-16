@@ -59,10 +59,9 @@ axios.interceptors.response.use(function (response) {
     }
     return Promise.reject(error);
 });
-
 const ROOT = (process.env.NODE_ENV === 'production')
     ? ''
-    :'http://localhost:1300';
+    :`http://${window.location.hostname}:1300`;
 function config() {
     const base = {
         baseURL: ROOT

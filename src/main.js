@@ -14,10 +14,11 @@ import './assets/css/iconfont.css'
 const GIF_LOADING_SRC = '/static/images/red.png';
 Vue.use(VueLazyload, {
     // 设置默认显示的图片
-    preLoad: 5,
+    preLoad: 1.3,
     error: GIF_LOADING_SRC,
     loading: GIF_LOADING_SRC,
-    attempt: 20
+    attempt: 1,
+    throttleWait:500
 })
 
 Vue.use(BaiduMap, {

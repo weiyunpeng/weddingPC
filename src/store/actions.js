@@ -297,7 +297,6 @@ export const qryIndex = ({ commit }, data) => {
 export const qryViewPhoto = ({ commit }, data) => {
     api.qryViewPhoto(data).then(function (response) {
         if (response.data.code == -1) {
-            document.querySelector(".photo_modal").style.display = 'none';
             commit(types.HIDE_PHOTO_MODAL)
             return false
         }
@@ -312,7 +311,6 @@ export const qryViewPhoto = ({ commit }, data) => {
                     commit(types.VIEW_PHOTO_MODAL, {
                         data: response.data.data,
                     })
-                    // console.log(response.data.data)
                 }
             };
             tempImage.onerror = function () {
@@ -324,7 +322,7 @@ export const qryViewPhoto = ({ commit }, data) => {
                     })
                 }
             };
-            tempImage.src = response.data.data.list[i].img;
+            tempImage.src = response.data.data.list[i].thumb;
         }
     })
         .catch(function (error) {
@@ -369,7 +367,7 @@ export const qryComment = ({ commit }, data) => {
 export const qryPhotoFlow = ({ commit }, data) => {
     commit(types.PHOTO_STATUS, { status: 1 });
     api.qryPhotoFlow(data).then(function (response) {
-        if (response.data.data.photo.length == 0) {
+        if (!response.data.data || response.data.data.photo.length == 0) {
             return commit(types.PHOTO_STATUS, { status: 2 });
         }
         const status = response.data.data.photo.length == 20 ? 0 : 2;
@@ -378,14 +376,13 @@ export const qryPhotoFlow = ({ commit }, data) => {
             const tempImage = new Image();
             tempImage.onload = function () {
                 photoCount++;
-                var rate = tempImage.width / tempImage.height;
-                response.data.data.photo[i].width = tempImage.width / 2;
-                if (tempImage.height < 640) {
-                    response.data.data.photo[i].height = response.data.data.photo[i].width / rate + 65;
-                } else {
-                    response.data.data.photo[i].height = response.data.data.photo[i].width / rate + 55;
+                let rate = tempImage.width / tempImage.height;
+                if(tempImage.height > 600){
+                    response.data.data.photo[i].width = tempImage.width / 1.3715;
+                }else{
+                    response.data.data.photo[i].width = tempImage.width / 1.41;
                 }
-
+                response.data.data.photo[i].height = response.data.data.photo[i].width / rate + 70;
                 if (photoCount == response.data.data.photo.length) {
                     commit(types.PHOTO_LIST, {
                         list: response.data.data.photo,

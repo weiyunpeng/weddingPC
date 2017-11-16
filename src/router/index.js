@@ -16,6 +16,7 @@ let curVisitUrlPath = window.location.pathname
 // PC端和移动端链接对应
 let matchUrl = {
 	'/': '/', 				// 首页
+	'/index': '/', 				// 首页
 	'/user': '/vp',		// 看照片
 	'/comment': '/search',		// 找商家
 	'/packageDetails': '/detail', // 套餐详情

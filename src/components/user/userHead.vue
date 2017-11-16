@@ -157,12 +157,12 @@ export default {
                 white-space: nowrap;
                 margin-right: 84px;
                 a {
-                    line-height: 40px;
-                    text-align: center;
+                    width: 27px;
+                    height: 12px;
                     font-size: 18px;
-                    font-weight: bold;
-                    color: #363637;
-                    padding-bottom: 10px;
+                    text-align: center;
+                    color: #333333;
+                    padding-bottom: 12px;
                     -webkit-transition: all 0.6s ease;
                     transition: all 0.3s ease;
                 }
@@ -172,6 +172,7 @@ export default {
             }
             .nav_a:hover {
                 color: $color-hover;
+                border-bottom: 3px solid $color-hover;
             }
             .nav_active {
                 color: $color-hover;

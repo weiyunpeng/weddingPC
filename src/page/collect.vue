@@ -46,8 +46,10 @@
                             <div class="c-type-photo">
                                 <ul v-bind:class="{active:item.showall}">
                                     <li v-for="(img,m) in item.photo" :key="m">
-                                        <div class="img-hover" @click="showPhotoModal(img, m)">
-                                            <img v-lazy="img.img" width="320" height="200">
+                                        <div class="img-hover">
+                                            <router-link :to="{ name: 'bottompage', query: {id: img.id}}" target="_blank">
+                                                <img v-lazy="img.img" width="320" height="200">
+                                            </router-link>
                                         </div>
                                     </li>
                                     <li v-show="item.photo.length>3">
@@ -118,14 +120,6 @@ export default {
             // let obj = this.list[ln]
             // obj.showall = !obj.showall
             // this.$set(this.list, ln, obj);
-        },
-        showPhotoModal(img, m) {
-            this.photoModal = img;
-            this.index = m;
-            this.$router.push({
-                name: 'bottompage',
-                query: { id: this.photoModal.id }
-            });
         },
         logout() {
             this.$store.dispatch('loginOut');

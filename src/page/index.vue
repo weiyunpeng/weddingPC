@@ -1,118 +1,134 @@
 <template>
-    <div class="page-index">
-        <com-header></com-header>
-        <div class="banner">
-            <swiper :options="swiperOption" ref="mySwiper">
-                    <swiper-slide class="photo_fl fl" v-for="(item,index) in getIndexPhoto.bannner" v-bind:key="index">
-                      <div :style="{backgroundImage: 'url(' + item.img + ')'}" class="imgdiv" @click="showPhotoModal(item.id)"></div>
-                        <div class="p-wrapper"><p><span>{{item.style}}</span>{{item.nickname}}拍摄于
-                        <router-link :to="{ name: 'storeDetails', query: {busId:item.storeId}}" target="_blank">
-                            {{item.storeName}}
-                        </router-link>
-                  </p></div>
-                    </swiper-slide>
-                    <div class="swiper-pagination" slot="pagination">
-                        <ul>
-                            <li  v-for="(item,index) in getIndexPhoto.bannner" @click="dotbtn(index)" v-bind:class="{cur: selected == index}">
-                                <img :src="item.thumbnail" width="110" height="80">
-                            </li>
-                        </ul>
-                    </div>
-            </swiper>
+  <div class="page-index">
+    <com-header></com-header>
+    <div class="banner">
+      <swiper :options="swiperOption" ref="mySwiper">
+        <swiper-slide class="photo_fl fl" v-for="(item,index) in getIndexPhoto.bannner" v-bind:key="index">
+            <router-link class="imgdiv"  :style="{backgroundImage: 'url(' + item.img + ')'}" :to="{ name: 'bottompage', query: {id: item.id, type: 1}}" target="_blank">
+            </router-link>
+          <div class="p-wrapper">
+            <p>
+              <span>{{item.style}}</span>{{item.nickname}}拍摄于<router-link :to="{ name: 'storeDetails', query: {busId:item.storeId}}" target="_blank">{{item.storeName}}</router-link>
+              <span v-if="item.shootTime">{{item.shootTime}}</span>
+            </p>
+          </div>
+        </swiper-slide>
+        <div class="swiper-pagination" slot="pagination">
+          <ul>
+            <li v-for="(item,index) in getIndexPhoto.bannner" @click="dotbtn(index)" v-bind:class="{cur: selected == index}">
+              <img :src="item.thumbnail" width="110" height="80">
+            </li>
+          </ul>
         </div>
-        <div class="tips">
-            <h2>
-                婚纱照筹备小贴士
-                <span></span>
-            </h2>
-            <ul>
-               <a href="" target="_blank"> 
-                   <li class="li-big">
-                       <router-link to="/user" class="nav_a base-color" active-class="nav_active">
-                            <dl>
-                                <dt class="dt-fg"></dt>
-                                <dd>
-                                    <h4>选址婚纱照风格</h4>
-                                    <p>找你喜欢</p>
-                                </dd>
-                            </dl>
-                        </router-link>
-                    </li>
-                </a>
-                <li class="li-small"></li>
-                <a href="" target="_blank"> 
-                <li class="li-big">
-                    <router-link to="/guide" class="nav_a base-color" active-class="nav_active">
-                        <dl>
-                            <dt class="dt-gl"></dt>
-                            <dd>
-                                <h4>学攻略看门道</h4>
-                                <p>去学习</p>
-                            </dd>
-                        </dl>
+      </swiper>
+    </div>
+    <div class="tips">
+      <h2>
+        婚纱照筹备小贴士
+        <span></span>
+      </h2>
+      <ul>
+          <li class="li-big">
+            <router-link to="/user" class="nav_a base-color" active-class="nav_active">
+              <dl>
+                <dt class="dt-fg"></dt>
+                <dd>
+                  <h4>选择婚纱照风格</h4>
+                  <p>找你喜欢</p>
+                </dd>
+              </dl>
+            </router-link>
+          </li>
+        <li class="li-small"></li>
+        <a href="" target="_blank">
+          <li class="li-big">
+            <router-link to="/guide" class="nav_a base-color" active-class="nav_active">
+              <dl>
+                <dt class="dt-gl"></dt>
+                <dd>
+                  <h4>学攻略看门道</h4>
+                  <p>去学习</p>
+                </dd>
+              </dl>
+            </router-link>
+          </li>
+        </a>
+        <li class="li-small"></li>
+        <a href="" target="_blank">
+          <li class="li-big">
+            <router-link :to="{ name: 'comment', query: { bus: 1 }}" class="nav_a" active-class="nav_active">
+              <dl>
+                <dt class="dt-sj"></dt>
+                <dd>
+                  <h4>选择靠谱商家</h4>
+                  <p>去选择</p>
+                </dd>
+              </dl>
+            </router-link>
+          </li>
+        </a>
+      </ul>
+    </div>
+    <div class="wrapper">
+      <div class="wrapper-con" style="overflow:hidden;">
+        <div class="wrapper_left fl">
+          <div class="wrapper-tit">婚纱照拍摄点评
+            <span class="span-text">{{getPage.totalCount}}篇</span>
+            <span class="span-bt"></span>
+          </div>
+          <ul class="wrapper-details">
+            <li class="section" v-for="(item,index) in getCommentList" v-bind:key="index">
+              <div class="section-tit">
+                <a :href="item.url" target="_blank">{{item.title}}</a>
+              </div>
+              <p>{{item.comment}}</p>
+              <ul class="thisimg-ct" v-show="item.imgs!=0">
+                <li v-for="img in item.imgs">
+                    <router-link class="imgdiv img-hover" :to="{ name: 'bottompage', query: {id: item.sampleId, type: 1}}" target="_blank">
+                        <img :src="img">
                     </router-link>
-                </li>
-                </a>
-                <li class="li-small"></li>
-                <a href="" target="_blank"> 
-                <li class="li-big">
-                    <router-link :to="{ name: 'comment', query: { bus: 1 }}" class="nav_a" active-class="nav_active">
-                        <dl>
-                            <dt class="dt-sj"></dt>
-                            <dd>
-                                <h4>选择靠谱商家</h4>
-                                <p>去选择</p>
-                            </dd>
-                        </dl>
-                    </router-link>
-                </li>
-                </a>
-            </ul>
-        </div>
-        <div class="wrapper">
-        <div class="wrapper-con" style="overflow:hidden;">
-            <div class="wrapper_left fl">
-                <div class="wrapper-tit">婚纱照拍摄点评 <span class="span-text">{{getPage.totalCount}}篇</span><span class="span-bt"></span></div>
-                <ul class="wrapper-details">
-                    <li  class="section" v-for="(item,index) in getCommentList" v-bind:key="index">
-                    <div class="section-tit"><a :href="item.url" target="_blank">{{item.title}}</a></div>
-                    <p>{{item.comment}}</p>
-                    <ul class="thisimg-ct" v-show="item.imgs!=0">
-                        <li v-for="img in item.imgs">
-                          <img :src="img" @click="showPhotoModal(item.sampleId)">
-                        </li>
-                    </ul>
-                    <div class="section-bottom">
-                        <div class="business fl">
-                            拍摄商家：
-                            <router-link :to="{ name: 'storeDetails', query: {busId:item.storeId}}" target="_blank">
-                                {{item.storeName}}
-                            </router-link>
-                         &nbsp;<span v-show="item.shootTime">拍摄时间：{{item.shootTime}}</span>
-                        </div>
-                        <div class="seenumber fr">
-                            {{item.views}}看过 &nbsp;{{item.replies}} <i class="pl-icon"></i>
-                        </div>
-                    </div>
-                    </li>
-                </ul>
-                <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
-            </div>
-            <div class="wrapper_right fr">
-              <div class="wrapper-tit">拍摄攻略 <span class="span-text">{{getIndexPhoto.guide_count}}篇</span><span class="span-bt"></span></div>
-              <ul>
-                <li v-for="(item,index) in getIndexPhoto.guide" v-bind:key="index">
-                  <h4><a class="golve" :href="item.url" target="_blank">{{item.title}}</a></h4>
-                  <div class="guide-bottom">
-                    <span class="fr"> {{item.views}}看过 &nbsp;{{item.replies}} <i class="pl-icon"></i></span>
-                  </div>
                 </li>
               </ul>
-            </div>
+              <div class="section-bottom">
+                <div class="business fl">
+                  拍摄商家：
+                  <router-link :to="{ name: 'storeDetails', query: {busId:item.storeId}}" target="_blank">
+                    {{item.storeName}}
+                  </router-link>&nbsp;
+                  <span v-if="item.shootTime">拍摄时间：{{item.shootTime}}</span>
+                </div>
+                <div class="seenumber fr">
+                  {{item.views}}看过 &nbsp;{{item.replies}}
+                  <i class="pl-icon"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
         </div>
+        <div class="wrapper_right fr">
+          <div class="wrapper-tit">拍摄攻略
+            <span class="span-text">{{getIndexPhoto.guide_count}}篇</span>
+            <span class="span-bt"></span>
+          </div>
+          <ul>
+            <li v-for="(item,index) in getIndexPhoto.guide" v-bind:key="index">
+              <h4>
+                <a class="golve" :href="item.url" target="_blank">{{item.title}}</a>
+              </h4>
+              <div class="guide-bottom">
+                <span class="fr"> {{item.views}}看过 &nbsp;{{item.replies}}
+                  <i class="pl-icon"></i>
+                </span>
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
 </template>
+
 
 <script>
 import header from './../components/user/userHead';
@@ -156,9 +172,6 @@ export default {
                 initialSlide: 1,
                 mousewheelControl: false,
                 observeParents: true,
-                prevButton: '.swiper-button-prev',
-                nextButton: '.swiper-button-next',
-                pagination: '.swiper-pagination',
                 paginationType: 'custom',
                 autoplayDisableOnInteraction: false,
                 preloadImages: false,
@@ -176,13 +189,17 @@ export default {
                 current: 1, // 当前页数，
                 pagenum: 20, // 每页显示条数
                 pagegroup: 6, // 分页器每次展示出的条数
+                position: {
+                    x: 0,
+                    y: 920
+                }, //页面跳转的位置
                 skin: '#fc82b8' // 选中页码的颜色主题
             },
             page: 1
         };
     },
     mounted() {
-        this.$store.dispatch('getUserInfo');
+        // this.$store.dispatch('getUserInfo');
         this.$store.dispatch('qryComment', 1);
         this.$store.dispatch('qryIndex');
     },
@@ -199,12 +216,6 @@ export default {
         dotbtn(index) {
             this.selected = index;
             this.swiper.slideTo(index + 1, 1000, false);
-        },
-        showPhotoModal(id) {
-            this.$router.push({
-                name: 'bottompage',
-                query: { id: id, type: 1 }
-            });
         }
     },
 
@@ -224,7 +235,7 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 @import './../assets/css/base.scss';
 .page-index {
-    background-color:#fcfcfc;
+    background-color: #fcfcfc;
     .banner {
         height: 530px;
         position: relative;
@@ -362,7 +373,7 @@ export default {
         .wrapper-con {
             width: 1200px;
             margin: 0 auto;
-            padding: 30px 0 100px 0;
+            padding-top: 30px;
             .wrapper-tit {
                 font-size: 24px;
                 color: #333;
@@ -390,7 +401,7 @@ export default {
                     font-size: 20px;
                     color: #333;
                     margin: 30px 0 0 0;
-                    :hover{
+                    :hover {
                         color: $color-hover;
                     }
                 }
@@ -443,7 +454,7 @@ export default {
                         color: #333;
                         font-size: 16px;
                     }
-                    .golve:hover{
+                    .golve:hover {
                         color: $color-hover;
                     }
                     .guide-bottom {
@@ -462,6 +473,7 @@ export default {
         }
     }
     .imgdiv {
+        display: block;
         width: 100%;
         height: 100%;
         background-position: top center;

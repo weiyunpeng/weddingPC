@@ -88,7 +88,9 @@
           <ul>
             <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
               <div class="img-hover">
-                <img v-lazy="item.src" width="374" height="250" @click="showPhotoModal(item, index)">
+                   <router-link :to="{ name: 'bottompage', query: {id: item.id, type: 1}}" target="_blank">
+                        <img v-lazy="item.src" width="374" height="250">
+                    </router-link>
               </div>
               <h3>{{item.case_name}}</h3>
               <div class="tags">
@@ -355,25 +357,6 @@ export default {
         },
         closeSwiper() {
             this.showSwiper = false;
-        },
-        showPhotoModal(item, index) {
-            this.photoModal = item;
-            if (!this.photoModal.img) {
-                this.photoModal.img = item.src;
-            }
-            this.orderNum = index;
-            this.$router.push({
-                name: 'bottompage',
-                query: {
-                    id: this.photoModal.id,
-                    type: 1
-                }
-            });
-            // const ajaxdata = {
-            //     id: this.photoModal.id,
-            //     type: 1
-            // }
-            // this.$store.dispatch('qryViewPhoto', ajaxdata)
         }
     },
     watch: {

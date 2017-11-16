@@ -36,7 +36,6 @@ const mutations = {
         if(state.photoList[data.order]){
             //看婚纱瀑布流
             const obj = state.photoList[data.order]
-            console.log(obj)
             obj.is_fav = !obj.is_fav
             state.photoList[data.order].is_fav = obj.is_fav
             state.photoList[data.order].fav_num++
@@ -44,7 +43,7 @@ const mutations = {
         }
 
         if(state.list[data.index]){
-            //底层也瀑布流
+            //底层页瀑布流
             const objModal = state.list[data.index]
             objModal.is_fav = !objModal.is_fav
             state.list[data.index].is_fav = objModal.is_fav

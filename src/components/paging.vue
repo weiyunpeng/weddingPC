@@ -14,66 +14,95 @@
     </section>
 </template>
 <script>
-import Vue from 'vue'
+import Vue from 'vue';
 export default {
-    props:['pageInfo'],
+    props: ['pageInfo'],
     computed: {
-        page:function() {
+        page: function() {
             return Math.ceil(this.pageInfo.total / this.pageInfo.pagenum);
         },
-        setList:function(){
-            var len = this.page , temp = [], list = [], count = Math.floor(this.pageInfo.pagegroup / 2) ,center = this.pageInfo.current;
-            if( len <= this.pageInfo.pagegroup ){
-                while(len--){ temp.push({text:this.page-len,val:this.page-len});};
+        setList: function() {
+            var len = this.page,
+                temp = [],
+                list = [],
+                count = Math.floor(this.pageInfo.pagegroup / 2),
+                center = this.pageInfo.current;
+            if (len <= this.pageInfo.pagegroup) {
+                while (len--) {
+                    temp.push({ text: this.page - len, val: this.page - len });
+                }
                 return temp;
             }
-            while(len--){ temp.push(this.page - len);};
+            while (len--) {
+                temp.push(this.page - len);
+            }
             var idx = temp.indexOf(center);
-            (idx < count) && ( center = center + count - idx);
-            (this.pageInfo.current > this.page - count) && ( center = this.page - count);
-            temp = temp.splice(center - count -1, this.pageInfo.pagegroup);
+            idx < count && (center = center + count - idx);
+            this.pageInfo.current > this.page - count &&
+                (center = this.page - count);
+            temp = temp.splice(center - count - 1, this.pageInfo.pagegroup);
             do {
                 var t = temp.shift();
                 list.push({
                     text: t,
                     val: t
                 });
-            }while(temp.length);
-            if( this.page > this.pageInfo.pagegroup ){
-                (this.pageInfo.current > count + 1) && list.unshift({ text:'...',val: list[0].val - 1 });
-                (this.pageInfo.current < this.page - count) && list.push({ text:'...',val: list[list.length - 1].val + 1 });
+            } while (temp.length);
+            if (this.page > this.pageInfo.pagegroup) {
+                this.pageInfo.current > count + 1 &&
+                    list.unshift({ text: '...', val: list[0].val - 1 });
+                this.pageInfo.current < this.page - count &&
+                    list.push({
+                        text: '...',
+                        val: list[list.length - 1].val + 1
+                    });
             }
             return list;
         }
     },
-    data(){
+    data() {
         return {
-            skipPage:''
-        }
+            skipPage: ''
+        };
     },
-    created:function (argument) {
-    },
+    created: function(argument) {},
     methods: {
         clickCurrent: function(idx) {
-            if( this.pageInfo.current != idx && idx > 0 && idx <= this.page) {
+            if (this.pageInfo.current != idx && idx > 0 && idx <= this.page) {
                 this.pageInfo.current = idx;
-                this.$emit('change',this.pageInfo.current);
-              setTimeout(function () {
-                  window.smoothscroll()
-              },150)
+                this.$emit('change', this.pageInfo.current);
+                let x = 0,
+                    y = 0;
+                if (this.pageInfo.position) {
+                    x = this.pageInfo.position.x || 0;
+                    y = this.pageInfo.position.y || 0;
+                }
+                setTimeout(function() {
+                    window.scrollTo(x, y);
+                }, 150);
             }
         },
-        clickSkip:function(){
-            if( this.pageInfo.current != this.skipPage && this.skipPage > 0 && this.skipPage <= this.page) {
+        clickSkip: function() {
+            if (
+                this.pageInfo.current != this.skipPage &&
+                this.skipPage > 0 &&
+                this.skipPage <= this.page
+            ) {
                 this.pageInfo.current = this.skipPage;
-                this.$emit('skip',this.skipPage);
-                setTimeout(function () {
-                    window.smoothscroll()
-                }, 150)
+                this.$emit('skip', this.skipPage);
+                let x = 0,
+                    y = 0;
+                if (this.pageInfo.position) {
+                    x = this.pageInfo.position.x || 0;
+                    y = this.pageInfo.position.y || 0;
+                }
+                setTimeout(function() {
+                    window.scrollTo(x, y);
+                }, 150);
             }
         }
     }
-}
+};
 </script>
 <style scoped>
 .pages-wrap {
@@ -86,10 +115,13 @@ export default {
     padding-left: 0;
     margin: 20px 0;
 }
-.pagination>li {
+.pagination > li {
     display: inline;
 }
-.pagination>.active>a, .pagination>.active>a:hover, .pagination>.active>span,  .pagination>.active>span:hover {
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:hover {
     z-index: 3;
     color: #fff;
     cursor: default;
@@ -97,22 +129,27 @@ export default {
     border-color: #fc82b8;
     border-radius: 50%;
 }
-.pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:hover {
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover {
     color: #777;
     cursor: not-allowed;
     background: #e0e0e0;
     border-color: #ddd;
     border-radius: 15px;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
-.pagination>li>a:hover,.pagination>li>span:hover {
+.pagination > li > a:hover,
+.pagination > li > span:hover {
     z-index: 2;
     color: #fff;
     background: #f06aa6;
     border-color: #f06aa6;
- }
- .pagination>li>a, .pagination>li>span {
+}
+.pagination > li > a,
+.pagination > li > span {
     position: relative;
     float: left;
     padding: 6px 12px;
@@ -124,27 +161,27 @@ export default {
     border: 1px solid #ddd;
     border-radius: 15px;
     margin-right: 10px;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
- }
- .inputPage{
-     float: left;
-     margin-right: 10px;
-     width: 70px;
-     height: 35px;
-     color: #666666;
-     line-height: 35px;
-     padding-left: 20px;
-     border-radius: 15px;
-     border: 1px solid #e0e0e0;
- }
- .inputPage:focus{
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.inputPage {
+    float: left;
+    margin-right: 10px;
+    width: 70px;
+    height: 35px;
+    color: #666666;
+    line-height: 35px;
+    padding-left: 20px;
+    border-radius: 15px;
+    border: 1px solid #e0e0e0;
+}
+.inputPage:focus {
     border-color: #e0e0e0;
     outline: 0;
-    -webkit-transition: all .6s ease;
-    transition: all .6s ease;
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
 }
-.page_total{
+.page_total {
     font-size: 16px;
     color: #666666;
     line-height: 35px;

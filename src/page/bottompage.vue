@@ -15,17 +15,17 @@
           <swiper :options="swiperOption" ref="mySwiper">
             <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">
               <div class="imgcrop">
-                <img v-lazy="item.img" height="475">
+                <img :src="swiimg.img" height="475">
               </div>
               
               <div class="modal-details">
-                <div v-if="isCase" class="pg_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
-                    <i v-if="item.is_fav" class="icon_like_act2"></i>
-                    <i v-if="!item.is_fav" class="icon_like2"></i>
+                <div v-if="isCase" class="pg_like" @click="photoLikeBtn(swiimg, flowNum)">
+                    <i v-if="swiimg.is_fav" class="icon_like_act2"></i>
+                    <i v-if="!swiimg.is_fav" class="icon_like2"></i>
                     <!-- {{photoInfo.fav_num}} -->
                 </div>
                 <div class="modal-details-top">
-                  <span class="stylespan" v-for="info in item.tag">{{info}}</span>
+                  <span class="stylespan" v-for="info in swiimg.tag" :key="info.id">{{info}}</span>
                 </div>
                 <label style="display:block;">
                   <span v-show="photoInfo.time">{{photoInfo.time}}</span>
@@ -38,9 +38,13 @@
                 </label>
               </div>
             </swiper-slide>
-            <div class="swiper-button-prev" slot="button-prev" @click="changeWaterPrev()"></div>
-            <div class="swiper-button-next" slot="button-next" @click="changeWaterNext()"></div>
           </swiper>
+            <div class="swiper-button-prev" slot="button-prev" @click="changeWaterPrev()">
+                <img src="/static/images/ic_jian_z.png">
+            </div>
+            <div class="swiper-button-next" slot="button-next" @click="changeWaterNext()">
+                <img src="/static/images/ic_jian_y.png">
+            </div>
 
         </div>
         <div class="photo_fr fr">
@@ -49,7 +53,7 @@
             <waterfall :line-gap="200" :min-line-gap="140" :max-line-gap="140" :single-max-width="140" :watch="getViewPhoto">
               <waterfall-slot v-for="(item, index) in getViewPhoto" :width="item.width" :height="item.height" :order="index" :key="item.index"
                 move-class="photo_move">
-                <img v-lazy="item.img" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
+                <img v-lazy="item.thumb" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
               </waterfall-slot>
             </waterfall>
           </div>
@@ -78,6 +82,7 @@ export default {
         comModal: modal
     },
     data() {
+        let self = this;
         return {
             id: this.$route.query.id,
             type: this.$route.query.type,
@@ -98,16 +103,17 @@ export default {
                 preloadImages: false,
                 lazyLoading: true,
                 onTransitionStart(swiper) {
-                    this.index = swiper.realIndex;
+                    self.selected = swiper.realIndex;
+                    self.swiimg = self.getViewPhoto[self.selected]
                 }
-            }
+            },
+            swiimg:''
         };
     },
     computed: {
         ...mapGetters({
             getViewPhoto: 'getViewPhoto',
             getViewPhotoInfo: 'getViewPhotoInfo',
-            getViewPhotoStatus: 'getViewPhotoStatus'
         }),
         ...mapActions({
             showModal: 'showModal'
@@ -133,12 +139,15 @@ export default {
     methods: {
         changeSwiper(item, index) {
             this.selected = index;
+            this.swiimg = this.getViewPhoto[index]
             this.swiper.slideTo(index, 1000, false);
         },
         changeWaterPrev() {
+            this.swiimg = this.getViewPhoto[this.selected-1]
             this.selected = this.swiper.realIndex - 1;
         },
         changeWaterNext() {
+            this.swiimg = this.getViewPhoto[this.selected+1]
             this.selected = this.swiper.realIndex + 1;
         },
         modalCallback(val) {
@@ -147,32 +156,18 @@ export default {
                 window.location.href = '/login';
             }
         },
-        photoLikeBtn(id, fav, flowNum) {
+        photoLikeBtn(fav, flowNum) {
             try {
                 let token = JSON.parse(localStorage.getItem('user'));
                 let isLogin = Boolean(token);
-                if (isLogin) {
-                    if (fav == 0) {
+                if (token) {
+                    fav["index"] = flowNum
+                    if (!fav.is_fav) {
                         //说明未收藏，可以收藏
-                        let ajaxdata = {
-                            id: id,
-                            uid: token.uid,
-                            index: flowNum,
-                            is_fav: fav
-                        };
-                        this.$store.dispatch('collectPhoto', ajaxdata);
-                    } else if (fav == 1) {
-                        //说明已经收藏了,为取消收藏
-                        let ajaxdata = {
-                            id: id,
-                            uid: token.uid,
-                            index: flowNum,
-                            is_fav: fav
-                        };
-                        this.$store.dispatch('cancelCollectPhoto', ajaxdata);
+                        this.$store.dispatch('collectPhoto', fav);
                     } else {
-                        //未知异常
-                        console.log('collect 接口异常');
+                        //说明已经收藏了,为取消收藏
+                        this.$store.dispatch('cancelCollectPhoto', fav);
                     }
                 } else {
                     const data = {
@@ -205,19 +200,15 @@ export default {
                 this.photoInfo = this.getViewPhotoInfo;
             }
         },
-        getViewPhotoStatus() {
-            const self = this;
-        },
-        photoModal() {
-            if (this.photoModal.src) {
-                this.isCase = false;
-            }
+        getViewPhoto() {
+            this.swiimg = this.getViewPhoto[this.selected]
         }
     }
 };
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
+@import './../assets/css/base.scss';
 .bottompage {
     overflow: hidden;
     height: 100%;
@@ -367,27 +358,25 @@ export default {
         }
         a:hover {
             text-decoration: underline;
-            color: #ff506d;
+            color: $color-hover;
         }
     }
     .swiper-button-prev {
         width: 80px;
         height: 80px;
-        background-image: url('../../static/images/ic_jian_z.png') !important;
-        background-size: 100%;
         position: fixed;
         left: 25px;
         top: 400px;
+        background: none;
         cursor: pointer;
     }
     .swiper-button-next {
         width: 80px;
         height: 80px;
-        background-image: url('../../static/images/ic_jian_y.png') !important;
-        background-size: 100%;
         position: fixed;
         right: 25px;
         top: 400px;
+        background: none;
         cursor: pointer;
     }
     .swiper-button-disabled {
@@ -401,7 +390,6 @@ export default {
         margin-left: auto;
         margin-right: auto;
         position: relative;
-        overflow: hidden;
         z-index: 1;
     }
     .swiper-wrapper {
@@ -455,10 +443,10 @@ export default {
     font-size: 14px;
 }
 .storea {
-    color: #d08eab !important;
+    color: $color-normal !important;
 }
 .storea:hover {
-    color: #ee639f !important;
+    color: $color-hover !important;
     text-decoration: underline;
 }
 </style>

@@ -27,7 +27,9 @@
                 <li class="list_con" v-for="(item,index) in busSampleList" :key="item.id">
                     <div class="shop">
                         <div class="img-hover">
-                            <img class="shop_logo" v-lazy="item.logo" width="374" height="250" @click="showPhotoModal(item, index)">
+                            <router-link class="imgdiv" :to="{ name: 'bottompage', query: {id: item.id, type: 1}}" target="_blank">
+                                <img class="shop_logo" v-lazy="item.logo" width="374" height="250">
+                            </router-link>
                         </div>
                         <p class="meal_name">
                             {{item.name}}
@@ -85,17 +87,6 @@ export default {
         ajaxTag(data) {
             this.ajaxdata = this.objExtend(this.ajaxdata, data, false);
             this.$store.dispatch('qryBusSample', this.ajaxdata);
-        },
-        showPhotoModal(item, index) {
-            this.photoModal = item;
-            if (!this.photoModal.img) {
-                this.photoModal.img = item.logo;
-            }
-            this.orderNum = index;
-            this.$router.push({
-                name: 'bottompage',
-                query: { id: this.photoModal.id, type: 1 }
-            });
         }
     },
     watch: {
