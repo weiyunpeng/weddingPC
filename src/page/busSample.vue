@@ -27,7 +27,7 @@
                 <li class="list_con" v-for="(item,index) in busSampleList" :key="item.id">
                     <div class="shop">
                         <div class="img-hover">
-                            <router-link class="imgdiv" :to="{ name: 'bottompage', query: {id: item.id, type: 1}}" target="_blank">
+                            <router-link class="imgdiv" :to="{ name: 'bottompage', params: {id: item.id, type: 1}}" target="_blank">
                                 <img class="shop_logo" v-lazy="item.logo" width="374" height="250">
                             </router-link>
                         </div>
@@ -51,7 +51,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import header from './../components/user/userHead';
+import header from './../components/header';
 import tag from './../components/business/sampleTag';
 import star from './../components/star';
 
@@ -73,7 +73,7 @@ export default {
     data() {
         return {
             ajaxdata: {
-                id: this.$route.query.sampleId
+                id: this.$route.params.sampleId
             },
             show: false,
             orderNum: null

@@ -80,7 +80,7 @@
       <div class="case" v-show="0 >= selected" v-if="caseInfo">
         <img class="tit" :src="caseInfo.nav_img">
         <div class="more clearfix" v-show="caseInfo.details && caseInfo.details.length>=6">
-          <router-link :to="{ name: 'busSample', query: {busId:mediaInfo.id,sampleId:id}}" class="more_a fr" target="_blank">
+          <router-link :to="{ name: 'busSample', params: {busId:mediaInfo.id,sampleId:id}}" class="more_a fr" target="_blank">
             更多 >
           </router-link>
         </div>
@@ -88,7 +88,7 @@
           <ul>
             <li v-for="(item,index) in caseInfo.details" v-bind:key="index">
               <div class="img-hover">
-                   <router-link :to="{ name: 'bottompage', query: {id: item.id, type: 1}}" target="_blank">
+                   <router-link :to="{ name: 'bottompage', params: {id: item.id, type: 1}}" target="_blank">
                         <img v-lazy="item.src" width="374" height="250">
                     </router-link>
               </div>
@@ -109,14 +109,14 @@
       <div class="package" v-show="1 >= selected" v-if="packageInfo">
         <img class="tit" :src="packageInfo.nav_img">
         <div class="more clearfix" v-show="packageInfo.details && packageInfo.details.length>=3">
-          <router-link :to="{ name: 'storeList', query: {busId:mediaInfo.id, storeList: 'storeList'}}" class="more_a fr" target="_blank">
+          <router-link :to="{ name: 'storeList', params: {storeId:mediaInfo.id}}" class="more_a fr" target="_blank">
             更多 >
           </router-link>
         </div>
         <div class="list">
           <ul>
             <li v-for="(item,pIndex) in packageInfo.details" v-bind:key="pIndex">
-              <router-link :to="{ name: 'packageDetails', query: {busId:mediaInfo.id,mealId:item.id}}" target="_blank">
+              <router-link :to="{ name: 'packageDetails', params: {busId:mediaInfo.id,mealId:item.id}}" target="_blank">
                 <img v-lazy="item.src" width="374" height="250">
                 <div class="top clearfix">
                   <div class="price fl">￥{{item.price}}</div>
@@ -145,7 +145,7 @@
         <div class="list">
           <swiper :options="photographerOption">
             <swiper-slide class="mr25" v-for="(item,index) in photographer.details" v-bind:key="index">
-              <router-link :to="{ name: 'cameraman', query: {busId:mediaInfo.id,cameramanId:item.id}}" target="_blank">
+              <router-link :to="{ name: 'cameraman', params: {busId:mediaInfo.id,cameramanId:item.id}}" target="_blank">
                 <img v-lazy="item.src" width="220" height="220">
                 <div class="top clearfix">
                   <div class="name fl">{{item.name}}</div>
@@ -176,7 +176,7 @@
         <div class="list">
           <swiper :options="dresserOption">
             <swiper-slide class="mr25" v-for="(item,index) in dresser.details" v-bind:key="index">
-              <router-link :to="{ name: 'makeupman', query: {busId:mediaInfo.id,makeupId:item.id}}" target="_blank">
+              <router-link :to="{ name: 'makeupman', params: {busId:mediaInfo.id,makeupId:item.id}}" target="_blank">
                 <img v-lazy="item.src" width="220" height="220">
                 <div class="top clearfix">
                   <div class="name fl">{{item.name}}</div>
@@ -239,10 +239,10 @@
           <div class="subtit">门店环境</div>
           <swiper :options="environmentOption">
             <swiper-slide class="mr25 fl" v-for="(item,index) in introInfo.environment" v-bind:key="index">
-              <img v-lazy="item" width="218" height="145" @click="showSwiperModal(introInfo.environment)">
+              <img v-lazy="item" width="218" height="145" @click="showSwiperModal(introInfo.environment ,index)">
             </swiper-slide>
           </swiper>
-          <div class="arrows" v-show="introInfo.environment && introInfo.environment.length>=5">
+          <div class="arrows" v-show="introInfo.environment && introInfo.environment.length>5">
             <a class="prev arrow env_prev" href="javascrript:void(0)"></a>
             <a class="next arrow env_next" href="javascrript:void(0)"></a>
           </div>
@@ -250,14 +250,14 @@
       </div>
       <!-- 商家简介结束 -->
     </div>
-    <com-swiper @closeSwiper="closeSwiper" v-show="showSwiper" :swiperImgs='swiperImgs'></com-swiper>
+    <com-swiper @closeSwiper="closeSwiper" v-show="showSwiper" :swiperImgs='swiperImgs' :swiperIndex='swiperIndex'></com-swiper>
   </div>
 </template>
 
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import header from './../components/user/userHead';
+import header from './../components/header';
 import bigImg from './../components/bigImg';
 import swiperModel from './../components/swiper';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
@@ -274,7 +274,7 @@ export default {
     },
     data() {
         return {
-            id: this.$route.query.busId,
+            id: this.$route.params.busId,
             selected: 0,
             isErwei: false,
             isMap: false,
@@ -290,6 +290,7 @@ export default {
             showSwiper: false,
             swiperImgs: [],
             shopNavList: [],
+            swiperIndex:'',
             nav: ['官方案例', '精选套餐', '摄影师团队', '化妆团队', '商家简介'],
             orderNum: null,
             photographerOption: {
@@ -351,9 +352,10 @@ export default {
         closeMap() {
             this.isMap = false;
         },
-        showSwiperModal(imgs) {
+        showSwiperModal(imgs,index) {
             this.showSwiper = true;
             this.swiperImgs = imgs;
+            this.swiperIndex = index;
         },
         closeSwiper() {
             this.showSwiper = false;

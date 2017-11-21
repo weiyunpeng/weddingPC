@@ -70,6 +70,20 @@ function config() {
 }
 
 export default {
+    //首页
+    qryIndex:function(){
+        return axios.get('/api/site/index', config())
+    },
+    //获取用户信息
+    getUserInfo:function(){
+        return axios.get('/api/user/get', config())
+    },
+    //退出登录
+    loginOut:function(){
+        return axios.get('/api/user/logout', config())
+    },
+
+
     //查询商家首页列表
     qryStoreList:function (data) {
        return axios.post('/api/store/comments', qs.stringify(data), config())
@@ -123,10 +137,7 @@ export default {
         return axios.post('/api/makeup', qs.stringify(data), config())
     },
 
-    //首页未登录状态
-    qryIndex:function(){
-        return axios.get('/api/site/index', config())
-    },
+    
     //查看图组详情
     qryViewPhoto:function(data){
         return axios.post('/api/site/view_photo',qs.stringify(data), config())
@@ -158,14 +169,7 @@ export default {
         return axios.post('/api/user/cancel',qs.stringify(data), config())
     },
 
-    //获取用户信息
-    getUserInfo:function(){
-        return axios.get('/api/user/get', config())
-    },
-    //退出登录
-    loginOut:function(){
-        return axios.get('/api/user/logout', config())
-    },
+    
      //我的收藏
     qryMyCollectList:function(data){
         return axios.post('/api/user/collect_list',qs.stringify(data), config())

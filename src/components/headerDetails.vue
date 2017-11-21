@@ -12,22 +12,22 @@
                         <router-link to="/" class="nav_a" active-class="nav_active" exact>首页</router-link>
                     </li>
                     <li v-show="busId">
-                        ><router-link :to="{ name: 'storeDetails', query: {busId:busId}}" class="nav_a" active-class="nav_active">{{busName}}</router-link>
+                        ><router-link :to="{ name: 'storeDetails', params: {busId:busId}}" class="nav_a" active-class="nav_active">{{busName}}</router-link>
                     </li>
                     <li v-show="mealId">
-                        ><router-link :to="{ name: 'packageDetails', query: {busId:busId,mealId:mealId}}" class="nav_a" active-class="nav_active">{{mealName}}</router-link>
+                        ><router-link :to="{ name: 'packageDetails', params: {busId:busId,mealId:mealId}}" class="nav_a" active-class="nav_active">{{mealName}}</router-link>
                     </li>
                     <li v-show="sampleId">
-                        ><router-link :to="{ name: 'busSample', query: {busId:busId,sampleId:sampleId}}" class="nav_a" active-class="nav_active">官方案例</router-link>
+                        ><router-link :to="{ name: 'busSample', params: {busId:busId,sampleId:sampleId}}" class="nav_a" active-class="nav_active">官方案例</router-link>
                     </li>
-                    <li v-show="storeList">
-                        ><router-link :to="{ name: 'storeList', query: {busId:busId,storeList: 'storeList'}}" class="nav_a" active-class="nav_active">套餐列表</router-link>
+                    <li v-show="storeId">
+                        ><router-link :to="{ name: 'storeList', params: {storeId:storeId}}" class="nav_a" active-class="nav_active">套餐列表</router-link>
                     </li>
                     <li v-show="cameramanId">
-                        ><router-link :to="{ name: 'cameraman', query: {busId:busId,cameramanId:cameramanId}}" class="nav_a" active-class="nav_active">摄影师</router-link>
+                        ><router-link :to="{ name: 'cameraman', params: {busId:busId,cameramanId:cameramanId}}" class="nav_a" active-class="nav_active">摄影师</router-link>
                     </li>
                     <li v-show="makeupId">
-                        ><router-link :to="{ name: 'makeupman', query: {busId:busId,makeupId:makeupId}}" class="nav_a" active-class="nav_active">化妆师</router-link>
+                        ><router-link :to="{ name: 'makeupman', params: {busId:busId,makeupId:makeupId}}" class="nav_a" active-class="nav_active">化妆师</router-link>
                     </li>
                 </ul>
             </div>
@@ -46,12 +46,12 @@ export default {
             logo:'/static/images/icon-logo-1.png',
             busName:'',
             mealName:'',
-            storeList:this.$route.query.storeList,
+            storeId:this.$route.params.storeId,
             cameramanId:this.$route.query.cameramanId,
             sampleId:this.$route.query.sampleId,
-            busId:this.$route.query.busId,
+            busId:this.$route.params.busId,
             mealId:this.$route.query.mealId,
-            busSample:this.$route.query.busSample,
+            busSample:this.$route.params.busSample,
             makeupId:this.$route.query.makeupId,
         }
     },

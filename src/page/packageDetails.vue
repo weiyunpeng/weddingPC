@@ -273,12 +273,12 @@
                 <div class="fr see">
                     <div class="tit clearfix">
                         看了又看
-                        <router-link :to="{ name: 'storeList',query: {busId:mealInfo.store_id, storeList: 'storeList'}}" class="more fr" target="_blank">查看全部</router-link>
+                        <router-link :to="{ name: 'storeList',params: {storeId:mealInfo.store_id}}" class="more fr" target="_blank">查看全部</router-link>
                     </div>
                     <div class="list">
                         <ul>
                             <li v-for="(item,s) in see_and_see" :key="s">
-                                <router-link :to="{ name: 'packageDetails',query: {busId:mealInfo.store_id,mealId:item.id}}" target="_blank">
+                                <router-link :to="{ name: 'packageDetails',params: {busId:mealInfo.store_id,mealId:item.id}}" target="_blank">
                                     <img v-lazy="item.src" width="300" height="200">
                                     <div class="name_price clearfix">
                                         <div class="name fl">{{item.name}}</div>
@@ -295,7 +295,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from "./../components/user/userHead";
+import header from "./../components/header";
 import bigImg from './../components/bigImg'
 import star from './../components/star'
 export default {
@@ -311,7 +311,7 @@ export default {
     },
     data() {
         return {
-            id:this.$route.query.mealId,
+            id:this.$route.params.mealId,
             imgs: [],
             isErwei: false,
             selected: 0,

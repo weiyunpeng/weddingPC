@@ -1,72 +1,71 @@
 <template>
-  <div>
-    <com-header></com-header>
-    <div class="bread-nav">
-      <router-link :to="{ name: 'user'}" target="_blank">
-        婚纱照 >
-      </router-link>
-      <router-link :to="{ name: '', query: {}}">
-        {{photoInfo.sampleName}}
-      </router-link>
-    </div>
-    <div class="bottompage text-center">
-      <div class="photo_modal_dialog panel text-left">
-        <div class="photo_fl fl swiper-ct">
-          <swiper :options="swiperOption" ref="mySwiper">
-            <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">
-              <div class="imgcrop">
-                <img :src="swiimg.img" height="475">
-              </div>
-              
-              <div class="modal-details">
-                <div v-if="isCase" class="pg_like" @click="photoLikeBtn(swiimg, flowNum)">
-                    <i v-if="swiimg.is_fav" class="icon_like_act2"></i>
-                    <i v-if="!swiimg.is_fav" class="icon_like2"></i>
-                    <!-- {{photoInfo.fav_num}} -->
-                </div>
-                <div class="modal-details-top">
-                  <span class="stylespan" v-for="info in swiimg.tag" :key="info.id">{{info}}</span>
-                </div>
-                <label style="display:block;">
-                  <span v-show="photoInfo.time">{{photoInfo.time}}</span>
-                  <span v-show="photoInfo.nickname">{{photoInfo.nickname}}</span>
-                  拍摄于
-                  <router-link class="storea" :to="{ name: 'storeDetails', query: {busId:photoInfo.storeId}}" target="_blank">
-                    {{photoInfo.storeName}}
-                  </router-link>
-                  <a class="fr" v-if="photoInfo.comment_url" :href="photoInfo.comment_url" target="_blank">TA的拍摄历程></a>
-                </label>
-              </div>
-            </swiper-slide>
-          </swiper>
-            <div class="swiper-button-prev" slot="button-prev" @click="changeWaterPrev()">
-                <img src="/static/images/ic_jian_z.png">
-            </div>
-            <div class="swiper-button-next" slot="button-next" @click="changeWaterNext()">
-                <img src="/static/images/ic_jian_y.png">
-            </div>
+    <div>
+        <com-header></com-header>
+        <div class="bread-nav">
+            <router-link :to="{ name: 'user'}" target="_blank">
+                婚纱照 >
+            </router-link>
+            <a href="javascript:void(0)">
+                {{photoInfo.sampleName}}
+            </a>
+        </div>
+        <div class="bottompage text-center">
+            <div class="photo_modal_dialog panel text-left">
+                <div class="photo_fl fl swiper-ct">
+                    <swiper :options="swiperOption" ref="mySwiper">
+                        <swiper-slide class="photo_fl fl" v-for="(item,flowNum) in getViewPhoto" v-bind:key="flowNum">
+                            <div class="imgcrop">
+                                <img :src="swiimg.img" height="475">
+                            </div>
 
+                            <div class="modal-details">
+                                <div v-if="isCase" class="pg_like" @click="photoLikeBtn(swiimg, flowNum)">
+                                    <i v-if="swiimg.is_fav" class="icon_like_act2"></i>
+                                    <i v-if="!swiimg.is_fav" class="icon_like2"></i>
+                                    <!-- {{photoInfo.fav_num}} -->
+                                </div>
+                                <div class="modal-details-top">
+                                    <span class="stylespan" v-for="info in swiimg.tag" :key="info.id">{{info}}</span>
+                                </div>
+                                <label style="display:block;">
+                                    <span v-show="photoInfo.time">{{photoInfo.time}}</span>
+                                    <span v-show="photoInfo.nickname">{{photoInfo.nickname}}</span>
+                                    拍摄于
+                                    <router-link class="storea" :to="{ name: 'storeDetails', params: {busId:photoInfo.storeId}}" target="_blank">
+                                        {{photoInfo.storeName}}
+                                    </router-link>
+                                    <a class="fr" v-if="photoInfo.comment_url" :href="photoInfo.comment_url" target="_blank">TA的拍摄历程></a>
+                                </label>
+                            </div>
+                        </swiper-slide>
+                    </swiper>
+                    <div class="swiper-button-prev" slot="button-prev" @click="changeWaterPrev()">
+                        <img src="/static/images/ic_jian_z.png">
+                    </div>
+                    <div class="swiper-button-next" slot="button-next" @click="changeWaterNext()">
+                        <img src="/static/images/ic_jian_y.png">
+                    </div>
+
+                </div>
+                <div class="photo_fr fr">
+                    <div class="photo_fr_ct">
+                        <p class="pg_name">TA的套系</p>
+                        <waterfall :interval="200" :line-gap="200" :min-line-gap="140" :max-line-gap="140" :single-max-width="140" :watch="thumb">
+                            <waterfall-slot v-for="(item, index) in thumb" :width="item.width" :height="item.height" :order="index" :key="item.index" move-class="photo_move">
+                                <img v-lazy="item.thumb" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
+                            </waterfall-slot>
+                        </waterfall>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="photo_fr fr">
-          <div class="photo_fr_ct">
-            <p class="pg_name">TA的套系</p>
-            <waterfall :line-gap="200" :min-line-gap="140" :max-line-gap="140" :single-max-width="140" :watch="getViewPhoto">
-              <waterfall-slot v-for="(item, index) in getViewPhoto" :width="item.width" :height="item.height" :order="index" :key="item.index"
-                move-class="photo_move">
-                <img v-lazy="item.thumb" class="water_img" v-bind:class="{cur: selected == index}" @click="changeSwiper(item,index)">
-              </waterfall-slot>
-            </waterfall>
-          </div>
-        </div>
-      </div>
+        <com-modal @modalCallback="modalCallback"></com-modal>
     </div>
-    <com-modal @modalCallback="modalCallback"></com-modal>
-  </div>
 </template>
 
 
 <script>
-import header from './../components/user/userHead';
+import header from './../components/header';
 import modal from './../components/modal';
 import { waterfall, waterfallSlot } from 'vue-waterfall';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
@@ -84,8 +83,8 @@ export default {
     data() {
         let self = this;
         return {
-            id: this.$route.query.id,
-            type: this.$route.query.type,
+            id: this.$route.params.id,
+            type: this.$route.params.type,
             loadshow: true,
             selected: 0,
             loading: false,
@@ -107,12 +106,14 @@ export default {
                     self.swiimg = self.getViewPhoto[self.selected]
                 }
             },
-            swiimg:''
+            swiimg:'',
+            thumb:[]
         };
     },
     computed: {
         ...mapGetters({
             getViewPhoto: 'getViewPhoto',
+            getViewThumb: 'getViewThumb',
             getViewPhotoInfo: 'getViewPhotoInfo',
         }),
         ...mapActions({
@@ -128,19 +129,20 @@ export default {
     mounted() {
         this.$store.dispatch('hidePhotoModal');
         this.$nextTick(function() {
-            const ajaxdata = {
-                id: this.id,
-                type: this.type
-            };
+            let ajaxdata = {};
+            ajaxdata['id'] = this.id
+            if(this.type == 1){
+                ajaxdata['type'] = this.type
+            }
             this.$store.dispatch('qryViewPhoto', ajaxdata);
-            this.swiper.slideTo(0, 1000, false);
+            this.swiper.slideTo(0, 0, false);
         });
     },
     methods: {
         changeSwiper(item, index) {
             this.selected = index;
             this.swiimg = this.getViewPhoto[index]
-            this.swiper.slideTo(index, 1000, false);
+            this.swiper.slideTo(index, 0, false);
         },
         changeWaterPrev() {
             this.swiimg = this.getViewPhoto[this.selected-1]
@@ -159,9 +161,9 @@ export default {
         photoLikeBtn(fav, flowNum) {
             try {
                 let token = JSON.parse(localStorage.getItem('user'));
-                let isLogin = Boolean(token);
                 if (token) {
                     fav["index"] = flowNum
+                    fav["uid"] = token.uid
                     if (!fav.is_fav) {
                         //说明未收藏，可以收藏
                         this.$store.dispatch('collectPhoto', fav);
@@ -184,17 +186,6 @@ export default {
         }
     },
     watch: {
-        value() {
-            if (this.value) {
-                const self = this;
-                const tempImage = new Image();
-                tempImage.onload = function() {
-                    self.loading = true;
-                };
-                tempImage.onerror = function() {};
-                tempImage.src = self.photoModal.img;
-            }
-        },
         getViewPhotoInfo() {
             if (this.getViewPhotoInfo) {
                 this.photoInfo = this.getViewPhotoInfo;
@@ -202,6 +193,9 @@ export default {
         },
         getViewPhoto() {
             this.swiimg = this.getViewPhoto[this.selected]
+        },
+        getViewThumb(){
+            this.thumb = this.getViewThumb
         }
     }
 };

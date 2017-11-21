@@ -8,7 +8,7 @@
                 <ul class="container meal_list">
                     <li class="list_con" v-for="item in mealList" :key="item.id">
                         <div class="shop">
-                            <router-link :to="{ name: 'packageDetails', query: {busId:item.store_id,mealId:item.id}}" target="_blank">
+                            <router-link :to="{ name: 'packageDetails', params: {busId:item.store_id,mealId:item.id}}" target="_blank">
                                 <div class="img">
                                     <img class="shop_logo" v-lazy="item.logo" width="374" height="250">
                                 </div>
@@ -41,7 +41,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from "./../components/user/userHead";
+import header from "./../components/header";
 import tag from "./../components/meal/mealTag"
 import mealFilter from "./../components/meal/mealFilter"
 import paging from "./../components/paging"

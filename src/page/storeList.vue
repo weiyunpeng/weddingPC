@@ -27,7 +27,7 @@
                 <ul class="meal_list container">
                     <li class="list_con" v-for="item in thisMealList" :key="item.id">
                         <div class="shop">
-                            <router-link :to="{ name: 'packageDetails', query: {busId:thisMealStore.id,mealId:item.id}}" target="_blank">
+                            <router-link :to="{ name: 'packageDetails', params: {busId:thisMealStore.id,mealId:item.id}}" target="_blank">
                                 <div class="img">
                                     <img class="shop_logo" v-lazy="item.logo" width="372" height="248">
                                 </div>
@@ -56,7 +56,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from "./../components/user/userHead";
+import header from "./../components/header";
 import tag from "./../components/meal/thisMealTag"
 import star from './../components/star'
 
@@ -77,18 +77,15 @@ export default {
     },
     data() {
         return {
-            id: this.$route.query.busId,
+            id: this.$route.params.storeId,
             ajaxdata: {
-                storeId: this.$route.query.busId
+                storeId: this.$route.params.storeId
             },
         }
     },
     mounted() {
         // this.$store.dispatch('mealClear')
-        let data = {
-            storeId: this.id
-        }
-        this.$store.dispatch('qryThisMealList', data)
+        this.$store.dispatch('qryThisMealList', this.ajaxdata)
     },
     methods: {
         ajaxTag(data) {

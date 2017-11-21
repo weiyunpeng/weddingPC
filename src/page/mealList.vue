@@ -53,7 +53,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from "./../components/user/userHead";
+import header from "./../components/header";
 import tag from "./../components/meal/thisMealTag"
 import star from './../components/star'
 

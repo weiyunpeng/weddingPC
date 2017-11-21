@@ -32,7 +32,7 @@
             </p>
             <ul>
                 <li v-for="(item,s) in makeupmanPackages" :key="s">
-                    <router-link :to="{ name: 'packageDetails',query: {busId:makeupmanBusinfo.id, mealId:item.id}}" target="_blank">
+                    <router-link :to="{ name: 'packageDetails',params: {busId:makeupmanBusinfo.id, mealId:item.id}}" target="_blank">
                         <img v-lazy="item.cover" width="300" height="200">
                         <div class="p_info clearfix">
                             <div class="name fl">{{item.name}}</div>
@@ -74,7 +74,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from "./../components/user/userHead";
+import header from "./../components/header";
 import storeInfo from './../components/storeInfo'
     export default {
         components: {
@@ -83,7 +83,7 @@ import storeInfo from './../components/storeInfo'
         },
         data(){
             return {
-                id:this.$route.query.makeupId,
+                id:this.$route.params.makeupId,
                 selected:0,
                 infoDetails: []
             }

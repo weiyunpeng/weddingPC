@@ -4,11 +4,11 @@
     <div class="banner">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="photo_fl fl" v-for="(item,index) in getIndexPhoto.bannner" v-bind:key="index">
-            <router-link class="imgdiv"  :style="{backgroundImage: 'url(' + item.img + ')'}" :to="{ name: 'bottompage', query: {id: item.id, type: 1}}" target="_blank">
+            <router-link class="imgdiv"  :style="{backgroundImage: 'url(' + item.img + ')'}" :to="{ name: 'bottompage', params: {id: item.id, type: 1}}" target="_blank">
             </router-link>
           <div class="p-wrapper">
             <p>
-              <span>{{item.style}}</span>{{item.nickname}}拍摄于<router-link :to="{ name: 'storeDetails', query: {busId:item.storeId}}" target="_blank">{{item.storeName}}</router-link>
+              <span>{{item.style}}</span>{{item.nickname}}拍摄于<router-link :to="{ name: 'storeDetails', params: {busId:item.storeId}}" target="_blank">{{item.storeName}}</router-link>
               <span v-if="item.shootTime">{{item.shootTime}}</span>
             </p>
           </div>
@@ -84,7 +84,7 @@
               <p>{{item.comment}}</p>
               <ul class="thisimg-ct" v-show="item.imgs!=0">
                 <li v-for="img in item.imgs">
-                    <router-link class="imgdiv img-hover" :to="{ name: 'bottompage', query: {id: item.sampleId, type: 1}}" target="_blank">
+                    <router-link class="imgdiv img-hover" :to="{ name: 'bottompage', params: {id: item.sampleId, type: 1}}" target="_blank">
                         <img :src="img">
                     </router-link>
                 </li>
@@ -92,7 +92,7 @@
               <div class="section-bottom">
                 <div class="business fl">
                   拍摄商家：
-                  <router-link :to="{ name: 'storeDetails', query: {busId:item.storeId}}" target="_blank">
+                  <router-link :to="{ name: 'storeDetails', params: {busId:item.storeId}}" target="_blank">
                     {{item.storeName}}
                   </router-link>&nbsp;
                   <span v-if="item.shootTime">拍摄时间：{{item.shootTime}}</span>
@@ -131,7 +131,7 @@
 
 
 <script>
-import header from './../components/user/userHead';
+import header from './../components/header';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import { mapGetters, mapActions } from 'vuex';
 import paging from './../components/paging';
@@ -139,7 +139,6 @@ export default {
     computed: {
         ...mapGetters({
             getIndexPhoto: 'getIndexPhoto',
-            getAuth: 'getAuth',
             getCommentList: 'getCommentList',
             getPage: 'getCommentPage'
         }),

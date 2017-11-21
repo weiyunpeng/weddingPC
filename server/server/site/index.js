@@ -67,6 +67,8 @@ function photo_flow(Params, Request, Response) {
         fileName = 'site/data/photo_flow.json';
     }else if(page == 2){
         fileName = 'site/data/photo_flow2.json';
+    }else if(page == 3){
+        fileName = 'site/data/photo_flow2.json';
     }else{
         fileName = 'site/data/none.json'
     }

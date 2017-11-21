@@ -295,7 +295,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import header from "./../components/user/userHead";
+import header from "./../components/header";
 import bigImg from './../components/bigImg'
 import star from './../components/star'
 export default {
@@ -311,7 +311,7 @@ export default {
     },
     data() {
         return {
-            id:this.$route.query.mealId,
+            id:this.$route.params.mealId,
             imgs: [],
             isErwei: false,
             selected: 0,

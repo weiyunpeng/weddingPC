@@ -2,16 +2,14 @@
     <div class="page-user">
         <com-header></com-header>
         <div style="position:relative">
-            <div class="user-info fl"  v-show="userShow && isAuth">
-                <div class="Profile"  >
+            <div class="user-info fl" v-show="userShow && isAuth">
+                <div class="Profile">
                     <div class="user-nike">
-                        <img class="user-head fl"  width="80" height="80" :src="getUser.head">
-                        <div class="user-nike-ct fl"> 
-                        <p>{{getUser.nike}}</p>
-                        <router-link :to="{ name: 'collect', query: {type:0}}" target="_blank">
-                            <label class="col-name">收藏的图片</label>
-                        </router-link>
-                        </div> 
+                        <img class="user-head fl" width="80" height="80" :src="getUser.head">
+                        <div class="user-nike-ct fl">
+                            <p>{{getUser.nike}}</p>
+                            <a href="javascript:void(0)" target="_blank"><label @click="pageCollect" class="col-name">收藏的图片</label></a>
+                        </div>
                         <span class="close-btn-new" @click="CloseClick"></span>
                     </div>
                     <ul class="user_category user_category_style" v-if="style&&style.length>0">
@@ -26,12 +24,12 @@
                     </ul>
                     <ul class="user_category user_category_store">
                         <li v-for="(item,s) in stores" :key="s">
-                            <router-link :to="{ name: 'storeDetails', query: {busId:item.id}}" target="_blank">
+                            <router-link :to="{ name: 'storeDetails', params: {busId:item.id}}" target="_blank">
                                 <div class="show_img">
                                     <img :src="item.logo" width="64" height="64">
                                     <span class="show_name">{{item.name}}</span>
                                 </div>
-        
+
                                 <div class="line line-store">
                                     <div class="bar" v-bind:style="{ width: item.value}"></div>
                                 </div>
@@ -40,37 +38,37 @@
                         </li>
                     </ul>
                 </div>
-    
+
             </div>
             <div class="user-water">
-                <waterfall :interval="200" :line="line" :watch="getPhotoList" :line-gap="290" :min-line-gap="320" :max-line-gap="640" :single-max-width="640">
+                <waterfall :interval="200" :line="line" :watch="getPhotoList" :line-gap="280" :min-line-gap="280" :max-line-gap="320" :single-max-width="640" :align="align">
                     <waterfall-slot v-for="(item, flowNum) in getPhotoList" :width="item.width" :height="item.height" :order="flowNum" :key="flowNum" move-class="photo_move">
-                        <div class="panel photo_box hover_sh"  :style="{ height: item.height + 'px' }">
+                        <div class="panel photo_box hover_sh" :style="{ height: item.height + 'px' }">
                             <div class="img-hover panel-img">
-                                <router-link :to="{ name: 'bottompage', query: {id: item.id}}" target="_blank">
+                                <router-link :to="{ name: 'bottompage', params: {id: item.id, type: 2}}" target="_blank">
                                     <!-- <div v-lazy:background-image="item.img"></div> -->
                                     <img v-lazy="item.img" width="300">
                                 </router-link>
                             </div>
                             <div class="photo_info" :style="{ top: item.height-68 + 'px' }">
                                 <div class="photo_info_top">
-                                 <ul>
-                                    <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
-                                </ul>
-                                <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
-                                    <i v-if="item.is_fav" class="icon_like_act"></i>
-                                    <i v-if="!item.is_fav" class="icon_like"></i>
-                                    {{item.fav_num}}
-                                </span>
+                                    <ul>
+                                        <li v-for="(tag,t) in item.tag" :key="t">{{tag}}</li>
+                                    </ul>
+                                    <span class="photo_like" @click="photoLikeBtn(item.id,item.is_fav,flowNum)">
+                                        <i v-if="item.is_fav" class="icon_like_act"></i>
+                                        <i v-if="!item.is_fav" class="icon_like"></i>
+                                        {{item.fav_num}}
+                                    </span>
                                 </div>
                                 <div class="photo_info_bottom">
                                     <img class="person_img" :src="item.head" width="25" height="25">
                                     <span>{{item.nickname}}</span>
                                 </div>
                             </div>
-                            
+
                         </div>
-    
+
                     </waterfall-slot>
                 </waterfall>
             </div>
@@ -79,13 +77,13 @@
                 <p v-if="isLoding == 2">没有更多了~</p>
             </div>
         </div>
-        
+
         <com-modal @modalCallback="modalCallback"></com-modal>
     </div>
 </template>
 
 <script>
-import header from './../components/user/userHead';
+import header from './../components/header';
 import modal from './../components/modal';
 import { waterfall, waterfallSlot } from 'vue-waterfall';
 import { mapGetters, mapActions } from 'vuex';
@@ -100,6 +98,7 @@ export default {
     computed: {
         ...mapGetters({
             getUser: 'getUser',
+            getAuth: 'getAuth',
             getPhotoList: 'getPhotoList',
             getPhotoStatus: 'getPhotoStatus'
         }),
@@ -120,6 +119,7 @@ export default {
             uid: null,
             page: 1,
             line: 'v',
+            align: 'center',
             userShow: true,
             isLoding: 0
         };
@@ -128,18 +128,6 @@ export default {
         try {
             this.loadPhoto();
             window.addEventListener('scroll', this.loadMore);
-            let token = JSON.parse(localStorage.getItem('user'));
-            let isLogin = Boolean(token);
-            if (isLogin) {
-                this.isAuth = true;
-                this.uid = token.uid;
-                let data = {
-                    uid: this.uid
-                };
-                this.$store.dispatch('qryUserInfo', data);
-            } else {
-                this.isAuth = false;
-            }
         } catch (e) {
             console.log(e);
         }
@@ -192,29 +180,56 @@ export default {
             this.$store.dispatch('qryPhotoFlow', data);
         },
         loadMore() {
-            const scrollTop =
-                document.documentElement.scrollTop || document.body.scrollTop;
-            const allHeight = document.body.scrollHeight;
-            const pageHeight = document.documentElement.clientHeight;
+            let windowHeight =
+                document.compatMode == 'CSS1Compat'
+                    ? document.documentElement.clientHeight
+                    : document.body.clientHeight;
+            let documentHeight = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight
+            );
+            let scrollTop = Math.max(
+                //chrome
+                document.body.scrollTop,
+                //firefox/IE
+                document.documentElement.scrollTop
+            );
             if (
-                scrollTop == allHeight - pageHeight &&
+                scrollTop + windowHeight + 500 >= documentHeight &&
                 this.getPhotoStatus == 0
             ) {
                 this.isLoding = 1;
                 this.page++;
                 this.loadPhoto();
-            } else if(this.getPhotoStatus == 2) {
+            } else if (this.getPhotoStatus == 2) {
                 this.isLoding = 2;
             }
         },
         CloseClick() {
             this.userShow = false;
+        },
+        pageCollect(){
+            this.$router.push({ name: 'collect', params: {type:0} });
         }
     },
     watch: {
         getUser() {
             this.style = this.getUser.category.style;
             this.stores = this.getUser.category.stores;
+        },
+        getAuth() {
+            let token = this.getAuth;
+            let isLogin = Boolean(token);
+            if (isLogin) {
+                this.isAuth = true;
+                this.uid = token.uid;
+                let data = {
+                    uid: this.uid
+                };
+                this.$store.dispatch('qryUserInfo', data);
+            } else {
+                this.isAuth = false;
+            }
         }
     },
     beforeDestroy() {
@@ -225,10 +240,10 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
 .page-user {
     .user-info {
-        width: 305px;
+        width: 300px;
         height: auto;
         position: absolute;
-        right: 20px;
+        right: 24px;
         top: 0;
         .Profile {
             position: relative;

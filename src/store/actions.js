@@ -30,6 +30,7 @@ export const getUserInfo = ({ commit }, data) => {
             //说明获取用户信息成功
             if (!response.data.data || response.data.data == '') {
                 //说明游客访问
+                commit(types.AUTH_INFO_CLEAR)
             } else {
                 //说明有用户信息，为用户登录
                 commit(types.AUTH_INFO, {
@@ -38,16 +39,35 @@ export const getUserInfo = ({ commit }, data) => {
             }
         } else {
             //获取用户信息失败
-            commit(types.AUTH_INFO_CLEAR)
+            showMsg({ commit },{
+                content: response.data.msg || '登录失败',
+                type: 'danger'
+            })
         }
     })
         .catch(function (error) {
-            console.log(error)
+            showMsg({ commit },{
+                content: error.response.data.errorMsg || '登录失败',
+                type: 'danger'
+            })
         });
 };
 export const loginOut = ({ commit }, data) => {
     api.loginOut(data).then(function (response) {
         commit(types.USER_LOGOUT)
+    })
+        .catch(function (error) {
+            console.log(error)
+        });
+};
+//----------------------------------------------------------------------------------------------
+
+//----------------------------------------首页------------------------------------------------------
+export const qryIndex = ({ commit }, data) => {
+    api.qryIndex(data).then(function (response) {
+        commit(types.INDEX_LIST, {
+            list: response.data.data,
+        })
     })
         .catch(function (error) {
             console.log(error)
@@ -280,18 +300,7 @@ export const qryMakeupDetails = ({ commit }, data) => {
 };
 //----------------------------------------------------------------------------------------------
 
-//----------------------------------------首页未登录状态------------------------------------------------------
-export const qryIndex = ({ commit }, data) => {
-    api.qryIndex(data).then(function (response) {
-        commit(types.INDEX_LIST, {
-            list: response.data.data,
-        })
-    })
-        .catch(function (error) {
-            console.log(error)
-        });
-};
-//----------------------------------------------------------------------------------------------
+
 
 //----------------------------------------查看图组详情------------------------------------------------------
 export const qryViewPhoto = ({ commit }, data) => {
@@ -318,7 +327,7 @@ export const qryViewPhoto = ({ commit }, data) => {
                 response.data.data.list[i].height = 0;
                 if (photoCount == response.data.data.list.length) {
                     commit(types.VIEW_PHOTO_MODAL, {
-                        list: response.data.data.list,
+                        data: response.data.data,
                     })
                 }
             };

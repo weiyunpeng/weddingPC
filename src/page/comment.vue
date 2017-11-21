@@ -10,7 +10,7 @@
                         <ul class="list-con">
                             <li class="list-con-li">
                                 <div class="shop fl">
-                                    <router-link :to="{ name: 'storeDetails', query: {busId:item.id}}" target="_blank">
+                                    <router-link :to="{ name: 'storeDetails', params: {busId:item.id}}" target="_blank">
                                         <img class="fl shop_logo" v-lazy="item.logo" width="120" height="120">
                                         <ul class="shop_details">
                                             <li>
@@ -121,7 +121,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import header from './../components/user/userHead';
+import header from './../components/header';
 import tag from './../components/business/busTag';
 import busFilter from './../components/business/busFilter';
 import paging from './../components/paging';
@@ -162,7 +162,6 @@ export default {
     mounted() {
         this.$store.dispatch('shopListClear');
         this.$store.dispatch('qryStoreList', this.ajaxdata);
-        window.smoothscroll();
     },
     methods: {
         pagechange(current) {

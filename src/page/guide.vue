@@ -26,7 +26,7 @@
                             <h4><a :href="item.url" target="_blank">{{item.title}}</a></h4>
                             <div class="li-ct">
                                 <span class="sj fl">拍摄商家：
-                                  <router-link :to="{ name: 'storeDetails', query: {busId:item.storeId}}" target="_blank">
+                                  <router-link :to="{ name: 'storeDetails', params: {busId:item.storeId}}" target="_blank">
                                       {{item.storeName}}
                                   </router-link>
                                 </span>
@@ -43,7 +43,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import header from './../components/user/userHead';
+import header from './../components/header';
 
 export default {
     components: {

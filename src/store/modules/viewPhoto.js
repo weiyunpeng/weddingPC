@@ -6,7 +6,8 @@ const state = {
     photoList: [],
     photoListFill: [],
     status: 0,
-    photoModelStatus:0
+    photoModelStatus:0,
+    stumb:[]
 };
 
 const mutations = {
@@ -14,7 +15,13 @@ const mutations = {
         state.photoModelStatus = 0;
         state.list = data.data.list;
         state.photoInfo = data.data;
-        //console.log(state.photoInfo)
+        data.data.list.forEach(element => {
+            let st = {}
+            st['width'] = element.width
+            st['height'] = element.height
+            st['thumb'] = element.thumb
+            state.stumb.push(st)
+        });
     },
     [HIDE_PHOTO_MODAL](state, data) {
         state.list = [];

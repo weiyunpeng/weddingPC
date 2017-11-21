@@ -61,8 +61,8 @@ import bottompage from '../page/bottompage.vue';
 
 const routes = [{
     path: '/',
-    name:'首页',
     component: index,
+    redirect: {path: '/index', component: index, name: 'index'},
     children: [
         { path: '/index', component: index, name: 'index'}
     ]
@@ -75,27 +75,27 @@ const routes = [{
     name:'meal',
     component : meal
 },{
-    path : '/storeDetails',
+    path : '/storeDetails/:busId',
     name:'storeDetails',
     component : storeDetails
 },{
-    path : '/packageDetails',
+    path : '/packageDetails/:busId/:mealId',
     name:'packageDetails',
     component : packageDetails
 },{
-    path : '/storeList',
+    path : '/storeList/:storeId',
     name:'storeList',
     component : storeList
 },{
-    path : '/busSample',
+    path : '/busSample/:busId/:sampleId',
     name:'busSample',
     component : busSample
 },{
-    path : '/cameraman',
+    path : '/cameraman/:busId/:cameramanId',
     name:'cameraman',
     component : cameraman
 },{
-    path : '/makeupman',
+    path : '/makeupman/:busId/:makeupId',
     name:'makeupman',
     component : makeupman
 },{
@@ -103,17 +103,16 @@ const routes = [{
     name:'guide',
     component : guide
 },{
-    path : '/comment',
+    path : '/comment/:cid',
     name:'comment',
     component : comment
 },{
-    path : '/collect',
+    path : '/collect/:type',
     name:'collect',
-    component : collect,
-    meta: { auth: false }
+    component : collect
 },
 {
-    path : '/bottompage',
+    path : '/bottompage/:id/:type',
     name:'bottompage',
     component : bottompage,
 },

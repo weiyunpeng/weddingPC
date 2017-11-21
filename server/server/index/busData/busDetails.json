@@ -1,264 +1,234 @@
 {
-  "code": 200,
-  "msg": "success",
-  "data": {
-    "bus_info": {
-      "media_info": {
-        "id": "1ds34asd",
-        "name": "郑州凹凸视觉摄影",
-        "isYes": true,
-        "isVip": true,
-        "price": 4999,
-        "address": "经七路丰产路交叉口西北角二楼经七路丰产路交叉口西北角二楼",
-        "longitude": 113.56925,
-        "latitude": 34.823837,
-        "tags": [
-          "工作室",
-          "写实风格",
-          "韩式"
-        ],
-        "star": 3,
-        "comment": "进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。进入到7月，虽说是进入了结婚的淡季",
-        "comment_url": "http://crowd.qqdayu.com:3000/crowdMobi.html#/",
-        "erwei_img": "/static/images/erweima.png",
-        "img": [
-          "/static/images/15.png",
-          "/static/images/5.png",
-          "http://marriage-1252045209.image.myqcloud.com/none/cover/20170817/59958c18b3711474965295.jpg/shuiyin?imageMogr2/scrop/606x404",
-          "/static/images/7.png"
-        ]
-      },
-      "intro_info": {
-        "nav_img": "/static/images/business.png",
-        "logo": "/static/images/10.png",
-        "bus_name": "郑州凹凸视觉摄影",
-        "star_time": "2000年9月",
-        "bus_time": "每周一至周日 8:00-20:00",
-        "payment": "刷卡、现金",
-        "features": [
-          "7天选卡",
-          "15天出精修",
-          "一年保修",
-          "一年保修一年保修",
-          "一年保修",
-          "不满意重拍"
-        ],
-        "brief": "炎炎夏日，街上尽是短袖，相比起人人都熟悉的白T恤，黑T恤反而显得没什么存在感炎炎夏日，街上尽是短袖，相比起人人都熟悉的白T恤，黑T恤反而显得没什么存在感炎炎夏日，街上尽是短袖，相比起人人都熟悉的白T恤，黑T恤反而显得没什么存在感，其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee，举着手枪吸烟的场景弥足经典，也只有黑Tee，能够这样轻松地勾勒出这种魅惑的性感。其实，黑T的经典与时髦程度绝不亚于前者，不但百搭，同时也是你吃饭时（火锅）绝对不用担心的单品。在大电影《低俗小说》里，乌曼穿着简单的黑Tee。",
-        "environment": [
-          "http://marriage-1252045209.image.myqcloud.com/none/photos/20170816/5993ace1724b4259263930.jpg/sy?imageView2/2/w//h/",
-          "http://marriage-1252045209.image.myqcloud.com/none/photos/20170817/5995454df07c5685075365.jpg/sy?imageView2/2/w//h/",
-          "http://marriage-1252045209.image.myqcloud.com/none/photos/20170817/5995454e21962478366821.jpg/sy?imageView2/2/w//h/",
-          "http://marriage-1252045209.image.myqcloud.com/none/photos/20170817/5995454ebf800201753274.jpg/sy?imageView2/2/w//h/",
-          "http://marriage-1252045209.image.myqcloud.com/none/photos/20170817/5995454db369a071347965.jpg/sy?imageView2/2/w//h/",
-          "http://marriage-1252045209.image.myqcloud.com/none/photos/20170817/5995454e6fa76475905621.jpg/sy?imageView2/2/w//h/",
-          "/static/images/9.png",
-          "/static/images/9.png",
-          "/static/images/9.png",
-          "/static/images/9.png"
-        ]
-      }
-    },
-    "case": {
-      "nav": "官方案例",
-      "nav_img": "/static/images/case.png",
-      "details": [{
-          "id": "21231efd",
-          "src": "/static/images/11.png",
-          "case_name": "浪漫唯美花海实景美照浪漫唯美花海实景美照浪漫唯美花海实景美照",
-          "tags": [
-            "小清新",
-            "韩式",
-            "中式",
-            "中式",
-            "中式",
-            "中式",
-            "中式",
-            "秀禾服"
-          ]
+    "code": 0,
+    "msg": "成功",
+    "data": {
+        "bus_info": {
+            "media_info": {
+                "id": 13,
+                "name": "昭元摄影",
+                "isYes": 0,
+                "isVip": 0,
+                "price": 3999,
+                "address": "郑州二七路新通桥金水河畔",
+                "longitude": "",
+                "latitude": "",
+                "tags": ["影楼", "简欧", "新派", "城市旅拍", "名胜旅拍"],
+                "type": 1,
+                "star": "4.3",
+                "comment":
+                    "昭元是河南本土最大的品牌影楼，口碑一直较好，有“昭元之爱”、“昭元经典”、“昭元神话”三家门店，风格各有侧重.",
+                "comment_url":
+                    "http://panda.qq.com/henan/thread/1030831733137663",
+                "comment_list_url": "http://panda.qq.com/henan/tag/118",
+                "erwei_img": "/static/images/erweima.png",
+                "img": [
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997cc73d7e74679464914.jpg/shuiyin?imageMogr2/scrop/750x500/crop/750x500",
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997cc740560a671452911.jpg/shuiyin?imageMogr2/scrop/750x500/crop/750x500",
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997cc742c492664022451.jpg/shuiyin?imageMogr2/scrop/750x500/crop/750x500",
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997cc743c594201065413.jpg/shuiyin?imageMogr2/scrop/750x500/crop/750x500",
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997cc73c58ca885559911.jpg/shuiyin?imageMogr2/scrop/750x500/crop/750x500",
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997cc73e792b052120218.jpg/shuiyin?imageMogr2/scrop/750x500/crop/750x500",
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997cc744e9f1638219420.jpg/shuiyin?imageMogr2/scrop/750x500/crop/750x500",
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997cc7418ec0749537900.jpg/shuiyin?imageMogr2/scrop/750x500/crop/750x500"
+                ]
+            },
+            "intro_info": {
+                "nav_img": "/static/images/business.png",
+                "logo":
+                    "http://marriage-1251225286.image.myqcloud.com/none/logo/20170819/5997cc5e8d901101384112.jpg/ys?imageView2/2/w/100/h/100",
+                "bus_name": "昭元摄影",
+                "star_time": "1999年",
+                "bus_time": " 周一至周日全天",
+                "payment": "刷卡 ",
+                "features": { "4": "全一对一服务", "9": "产品终身保修" },
+                "brief":
+                    "其实，昭元只是想，做一个，时间的记录者，只因生命的每一个重要瞬间，都值得完美呈现，虽然我们甄选国际一线品牌相机、礼服、化妆品，哈苏H4D ……为您捕捉艺术，但我们更乐意倾听、感知，明星御用资深摄影团队，用岁月沉淀的人文美学底蕴，用擅长发现美的眼睛用心捕捉 定格拍摄。选择昭元，有价值的不仅仅是照片。",
+                "environment": [
+                    "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997cc8fb1bb4846706297.jpg/shuiyin?imageView2/2/w/1000/h/",
+                    "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997cc8f9048e845555153.jpg/shuiyin?imageView2/2/w/1000/h/",
+                    "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997cc8fa1f39557954827.jpg/shuiyin?imageView2/2/w/1000/h/",
+                    "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997cc8fc0e11821528770.jpg/shuiyin?imageView2/2/w/1000/h/",
+                    "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997cc8fd4236067099512.jpg/shuiyin?imageView2/2/w/1000/h/"
+                ]
+            }
         },
-        {
-          "id": "21231efd",
-          "src": "/static/images/11.png",
-          "case_name": "简约大气的中式秀禾服婚纱照",
-          "tags": [
-            "中式",
-            "秀禾服",
-            "简约"
-          ]
+        "package": {
+            "nav": "精选套餐",
+            "nav_img": "/static/images/package.png",
+            "details": [
+                {
+                    "id": 32,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997ce027058f401194349.jpg/shuiyin?imageMogr2/scrop/561x374/crop/561x374",
+                    "package_name": "爆款套系",
+                    "tags": ["摄影师一对一", "化妆师一对一"],
+                    "price": 4898
+                },
+                {
+                    "id": 34,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997d096be2e9209943550.jpg/shuiyin?imageMogr2/scrop/561x374/crop/561x374",
+                    "package_name": "人气套系",
+                    "tags": ["摄影师一对一", "化妆师一对一"],
+                    "price": 5988
+                },
+                {
+                    "id": 38,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997d561af116274196299.jpg/shuiyin?imageMogr2/scrop/561x374/crop/561x374",
+                    "package_name": "特惠套系",
+                    "tags": ["摄影师一对一", "化妆师一对一"],
+                    "price": 3999
+                }
+            ]
         },
-        {
-          "id": "21231efd",
-          "src": "/static/images/11.png",
-          "case_name": "绿色清新唯美的户外草地照",
-          "tags": []
+        "case": {
+            "nav": "官方案例",
+            "nav_img": "/static/images/case.png",
+            "details": [
+                {
+                    "id": 85,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170822/599c19af466d3386714488.jpg/ys?imageMogr2/scrop/561x374/crop/561x374",
+                    "case_name": "嗨够了没",
+                    "tags": ["浪漫", "新派", "时尚", "旅拍"]
+                },
+                {
+                    "id": 89,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170822/599c187841b74685652197.jpg/ys?imageMogr2/scrop/561x374/crop/561x374",
+                    "case_name": "南安",
+                    "tags": ["旅拍"]
+                },
+                {
+                    "id": 95,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997dc9d74f91062508331.jpg/ys?imageMogr2/scrop/561x374/crop/561x374",
+                    "case_name": "【喜宝特约】三亚旅拍",
+                    "tags": ["旅拍"]
+                },
+                {
+                    "id": 96,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997dd5d6d485528083500.jpg/ys?imageMogr2/scrop/561x374/crop/561x374",
+                    "case_name": "【喜宝特约】效果差强人意",
+                    "tags": ["清新"]
+                },
+                {
+                    "id": 97,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997dddd65efb152180317.jpg/ys?imageMogr2/scrop/561x374/crop/561x374",
+                    "case_name": "【喜宝特约】朋友推荐",
+                    "tags": ["清新", "唯美"]
+                },
+                {
+                    "id": 98,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997df02aebd1623256389.jpg/ys?imageMogr2/scrop/561x374/crop/561x374",
+                    "case_name": "【喜宝特约】指定摄影师",
+                    "tags": ["唯美"]
+                }
+            ]
         },
-        {
-          "id": "21231efd",
-          "src": "/static/images/11.png",
-          "case_name": "皮皮照",
-          "tags": [
-            "小清新",
-            "韩式"
-          ]
+        "cameraman": {
+            "nav": "摄影师团队",
+            "nav_img": "/static/images/photographer.png",
+            "details": [
+                {
+                    "id": 46,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997dd7cc2826241257475.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "赵维",
+                    "years": 10,
+                    "special": "简欧,宫廷,复古,纪实"
+                },
+                {
+                    "id": 47,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997de01c1cb3970450038.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "王丰州",
+                    "years": 15,
+                    "special": "简欧,宫廷,复古,纪实"
+                },
+                {
+                    "id": 48,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170822/599bce09746d8672717262.png/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "耿国安",
+                    "years": 16,
+                    "special": "简欧,宫廷,复古,纪实"
+                },
+                {
+                    "id": 49,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997ded92e863128273201.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "郭海洋",
+                    "years": 21,
+                    "special": "高级定制,城市旅拍,纪实、梦幻,个性"
+                },
+                {
+                    "id": 50,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997df267a0d9883034257.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "王斌",
+                    "years": 7,
+                    "special": "高级定制,城市旅拍,纪实、梦幻,个性"
+                },
+                {
+                    "id": 51,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997e00ba4e59226463724.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "张浩杰",
+                    "years": 9,
+                    "special": "小清新,城市旅拍,韩式新派,个性"
+                },
+                {
+                    "id": 53,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997e06cbcb6a694415702.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "王东磊",
+                    "years": 11,
+                    "special": "小清新,城市旅拍,韩式新派,个性"
+                }
+            ]
         },
-        {
-          "id": "21231efd",
-          "src": "/static/images/11.png",
-          "case_name": "虾虾照",
-          "tags": [
-            "小清新",
-            "韩式"
-          ]
-        },
-        {
-          "id": "21231efd",
-          "src": "/static/images/11.png",
-          "case_name": "骚猪照",
-          "tags": [
-            "小清新",
-            "韩式"
-          ]
+        "makeup": {
+            "nav": "化妆师团队",
+            "nav_img": "/static/images/dresser.png",
+            "details": [
+                {
+                    "id": 39,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997da54751fe580533760.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "李杨杰",
+                    "years": 8,
+                    "special": "时尚,小清新,复古"
+                },
+                {
+                    "id": 42,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997db27262eb995376635.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "艾伦",
+                    "years": 13,
+                    "special": "古典"
+                },
+                {
+                    "id": 43,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997dc450f594111521814.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "张珍珍",
+                    "years": 9,
+                    "special": "古典,定制,个性,时尚"
+                },
+                {
+                    "id": 44,
+                    "src":
+                        "http://marriage-1251225286.image.myqcloud.com/none/head/20170819/5997dd17a6742677933109.jpg/ys?imageMogr2/scrop/400x400/crop/400x400",
+                    "name": "李洁",
+                    "years": 8,
+                    "special": "浪漫,唯美"
+                }
+            ]
         }
-      ]
-    },
-    "package":{
-      "nav": "精选套餐",
-      "nav_img": "/static/images/package.png",
-      "details": [{
-          "id": "21231efd",
-          "src": "/static/images/12.png",
-          "price": 8899,
-          "package_name": "旅拍海滩外景LOMO风套系旅拍海滩外景LOMO风套系旅拍海滩外景LOMO风套系",
-          "tags": [
-            "摄影师一对一"
-          ]
-        },
-        {
-          "id": "21231efd",
-          "src": "/static/images/12.png",
-          "price": 6999,
-          "package_name": "皮皮虾套系",
-          "tags": []
-        },
-        {
-          "id": "21231efd",
-          "src": "/static/images/12.png",
-          "price": 6666,
-          "package_name": "骚猪套系",
-          "tags": [
-            "摄影师一对一",
-            "化妆师一对一"
-          ]
-        }
-      ]
-    },
-    "cameraman":{
-      "nav": "摄影师团队",
-      "nav_img": "/static/images/photographer.png",
-      "details": [{
-          "id": "21231",
-          "src": "/static/images/13.png",
-          "name": "皮皮虾",
-          "years": 2,
-          "special": "欧美、小清新、韩式、小清新、韩式、小清新、韩式、小清新、韩式"
-        },
-        {
-          "id": "21231s",
-          "src": "/static/images/13.png",
-          "name": "pdd",
-          "years": 5,
-          "special": ""
-        },
-        {
-          "id": "212as31",
-          "src": "/static/images/13.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        },
-        {
-          "id": "21we231",
-          "src": "/static/images/13.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        },
-        {
-          "id": "2qs1231",
-          "src": "/static/images/13.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        },
-        {
-          "id": "2qweq1231",
-          "src": "/static/images/12.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        }
-      ]
-    },
-    "makeup":{
-      "nav": "化妆团队",
-      "nav_img": "/static/images/dresser.png",
-      "details": [{
-          "id": "21231efd",
-          "src": "/static/images/13.png",
-          "name": "皮皮虾",
-          "years": 2,
-          "special": "欧美、小清新、韩式"
-        },
-        {
-          "id": "212qwex31",
-          "src": "/static/images/13.png",
-          "name": "pdd",
-          "years": 5,
-          "special": "欧美、小清新"
-        },
-        {
-          "id": "2qweed1231",
-          "src": "/static/images/13.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        },
-        {
-          "id": "assd21231",
-          "src": "/static/images/12.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        },
-        {
-          "id": "2sdvv1231",
-          "src": "/static/images/13.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        },
-        {
-          "id": "2asxx1231",
-          "src": "/static/images/13.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        },
-        {
-          "id": "21erfd231",
-          "src": "/static/images/14.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        },
-        {
-          "id": "212jkh31",
-          "src": "/static/images/15.png",
-          "name": "骚猪",
-          "years": 4,
-          "special": "欧美"
-        }
-      ]
     }
-  }
 }

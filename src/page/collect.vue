@@ -42,18 +42,18 @@
                                     </router-link>
                                 </div>
                             </div>
-    
+
                             <div class="c-type-photo">
                                 <ul v-bind:class="{active:item.showall}">
                                     <li v-for="(img,m) in item.photo" :key="m">
                                         <div class="img-hover">
-                                            <router-link :to="{ name: 'bottompage', query: {id: img.id}}" target="_blank">
+                                            <router-link :to="{ name: 'bottompage', params: {id: img.id, type: 2}}" target="_blank">
                                                 <img v-lazy="img.img" width="320" height="200">
                                             </router-link>
                                         </div>
                                     </li>
                                     <li v-show="item.photo.length>3">
-                                        <a  v-if="!item.showall" href="javascript:void(0)" style="color:#4c4c4c" @click="showAll(ln)">展示全部</a>
+                                        <a v-if="!item.showall" href="javascript:void(0)" style="color:#4c4c4c" @click="showAll(ln)">展示全部</a>
                                         <a v-else-if="item.showall" href="javascript:void(0)" style="color:#b2b2b2" @click="showAll(ln)">收 起</a>
                                     </li>
                                 </ul>
@@ -71,7 +71,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import header from './../components/user/userHead';
+import header from './../components/header';
 
 export default {
     components: {
@@ -88,8 +88,8 @@ export default {
     },
     data() {
         return {
-            uid: this.$route.query.uid,
-            type: this.$route.query.type,
+            uid: '',
+            type: this.$route.params.type,
             isDd: true,
             isTag: 0,
             userInfo: {},
@@ -98,10 +98,20 @@ export default {
         };
     },
     mounted() {
-        let ajaxdata = {
-            type: this.type
-        };
-        this.$store.dispatch('qryMyCollectList', ajaxdata);
+        try {
+            let token = JSON.parse(localStorage.getItem('user'));
+            this.uid = token.uid;
+            if (!token) {
+                window.location.href = '/login';
+            }
+            let ajaxdata = {
+                uid: this.uid,
+                type: this.type
+            };
+            this.$store.dispatch('qryMyCollectList', ajaxdata);
+        } catch (error) {
+            console.log(error);
+        }
     },
     methods: {
         toggleDD() {
@@ -117,9 +127,6 @@ export default {
         },
         showAll(ln) {
             this.$store.dispatch('collectListChange', ln);
-            // let obj = this.list[ln]
-            // obj.showall = !obj.showall
-            // this.$set(this.list, ln, obj);
         },
         logout() {
             this.$store.dispatch('loginOut');

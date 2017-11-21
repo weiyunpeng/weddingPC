@@ -51,7 +51,8 @@ export default {
         swiperImgs: {
             type: Array,
             default: []
-        }
+        },
+        swiperIndex:0
     },
     computed: {
         swiper() {
@@ -59,7 +60,6 @@ export default {
         }
     },
     mounted() {
-        this.swiper.slideTo(0, 1000, false);
     },
     methods: {
         close() {
@@ -67,18 +67,8 @@ export default {
         }
     },
     watch: {
-        value() {
-            if (this.value) {
-                const self = this;
-                const tempImage = new Image();
-                tempImage.onload = function() {
-                    self.loading = true;
-                };
-                tempImage.onerror = function() {
-                    self.close();
-                };
-                tempImage.src = self.photoModal.img;
-            }
+        swiperIndex() {
+            this.swiper.slideTo(this.swiperIndex, 0, false);
         }
     }
 };
