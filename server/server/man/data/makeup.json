@@ -1,75 +1,65 @@
 {
-    "code": 200,
-    "msg": "success",
+    "code": 0,
+    "msg": "成功",
     "data": {
         "bus_info": {
-            "id":1,
-            "store_name": "郑州艾维美婚纱摄影(国贸360店)",
-            "isYes": true,
-            "isVip": true,
-            "address": "宇宙银河皮皮虾星系lake星球",
-            "star": 3
+            "store_id": 6,
+            "store_name": "韩国艺匠ARTIZ STUDIO",
+            "address": "农业东路与如意西路交叉口向北200米 建业总部港B座",
+            "star": "4.5",
+            "isYes": 0,
+            "isVip": 0
         },
         "makeup": {
-            "name": "安东尼",
-            "nick": "阿萨德发送到分",
-            "intro": "",
-            "tags": [],
-            "astro": "摩羯座",
-            "head": "/static/images/14.png",
-            "photos": [
-                "http://marriage-1252045209.image.myqcloud.com/default.jpg?imageView2/0/w//h/"
-            ],
-            "birthYear": 2015,
-            "workYears": 3,
-            "specialty": "浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格",
+            "id": 12,
+            "name": "时珍珍",
+            "nick": "",
+            "intro":
+                "2010-2012年剧组担任化妆师，2013-2016南京艺匠担任化妆师，2016年赴韩进修学习， 2017年郑州艺匠化妆师",
+            "tags": ["韩式兼容", "清新淡雅"],
+            "astro": "双子",
+            "head":
+                "http://marriage-1251225286.image.myqcloud.com/none/head/20170915/59bb9fb971a93867540247.jpg/ys?imageView2/2/w/300/h/",
+            "birthYear": 1097,
+            "workYears": 7,
+            "specialty": "韩式兼容,清新淡雅",
             "info_details": [
                 {
                     "tag": "化妆师简介",
-                    "detail": "进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。进入7月，虽说是进入了结婚的淡季，但下半年及明年要结婚的小伙伴们可得加了个油了，结婚筹备一定要趁早。也为了大家更好的筹婚备婚，大豫新娘帮携手艾唯婚礼策划团队及中洲皇冠假日酒店潮鲜厅为大家带来一场不容错过的婚礼秀。",
-                    "imgs": []
+                    "detail":
+                        "2010-2012年剧组担任化妆师，2013-2016南京艺匠担任化妆师，2016年赴韩进修学习， 2017年郑州艺匠化妆师"
                 },
-                {
-                    "tag": "化妆特点",
-                    "detail": "浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格,浪漫唯美、幽默风趣、甜美风格",
-                    "imgs": []
-                },
+                { "tag": "专业特点", "detail": "擅长清新淡雅、简约大气的韩式妆面" },
                 {
                     "tag": "作品展示",
                     "detail": "",
                     "imgs": [
-                        "/static/images/15.png",
-                        "/static/images/15.png",
-                        "/static/images/15.png"
+                        "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997ba0880adb229025155.jpg/shuiyin?imageView2/2/w/640/h/",
+                        "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997ba0891f9f371279375.jpg/shuiyin?imageView2/2/w/640/h/",
+                        "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997ba08b8495878002591.jpg/shuiyin?imageView2/2/w/640/h/",
+                        "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997ba08a3725805203127.jpg/shuiyin?imageView2/2/w/640/h/",
+                        "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997ba08c772e004632797.jpg/shuiyin?imageView2/2/w/640/h/",
+                        "http://marriage-1251225286.image.myqcloud.com/none/photos/20170819/5997ba08d9e9b304626398.jpg/shuiyin?imageView2/2/w/640/h/"
                     ]
                 }
             ]
         },
         "packages": [
             {
-                "id": 1,
-                "cover": "/static/images/5.png",
-                "name": "唯美韩式海滩外景套系",
-                "tag": [
-                    "adf"
-                ],
-                "price": 12000
-            },
-            {
-                "id": 1,
-                "cover": "/static/images/2.png",
-                "name": "韩式花海奢华内外双景套系",
-                "tag": [
-                    "sd"
-                ],
-                "price": 12000
-            },
-            {
-                "id": 1,
-                "cover": "/static/images/15.png",
-                "name": "欧式复古唯美教堂外景套系",
+                "id": 12,
+                "cover":
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997aa3edb691961733119.jpg/ys?imageView2/2/w/300/h/",
+                "name": "樱花",
                 "tag": [],
-                "price": 2000
+                "price": 10980
+            },
+            {
+                "id": 15,
+                "cover":
+                    "http://marriage-1251225286.image.myqcloud.com/none/cover/20170819/5997b1147a458111291262.jpg/ys?imageView2/2/w/300/h/",
+                "name": "丽姿",
+                "tag": [],
+                "price": 15980
             }
         ]
     }

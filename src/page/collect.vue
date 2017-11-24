@@ -28,7 +28,7 @@
                     </ul>
                 </div>
                 <div class="clearfix c-type-list">
-                    <ul>
+                    <ul v-if="getCollectList && getCollectList.length>0">
                         <li v-for="(item,ln) in getCollectList" :key="ln">
                             <div class="c-type-header">
                                 <div class="fl c-type-header-name">{{item.name}}</div>
@@ -60,7 +60,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div v-if="getCollectList && getCollectList.length==0" class="no-data">
+                    <div v-if="noData && getCollectList.length==0" class="no-data">
                         <img src="/static/images/icon-no-data-2.png">
                     </div>
                 </div>
@@ -94,7 +94,8 @@ export default {
             isTag: 0,
             userInfo: {},
             category: {},
-            index: 0
+            index: 0,
+            noData:false,
         };
     },
     mounted() {
@@ -129,14 +130,20 @@ export default {
             this.$store.dispatch('collectListChange', ln);
         },
         logout() {
-            this.$store.dispatch('loginOut');
-            this.$router.push({ name: 'index' });
+            this.$store.dispatch('loginOut', { toIndex: 1 });
         }
     },
     watch: {
         getCollectUserInfo() {
             this.userInfo = this.getCollectUserInfo;
             this.category = this.getCollectUserInfo.category;
+        },
+        getCollectList(){
+            if(this.getCollectList && this.getCollectList.length > 0){
+                this.noData = false;
+            }else{
+                this.noData = true;
+            }
         }
     },
     beforeDestroy() {}

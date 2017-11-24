@@ -56,7 +56,7 @@
         <li class="li-small"></li>
         <a href="" target="_blank">
           <li class="li-big">
-            <router-link :to="{ name: 'comment', query: { bus: 1 }}" class="nav_a" active-class="nav_active">
+            <router-link :to="{ name: 'comment', params: { cid: 1 }}" class="nav_a" active-class="nav_active">
               <dl>
                 <dt class="dt-sj"></dt>
                 <dd>

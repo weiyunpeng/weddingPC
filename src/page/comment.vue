@@ -93,22 +93,22 @@
                             </li>
                             <li class="list-con-btn" v-if="item.comments && item.comments.length>2">
                                 <div v-if="item.showAll" @click="showBtn(busIndex,false)">
-                                    <a href="javascript:void(0)" >
+                                    <a href="javascript:void(0)">
                                         <i class="icon-angle-act"></i>
                                         <span>收 起</span>
                                     </a>
                                 </div>
                                 <div v-else-if="!item.showAll" @click="showBtn(busIndex,true)">
-                                    <a href="javascript:void(0)" >
+                                    <a href="javascript:void(0)">
                                         <i class="icon-angle"></i>
                                         <span>展示全部</span>
                                     </a>
                                 </div>
-    
+
                             </li>
                         </ul>
                     </li>
-    
+
                 </ul>
             </div>
         </div>
@@ -116,6 +116,7 @@
             <img src="/static/images/icon-no-data-1.png">
         </div>
         <com-paging :pageInfo="pageInfo" @change="pagechange" @skip="skip"></com-paging>
+        <com-modal @modalCallback="modalCallback"></com-modal>
     </div>
 </template>
 
@@ -125,12 +126,14 @@ import header from './../components/header';
 import tag from './../components/business/busTag';
 import busFilter from './../components/business/busFilter';
 import paging from './../components/paging';
+import modal from './../components/modal';
 export default {
     components: {
         comHeader: header,
         comTag: tag,
         comFilter: busFilter,
-        comPaging: paging
+        comPaging: paging,
+        comModal: modal
     },
     computed: {
         ...mapGetters({
@@ -182,10 +185,20 @@ export default {
             this.ajaxdata.priceToSort = priceToSort;
             this.$store.dispatch('qryStoreList', this.ajaxdata);
         },
-        ajaxPrice(minPrice, maxPrice) {
-            this.ajaxdata.minPrice = minPrice;
-            this.ajaxdata.maxPrice = maxPrice;
-            this.$store.dispatch('qryStoreList', this.ajaxdata);
+        ajaxPrice(minPrice, maxPrice, isajax) {
+            if (isajax) {
+                this.ajaxdata.minPrice = minPrice;
+                this.ajaxdata.maxPrice = maxPrice;
+                this.$store.dispatch('qryStoreList', this.ajaxdata);
+            } else {
+                const data = {
+                    name: '提示',
+                    info: {
+                        text: '请输入正确的价格'
+                    }
+                };
+                this.$store.dispatch('showModal', data);
+            }
         },
         showBtn(busIndex, showAll) {
             let data = {
@@ -193,7 +206,8 @@ export default {
                 showAll: showAll
             };
             this.$store.dispatch('shopListChange', data);
-        }
+        },
+        modalCallback() {}
     },
     watch: {
         shopPage() {

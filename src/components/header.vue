@@ -34,7 +34,7 @@
                         <img :src="header" class="circle" width="30" height="30" @click="userLogin" v-on="{ mouseover: showHeader ,mouseout:hideHeader}">
                         <ul class="nav_user_ul" v-show="isLogin">
                             <li>
-                                <router-link :to="{ name: 'collect', params: {type:0}}" target="_blank">
+                                <router-link :to="{ name: 'collect', params: {type:0}}">
                                     <i class="icon_collage"></i>我的收藏
                                 </router-link>
                             </li>
@@ -65,7 +65,8 @@ export default {
             header: '/static/images/icon-user.png',
             uid: null,
             isLogin: null,
-            bus: this.$route.params.cid
+            bus: this.$route.params.cid,
+            type: this.$route.params.type,
         };
     },
     computed: {
@@ -96,10 +97,13 @@ export default {
             this.$store.dispatch('qryStoreList', data);
         },
         logout() {
-            this.$store.dispatch('loginOut');
+            if(this.type == 0){
+                this.$store.dispatch('loginOut', { toIndex: 1 });
+            }else{
+                this.$store.dispatch('loginOut', { toIndex: 0 });
+            }
             this.isLogin = false;
             this.header = '/static/images/icon-user-hover.png';
-            window.location.reload();
         },
         userLogin() {
             if (!this.isLogin) {
@@ -205,7 +209,6 @@ export default {
             top: 0;
             outline: none;
             height: 30px;
-            line-height: 30px;
             z-index: 10;
             padding-left: 10px;
             color: #808080;

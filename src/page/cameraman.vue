@@ -32,7 +32,7 @@
             </p>
             <ul>
                 <li v-for="(item,s) in camaramanPackages" :key="s">
-                    <router-link :to="{ name: 'packageDetails',params: {busId:camaramanBusinfo.id, mealId:item.id}}" target="_blank">
+                    <router-link :to="{ name: 'packageDetails',params: {busId:camaramanBusinfo.store_id, mealId:item.id}}" target="_blank">
                         <img v-lazy="item.cover" width="300" height="200">
                         <div class="p_info clearfix">
                             <div class="name fl">{{item.name}}</div>

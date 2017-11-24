@@ -1,10 +1,12 @@
 <template>
-<div class="filter">
+    <div class="filter">
         <div class="container">
             <div class="filter-con">
                 <a href="javascript:void(0)" v-bind:class="{tag_active:method == 0}" @click="tagChange(0)">默认</a>
                 <a href="javascript:void(0)" v-bind:class="{tag_active:method == 1}" @click="tagChange(1)">总体评分</a>
-                <a href="javascript:void(0)" v-bind:class="{tag_active:method == 2}" @click="tagChange(2)">价格<i class="price_icon" v-bind:class="{price_position:isHigh}"></i></a>
+                <a href="javascript:void(0)" v-bind:class="{tag_active:method == 2}" @click="tagChange(2)">价格
+                    <i class="price_icon" v-bind:class="{price_position:isHigh}"></i>
+                </a>
                 <div class="fil_input">
                     <span>¥</span>
                     <input type="number" class="input_price" v-model.number="minPrice">
@@ -15,62 +17,59 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     data() {
         return {
-            method:0,
-            isHigh:0,
-            minPrice:null,
-            maxPrice:null,
-            flag:/^\d+$/
-        }
+            method: 0,
+            isHigh: 0,
+            minPrice: null,
+            maxPrice: null,
+            flag: /^\d+$/
+        };
     },
     computed: {
-        ...mapGetters({
-        }),
+        ...mapGetters({}),
         ...mapActions({
-            showModal:'showModal'
+            showModal: 'showModal'
         })
     },
-    mounted(){
+    mounted() {
         let self = this;
     },
     methods: {
-        tagChange(index){
+        tagChange(index) {
             let self = this;
             self.method = index;
-            if(index == 2){
+            if (index == 2) {
                 //需要价格箭头的切换
-                if(this.isHigh){
-                    this.isHigh = 0
-                }else{
-                    this.isHigh = 1
+                if (this.isHigh) {
+                    this.isHigh = 0;
+                } else {
+                    this.isHigh = 1;
                 }
             }
-            this.$emit('ajaxfilter',index,this.isHigh);
+            this.$emit('ajaxfilter', index, this.isHigh);
         },
-        qryPrice(){
-            if(!this.flag.test(this.minPrice) || !this.flag.test(this.maxPrice) || this.minPrice >= this.maxPrice){
-                const data = {
-                    name: '提示',
-                    info: {
-                        text: '请输入正确的价格'
-                    }
-                };
-                this.$store.dispatch('showModal',data);
-            }else{
-                this.$emit('ajaxPrice',this.minPrice,this.maxPrice);
+        qryPrice() {
+            if (
+                !this.flag.test(this.minPrice) ||
+                !this.flag.test(this.maxPrice) ||
+                this.minPrice >= this.maxPrice
+            ) {
+                this.$emit('ajaxPrice', this.minPrice, this.maxPrice, false);
+            } else {
+                this.$emit('ajaxPrice', this.minPrice, this.maxPrice, true);
             }
         }
     }
-}
+};
 </script>
 <style rel="stylesheet/scss" lang="scss">
-@import "./../../assets/css/filter.scss";
+@import './../../assets/css/filter.scss';
 </style>

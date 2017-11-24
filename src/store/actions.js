@@ -54,6 +54,11 @@ export const getUserInfo = ({ commit }, data) => {
 };
 export const loginOut = ({ commit }, data) => {
     api.loginOut(data).then(function (response) {
+        if(data.toIndex){
+            window.location.pathname = '/index'
+        }else{
+            window.location.reload();
+        }
         commit(types.USER_LOGOUT)
     })
         .catch(function (error) {

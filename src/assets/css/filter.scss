@@ -43,13 +43,17 @@
         position: relative;
         display: inline-block;
         float: left;
-        line-height: 40px;
-        padding-left: 20px;
+        padding: 7px 0;
+        margin-left: 20px;
+        width: 248px;
+        height: 46px;
         .input_price{
+            position: relative;
             width: 80px;
             height: 28px;
+            line-height: 28px;
             color: #a6a6a6;
-            text-align: center;
+            padding-left: 15px;
             border:1px solid #d9d9d9;
             border-radius: 5px;
         }
@@ -60,21 +64,22 @@
         span{
             position: relative;
             left: 20px;
+            top: 1px;
             color: #a6a6a6;
             font-size: 14px;
-            line-height: 40px;
+            z-index: 999;
         }
         .queryPrice{
             height: 28px;
             line-height: 28px;
             float: right;
-            margin-left: 20px;
             background: #d9d9d9;
             color: #666666;
             font-size: 14px;
             border-radius: 10px;
             padding: 0 8px;
-            margin-top: 6px;
+            position: relative;
+            left: 10px;
         }
     }
 }
