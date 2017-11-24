@@ -1,6 +1,6 @@
 ### Vue for DYWEDDING
 
-## 运行方式
+## 前台运行方式
 前台使用vue搭建的
 
 ```plain
